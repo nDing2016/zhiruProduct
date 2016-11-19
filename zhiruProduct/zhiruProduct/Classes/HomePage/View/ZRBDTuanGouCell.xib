@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="ZRBDTuanGouCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tuangou" translatesAutoresizingMaskIntoConstraints="NO" id="ZiA-tf-epE">
+                        <rect key="frame" x="15" y="7" width="20" height="20"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="hanbao" translatesAutoresizingMaskIntoConstraints="NO" id="evS-P5-4Wl">
+                        <rect key="frame" x="46" y="7" width="70" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="TMj-IM-r2p"/>
+                            <constraint firstAttribute="height" constant="50" id="r6Y-lF-nBH"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="知汝团购" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxU-WP-NRx">
+                        <rect key="frame" x="126" y="7" width="56" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$110" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBW-3d-vB3">
+                        <rect key="frame" x="126" y="40" width="30.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiantou-you" translatesAutoresizingMaskIntoConstraints="NO" id="RZt-uT-bTC">
+                        <rect key="frame" x="300" y="27" width="5" height="9"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZiA-tf-epE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Gd9-d0-2fJ"/>
+                    <constraint firstItem="gBW-3d-vB3" firstAttribute="leading" secondItem="evS-P5-4Wl" secondAttribute="trailing" constant="10" id="GyY-ZU-NTe"/>
+                    <constraint firstItem="ZiA-tf-epE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Hqs-po-iEP"/>
+                    <constraint firstAttribute="trailing" secondItem="RZt-uT-bTC" secondAttribute="trailing" constant="15" id="JQh-pb-SMM"/>
+                    <constraint firstItem="RZt-uT-bTC" firstAttribute="centerY" secondItem="evS-P5-4Wl" secondAttribute="centerY" id="OHQ-VK-4Dy"/>
+                    <constraint firstItem="evS-P5-4Wl" firstAttribute="leading" secondItem="ZiA-tf-epE" secondAttribute="trailing" constant="11" id="bt6-6s-HsB"/>
+                    <constraint firstItem="yxU-WP-NRx" firstAttribute="leading" secondItem="evS-P5-4Wl" secondAttribute="trailing" constant="10" id="nRD-F6-epV"/>
+                    <constraint firstItem="gBW-3d-vB3" firstAttribute="bottom" secondItem="evS-P5-4Wl" secondAttribute="bottom" id="oV7-gk-ukU"/>
+                    <constraint firstItem="evS-P5-4Wl" firstAttribute="top" secondItem="ZiA-tf-epE" secondAttribute="top" id="rat-zw-MHv"/>
+                    <constraint firstAttribute="bottom" secondItem="evS-P5-4Wl" secondAttribute="bottom" constant="7.5" id="xJ4-4Y-RBW"/>
+                    <constraint firstItem="yxU-WP-NRx" firstAttribute="top" secondItem="evS-P5-4Wl" secondAttribute="top" id="ylt-cb-arj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tuanImg" destination="evS-P5-4Wl" id="b3O-Hc-q6i"/>
+                <outlet property="tuanName" destination="yxU-WP-NRx" id="KFd-Sa-agB"/>
+                <outlet property="tuanPrice" destination="gBW-3d-vB3" id="Kg2-G1-yKp"/>
+                <outlet property="tuangouImg" destination="ZiA-tf-epE" id="3FX-VN-UnI"/>
+            </connections>
+            <point key="canvasLocation" x="256" y="318.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="hanbao" width="100" height="80"/>
+        <image name="jiantou-you" width="5" height="9"/>
+        <image name="tuangou" width="20" height="20"/>
+    </resources>
+</document>

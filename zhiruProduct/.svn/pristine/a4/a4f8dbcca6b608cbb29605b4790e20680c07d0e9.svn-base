@@ -1,0 +1,27 @@
+//
+//  ZRAlterAddressViewController.h
+//  zhiruProduct
+//
+//  Created by pj on 16/7/13.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRNewAddressViewController.h"
+@class ZRUserAddressModel;
+
+@protocol alterAddressDelegate <NSObject>
+
+- (void)alterSuccess;
+
+@end
+
+@interface ZRAlterAddressViewController : ZRNewAddressViewController
+
+@property (nonatomic, copy)NSString * name;
+@property (nonatomic, copy)NSString * sex;
+@property (nonatomic, copy)NSString * phoneNumber;
+
+@property (nonatomic, strong)ZRUserAddressModel * model;
+
+@property (nonatomic, assign)id<alterAddressDelegate>delegate;
+@end

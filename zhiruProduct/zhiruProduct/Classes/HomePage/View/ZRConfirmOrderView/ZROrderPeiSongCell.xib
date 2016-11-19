@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1912" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="ZROrderPeiSongCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配送费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wA-K1-MN5">
+                        <rect key="frame" x="15" y="8" width="45" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.98431372549019602" green="0.23529411764705882" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本订单由[店家]提供配送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="415-gc-8m8">
+                        <rect key="frame" x="15" y="41" width="150.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeN-yN-G3A">
+                        <rect key="frame" x="272" y="23" width="32.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.90588235294117647" green="0.22352941176470589" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vip优惠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7i-DQ-DV4">
+                        <rect key="frame" x="213" y="8" width="49" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cn-s9-dEd">
+                        <rect key="frame" x="272" y="8" width="29.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Im-D2f">
+                        <rect key="frame" x="272" y="16" width="29.5" height="1"/>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bvp-5L-n7Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KeN-yN-G3A" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Wl-uK-zOZ"/>
+                    <constraint firstItem="2wA-K1-MN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4Jh-0S-O8z"/>
+                    <constraint firstItem="glX-Im-D2f" firstAttribute="width" secondItem="2cn-s9-dEd" secondAttribute="width" id="5td-to-NcR"/>
+                    <constraint firstAttribute="bottom" secondItem="415-gc-8m8" secondAttribute="bottom" constant="8" id="FIy-Yw-4zv"/>
+                    <constraint firstItem="C7i-DQ-DV4" firstAttribute="centerY" secondItem="2cn-s9-dEd" secondAttribute="centerY" id="H3L-FA-tjh"/>
+                    <constraint firstItem="2cn-s9-dEd" firstAttribute="leading" secondItem="KeN-yN-G3A" secondAttribute="leading" id="PiR-q8-D3H"/>
+                    <constraint firstItem="415-gc-8m8" firstAttribute="leading" secondItem="2wA-K1-MN5" secondAttribute="leading" id="PrT-Tl-zmJ"/>
+                    <constraint firstItem="glX-Im-D2f" firstAttribute="centerY" secondItem="2cn-s9-dEd" secondAttribute="centerY" id="TnM-kS-0bX"/>
+                    <constraint firstItem="glX-Im-D2f" firstAttribute="centerX" secondItem="2cn-s9-dEd" secondAttribute="centerX" id="YMI-Ky-9UI"/>
+                    <constraint firstItem="415-gc-8m8" firstAttribute="top" secondItem="2wA-K1-MN5" secondAttribute="bottom" constant="15" id="bWx-la-1wI"/>
+                    <constraint firstItem="2cn-s9-dEd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fVu-08-tlz"/>
+                    <constraint firstAttribute="trailing" secondItem="KeN-yN-G3A" secondAttribute="trailing" constant="15" id="iVa-hR-0eL"/>
+                    <constraint firstItem="2wA-K1-MN5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kMb-OV-HYy"/>
+                    <constraint firstItem="2cn-s9-dEd" firstAttribute="leading" secondItem="C7i-DQ-DV4" secondAttribute="trailing" constant="10" id="q1b-dI-CY1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="peisongInfo" destination="415-gc-8m8" id="Kpd-AJ-Tpp"/>
+                <outlet property="peisongMoney" destination="KeN-yN-G3A" id="rFQ-dJ-TF6"/>
+                <outlet property="peisongOriginalMoney" destination="2cn-s9-dEd" id="QJT-ZQ-pvM"/>
+                <outlet property="vipView" destination="C7i-DQ-DV4" id="oSA-Sx-m8u"/>
+                <outlet property="xianView" destination="glX-Im-D2f" id="5bB-EP-Ign"/>
+            </connections>
+            <point key="canvasLocation" x="158" y="269"/>
+        </tableViewCell>
+    </objects>
+</document>

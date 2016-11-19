@@ -1,0 +1,128 @@
+//
+//  ZRBusinessDetailsModel.h
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/8/11.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//  店铺详情model
+
+#import <Foundation/Foundation.h>
+
+@interface ZRBusinessDetailsModel : NSObject
+/**
+ *  id
+ */
+@property (nonatomic , copy) NSString * business_id;
+/**
+ *  店铺名
+ */
+@property (nonatomic , copy) NSString * name;
+/**
+ *  店铺头像地址
+ */
+@property (nonatomic , copy) NSString * img;
+/**
+ *  店铺评分
+ */
+@property (nonatomic , copy) NSString * grade;
+/**
+ *  评论条数
+ */
+@property (nonatomic , copy) NSString * comment_count;
+/**
+ *  标签分类
+ */
+@property (nonatomic , copy) NSArray * navName;// 格式
+/**
+ *  口味评分
+ */
+@property (nonatomic , copy) NSString * gradeOne;
+/**
+ *  环境评分
+ */
+@property (nonatomic , copy) NSString * gradeTwo;
+/**
+ *  服务评分
+ */
+@property (nonatomic , copy) NSString * gradeThree;
+/**
+ *  横坐标
+ */
+@property (nonatomic , copy) NSString * longitude;
+/**
+ *  纵坐标
+ */
+@property (nonatomic , copy) NSString * latitude;
+/**
+ *  详细地址
+ */
+@property (nonatomic , copy) NSString * address;
+/**
+ *  电话
+ */
+@property (nonatomic , copy) NSString * tel;
+/**
+ *  营业时间
+ */
+@property (nonatomic , copy) NSString * open_time;
+/**
+ *  是否支持外卖 0不支持 1支持
+ */
+@property (nonatomic , copy) NSString * is_pack;
+/**
+ *  是否支持团购 0不支持 1支持
+ */
+@property (nonatomic , copy) NSString * is_group;
+/**
+ *  团购条数
+ */
+@property (nonatomic , copy) NSString * group_count;
+/**
+ *  团购列表
+ */
+@property (nonatomic , strong) NSArray * group_list;
+/**
+ *  好评数
+ */
+@property (nonatomic , copy) NSString * praise;
+/**
+ *  差评数
+ */
+@property (nonatomic , copy) NSString * bad;
+/**
+ *  带图评论数
+ */
+@property (nonatomic , copy) NSString * img_comment;
+/**
+ *  我的评价 暂时取消这个功能
+ */
+//@property (nonatomic , strong) NSArray * my_comment;
+/**
+ *  用户评价
+ */
+@property (nonatomic , strong) NSArray * commentList;
+/**
+ *  是否有wifi 0没有 1有
+ */
+@property (nonatomic , copy) NSString * is_wifi;
+/**
+ *  是否有停车场 0 没有 1有
+ */
+@property (nonatomic , copy) NSString * is_depot;
+/**
+ *  是否支持刷卡 0 不支持1支持
+ */
+@property (nonatomic , copy) NSString * is_card_pay;
+/**
+ *  是否有包间 0 没有 1 有
+ */
+@property (nonatomic , copy) NSString * is_private_room;
+/**
+ *  商家故事
+ */
+@property (nonatomic , copy) NSString * remarks;
+/**
+ *  店铺是否被收藏0没有收藏1已收藏
+ */
+@property (nonatomic, copy) NSString * isCollection;
+@end

@@ -1,0 +1,265 @@
+//
+//  ZROrderingOrderCell.m
+//  zhiruProduct
+//
+//  Created by pj on 16/7/19.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZROrderingOrderCell.h"
+
+@implementation ZROrderingOrderCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        [self createView];
+        [self setViewMasonary];
+    }
+    return self;
+}
+- (void)createView
+{
+    self.orderState = [[UILabel alloc] init];
+    [self addSubview:_orderState];
+    [self.orderState setFont:[UIFont systemFontOfSize:15]];
+    [self.orderState setText:@"订单已完成"];
+    
+    self.timeLabel = [[UILabel alloc] init];
+    [self addSubview:_timeLabel];
+    [self.timeLabel setFont:[UIFont systemFontOfSize:14]];
+    [self.timeLabel setTextColor:RGBCOLOR(156, 156, 156)];
+    [self.timeLabel setText:@"2016-06-27 08:26"];
+    
+    self.lineView1 = [[UIView alloc] init];
+    [self addSubview:_lineView1];
+    [self.lineView1 setBackgroundColor:RGBCOLOR(187, 187, 187)];
+    
+    self.orderImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 45, 100, 80)];
+    [self addSubview:_orderImage];
+//    [self.orderImage setBackgroundColor:[UIColor cyanColor]];
+    [self.orderImage setImage:[UIImage imageNamed:@"wucan"]];
+    
+    
+    self.lineView2 = [[UIView alloc] initWithFrame:CGRectMake(125, 75, ScreenWidth - 125, 1)];
+    [self.lineView2 setBackgroundColor:RGBCOLOR(187, 187, 187)];
+    [self addSubview:_lineView2];
+    
+    self.orderingLabel = [[UILabel alloc] init];
+    [self addSubview:_orderingLabel];
+    [self.orderingLabel setFont:[UIFont systemFontOfSize:15]];
+    [self.orderingLabel setText:@"谷绩粥工馆(豫珑城店)"];
+    
+    self.rightImage = [[UIImageView alloc] init];
+    [self addSubview:_rightImage];
+    [self.rightImage setImage:[UIImage imageNamed:@"jiantou-you"]];
+    
+    self.menuView1 = [[ZROrderContentView alloc] init];
+    [self addSubview:_menuView1];
+    [self.menuView1.menuLabel setText:@"烤饼"];
+    [self.menuView1.partLabel setText:@"×1"];
+    
+    self.menuView2 = [[ZROrderContentView alloc] init];
+    [self addSubview:_menuView2];
+    [self.menuView2.menuLabel setText:@"鱼丸"];
+    [self.menuView2.partLabel setText:@"×2"];
+    
+    self.dianLabel = [[UILabel alloc] init];
+    [self addSubview:_dianLabel];
+    [self.dianLabel setText:@". . ."];
+    [self.dianLabel setFont:[UIFont systemFontOfSize:13]];
+    [self.dianLabel setTextAlignment:NSTextAlignmentLeft];
+//    [self.dianLabel setBackgroundColor:[UIColor yellowColor]];
+    
+    self.menuPartLabel = [[UILabel alloc] init];
+    [self addSubview:_menuPartLabel];
+    [self.menuPartLabel setFont:[UIFont systemFontOfSize:13]];
+    [self.menuPartLabel setText:@"共6份,实付 "];
+    
+    self.menuMoneyLabel = [[UILabel alloc] init];
+    [self addSubview:_menuMoneyLabel];
+    [self.menuMoneyLabel setFont:[UIFont boldSystemFontOfSize:14]];
+    [self.menuMoneyLabel setText:@"$20.00"];
+    
+    self.lineView3 = [[UIView alloc] init];
+    [self addSubview:_lineView3];
+    [self.lineView3 setBackgroundColor:RGBCOLOR(187, 187, 187)];
+    
+    self.commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.commentButton setTitle:@"去评价" forState:UIControlStateNormal];
+    [self.commentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.commentButton setBackgroundColor:RGBCOLOR(255, 82, 82)];
+    [self.commentButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    self.commentButton.layer.masksToBounds = YES;
+    self.commentButton.layer.cornerRadius = 3;
+    [self addSubview:_commentButton];
+    
+    self.againButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.againButton setTitle:@"再来一单" forState:UIControlStateNormal];
+    [self.againButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.againButton setBackgroundColor:RGBCOLOR(255, 82, 82)];
+    [self.againButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    self.againButton.layer.masksToBounds = YES;
+    self.againButton.layer.cornerRadius = 3;
+    [self addSubview:_againButton];
+}
+- (void)setViewMasonary
+{
+    WS(weakSelf);
+    [self.orderState mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.height.mas_equalTo(@35);
+    }];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(125);
+        make.height.mas_equalTo(@35);
+    }];
+    [self.lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.top.equalTo(weakSelf.timeLabel.mas_bottom).with.offset(0);
+        make.right.equalTo(weakSelf).with.offset(0);
+        make.height.mas_equalTo(@1);
+    }];
+    [self.orderingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.timeLabel);
+        make.top.equalTo(weakSelf.orderImage);
+        make.height.mas_equalTo(25);
+    }];
+    [self.rightImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf).with.offset(-15);
+        make.bottom.equalTo(weakSelf.lineView2.mas_top).with.offset(-8);
+    }];
+    
+    [self.menuView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.timeLabel);
+        make.top.equalTo(weakSelf.lineView2.mas_bottom).with.offset(5);
+        make.right.equalTo(weakSelf).with.offset(-15);
+    }];
+    
+    [self.menuView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.timeLabel);
+        make.bottom.equalTo(weakSelf.orderImage);
+        make.right.equalTo(weakSelf).with.offset(-15);
+    }];
+    
+    [self.dianLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.orderImage.mas_bottom).with.offset(5);
+        make.right.equalTo(weakSelf).with.offset(-15);
+        make.left.equalTo(weakSelf.orderingLabel);
+        make.height.mas_equalTo(@20);
+    }];
+    
+//    if (self.ceshi == 3) {
+        [self.menuMoneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(weakSelf).with.offset(-15);
+            make.top.equalTo(weakSelf.dianLabel.mas_bottom).with.offset(5);
+//            make.height.mas_equalTo(@20);
+        }];
+//    } else if (self.ceshi == 2){
+//        [self.menuMoneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(weakSelf).with.offset(-15);
+//            make.top.equalTo(weakSelf.orderImage.mas_bottom).with.offset(5);
+//        }];
+//    }
+    [self.menuPartLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.menuMoneyLabel.mas_left).with.offset(0);
+        make.top.equalTo(weakSelf.menuMoneyLabel);
+    }];
+    
+    [self.lineView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.top.equalTo(weakSelf.menuMoneyLabel.mas_bottom).with.offset(5);
+        make.right.equalTo(weakSelf).with.offset(0);
+        make.height.mas_equalTo(@1);
+    }];
+    
+    [self.againButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf).with.offset(-15);
+        make.top.equalTo(weakSelf.lineView3.mas_bottom).with.offset(10);
+        make.bottom.equalTo(weakSelf).with.offset(-10);
+        make.width.mas_equalTo(@75);
+    }];
+    
+    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.againButton.mas_left).with.offset(-10);
+        make.top.and.bottom.equalTo(weakSelf.againButton);
+        make.width.equalTo(weakSelf.againButton);
+    }];
+}
+
+- (void)setLunchModel:(ZRLunchModel *)lunchModel
+{
+    _lunchModel = lunchModel;
+    if ([_lunchModel.status isEqualToString:@"0"]) {
+        [self.orderState setText:@"订单未付款"];
+        [self.commentButton setTitle:@"去付款" forState:UIControlStateNormal];
+    } else if ([_lunchModel.status isEqualToString:@"1"]) {
+        [self.orderState setText:@"订单进行中"];
+        [self.commentButton setHidden:YES];
+    } else if ([_lunchModel.status isEqualToString:@"2"]) {
+        [self.orderState setText:@"订单进行中"];
+        [self.commentButton setHidden:YES];
+    } else if ([_lunchModel.status isEqualToString:@"3"]) {
+        [self.orderState setText:@"订单已取消"];
+        [self.commentButton setHidden:YES];
+    } else if ([_lunchModel.status isEqualToString:@"4"]) {
+        [self.orderState setText:@"订单已完成"];
+        [self.commentButton setHidden:YES];
+    }
+    [self.timeLabel setText:_lunchModel.updateTime];
+//    self.orderImage sd_setImageWithURL:[NSURL URLWithString:_lunchModel.] placeholderImage:<#(UIImage *)#>
+    [self.orderingLabel setText:_lunchModel.businessName];
+    
+    if (_lunchModel.list.count > 2) {
+        
+        ZRLunchOrderModel * model0 = [_lunchModel.list objectAtIndex:0];
+        [self.menuView1.menuLabel setText:model0.name];
+        [self.menuView1.partLabel setText:[NSString stringWithFormat:@"×%@", model0.num]];
+        
+        ZRLunchOrderModel * model1 = [_lunchModel.list objectAtIndex:1];
+        [self.menuView2.menuLabel setText:model1.name];
+        [self.menuView2.partLabel setText:[NSString stringWithFormat:@"×%@", model1.num]];
+        
+    } else if (_lunchModel.list.count == 2) {
+        ZRLunchOrderModel * model0 = [_lunchModel.list objectAtIndex:0];
+        [self.menuView1.menuLabel setText:model0.name];
+        [self.menuView1.partLabel setText:[NSString stringWithFormat:@"×%@", model0.num]];
+        
+        ZRLunchOrderModel * model1 = [_lunchModel.list objectAtIndex:1];
+        [self.menuView2.menuLabel setText:model1.name];
+        [self.menuView2.partLabel setText:[NSString stringWithFormat:@"×%@", model1.num]];
+        
+        [self.dianLabel setHidden:YES];
+    } else if (_lunchModel.list.count < 2 && _lunchModel.list.count > 0) {
+        ZRLunchOrderModel * model0 = [_lunchModel.list objectAtIndex:0];
+        [self.menuView1.menuLabel setText:model0.name];
+        [self.menuView1.partLabel setText:[NSString stringWithFormat:@"×%@", model0.num]];
+        
+        [self.menuView2 setHidden:YES];
+        [self.dianLabel setHidden:YES];
+
+    } else {
+        [self.menuView1 setHidden:YES];
+        [self.menuView2 setHidden:YES];
+        [self.dianLabel setHidden:YES];
+    }
+    
+    [self.menuPartLabel setText:[NSString stringWithFormat:@"共%ld份,实付 ", _lunchModel.list.count]];
+    [self.menuMoneyLabel setText:[NSString stringWithFormat:@"$%.2f", _lunchModel.total.floatValue]];
+    
+    
+}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

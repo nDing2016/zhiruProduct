@@ -1,0 +1,529 @@
+//
+//  ZRShoppingCarMarketController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/9/6.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRShoppingCarMarketController.h"
+#import "ZRShoppingCarFooterView.h"
+#import "ZRUserShoppingCarRequest.h"
+#import "ZRMarketModel.h"
+#import "ZRMarketDetailModel.h"
+#import "ZRShoppingCarChaoCell.h"
+#import "ZRShoppingHeaderView.h"
+#import "ZRSupermarketHomeController.h"
+#import "ZRTabBarViewController.h"
+#import "ZRNavigationController.h"
+#import "ZRShoppingCarController.h"
+
+#import "ZRSupermarketGoodsListModel.h"
+#import "ZRConfirmOrderController.h"
+#import "ZRSupermarketHomeModel.h"
+#import "ZRMarketModel.h"
+@interface ZRShoppingCarMarketController ()<footSelectButtonDelegate, UITableViewDelegate, UITableViewDataSource, ShoppingCarMarketCellDelegate, ZRShoppingHeaderViewDelegate>
+
+@property (nonatomic, strong)ZRShoppingCarFooterView * footView;
+
+@property (nonatomic, strong)UITableView * marketTableView;
+@property (nonatomic, strong)NSMutableArray * dataArray;
+@property (nonatomic, assign)BOOL isUploading;
+
+@property (nonatomic, strong)dispatch_queue_t queue;
+
+@property (nonatomic, assign)CGFloat allMoney;
+@property (nonatomic, strong)NSMutableArray * allArray;
+
+@property (nonatomic, strong)ZRSupermarketHomeModel * superModel;
+
+@end
+
+@implementation ZRShoppingCarMarketController
+/*
+ 超市
+ */
+- (UITableView *)marketTableView
+{
+    if (_marketTableView == nil) {
+#pragma mark--- 等团购上来了解开注释, 并替换大小
+//        _marketTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50 - 50) style:UITableViewStylePlain];
+        _marketTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStylePlain];
+        [_marketTableView setDelegate:self];
+        [_marketTableView setDataSource:self];
+        [_marketTableView setBackgroundColor:[UIColor clearColor]];
+        UIView * view = [UIView new];
+        [_marketTableView setTableFooterView:view];
+    }
+    return _marketTableView;
+}
+- (ZRSupermarketHomeModel *)superModel
+{
+    if (_superModel == nil) {
+        _superModel = [[ZRSupermarketHomeModel alloc] init];
+    }
+    return _superModel;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.allArray = [NSMutableArray array];
+    [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    self.queue = dispatch_queue_create("com.pj.doenload", DISPATCH_QUEUE_CONCURRENT);
+    self.dataArray = [NSMutableArray array];
+    [self.view addSubview:self.marketTableView];
+    [self createFooterView];
+    [self addHeaderRequest];
+}
+// 下拉刷新
+- (void)addHeaderRequest
+{
+//    self.marketTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        self.isUploading = YES;
+//        [self loadRequest];
+//    }];
+//    [self.marketTableView.mj_header beginRefreshing];
+    [self.marketTableView startRefreshWithCallback:^{
+        self.isUploading = YES;
+        [self loadRequest];
+    }];
+}
+- (void)loadRequest
+{
+    [ZRUserShoppingCarRequest marketShoppingCarCallBack:^(NSMutableArray *array) {
+        if (self.isUploading == YES) {
+            [self.dataArray removeAllObjects];
+        }
+        
+        self.dataArray = array;
+        if (self.dataArray.count == 1) {
+            ZRMarketModel * model = [self.dataArray objectAtIndex:0];
+            if (model.goodsList.count == 0) {
+                [self createImage];
+            }
+        }
+        [self.marketTableView.mj_header endRefreshing];
+        [self.marketTableView reloadData];
+        
+    } Failure:^(id error) {
+        
+        
+    }];
+}
+- (void)createFooterView
+{
+#pragma mark--- 等团购上来了解开注释, 并替换大小
+//    self.footView = [[ZRShoppingCarFooterView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 50 - 64 - 50, ScreenWidth, 50)];
+    self.footView = [[ZRShoppingCarFooterView alloc] initWithFrame:CGRectMake(0, ScreenHeight- 64 - 50, ScreenWidth, 50)];
+        self.footView.delegate = self;
+    [self.view addSubview:self.footView];
+}
+// 全选
+- (void)footViewSlelectButton:(UIButton *)sender
+{
+    [self.allArray removeAllObjects];
+    self.allMoney = 0.0;
+    sender.selected = !sender.selected;
+    for (ZRMarketModel * model in self.dataArray) {
+        model.headerSelectState = sender.selected;
+        for (ZRMarketDetailModel * detailModel in model.goodsList) {
+            detailModel.selectState = sender.selected;
+            if (detailModel.selectState == YES) {
+                [self.allArray addObject:detailModel];
+                int num = detailModel.num.intValue;
+                CGFloat nowPrice = detailModel.nowPrice.floatValue;
+                CGFloat money = num * nowPrice;
+                self.allMoney += money;
+            }
+        }
+    }
+    [self.footView.moneyLabel setText:[NSString stringWithFormat:@"$%.2f", self.allMoney]];
+    [self.marketTableView reloadData];
+}
+// 结算+删除
+- (void)footViewClearingButton:(UIButton *)sender
+{
+    NSLog(@"结算");
+    
+    if (sender.selected == NO) {
+        if (self.allArray.count == 0) {
+            [AlertText showAndText:@"未选择商品"];
+        } else {
+            ZRConfirmOrderController *confirmOrderVC = [[ZRConfirmOrderController alloc] init];
+            
+            ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+            ZRNavigationController * nav = tabBar.viewControllers[2];
+            ZRShoppingCarController * shoppingCar = nav.viewControllers[1];
+            
+            [shoppingCar.navigationController pushViewController:confirmOrderVC animated:YES];
+            confirmOrderVC.orderType = Supermarket;
+            confirmOrderVC.isDeliver = YES;
+            NSMutableArray * array = [NSMutableArray array];
+            for (ZRMarketDetailModel * detailModel in self.allArray) {
+                NSMutableArray * detailArray = [NSMutableArray array];
+                for (int i = 0; i < detailModel.num.integerValue; i++) {
+                    ZRSupermarketGoodsListModel * model = [[ZRSupermarketGoodsListModel alloc] init];
+                    model.goods_name = detailModel.goodsName;
+                    model.goods_id = detailModel.goodsId;
+                    model.now_price = detailModel.nowPrice;
+                    model.img_url = detailModel.imgUrl;
+                    model.weight = detailModel.weight;
+                    [detailArray addObject:model];
+                }
+                [array addObject:detailArray];
+            }
+            confirmOrderVC.productArr = array;
+        }
+    } else {
+        NSMutableArray * deleteArray = [NSMutableArray array];
+        for (ZRMarketDetailModel * model in self.allArray) {
+            NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:model.goodsId,@"goodsId",model.kaId,@"kaId", nil];
+            [deleteArray addObject:dict];
+        }
+        [ZRUserShoppingCarRequest marketDeleteList:deleteArray CallBack:^(NSString *message) {
+            
+            if ([message isEqualToString:@"success"]) {
+                [AlertText showAndText:@"删除成功"];
+            } else {
+                [AlertText showAndText:message];
+            }
+            for (ZRMarketDetailModel * model in self.allArray) {
+                [self deleteReloadFootMoneyLabel:model];
+            }
+            [self.allArray removeAllObjects];
+            [self addHeaderRequest];
+        } Failure:^(id error) {
+            
+        }];
+        
+    }
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.dataArray.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    return model.goodsList.count;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    if (model.goodsList.count != 0) {
+        return 35;
+    } else {
+        return 0;
+    }
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    if (model.goodsList.count != 0) {
+        return 15;
+    } else {
+        return 0;
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    if (model.goodsList.count != 0) {
+        ZRShoppingHeaderView * headerView = [[ZRShoppingHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 35)];
+        headerView.selectButton.tag = section;
+        headerView.edtintButton.tag = section;
+        headerView.section = section;
+        headerView.delegate = self;
+        [headerView.selectButton addTarget:self action:@selector(actionHeaderSelectButtons:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView.edtintButton addTarget:self action:@selector(actionEdtintButon:) forControlEvents:UIControlEventTouchUpInside];
+        ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+        headerView.marketModel = model;
+        return headerView;
+    } else {
+        return nil;
+    }
+}
+/*
+ 点击区头跳转店铺详情
+ */
+- (void)actionSectionHeaderView:(NSInteger)section
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    ZRMarketDetailModel * detailModel = [model.goodsList lastObject];
+    ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ZRNavigationController * nav = tabBar.viewControllers[2];
+    ZRShoppingCarController * shoppingCar = nav.viewControllers[1];
+    ZRSupermarketHomeController * marketVC = [[ZRSupermarketHomeController alloc] init];
+#warning 不传kaIdStr，传超市模型ZRSupermarketHomeModel
+//    self.superModel = [[ZRSupermarketHomeModel alloc] init];
+    self.superModel.kaId = detailModel.kaId;
+    _superModel.kaName = model.kaName;
+    marketVC.supermarketModel = _superModel;
+    [shoppingCar.navigationController pushViewController:marketVC animated:YES];
+}
+// 头部全选按钮点击方法
+- (void)actionHeaderSelectButtons:(UIButton *)sender
+{
+    if (sender.selected == NO) {
+        ZRMarketModel * model = [self.dataArray objectAtIndex:sender.tag];
+        model.headerSelectState = !sender.selected;
+        for (ZRMarketDetailModel * detailModel in model.goodsList) {
+            detailModel.selectState = model.headerSelectState;
+            if (![self.allArray containsObject:detailModel]) {
+                [self.allArray addObject:detailModel];
+                [self addReloadFootMoneyLabel:detailModel];
+            }
+        }
+    } else {
+        ZRMarketModel * model = [self.dataArray objectAtIndex:sender.tag];
+        model.headerSelectState = !sender.selected;
+        for (ZRMarketDetailModel * detailModel in model.goodsList) {
+            detailModel.selectState = model.headerSelectState;
+            if ([self.allArray containsObject:detailModel]) {
+                [self.allArray removeObject:detailModel];
+                [self deleteReloadFootMoneyLabel:detailModel];
+            }
+        }
+    }
+    [self.marketTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationNone];
+}
+// 编辑按钮点击方法
+- (void)actionEdtintButon:(UIButton *)sender
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:sender.tag];
+    model.editingState = !sender.selected;
+    for (ZRMarketDetailModel * detailModel in model.goodsList) {
+        detailModel.edtitngState = model.editingState;
+    }
+    [self.marketTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellId = @"marketcellId";
+    ZRShoppingCarChaoCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[ZRShoppingCarChaoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    cell.delegate = self;
+    cell.section = indexPath.section;
+    cell.row = indexPath.row;
+    ZRMarketModel * model = [self.dataArray objectAtIndex:indexPath.section];
+    ZRMarketDetailModel * deatilModel = [model.goodsList objectAtIndex:indexPath.row];
+    cell.model = deatilModel;
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:indexPath.section];
+    ZRMarketDetailModel * detailModel = [model.goodsList lastObject];
+    if (detailModel.edtitngState == NO) {
+        ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        ZRNavigationController * nav = tabBar.viewControllers[2];
+        ZRShoppingCarController * shoppingCar = nav.viewControllers[1];
+        ZRSupermarketHomeController * marketVC = [[ZRSupermarketHomeController alloc] init];
+        #warning 不传kaIdStr，传超市模型ZRSupermarketHomeModel
+//        self.superModel = [[ZRSupermarketHomeModel alloc] init];
+        self.superModel.kaId = detailModel.kaId;
+        _superModel.kaName = model.kaName;
+        marketVC.supermarketModel = _superModel;
+        [shoppingCar.navigationController pushViewController:marketVC animated:YES];
+    }
+}
+// cell上的选择按钮
+- (void)selectButtonClick:(UIButton *)sender andSection:(NSInteger)section andRow:(NSInteger)row
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    ZRMarketDetailModel * detailModel = [model.goodsList objectAtIndex:row];
+    detailModel.selectState = !sender.selected;
+    
+    if (detailModel.selectState == YES) {
+        [self.allArray addObject:detailModel];
+        [self addReloadFootMoneyLabel:detailModel];
+    } else {
+        [self.allArray removeObject:detailModel];
+        [self deleteReloadFootMoneyLabel:detailModel];
+    }
+    
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.marketTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+// 点击cell上的减按钮
+- (void)deleteMarketNumSection:(NSInteger)section andRow:(NSInteger)row
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    ZRMarketDetailModel * detailModel = [model.goodsList objectAtIndex:row];
+    NSInteger num = detailModel.num.integerValue;
+    if (num == 1) {
+        [AlertText showAndText:@"不能再少了"];
+    } else {
+        num--;
+        detailModel.num = [NSString stringWithFormat:@"%ld", num];
+        dispatch_async(self.queue, ^{
+            [ZRUserShoppingCarRequest marketSubtractGoodsId:detailModel.goodsId KaId:detailModel.kaId CallBack:^(NSString *message) {
+                if ([message isEqualToString:@"success"]) {
+                    NSLog(@"减成功");
+                    [self.allArray removeAllObjects];
+                    self.allMoney = 0;
+                    [self.footView.moneyLabel setText:@"$0.00"];
+                    for (ZRMarketModel * sectionModel in self.dataArray) {
+                        for (ZRMarketDetailModel * cellModel in sectionModel.goodsList) {
+                            if (cellModel.selectState == YES) {
+                                [self.allArray addObject:cellModel];
+                                [self addReloadFootMoneyLabel:cellModel];
+                            }
+                        }
+                    }
+                } else {
+                    NSLog(@"减失败");
+                }
+            } Failure:^(id error) {
+                NSLog(@"%@", error);
+            }];
+        });
+        dispatch_barrier_async(self.queue, ^{
+            NSLog(@"拦截");
+        });
+        NSIndexPath * path = [NSIndexPath indexPathForRow:row inSection:section];
+        [self.marketTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+// 点击cell上的加按钮
+- (void)addMarketNumSection:(NSInteger)section andRow:(NSInteger)row
+{
+    ZRMarketModel * model = [self.dataArray objectAtIndex:section];
+    ZRMarketDetailModel * detailModel = [model.goodsList objectAtIndex:row];
+    NSInteger num = detailModel.num.integerValue;
+    num++;
+    detailModel.num = [NSString stringWithFormat:@"%ld",num];
+    dispatch_async(self.queue, ^{
+        [ZRUserShoppingCarRequest marketAddGoodsId:detailModel.goodsId KaId:detailModel.kaId CallBack:^(NSString *message) {
+            if ([message isEqualToString:@"success"]) {
+                NSLog(@"加成功");
+                [self.allArray removeAllObjects];
+                self.allMoney = 0;
+                [self.footView.moneyLabel setText:@"$0.00"];
+                for (ZRMarketModel * sectionModel in self.dataArray) {
+                    for (ZRMarketDetailModel * cellModel in sectionModel.goodsList) {
+                        if (cellModel.selectState == YES) {
+                            [self.allArray addObject:cellModel];
+                            [self addReloadFootMoneyLabel:cellModel];
+                        }
+                    }
+                }
+
+            } else {
+                NSLog(@"加失败");
+            }
+        } Failure:^(id error) {
+            NSLog(@"%@", error);
+        }];
+    });
+    dispatch_barrier_async(self.queue, ^{
+        NSLog(@"拦截");
+    });
+    NSIndexPath * path = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.marketTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:path, nil] withRowAnimation:UITableViewRowAnimationNone];
+
+}
+// tableView编辑
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ZRMarketModel * model = [self.dataArray objectAtIndex:indexPath.section];
+        ZRMarketDetailModel * detailModel = [model.goodsList objectAtIndex:indexPath.row];
+        NSString * goodsId = detailModel.goodsId;
+        NSString * kaId = detailModel.kaId;
+        NSMutableArray * listArray = [NSMutableArray array];
+        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:goodsId,@"goodsId",kaId,@"kaId", nil];
+        [listArray addObject:dict];
+        [ZRUserShoppingCarRequest marketDeleteList:listArray CallBack:^(NSString *message) {
+            if ([message isEqualToString:@"success"]) {
+                [AlertText showAndText:@"删除成功"];
+            } else {
+                [AlertText showAndText:message];
+            }
+        } Failure:^(id error) {
+            
+        }];
+        NSMutableArray * array = (NSMutableArray *)model.goodsList;
+        // 删除某一行
+        [array removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        
+        if (array.count == 0) {
+            // 删除某一区
+            [self.dataArray removeObjectAtIndex:indexPath.section];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationRight];
+        }
+    }
+    if (self.dataArray.count == 0) {
+            [self createImage];
+    }
+    [tableView reloadData];
+}
+- (void)setState:(BOOL)state
+{
+    _state = state;
+    
+    for (ZRMarketModel * model in self.dataArray) {
+        model.editingState = _state;
+        for (ZRMarketDetailModel * detailModel in model.goodsList) {
+            detailModel.edtitngState = _state;
+        }
+    }
+
+    [self.footView.moneyLabel setHidden:_state];
+    [self.footView.titleLabel setHidden:_state];
+    self.footView.clearingState = _state;
+    [self.marketTableView reloadData];
+}
+- (void)addReloadFootMoneyLabel:(ZRMarketDetailModel *)detailModel
+{
+    int number = detailModel.num.intValue;
+    CGFloat nowPrice = detailModel.nowPrice.floatValue;
+    CGFloat money = number * nowPrice;
+    self.allMoney += money;
+    [self.footView.moneyLabel setText:[NSString stringWithFormat:@"$%.2f", self.allMoney]];
+}
+- (void)deleteReloadFootMoneyLabel:(ZRMarketDetailModel *)detailModel
+{
+    int number = detailModel.num.intValue;
+    CGFloat nowPrice = detailModel.nowPrice.floatValue;
+    CGFloat money = number * nowPrice;
+    self.allMoney -= money;
+    [self.footView.moneyLabel setText:[NSString stringWithFormat:@"$%.2f", self.allMoney]];
+}
+// 添加暂无订单图片
+- (void)createImage
+{
+    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+    [img setImage:[UIImage imageNamed:@"nocar"]];
+    [self.view addSubview:img];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

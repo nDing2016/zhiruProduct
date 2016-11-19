@@ -1,0 +1,22 @@
+//
+//  ZRMyLocation.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/9/9.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ZRMyLocation : NSObject
+
++(instancetype)shareInstance;
+
+
+@property (nonatomic, copy) NSString *myLocationStr;
+
+-(void)getMylocation;
+
+- (NSString *)reverseGeocodeWithLogitude:(NSString *)logitude WithLatitude:(NSString *)latitude;
+
+@end

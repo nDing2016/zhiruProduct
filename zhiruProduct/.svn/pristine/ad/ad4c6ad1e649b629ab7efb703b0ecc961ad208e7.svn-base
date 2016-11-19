@@ -1,0 +1,98 @@
+//
+//  ZRNeedCommentGroupController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/7/20.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRNeedCommentGroupController.h"
+#import "ZRNeedCommentGroupCell.h"
+#import "ZRPostCommentController.h"
+
+#import "ZRTabBarViewController.h"
+#import "ZRNavigationController.h"
+#import "ZRNeedCommentRootController.h"
+@interface ZRNeedCommentGroupController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong)UITableView * tableView;
+@end
+
+@implementation ZRNeedCommentGroupController
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 50 - 64) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+        UIView * view = [[UIView alloc] init];
+        _tableView.tableFooterView = view;
+    }
+    return _tableView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+//    [self.view setBackgroundColor:RGBCOLOR(255, 82, 82)];
+    
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 110;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellID = @"needCommentGroup";
+    ZRNeedCommentGroupCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[ZRNeedCommentGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.button.tag = indexPath.row;
+    [cell.button addTarget:self action:@selector(actionCommentButton:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NSLog(@"待点评");
+}
+- (void)actionCommentButton:(UIButton *)sender
+{
+    ZRPostCommentController * commentVC = [[ZRPostCommentController alloc] init];
+//    commentVC.businessId
+    commentVC.commentType = @"2";
+    commentVC.title = @"发表评论";
+    ZRTabBarViewController *tab = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ZRNavigationController *nav  = tab.childViewControllers[2];
+    ZRNeedCommentRootController *myOrdreVC = nav.viewControllers[1];
+    [myOrdreVC.navigationController pushViewController:commentVC animated:YES];
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

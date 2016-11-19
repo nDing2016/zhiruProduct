@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1912" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" rowHeight="87" id="KGk-i7-Jjw" customClass="ZROrderAddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="86.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dingwei_hong" translatesAutoresizingMaskIntoConstraints="NO" id="tDu-2V-nF3">
+                        <rect key="frame" x="20" y="27.5" width="20" height="32"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq5-rD-DjD">
+                        <rect key="frame" x="60" y="16" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsC-T2-Vid">
+                        <rect key="frame" x="100" y="16" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="沈阳市沈阳市沈阳市沈阳市" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZG-lC-1Uv">
+                        <rect key="frame" x="60" y="54" width="222" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiantou-you2" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-gw-tBP">
+                        <rect key="frame" x="294" y="34" width="11" height="19"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18609818478" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3N-kX-GJy">
+                        <rect key="frame" x="142" y="16" width="96.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tZG-lC-1Uv" firstAttribute="leading" secondItem="fq5-rD-DjD" secondAttribute="leading" id="0Ve-e1-CBB"/>
+                    <constraint firstItem="fq5-rD-DjD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="7bx-cg-uwJ"/>
+                    <constraint firstItem="e3N-kX-GJy" firstAttribute="leading" secondItem="UsC-T2-Vid" secondAttribute="trailing" constant="12" id="8Ib-QA-c6D"/>
+                    <constraint firstItem="tDu-2V-nF3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9zy-ON-ClS"/>
+                    <constraint firstItem="e3N-kX-GJy" firstAttribute="centerY" secondItem="UsC-T2-Vid" secondAttribute="centerY" id="Fsq-Uo-bzz"/>
+                    <constraint firstItem="UsC-T2-Vid" firstAttribute="leading" secondItem="fq5-rD-DjD" secondAttribute="trailing" constant="10" id="TNL-KP-VeP"/>
+                    <constraint firstAttribute="trailing" secondItem="tZG-lC-1Uv" secondAttribute="trailing" constant="38" id="UhM-iw-9Gm"/>
+                    <constraint firstAttribute="bottom" secondItem="tZG-lC-1Uv" secondAttribute="bottom" constant="16" id="Uuv-qy-4hA"/>
+                    <constraint firstItem="UsC-T2-Vid" firstAttribute="centerY" secondItem="fq5-rD-DjD" secondAttribute="centerY" id="Zwh-0d-vgC"/>
+                    <constraint firstItem="tZG-lC-1Uv" firstAttribute="top" secondItem="fq5-rD-DjD" secondAttribute="bottom" constant="20" id="aex-rK-z3p"/>
+                    <constraint firstAttribute="trailing" secondItem="Yjv-gw-tBP" secondAttribute="trailing" constant="15" id="agC-WW-uU8"/>
+                    <constraint firstItem="tDu-2V-nF3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e9T-kX-UOF"/>
+                    <constraint firstItem="fq5-rD-DjD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="mrF-id-ByY"/>
+                    <constraint firstItem="Yjv-gw-tBP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sVC-1a-VAL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="userAddress" destination="tZG-lC-1Uv" id="D89-Fa-jJL"/>
+                <outlet property="userName" destination="fq5-rD-DjD" id="3qc-Kg-AFp"/>
+                <outlet property="userPhone" destination="e3N-kX-GJy" id="QdH-Ng-BZT"/>
+                <outlet property="userSex" destination="UsC-T2-Vid" id="z0I-o5-Lua"/>
+            </connections>
+            <point key="canvasLocation" x="234" y="279.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dingwei_hong" width="20" height="32"/>
+        <image name="jiantou-you2" width="11" height="19"/>
+    </resources>
+</document>

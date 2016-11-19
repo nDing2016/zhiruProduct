@@ -1,0 +1,70 @@
+//
+//  ZRVipRuleController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/9/28.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRVipRuleController.h"
+#import "ZRVipRuleView.h"
+@interface ZRVipRuleController ()
+
+@end
+
+@implementation ZRVipRuleController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self setTitle:@"会员说明"];
+    [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    
+    // 5: 922.119141
+    // 6: 832.617188
+    // 6p: 761.015625
+    
+    
+//    CGFloat scrollContentHeight;
+//    
+//    if (ScreenWidth == 320.0f) {
+//        scrollContentHeight = 923;
+//    } else if (ScreenWidth == 375.0f) {
+//        scrollContentHeight = 832;
+//    } else if (ScreenWidth == 414.0f) {
+//        scrollContentHeight = 762;
+//    }
+//    
+//    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+//    [scrollView setContentSize:CGSizeMake(ScreenWidth, scrollContentHeight + 20)];
+//    [scrollView setBackgroundColor:[UIColor clearColor]];
+//    [self.view addSubview:scrollView];
+//    
+//    ZRVipRuleView * vipRule = [[ZRVipRuleView alloc] initWithFrame:CGRectMake(15, 0, ScreenWidth - 30, scrollView.contentSize.height)];
+//    [vipRule setBackgroundColor:[UIColor clearColor]];
+//    [scrollView addSubview:vipRule];
+    
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+//    @"http://192.168.2.10:8181/manage/agreement/MemberDescription.html"
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[HOST stringByAppendingString:@"agreement/MemberDescription.html"]]]];
+    [self.view addSubview:webView];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

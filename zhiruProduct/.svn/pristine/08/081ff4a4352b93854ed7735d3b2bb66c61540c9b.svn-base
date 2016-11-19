@@ -1,0 +1,50 @@
+//
+//  ZROrderDetailsRequest.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/10/20.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+typedef void(^OrderDetailsCallback) (id details, NSError *error);
+
+@interface ZROrderDetailsRequest : NSObject
+
+/**
+ *  我的超市订单详情
+ *
+ *  @param orderId  订单号
+ *  @param callback 回调
+ */
++(void)requestForMyKaOrderDetailsWithOrderId:(NSString *)orderId
+                                    Callback:(OrderDetailsCallback)callback;
+
+
+
+
+/**
+ *   超市订单流程
+ *
+ *  @param orderId  订单号
+ *  @param callback 回调
+ */
++(void)requestForKaOrderProcessWithOrderId:(NSString *)orderId
+                                  Callback:(OrderDetailsCallback)callback;
+
+
+
+
+/**
+ *  超市删除订单
+ *
+ *  @param orderId  订单号
+ *  @param callback 回调
+ */
+
++(void)requestForKaDeleteOrderWithOrderId:(NSString *)orderId
+                                 Callback:(OrderDetailsCallback)callback;
+
+
+@end

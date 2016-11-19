@@ -1,0 +1,296 @@
+//
+//  ZRSuperCollectionViewController.m
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/8.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRSuperCollectionViewController.h"
+#import "ZRSupermarketCell.h"
+#import "AdView.h"
+#import "ZRSupermarketHomeController.h"
+
+#import "ZRMyLocation.h"
+
+#import "ZRSelectRecieveGoodsAddressController.h"
+#import "ZRNavigationController.h"
+
+
+@interface ZRSuperCollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, strong) AdView *adView;
+
+@property (nonatomic, copy) NSString *location;
+
+@property (nonatomic, strong)UIActivityIndicatorView *indicatorView;
+
+@end
+
+
+static NSString *itemID =@"itemID";
+static NSString *headerID = @"headerID";
+static NSString *footerID = @"footerID";
+@implementation ZRSuperCollectionViewController
+
+#pragma mark - lifeCycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self.view addSubview:self.collectionView];
+    //导航rightView
+    [self setUpNavRightShoppingCar];
+    
+    self.navigationItem.titleView = self.indicatorView;
+    [self.indicatorView startAnimating];
+    
+    [[ZRMyLocation shareInstance] getMylocation];
+    
+    
+    //接收通知，获取定位
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLocation:) name:kLocation_Noti object:nil];
+    
+   
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+
+#pragma mark - 接收通知
+- (void)getLocation:(NSNotification *)noti
+{
+    [self.indicatorView stopAnimating];
+    _location = noti.object;
+    
+    //导航titleView
+    [self setUpNavTitleView];
+}
+
+#pragma mark - Private methods
+- (void)setUpNavTitleView
+{
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+    self.navigationItem.titleView = titleView;
+    
+    
+    CGFloat width = 300*SCREEN_WIDTH/375;
+    UIButton *lab = [[UIButton alloc] initWithFrame:CGRectMake(titleView.frame.origin.x, titleView.frame.origin.y, width, 24)];
+    [lab setTitle:@"配送至当前地址 >" forState:UIControlStateNormal];
+    [lab setTitleColor:RGBCOLOR(85, 85, 85) forState:UIControlStateNormal];
+    lab.titleLabel.font = CustomFont(15);
+    lab.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [lab addTarget:self action:@selector(tapTitleView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *localBtn = [[UIButton alloc] initWithFrame:CGRectMake(titleView.frame.origin.x, 24, width, 16)];
+    [localBtn setTitle:_location forState:UIControlStateNormal];
+    [localBtn setTitleColor:RGBCOLOR(85, 85, 85) forState:UIControlStateNormal];
+    localBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    localBtn.titleLabel.font = CustomFont(12);
+    [localBtn addTarget:self action:@selector(tapTitleView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [titleView addSubview:lab];
+    [titleView addSubview:localBtn];
+    
+    CGSize size = [NSString getSize:@"配送至当前地址 >" strFont:CustomFont(15) maxSize:CGSizeMake(lab.width, 24)];
+    CGFloat wid = 8;
+    CGFloat x = (lab.width-size.width)/2-10-wid;
+    CGFloat y = (lab.height-size.height)/2+2;
+    UIImageView *localImgView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, wid, size.height-4)];
+    localImgView.image = ZRImage(@"dingwei");
+    [lab addSubview:localImgView];
+    
+}
+
+-(void)setUpNavRightShoppingCar
+{
+//    UIBarButtonItem *shoppingCar = [[UIBarButtonItem alloc] initWithImage:ZROriginImage(@"gouwuche-1") style:UIBarButtonItemStyleDone target:self action:@selector(rightShoppingCarClick:)];
+//    self.navigationItem.rightBarButtonItem = shoppingCar;
+    
+    _shoppingCartBtn = [MyControl createButtonWithFrame:CGRectMake(5, 0, 50, 44) ImageName:nil Target:self Action:@selector(rightShoppingCarClick:) Title:nil];
+    [_shoppingCartBtn setImage:ZRImage(@"gouwuche-1") forState:UIControlStateNormal];
+
+    UIBarButtonItem *rightBarBtnItem = [[UIBarButtonItem alloc] initWithCustomView:_shoppingCartBtn];
+
+    self.navigationItem.rightBarButtonItem = rightBarBtnItem;
+    
+}
+
+
+#pragma mark - 懒加载
+-(UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout  = [[UICollectionViewFlowLayout alloc] init];
+        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, ScreenHeight-64) collectionViewLayout:layout];
+        _collectionView.collectionViewLayout = layout;
+        
+        _collectionView.alwaysBounceVertical =YES;
+        _collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _collectionView.dataSource =self;
+        _collectionView.delegate =self;
+        
+        [_collectionView registerClass:[ZRSupermarketCell class] forCellWithReuseIdentifier:itemID];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerID];
+        
+        
+    }
+    return _collectionView;
+}
+
+
+
+-(UIActivityIndicatorView *)indicatorView
+{
+    if (!_indicatorView) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _indicatorView.center = CGPointMake(SCREEN_WIDTH/2, 44/2);
+    }
+    return _indicatorView;
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZRSupermarketCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:itemID forIndexPath:indexPath];
+    
+    return cell;
+}
+
+
+#pragma mark - 创建查看全部按钮
+- (UIView *)setUpBtnWithCheckAll:(CGPoint)center WithSupermarketModel:(ZRSupermarketHomeModel *)marketModel
+{
+    //self.supermarketId = marketID;
+    self.superHomeModel = marketModel;
+    UIButton *allBtn = [MyControl createButtonWithFrame:CGRectMake(0, 0, 110*SCREEN_WIDTH/375, 30*SCREEN_HEIGHT/667) ImageName:nil Target:self Action:@selector(checkAll:) Title:@"查看全部"];
+    allBtn.center = center;
+    allBtn.layer.borderColor = RGBCOLOR(219.0, 229.0, 115.0).CGColor;
+    allBtn.layer.borderWidth = 1;
+    allBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [allBtn setTitleColor:RGBCOLOR(219.0, 229.0, 115.0) forState:UIControlStateNormal];
+    return allBtn;
+}
+
+
+#pragma mark - 创建轮播图
+/**
+ *  创建轮播图
+ */
+- (void)setUpAdView:(NSArray *)urlArr SuperView:(ZRSupermarketCell *)cell
+{
+    self.adView = [AdView adScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, cell.height) imageLinkURL:urlArr placeHoderImageName:@" " pageControlShowStyle:UIPageControlShowStyleCenter];
+    
+    
+    //图片被点击后回调的方法
+    WS(ws)
+    self.adView.callBack = ^(NSInteger index,NSString * imageURL,UIImageView * imgView)
+    {
+        if (ws.clickImg) {
+            ws.clickImg(index,imageURL,imgView);
+        }
+        
+    };
+    
+    [cell.contentView addSubview:self.adView];
+    
+}
+
+
+
+#pragma mark - click methods
+- (void)checkAll:(UIButton *)sender
+{
+    
+//    switch (sender.tag) {
+//        case kSuperMarket_CheckAll:
+//        {
+//            ZRSupermarketHomeController *supermarketHomeVC = [[ZRSupermarketHomeController alloc] init];
+//            [self.navigationController pushViewController:supermarketHomeVC animated:YES];
+//            //supermarketHomeVC.titleStr =
+//            //supermarketHomeVC.style = CheckAllCategory;
+//            
+//            
+//        }
+//            break;
+//            
+//            
+//        case kSuperMarket_LatestDiscount_CheckAll:
+//        {
+//            ZRSupermarketHomeController *supermarketHomeVC = [[ZRSupermarketHomeController alloc] init];
+//            [self.navigationController pushViewController:supermarketHomeVC animated:YES];
+//            
+//            //supermarketHomeVC.style = LatestDiscountCheckAllCategory;
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+    ZRSupermarketHomeController *supermarketHomeVC = [[ZRSupermarketHomeController alloc] init];
+    supermarketHomeVC.titleStr = sender.titleLabel.text;
+    //supermarketHomeVC.kaIdStr = self.supermarketId;
+    supermarketHomeVC.supermarketModel = self.superHomeModel;
+    [self.navigationController pushViewController:supermarketHomeVC animated:YES];
+
+    
+    
+}
+
+/**
+ *  点击导航条上的titleView
+ *
+ *  @param ges 手势
+ */
+- (void)tapTitleView:(UITapGestureRecognizer *)ges
+{
+    ZRSelectRecieveGoodsAddressController *selectRecieveGoodsAddressVC = [[ZRSelectRecieveGoodsAddressController alloc] init];
+    ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:selectRecieveGoodsAddressVC];
+    [self presentViewController:nav animated:YES completion:^{
+        selectRecieveGoodsAddressVC.currentLocation = _location;
+    }];
+    
+}
+
+/**
+ *  点击购物车
+ */
+- (void)rightShoppingCarClick:(UIBarButtonItem *)item
+{
+    
+}
+
+
+#pragma mark - manage memory methods
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

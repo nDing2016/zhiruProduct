@@ -1,0 +1,385 @@
+//
+//  AppDelegate.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/6/22.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "ZRTabBarViewController.h"
+//#import "UIWindow+Share.h"
+#import "UIWindow+ZRShare.h"
+#import "ZRUser.h"
+#import "ZRUserTool.h"
+#import "ZRRootTool.h"
+
+#import <PayPalMobile.h>
+
+#import "ZRRegisterViewController.h"
+#import <JPUSHService.h>
+
+#import "ZRNewFeatureController.h"
+
+static NSString *appKey = @"c60715c5e45a958b7dad2063";//申请应用成功以后官方会提供给你
+
+static NSString *channel = @"Publish channel";
+
+static BOOL isProduction = FALSE;
+
+
+#import <AlipaySDK/AlipaySDK.h>
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+    
+#warning 推送
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }else {
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+#warning 登录成功后用
+//    // 选择根控制器
+//    // 判断有没有登录过
+//    if ([ZRUserTool user]) { // 已经登录
+//
+//        // 选择根控制器
+//        [ZRRootTool chooseRootViewController:self.window];
+//
+//    }else{ // 进行登录
+//
+//
+//        // 设置窗口的根控制器 为 登录注册控制器
+//
+//
+//    }
+//
+
+    
+    
+//    ZRUser *user = [ZRUserTool user];
+//    
+//    
+//    NSDictionary *dic = @{@"token":@"11111",@"name":@"aaa",@"phone":@"122312"};
+//    user = [ZRUser userWithDict:dic];
+//    [ZRUserTool saveAccount:user];
+//    
+//    user = nil;
+    
+    
+    
+    
+    
+    self.window.rootViewController = [self defaultRootViewController];
+    
+    
+    [GMSServices provideAPIKey:@"AIzaSyAXENF5eHk4MqnyX9WLZ4KNQ7ABWJuZEM0"];
+    
+    [self.window makeKeyAndVisible];
+    
+    
+    
+    //payPal
+//    [PayPalMobile
+//     initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction
+//                                              : @"你的真实交易模式ClientID", PayPalEnvironmentSandbox :
+//                                                  @"你的测试模式ClientID"}];
+    [PayPalMobile
+     initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction
+                                              :@"Ab-Het2wAZlgvq8a688nhVC1-80jJEmB13IXvHCP0ckRcRqpsaOfOod9Glcy8DDxevmUI9oEMjA0mRCj", PayPalEnvironmentSandbox :                                                  @"AR3m2FwhssOoQ75fKCVeuviS4Hc2AB01149OghCAR-QGYsFiLxZhARQOcrgStRbTUXRwdfYH12uXl5m6"}];
+    
+
+    
+
+    //注册微信支付
+    [WXApi registerApp:@"wx9aeecf194e7f7197"];
+    
+    
+
+    
+    
+    //share分享
+
+    [self.window share];
+
+
+    
+    
+#warning 极光推送
+    //可以添加自定义categories
+    
+    [JPUSHService registerForRemoteNotificationTypes :( UIUserNotificationTypeBadge |
+                                                      
+                                                      UIUserNotificationTypeSound |
+                                                      
+                                                      UIUserNotificationTypeAlert)
+     
+                                          categories:nil];
+    
+    [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction];
+    
+    //[JPUSHService setBadge:0];
+    [application setApplicationIconBadgeNumber:0];
+    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+
+    [IQKeyboardManager sharedManager].enable = YES; // 控制全局键盘遮盖问题,如不想使用 可在具体控制器内 设置为 no
+    return YES;
+}
+
+#pragma mark -- 判断是否进入欢迎页
+
+- (UIViewController *)defaultRootViewController {
+    if ([self isNewVersion] == YES) {
+        //欢迎页
+        ZRNewFeatureController * newFeatureCV = [[ZRNewFeatureController alloc] init];
+        
+        return newFeatureCV;
+    }else{
+        //首页
+        ZRTabBarViewController * tabBarVC = [[ZRTabBarViewController alloc]init];
+        
+        return tabBarVC;
+    }
+}
+
+
+#pragma mark - 极光推送
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    
+    
+    // Required
+    
+    [JPUSHService registerDeviceToken:deviceToken];
+    
+    
+    /*
+     
+     设置 设置别名（alias）与标签（tags）
+     
+     别名 alias每个用户只能指定一个别名
+     
+     标签 tag可为每个用户打多个标签
+     
+     */
+    
+//    [JPUSHService setTags:[NSSet setWithObjects:@"tag1",nil] alias:@"testOBU-0000000" callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
+    
+    
+    [JPUSHService setTags:[NSSet setWithObjects:@"tag1",nil] alias:@"sjajjchskdlwlf" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+        NSLog(@"iResCode = %d,tags = %@服务器返回的结果：%@",iResCode,iTags,iAlias);        
+    }];
+    
+}
+
+
+
+//判断版本号
+
+- (BOOL)isNewVersion{
+    //获取当前版本
+    NSDictionary * dict = [NSBundle mainBundle].infoDictionary;
+    double currentVersion = [dict[@"CFBundleShortVersionString"] doubleValue];
+    
+    //获取上一个版本号
+    //设置key
+    NSString * boxKey = @"sandBoxKey";
+    double lastVersion = [UserDefault doubleForKey:boxKey];
+    
+    //记录当前系统版本
+    [UserDefault setDouble:currentVersion forKey:boxKey];
+    [UserDefault synchronize];
+    
+    //比较两个版本
+    return currentVersion > lastVersion;
+}
+
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    
+    if (application.applicationState == UIApplicationStateActive) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"推送消息"
+                                                            message:alert
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    [application setApplicationIconBadgeNumber:0];
+    
+    [JPUSHService handleRemoteNotification:userInfo];
+}
+
+
+//————————————APP正在前台或者后台运行，此函数会被调用————————————//
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    
+    
+    
+    // IOS 7 Support Required
+    
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+    //[JPUSHService setBadge:0];
+    [application setApplicationIconBadgeNumber:0];
+    
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    
+    
+    
+    //Optional
+    
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+    
+}
+
+
+
+
+////ANPs 苹果推送服务器生成的唯一标识
+///** 接收服务器传回的设备唯一标识 token */
+//-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+//    
+//    // 第一次运行获取到DeviceToken时间会比较长！
+//    // 将deviceToken转换成字符串，以便后续使用
+//    NSString *token = [deviceToken description];
+//    
+//    NSLog(@"description %@", token);
+//}
+//
+////下面方法是当有消息推送回来时,接收推送消息
+///** 设备接收到来自苹果推送服务器的消息时触发的,用来显示推送消息 */
+//
+//-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+//    
+//    NSLog(@"userInfo == %@",userInfo);
+//}
+//
+////上面方法是当注册推送服务失败时,接收错误信息
+///** 注册推送服务失败 */
+//-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+//    NSLog(@"注册失败 %@",error);
+//}
+
+
+
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+
+#pragma mark - 支付宝支付
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
+        }];
+        
+        // 授权跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
+            // 解析 auth code
+            NSString *result = resultDic[@"result"];
+            NSString *authCode = nil;
+            if (result.length>0) {
+                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                for (NSString *subResult in resultArr) {
+                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                        authCode = [subResult substringFromIndex:10];
+                        break;
+                    }
+                }
+            }
+            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+        }];
+    }
+    return YES;
+}
+
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+        
+        // 授权跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            // 解析 auth code
+            NSString *result = resultDic[@"result"];
+            NSString *authCode = nil;
+            if (result.length>0) {
+                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                for (NSString *subResult in resultArr) {
+                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                        authCode = [subResult substringFromIndex:10];
+                        break;
+                    }
+                }
+            }
+            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+        }];
+    }
+    return YES;
+}
+
+
+@end

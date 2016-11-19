@@ -1,0 +1,54 @@
+//
+//  ZRSuperDetailsModel.h
+//  zhiruProduct
+//
+//  Created by pj on 16/10/17.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ZRSuperDetailsModel : NSObject
+// 订单创建时间
+@property (nonatomic, copy)NSString * create_time;
+// 超市商品单
+@property (nonatomic, strong)NSArray * goodsList;
+// 支付方式
+@property (nonatomic, copy)NSString * pay_method;
+// 骑手电话
+@property (nonatomic, copy)NSString * rider_phone;
+// 订单更新时间
+@property (nonatomic, copy)NSString * update_time;
+// 总价
+@property (nonatomic, strong)NSNumber * canadian_dollar;
+
+//取餐人姓名
+@property (nonatomic, copy) NSString *take_meal_name;
+
+//取餐人电话
+@property (nonatomic, copy) NSString *take_meal_phone;
+
+// 配送时间
+//@property (nonatomic, copy)NSString * send_time;
+// 超市id
+@property (nonatomic, copy)NSString * ka_id;
+// 骑手姓名
+@property (nonatomic, copy)NSString * rider_name;
+// 配送费
+@property (nonatomic, strong)NSNumber * send_price;
+// 超市名称
+@property (nonatomic, copy)NSString * ka_name;
+// 重量费
+@property (nonatomic, strong)NSNumber * room_tips;
+// 订单号
+@property (nonatomic, copy)NSString * order_id;
+// 税费
+@property (nonatomic, strong)NSNumber * taxation;
+// 备注
+@property (nonatomic, copy)NSString * remarks;
+// 订单状态0订单进行中1订单已取消2订单已完成
+@property (nonatomic, copy)NSString * status;
+//收货地址
+@property (nonatomic, copy)NSString *receipt_address;
+
+@end

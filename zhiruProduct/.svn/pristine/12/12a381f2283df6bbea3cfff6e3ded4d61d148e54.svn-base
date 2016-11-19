@@ -1,0 +1,548 @@
+//
+//  ZRShareView.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/9/22.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRShareView.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "UITextView+ZSC.h"
+
+#define kContentHeight  140
+#define kBtnTag 1000
+
+@interface ZRShareView ()
+{
+    UIView *_contentView;
+    NSMutableDictionary *_shareParams;
+}
+
+@property (nonatomic,strong)NSString *shareTitle;
+@property (nonatomic,strong)NSString *shareText;
+@property (nonatomic,copy) NSString * shareImgStr;
+@property (nonatomic,strong)NSURL *shareUrlStr;
+@property (nonatomic,strong) UIView *sinaView;
+@property (nonatomic,strong) UITextView *leaveAMessageTextView;
+@property (nonatomic,copy) void(^successBlock)();
+@property (nonatomic,copy) void(^failBlock)();
+@property (nonatomic,copy) void(^cancleBlock)();
+@property (nonatomic,assign)BOOL  sinaViewIsShow;  /**< 微博分享视图是否显示 */
+
+@end
+
+
+@implementation ZRShareView
+
+- (void)createUIWithTitle:(NSString *)title
+                  andText:(NSString *)text
+                andImages:(NSArray *)images
+                andUrlStr:(NSString *)urlStr
+               andSuccess:(void (^)(void))success
+                  andFail:(void (^)(void))fail
+                andCancle:(void (^)(void))cancle
+{
+    
+    self.shareTitle = title;
+    self.shareText = text;
+    if (images.count > 0&&images != nil) {
+        self.shareImgStr = images[0];
+    }else{
+        self.shareImgStr = @"";
+    }
+    
+    self.shareUrlStr = [NSURL URLWithString:urlStr];
+    //新浪微博用
+    _shareParams = [NSMutableDictionary dictionary];
+    [_shareParams SSDKSetupShareParamsByText:text images:images url:[NSURL URLWithString:urlStr] title:title type:SSDKContentTypeAuto];
+    self.successBlock = success;
+    self.failBlock = fail;
+    self.cancleBlock = cancle;
+    
+    //背景色
+//    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//    self.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+//    [[UIApplication sharedApplication].keyWindow addSubview:self];
+//    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnClick)];
+//    [self addGestureRecognizer:tap];
+//    
+//    _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, kContentHeight)];
+//    _contentView.backgroundColor = R_G_B_16(0xffffff);
+//    [self addSubview:_contentView];
+//    
+//    NSArray *imgNorArr = @[@"weixin",@"pengyouquan",@"QQ",@"weibo"];
+//    NSArray *nameArr = @[@"微信好友",@"朋友圈",@"QQ好友",@"新浪微博"];
+//    
+//    CGFloat x=20;
+//    CGFloat y=0;
+//    CGFloat w=60;
+//    CGFloat h=60;
+//    CGFloat gaw=(ScreenWidth-4*w - 2*x)/3;
+//    
+//    for (int i=0; i<4; i++) {
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = CGRectMake(x + gaw*i + w*i, y, w, h);
+//        button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//        [button setImage:[UIImage imageNamed:imgNorArr[i]] forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchDown];
+//        button.tag = kBtnTag+i;
+//        [_contentView addSubview:button];
+//        
+//        UILabel *namLab = [[UILabel alloc]initWithFrame:CGRectMake(button.x, button.bottom, button.width, 20)];
+//        namLab.font = [UIFont systemFontOfSize:15];
+//        namLab.text = nameArr[i];
+//        namLab.textAlignment = NSTextAlignmentCenter;
+//        [_contentView addSubview:namLab];
+//    }
+//    
+//    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, _contentView.height - 50, ScreenWidth, 1)];
+//    line.backgroundColor =[UIColor lightGrayColor];
+//    line.alpha = 0.7;
+//    [_contentView addSubview:line];
+//    
+//    UIButton *cancleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    cancleBtn.frame = CGRectMake(15,_contentView.height - 45, ScreenWidth - 30, 35);
+//    [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
+//    cancleBtn.titleLabel.font = CustomFont(Font_BtnTitle);
+//    [cancleBtn setTitleColor:R_G_B_16(0x29b1c1) forState:UIControlStateNormal];
+//    [cancleBtn addTarget:self action:@selector(cancleBtnClick) forControlEvents:UIControlEventTouchDown];
+//    [_contentView addSubview:cancleBtn];
+//    
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _contentView.frame = CGRectMake(0, ScreenHeight-kContentHeight, ScreenWidth, kContentHeight);
+//    } completion:^(BOOL finished) {
+//        
+//    }];
+    
+    [ShareSDK showShareActionSheet:nil //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
+                             items:nil
+                       shareParams:_shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
+                   switch (state) {
+                       case SSDKResponseStateSuccess:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           break;
+                       }
+                       case SSDKResponseStateFail:
+                       {
+                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                           message:[NSString stringWithFormat:@"%@",error]
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil, nil];
+                           [alert show];
+                           break;
+                       }
+                       default:
+                           break;
+                   }
+               }
+     ];
+
+}
+
+- (void)shareBtnClick:(UIButton *)button
+{
+    int shareType = 0;
+    if (self.sinaViewIsShow == YES) { //微博分享界面存在时,点击QQ、微信、朋友圈分享,移除微博分享界面
+        [self cancelSinaView];
+    }
+    switch (button.tag) {
+        case kBtnTag:
+        {
+            //分享到微信好友
+            [self shareToWechatSession];
+        }
+            break;
+        case kBtnTag+1:
+        {
+            //分享到微信朋友圈
+            [self shareToWechatTimeline];
+        }
+            break;
+        case kBtnTag+2:
+        {
+            //分享到QQ好友
+            [self shareToQQFriend];
+        }
+            break;
+            
+            
+        case kBtnTag+3:
+        {
+            //分享到新浪微博
+            //hao 添加
+            if (self.sinaViewIsShow == NO) {
+                [self createSinaView];
+                self.sinaViewIsShow = YES;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    //NSLog(@"=======%d",shareType);
+    
+}
+
+#pragma mark - 分享
+
+#pragma mark --> 分享到微信好友
+
+- (void)shareToWechatSession {
+    
+    
+    
+    if(![WXApi isWXAppInstalled]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您尚未安装微信客户端" message:nil delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    if ([self.shareImgStr isEqualToString:@""]) {
+        [shareParams SSDKSetupWeChatParamsByText:self.shareText
+                                           title:self.shareTitle
+                                             url:self.shareUrlStr
+                                      thumbImage:[UIImage imageNamed:@"shareIcon"]
+                                           image:nil
+                                    musicFileURL:nil
+                                         extInfo:nil
+                                        fileData:nil
+                                    emoticonData:nil
+                                            type:SSDKContentTypeAuto
+                              forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    }else{
+        [shareParams SSDKSetupWeChatParamsByText:self.shareText
+                                           title:self.shareTitle
+                                             url:self.shareUrlStr
+                                      thumbImage:self.shareImgStr
+                                           image:nil
+                                    musicFileURL:nil
+                                         extInfo:nil
+                                        fileData:nil
+                                    emoticonData:nil
+                                            type:SSDKContentTypeAuto
+                              forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    }
+    [ShareSDK share:SSDKPlatformSubTypeWechatSession
+         parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+             switch (state) {
+                 case SSDKResponseStateSuccess:
+                 {
+                     //NSLog(@"分享成功");
+                     [SVProgressHUD showSuccessWithStatus:@"分享成功" ];
+                     self.successBlock();
+                     break;
+                 }
+                 case SSDKResponseStateFail:
+                 {
+                     //NSLog(@"分享失败");
+                     self.failBlock();
+                     break;
+                 }
+                 case SSDKResponseStateCancel:
+                 {
+                     //NSLog(@"分享取消");
+                     self.failBlock();
+                     break;
+                 }
+                     
+                 default:
+                     break;
+             }
+         }];
+    
+}
+
+#pragma mark --> 分享到微信朋友圈
+
+- (void)shareToWechatTimeline {
+    if(![WXApi isWXAppInstalled]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您尚未安装微信客户端" message:nil delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    if ([self.shareImgStr isEqualToString:@""]) {
+        [shareParams SSDKSetupWeChatParamsByText:self.shareText
+                                           title:self.shareTitle
+                                             url:self.shareUrlStr
+                                      thumbImage:[UIImage imageNamed:@"shareIcon"]
+                                           image:nil
+                                    musicFileURL:nil
+                                         extInfo:@"分享"
+                                        fileData:nil
+                                    emoticonData:nil
+                                            type:SSDKContentTypeAuto
+                              forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
+    }else{
+        [shareParams SSDKSetupWeChatParamsByText:self.shareText
+                                           title:self.shareTitle
+                                             url:self.shareUrlStr
+                                      thumbImage:self.shareImgStr
+                                           image:nil
+                                    musicFileURL:nil
+                                         extInfo:@"分享"
+                                        fileData:nil
+                                    emoticonData:nil
+                                            type:SSDKContentTypeAuto
+                              forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
+    }
+    
+    [ShareSDK share:SSDKPlatformSubTypeWechatTimeline
+         parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+             switch (state) {
+                 case SSDKResponseStateSuccess:
+                 {
+                     //NSLog(@"分享成功");
+                     [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+                     self.successBlock();
+                     break;
+                 }
+                 case SSDKResponseStateFail:
+                 {
+                     //NSLog(@"分享失败");
+                     self.failBlock();
+                     break;
+                 }
+                 case SSDKResponseStateCancel:
+                 {
+                     //NSLog(@"分享取消");
+                     self.cancleBlock();
+                     break;
+                 }
+                     
+                 default:
+                     break;
+             }
+         }];
+    
+}
+
+#pragma mark --> 分享到QQ好友
+
+- (void)shareToQQFriend {
+    if(![TencentOAuth iphoneQQInstalled]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您尚未安装QQ客户端" message:nil delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    if ([self.shareImgStr isEqualToString:@""]) {
+        [shareParams SSDKSetupQQParamsByText:self.shareText
+                                       title:self.shareTitle
+                                         url:self.shareUrlStr
+                                  thumbImage:nil
+                                       image:[UIImage imageNamed:@"address"]
+                                        type:SSDKContentTypeWebPage
+                          forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+    }else{
+        [shareParams SSDKSetupQQParamsByText:self.shareText
+                                       title:self.shareTitle
+                                         url:self.shareUrlStr
+                                  thumbImage:self.shareImgStr
+                                       image:nil
+                                        type:SSDKContentTypeAuto
+                          forPlatformSubType:SSDKPlatformSubTypeQQFriend];
+    }
+    
+    [ShareSDK share:SSDKPlatformSubTypeQQFriend
+         parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+             switch (state) {
+                 case SSDKResponseStateSuccess:
+                 {
+                     //NSLog(@"分享成功");
+                     [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+                     self.successBlock();
+                     break;
+                 }
+                 case SSDKResponseStateFail:
+                 {
+                     //NSLog(@"分享失败");
+                     self.failBlock();
+                     break;
+                 }
+                 case SSDKResponseStateCancel:
+                 {
+                     //NSLog(@"分享取消");
+                     self.cancleBlock();
+                     break;
+                 }
+                     
+                 default:
+                     break;
+             }
+         }];
+    
+}
+
+#pragma mark- 新浪微博分享
+- (void)createSinaView
+{
+    self.sinaView = [[UIView alloc]initWithFrame:CGRectMake(10, IS_IPHONE4?40:120, ScreenWidth-20, 250)];
+    self.sinaView.backgroundColor = [UIColor whiteColor];
+    [AppKeyWindow addSubview:self.sinaView];
+    
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.sinaView.frame.size.width, 40)];
+    [self.sinaView addSubview:topView];
+    
+    UIButton *cancleBtn = [MyControl createButtonWithFrame:CGRectMake(0, 0, 60, 40) ImageName:nil Target:self Action:@selector(cancleBtnClick) Title:@"取消"];
+    [cancleBtn setTitleColor:Color_Purple forState:UIControlStateNormal];
+    cancleBtn.titleLabel.font = CustomFont(Font_BtnTitle);
+    [topView addSubview:cancleBtn];
+    
+    UILabel *titleLabel = [MyControl createLabelWithFrame:CGRectMake(60, 0, topView.frame.size.width-120, 40) Font:20 Text:@"新浪微博" color:Color_Black textAlignment:NSTextAlignmentCenter numberLines:1];
+    [topView addSubview:titleLabel];
+    
+    UIButton *sendBtn = [MyControl createButtonWithFrame:CGRectMake(topView.frame.size.width-60,0, 60, 40) ImageName:nil Target:self Action:@selector(sendBtnClick) Title:@"发送"];
+    [sendBtn setTitleColor:Color_Purple forState:UIControlStateNormal];
+    sendBtn.titleLabel.font = CustomFont(Font_BtnTitle);
+    [topView addSubview:sendBtn];
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, topView.frame.size.width, 1)];
+    lineView.backgroundColor = Color_LightGray;
+    [topView addSubview:lineView];
+    
+    //
+    UILabel *countLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, self.sinaView.frame.size.height-20-40, 120, 20)];
+    countLabel.textAlignment = NSTextAlignmentRight;
+    countLabel.textColor = Color_Gray;
+    countLabel.text = @"还可输入80个字";
+    countLabel.font = CustomFont(12);
+    [self.sinaView addSubview:countLabel];
+    
+    self.leaveAMessageTextView = [[UITextView alloc]initWithFrame:CGRectMake(10, 50, self.sinaView.frame.size.width-100-20, self.sinaView.frame.size.height-120)];
+    self.leaveAMessageTextView.backgroundColor=[UIColor colorWithWhite:0.902 alpha:1.000];
+    self.leaveAMessageTextView.text = @"";
+    self.leaveAMessageTextView.font=CustomFont(Font_Content);
+    [self.sinaView addSubview:self.leaveAMessageTextView];
+    
+    //设定占位符并限制可输入文字长度
+    [self.leaveAMessageTextView addPlaceHolder:@"输入你要分享的话" andMaxCount:80 andDidChangeBlock:^(int count) {
+        countLabel.text = [NSString stringWithFormat:@"还可输入%d个字",count];
+    }];
+    
+    //图片
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.sinaView.frame.size.width-100, 40, 90, self.sinaView.frame.size.height-100)];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.shareImgStr] placeholderImage:[UIImage imageNamed:@"placeholder_003"]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //imageView.backgroundColor = [UIColor redColor];
+    [self.sinaView addSubview:imageView];
+    
+    UIView *lineBottom = [[UIView alloc]initWithFrame:CGRectMake(0, self.sinaView.frame.size.height-40, self.sinaView.frame.size.width, 40)];
+    lineBottom.backgroundColor = Color_LightGray;
+    [self.sinaView addSubview:lineBottom];
+    
+    UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.sinaView.frame.size.height-40, self.sinaView.frame.size.width, 40)];
+    bottomView.backgroundColor = Color_LightGray;
+    [self.sinaView addSubview:bottomView];
+    
+    UILabel *contentLabel = [MyControl createLabelWithFrame:CGRectMake(10, 0, bottomView.frame.size.width-20, 40) Font:Font_BtnTitle Text:_shareParams[@"text"] color:Color_Gray textAlignment:NSTextAlignmentLeft numberLines:1];
+    
+    [bottomView addSubview:contentLabel];
+    
+}
+
+- (void)sendBtnClick
+{
+    
+    //如果是新浪的话内容中要加链接，点图片不会跳链接
+    [_shareParams setValue:[NSString stringWithFormat:@"%@%@%@",_shareParams[@"text"],[self isBlankString:self.leaveAMessageTextView.text]?@"":[NSString stringWithFormat:@",%@",self.leaveAMessageTextView.text],_shareParams[@"url"]] forKey:@"text"];
+    
+    //进行分享
+    [ShareSDK share:SSDKPlatformTypeSinaWeibo
+         parameters:_shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+                 self.successBlock();
+                 [self cancleBtnClick];
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 /*
+                  NSString *titleStr = @"";
+                  titleStr = @"请安装新浪微博客户端";
+                  UIAlertView *alert = [[UIAlertView alloc]initWithTitle:titleStr message:nil delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+                  [alert show]; */
+                 //NSLog(@"分享失败");
+                 self.failBlock();
+                 break;
+             }
+             case SSDKResponseStateCancel:
+             {
+                 //NSLog(@"分享取消");
+                 self.cancleBlock();
+                 break;
+             }
+             default:
+                 break;
+         }
+     }];
+    
+}
+
+-(BOOL) isBlankString:(id)obj {
+    if (obj == nil || obj == NULL) {
+        return YES;
+    }
+    if ([obj isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)cancleBtnClick
+{
+    //self.cancleBlock();
+    [self.leaveAMessageTextView resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{
+        _contentView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, kContentHeight);
+        self.sinaView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+        self.sinaView = nil;
+        [self removeFromSuperview];
+    }];
+}
+
+- (void)cancelSinaView
+{
+    //self.cancleBlock();
+    [self.leaveAMessageTextView resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{
+        //_contentView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, kContentHeight);
+        self.sinaView.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.sinaView = nil;
+        self.sinaViewIsShow = NO;
+        //[self removeFromSuperview];
+    }];
+}
+
+
+@end

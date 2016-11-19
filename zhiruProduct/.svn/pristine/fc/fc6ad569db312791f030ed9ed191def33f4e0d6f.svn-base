@@ -1,0 +1,142 @@
+//
+//  ZRGroupBuyingReviewDetailsCell.m
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/22.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRGroupBuyingReviewDetailsCell.h"
+#import "ZRCommentListModel.h"
+
+@interface ZRGroupBuyingReviewDetailsCell ()
+
+@property (nonatomic, strong) NSIndexPath *idxPath;
+
+@end
+
+@implementation ZRGroupBuyingReviewDetailsCell
+
+//-(void)setReviewFrame:(ZRGoupBuyingReviewFrame *)reviewFrame
+//{
+//    _reviewFrame = reviewFrame;
+//    [self setNeedsDisplay];
+//}
+
+
+-(void)setCommentListModel:(ZRCommentListModel *)commentListModel
+{
+    _commentListModel = commentListModel;
+    [self setNeedsDisplay];
+}
+
+#pragma mark - init
++(instancetype)cellWithTableView:(UITableView *)table ForIndexPath:(NSIndexPath *)idxPath
+{
+    static NSString *cellIdentifier = @"cellIdentifier";
+    ZRGroupBuyingReviewDetailsCell *cell = [table dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[ZRGroupBuyingReviewDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.idxPath = idxPath;
+    
+    
+    
+    return cell;
+}
+
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+//        //添加所有子控件
+//        [self setUpAllChildviews];
+        
+        
+        
+    }
+    return self;
+}
+
+
+#pragma mark - Private methods
+- (void)setUpAllChildviews
+{
+    //点赞
+    [MyControl createButtonWithFrame:CGRectMake(258*SCREEN_WIDTH/375, self.height-15-ZRImage(@"haoping").size.height, ZRImage(@"haoping").size.width, ZRImage(@"haoping").size.height) ImageName:@"haoping" Target:self Action:@selector(goodReviewClick:) Title:nil];
+    
+    //反对
+    [MyControl createButtonWithFrame:CGRectMake(315*SCREEN_WIDTH/375, self.height-15-ZRImage(@"chaping").size.height, ZRImage(@"chaping").size.width, ZRImage(@"chaping").size.height) ImageName:@"chaping" Target:self Action:@selector(badReviewClick:) Title:nil];
+    
+}
+
+#pragma mark - click methods
+- (void)goodReviewClick:(UIButton *)sender
+{
+    
+}
+
+- (void)badReviewClick:(UIButton *)sender
+{
+    
+}
+
+
+#pragma mark - drawRect
+-(void)drawRect:(CGRect)rect
+{
+    if (self.idxPath.section == 1) {
+        //头像
+        //UIImage *headImg = [UIImage getImageFromURL:_commentListModel.commentUserImg];
+        //CGFloat width = headImg.size.width*SCREEN_WIDTH/375;
+        //[self drawImage:headImg Rect:self.reviewFrame.reviewIconFrame];
+        //CGFloat x = 15+15+width;
+        
+        //name
+        [self drawWithStr:_commentListModel.commentUserName Font:[UIFont systemFontOfSize:15] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewNameFrame.origin.x, self.reviewFrame.reviewNameFrame.origin.y)];
+        
+        //评星
+        UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade integerValue]];
+        [self drawImage:pingxingImg Rect:self.reviewFrame.reviewStarFrame];
+        
+        //评论内容
+        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
+        
+        //价钱
+        NSString *per = [NSString stringWithFormat:@"$%@/人",_commentListModel.perCapita];
+        [self drawWithStr:per Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewPriceFrame.origin.x, self.reviewFrame.reviewPriceFrame.origin.y)];
+        
+        //时间
+        [self drawWithStr:_commentListModel.commentDate Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTimeFrame.origin.x, self.reviewFrame.reviewTimeFrame.origin.y)];
+        
+        
+        //点赞
+        [self drawWithStr:_commentListModel.good Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(CGRectGetMaxX(self.reviewFrame.reviewGoodFrame)+10, CGRectGetMinY(self.reviewFrame.reviewGoodFrame))];
+        
+        
+        
+        //反对点赞
+        [self drawWithStr:_commentListModel.notGood Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(CGRectGetMaxX(self.reviewFrame.reviewBadFrame)+10, CGRectGetMinY(self.reviewFrame.reviewBadFrame))];
+ 
+    }
+    
+    
+}
+
+
+
+
+
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

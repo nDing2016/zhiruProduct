@@ -1,0 +1,24 @@
+//
+//  ZRLunchOrderDetailController.h
+//  zhiruProduct
+//
+//  Created by pj on 16/10/14.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRBaseViewController.h"
+
+@protocol ZRLunchOrderDetailDelegate <NSObject>
+
+- (void)cancelLunchOrderId;
+
+@end
+
+@interface ZRLunchOrderDetailController : ZRBaseViewController
+
+@property (nonatomic, copy)NSString * orderId;
+
+@property (nonatomic, copy)NSString * orderState;
+
+@property (nonatomic, assign)id<ZRLunchOrderDetailDelegate>delegate;
+@end

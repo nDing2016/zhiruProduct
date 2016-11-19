@@ -1,0 +1,201 @@
+//
+//  ZRShopCommentCell.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/7/19.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRShopCommentCell.h"
+
+@interface ZRShopCommentCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *commentImg;
+@property (weak, nonatomic) IBOutlet UILabel *commentName;
+//人均消费
+@property (weak, nonatomic) IBOutlet UILabel *perCapita;
+//评论时间
+@property (weak, nonatomic) IBOutlet UILabel *commentDate;
+@property (weak, nonatomic) IBOutlet UIImageView *commentGrade;
+@property (weak, nonatomic) IBOutlet UILabel *commentContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *commentImgViewConstraint;
+@property (weak, nonatomic) IBOutlet UIView *commentImgView;
+@property (weak, nonatomic) IBOutlet UILabel *good;
+@property (weak, nonatomic) IBOutlet UILabel *notGood;
+
+@property (weak, nonatomic) IBOutlet UIButton *goodBtn;
+@property (weak, nonatomic) IBOutlet UIButton *noGoodBtn;
+@property (nonatomic , strong) UIButton * dianzanBtn;
+@end
+
+@implementation ZRShopCommentCell
+
+- (void)setModel:(ZRCommentListModel *)model{
+    _model = model;
+    
+    NSURL * url = [NSURL URLWithString:model.commentUserImg];
+    [_commentImg sd_setImageWithURL: url placeholderImage:ZRPlaceholderImage];
+    
+    _commentImg.layer.masksToBounds = YES;
+    _commentImg.layer.cornerRadius = 20.0;
+    _commentName.text = model.commentUserName;
+    
+    _perCapita.text =[NSString stringWithFormat:@" $%@/人",model.perCapita] ;
+    
+    _commentDate.text = model.commentDate;
+    
+    _commentGrade.image = [UIImage imageWithPingfenCount:[model.commentGrade integerValue]];
+    
+    _commentContent.text = model.commentContent;
+    
+    //做照片处理
+    [self createCommentImg];
+    
+    if ([model.good isEqualToString:@"null"]) {
+        _good.text = @"0";
+    }else{
+        _good.text = model.good;
+    }
+    
+    if ([model.notGood isEqualToString:@"null"]) {
+        _notGood.text = @"0";
+     }else{
+        _notGood.text = model.notGood;
+    }
+    
+    if ([model.isClick isEqualToString:@"1"]) {//赞
+        _goodBtn.selected = YES;
+        _dianzanBtn = _goodBtn;
+    }else if ([model.isClick isEqualToString:@"2"]){ //差
+        _noGoodBtn.selected = YES;
+        _dianzanBtn = _noGoodBtn;
+    }
+}
+
+#pragma mark -- 评论图片处理
+- (void)createCommentImg{
+    NSInteger count = _model.commentImg.count;
+    //如果有照片,显示照片,最多3张
+    if (count > 0) {
+        
+        if (count >3) {
+            count = 3;
+        }
+        
+        for (int i =0; i < count; i++) {
+            //创建图片
+            CGFloat imgW = (_commentImgView.width - 10) / 3;
+            CGFloat imgH = _commentImgView.height;
+            CGFloat imgX = i * (imgW + 5);
+            
+            UIImageView * contentImg = [[UIImageView alloc] initWithFrame:CGRectMake(imgX, 0, imgW, imgH)];
+            NSURL * url = [NSURL URLWithString:_model.commentImg[i][@"img_url"]];
+            [contentImg sd_setImageWithURL: url placeholderImage:ZRPlaceholderImage];
+            
+            [_commentImgView addSubview:contentImg];
+            
+            if (i == 2 && _model.commentImg.count - 3 != 0) {
+                UILabel * lb = [[UILabel alloc] initWithFrame:CGRectMake(imgW - 20, imgH - 20, 20, 20)];
+
+                lb.text = [NSString stringWithFormat:@"%ld",_model.commentImg.count - 3];
+                lb.font = [UIFont systemFontOfSize:14];
+                lb.textColor = [UIColor whiteColor];
+                
+                [contentImg addSubview:lb];
+            }
+        }
+        
+    }else{
+        _commentImgViewConstraint.constant = 0;
+    }
+}
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+- (IBAction)ClickGood:(UIButton*)sender {
+    
+    ZRUser * user = [ZRUserTool user];
+    
+    
+    BOOL isSelect = NO;
+    if (_goodBtn.selected == YES || _noGoodBtn.selected == YES) {
+        isSelect = YES;
+    }
+    
+    if (sender.tag == 0) {
+        if (sender.selected == YES) {
+             _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue]- 1];
+            _clickGoodBtn(sender,_model.commentId,YES);
+        }else{
+            _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue] +1];
+            if (isSelect == YES) {
+                _noGoodBtn.selected = NO;
+                _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue]- 1];
+               _clickGoodBtn(sender,_model.commentId,YES);
+            }
+            _clickGoodBtn(sender,_model.commentId,NO);
+        }
+    }else{
+        if (sender.selected == YES) {
+            _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue]- 1];
+                        _clickGoodBtn(sender,_model.commentId , YES);
+
+        }else{
+            if (isSelect == YES) {
+                _goodBtn.selected = NO;
+                _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue]- 1];
+                _clickGoodBtn(sender,_model.commentId,YES);
+            }
+            _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue] +1];
+                        _clickGoodBtn(sender,_model.commentId , NO);
+
+        }
+    }
+    
+     sender.selected = !sender.selected;
+    _dianzanBtn = sender;
+//    _clickGoodBtn(sender,_model.commentId,YES);
+//    
+//    if (sender.tag == 0) {
+//        //hao
+//        if(_dianzanBtn.selected == YES){
+//            _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue]+1];
+//            _clickGoodBtn(sender,_model.commentId,NO);
+////            if (isXT == NO) {
+////                _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue]- 1];
+////
+////            }
+//        }else{
+//             _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue]- 1];
+//            _clickGoodBtn(sender,_model.commentId,YES);
+//        }
+//            
+//    }else{
+//        //差
+//        if(_dianzanBtn.selected == YES){
+//            _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue]+ 1];
+//            _clickGoodBtn(sender,_model.commentId , NO);
+//            
+////            if (isXT == NO) {
+////                _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue] - 1];
+////
+////            }
+////            _good.text = [NSString stringWithFormat:@"%ld",[_good.text integerValue] - 1];
+//        }else{
+//            _notGood.text = [NSString stringWithFormat:@"%ld",[_notGood.text integerValue]- 1];
+//            _clickGoodBtn(sender,_model.commentId , YES);
+//        }
+//        
+//    }
+    //执行回调
+    
+    //写着,  然后在外面 执行回调 的地方, 写网络请求,
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

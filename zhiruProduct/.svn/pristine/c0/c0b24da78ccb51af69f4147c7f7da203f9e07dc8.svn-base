@@ -1,0 +1,64 @@
+//
+//  ZRPayOrderRequest.m
+//  zhiruProduct
+//
+//  Created by nanding on 16/10/11.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRPayOrderRequest.h"
+
+
+//添加订单
+static NSString * const zAddLunchOrder = @"lunch/addLunchOrder";
+
+@implementation ZRPayOrderRequest
+
+/**
+ *  添加订单接口
+ *
+ *  @param sendTime        送达时间
+ *  @param price           小费
+ *  @param taxation        税费
+ *  @param total           总计
+ *  @param receiptAddress  收货地址
+ *  @param payMethod       支付方式
+ *  @param remarks         备注
+ *  @param LunchOrderGoods 午餐订单货品
+ *  @param callback        回调
+ */
++(void)requestForAddLunchOrderWithSendTime:(NSString *)sendTime
+                                     Price:(NSString *)price
+                                  Taxation:(NSString *)taxation
+                                     Total:(NSString *)total
+                            ReceiptAddress:(NSString *)receiptAddress
+                                 PayMethod:(NSString *)payMethod
+                                   Remarks:(NSString *)remarks
+                           LunchOrderGoods:(NSMutableDictionary *)LunchOrderGoods
+                                  CallBack:(ZRPayOrderCallback)callback
+{
+    NSString *url = [HOST stringByAppendingString:zAddLunchOrder];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:sendTime forKey:@"sendTime"];
+    [parameters setObject:price forKey:@"price"];
+    [parameters setObject:taxation forKey:@"taxation"];
+    [parameters setObject:total forKey:@"total"];
+    [parameters setObject:receiptAddress forKey:@"receiptAddress"];
+    [parameters setObject:payMethod forKey:@"payMethod"];
+    [parameters setObject:remarks forKey:@"remarks"];
+    [parameters setObject:LunchOrderGoods forKey:@"LunchOrderGoods"];
+    
+    [ZRAFNRequests post:url parameters:parameters success:^(id result) {
+        
+        
+        
+        
+    } failure:^(id error) {
+        
+    }];
+    
+    
+}
+
+
+@end

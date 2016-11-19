@@ -1,0 +1,35 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++3532",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++3532" : {
+
+    },
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++3532" : 0,
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "48FDFFBE-BC42-47F3-882C-342746639BBF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++3532" : "zhiruProduct\/",
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "zhiruProduct",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "zhiruProduct.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.2.22\/zhiru",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++3532"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.2.22\/zhiru",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293"
+    }
+  ]
+}

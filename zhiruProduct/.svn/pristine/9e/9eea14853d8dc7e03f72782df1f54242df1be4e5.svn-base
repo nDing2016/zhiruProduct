@@ -1,0 +1,143 @@
+//
+//  ZRBecomeVipController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/9/27.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRBecomeVipController.h"
+#import "ZRBecomeVipCell.h"
+#import "ZRVipRuleController.h"
+@interface ZRBecomeVipController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong)UITableView * tableView;
+
+//@property (nonatomic, strong)NSMutableArray * stateArray;
+
+
+@end
+
+@implementation ZRBecomeVipController
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 45) style:UITableViewStylePlain];
+        [_tableView setBackgroundColor:[UIColor clearColor]];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+        [_tableView setSeparatorStyle:NO];
+        UIView * view = [UIView new];
+        [_tableView setTableFooterView:view];
+    }
+    return _tableView;
+}
+//- (NSMutableArray *)stateArray
+//{
+//    if (_stateArray == nil) {
+//        _stateArray = [NSMutableArray arrayWithObjects:@"0",@"0", nil];
+//    }
+//    return _stateArray;
+//}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self setTitle:@"成为会员"];
+    [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    
+#pragma mark 等功能完事之后再解开注释
+
+//    [self.view addSubview:self.tableView];
+//    [self createNavigationRightButton];
+//    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setBackgroundColor:RGBCOLOR(255, 82, 82)];
+//    [button setTitle:@"立即购买" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(actionBuyVipButton) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:button];
+//    WS(weakSelf);
+//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.and.right.and.bottom.equalTo(weakSelf.view).with.offset(0);
+//        make.height.mas_equalTo(@45);
+//    }];
+    
+#pragma mark 等功能完善之后再去掉蒙版图片
+    [self createNoOpenImage];
+}
+- (void)createNoOpenImage
+{
+    UIImageView * image = [[UIImageView alloc] init];
+    [image setImage:ZRImage(@"qingqidai")];
+    [self.view addSubview:image];
+    WS(weakSelf);
+    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.view).with.offset(64);
+        make.bottom.equalTo(weakSelf.view).with.offset(0);
+        make.left.equalTo(weakSelf.view).with.offset(0);
+        make.right.equalTo(weakSelf.view).with.offset(0);
+    }];
+}
+- (void)actionBuyVipButton
+{
+    //NSLog(@"立即购买");
+}
+- (void)createNavigationRightButton
+{
+    UIButton * rightButton = [MyControl createButtonWithFrame:CGRectMake(0, 0, 60, 40) ImageName:nil Target:self Action:@selector(vipRule) Title:@"会员规则"];
+    [rightButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [rightButton setTitleColor:RGBCOLOR(255, 82, 82) forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+- (void)vipRule
+{
+    ZRVipRuleController * vipRuleVC = [[ZRVipRuleController alloc] init];
+    [self.navigationController pushViewController:vipRuleVC animated:YES];
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 210;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellId = @"cellId";
+    ZRBecomeVipCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[ZRBecomeVipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+//    cell.selectButton.tag = indexPath.row;
+//    cell.state = self.stateArray[indexPath.row];
+//    [cell.selectButton addTarget:self action:@selector(actionSelectVip:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+//- (void)actionSelectVip:(UIButton *)sender;
+//{
+//    for (NSInteger i = 0; i < self.stateArray.count; i++) {
+//        if (i == sender.tag) {
+//            self.stateArray[i] = @"1";
+//        } else {
+//            self.stateArray[i] = @"0";
+//        }
+//    }
+//    [self.tableView reloadData];
+//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

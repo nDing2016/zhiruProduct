@@ -1,0 +1,44 @@
+//
+//  NSDictionary+ZRGetDatas.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/8/31.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "NSDictionary+ZRGetDatas.h"
+#import "ZRRegionModel.h"
+#import "ZRLabelModel.h"
+
+@implementation NSDictionary (ZRGetDatas)
+
++ (NSDictionary *)dictionaryGetScreeningWithModel :(ZRHomeNavModel *)model isPaixu :(BOOL)ispai {
+    //地理
+    NSMutableArray * regionMarr = [NSMutableArray array];
+    for (ZRRegionModel * region in model.region) {
+        if (region.region_name != nil) {
+            [regionMarr addObject:region.region_name];
+        }
+        
+    }
+    //品类
+    NSMutableArray * labelMarr = [NSMutableArray array];
+
+
+    for (ZRLabelModel * label in model.label) {
+        
+        if (label.nav_name != nil ) {
+            [labelMarr addObject:label.nav_name];
+        }
+
+    }
+    if (ispai == NO) {
+        return @{@"地理":regionMarr,@"品类":labelMarr,@"排序":@[@"智能排序",@"离我最近",@"评价最好",@"口味最佳",@"环境最佳"]};
+    }else{
+        return @{@"地理":regionMarr,@"品类":labelMarr,@"排序":@[@"智能排序",@"离我最近",@"评价最好",@"口味最佳",@"环境最佳"],@"筛选":@[@"优惠",@"订餐",@"新店"]};
+    }
+    
+}
+
+
+@end

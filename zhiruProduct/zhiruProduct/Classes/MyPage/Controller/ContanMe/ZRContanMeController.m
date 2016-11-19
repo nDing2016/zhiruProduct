@@ -1,0 +1,114 @@
+//
+//  ZRContanMeController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/9/29.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRContanMeController.h"
+#import "ZRProblemController.h"
+@interface ZRContanMeController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong)UITableView * tableView;
+@property (nonatomic, strong)NSArray * titleArray;
+
+@end
+
+@implementation ZRContanMeController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self setTitle:@"联系我们"];
+    [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    [self.view addSubview:self.tableView];
+    UILabel * label = [[UILabel alloc] init];
+    [label setNumberOfLines:0];
+    [label setFont:[UIFont systemFontOfSize:15]];
+    [label setText:@"没有找到相关问题？\n联系客服请发送邮件至customer-service@hey-tang.com\n或致电+15879266366, +15879378908"];
+    [label setTextColor:RGBCOLOR(156, 156, 156)];
+    [self.view addSubview:label];
+    WS(weakSelf);
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.view).with.offset(15);
+        make.right.equalTo(weakSelf.view).with.offset(-15);
+        make.top.equalTo(weakSelf.tableView.mas_bottom).with.offset(15);
+//        make.bottom.equalTo(weakSelf.view).with.offset(-10);
+    }];   
+}
+- (NSArray *)titleArray
+{
+    if (_titleArray == nil) {
+        _titleArray = [NSArray arrayWithObjects:@"账户信息相关问题",@"支付/退款相关问题",@"店铺/团购相关问题",@"评价相关问题",@"订餐相关问题",@"其他问题", nil];
+    }
+    return  _titleArray;
+}
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 84, ScreenWidth, 270) style:UITableViewStylePlain];
+        [_tableView setBackgroundColor:[UIColor clearColor]];
+        [_tableView setScrollEnabled:NO];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+//        UIView * view = [UIView new];
+//        [_tableView setTableFooterView:view];
+    }
+    return _tableView;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 6;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40.0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30.0;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [label setText:@"   常见问题"];
+    [label setFont:[UIFont systemFontOfSize:15]];
+    [label setTextColor:RGBCOLOR(178, 178, 178)];
+    return label;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellId = @"cellId";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.textLabel setText:[self.titleArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZRProblemController * problemVC = [[ZRProblemController alloc] init];
+    problemVC.problem = indexPath.row;
+    [self.navigationController pushViewController:problemVC animated:YES];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

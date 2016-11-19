@@ -1,0 +1,588 @@
+//
+//  ZRSupermarketController.m
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/7.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRSupermarketController.h"
+#import "ZRSupermarketCell.h"
+#import "ZRSupermarketHomeController.h"
+
+#import "ZRSupermarketRequest.h"
+#import "ZRSupermarketHomeModel.h"
+#import "ZRSupermarketNavListModel.h"
+#import "ZRSupermarketGoodsListModel.h"
+
+#import "ZRNavigationController.h"
+
+@interface ZRSupermarketController ()
+
+
+@property (nonatomic, strong) ZRSupermarketHomeModel *homeModel;
+@property (nonatomic, strong) ZRSupermarketNavListModel *navListModel;
+@property (nonatomic, strong) ZRSupermarketGoodsListModel *goodsListModel;
+
+
+
+@property (nonatomic, assign) CGFloat endPoint_x;
+@property (nonatomic, assign) CGFloat endPoint_y;
+@property (nonatomic, strong) CALayer *dotLayer;
+@property (nonatomic, strong) UIBezierPath *path;
+
+
+
+/**管理全局下载操作的队列*/
+@property(nonatomic,strong)NSOperationQueue *opQueue;
+/**所有的下载操作的缓冲池*/
+@property(nonatomic,strong)NSMutableDictionary *operationCache;
+/**所有图像的的缓存*/
+@property(nonatomic,strong)NSMutableDictionary *imageCache;
+
+@property (nonatomic, strong) UIImageView *imgView;
+@property (nonatomic, strong) UIButton *superCarBtn;
+
+
+@end
+
+static NSString *itemID =@"itemID";
+static NSString *headerID = @"headerID";
+static NSString *footerID = @"footerID";
+@implementation ZRSupermarketController
+#pragma mark - lifeCycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //collectionView下拉加载
+    
+    //[self.collectionView startRefresh:self Action:@selector(loadData)];
+    [self.collectionView startRefreshWithCallback:^{
+        [self loadData];
+        
+    }];
+    
+    
+}
+
+
+#pragma mark - 懒加载
+- (NSMutableDictionary *)imageCache
+{
+    if (_imageCache == nil) {
+        _imageCache = [[NSMutableDictionary alloc] init];
+    }
+    return _imageCache;
+}
+
+
+- (NSMutableDictionary *)operationCache
+{
+    if (_operationCache == nil) {
+        _operationCache = [[NSMutableDictionary alloc] init];
+    }
+    return _operationCache;
+}
+
+
+- (NSOperationQueue *)opQueue
+{
+    if (_opQueue == nil) {
+        _opQueue = [[NSOperationQueue alloc]init];
+    }
+    return _opQueue;
+}
+
+
+
+
+#pragma mark - UICollectionViewDataSource
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 4;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 3) {
+        return _homeModel.goodsList.count;
+    }else
+        return 1;
+}
+
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader) {
+        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID forIndexPath:indexPath];
+        for (UIView *vie in view.subviews) {
+            [vie removeFromSuperview];
+        }
+        if (indexPath.section == 3) {
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, SCREEN_WIDTH, view.height-30)];
+            label.text = @"   最新折扣";
+            label.font = [UIFont systemFontOfSize:15];
+            label.textColor = RGBCOLOR(85, 85, 85);
+            label.backgroundColor = [UIColor whiteColor];
+            [view addSubview:label];
+            
+        }
+        
+        return view;
+        
+    }else{
+        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerID forIndexPath:indexPath];
+        footer.backgroundColor = [UIColor whiteColor];
+        //防止重用
+        for (UIView *view in footer.subviews) {
+            [view removeFromSuperview];
+        }
+        if (indexPath.section == 3) {
+            UIButton *checkAllBtn = (UIButton *)[self setUpBtnWithCheckAll:CGPointMake(SCREEN_WIDTH/2,  footer.height/2) WithSupermarketModel:_homeModel];
+            //checkAllBtn.tag = kSuperMarket_LatestDiscount_CheckAll;
+            [footer addSubview:checkAllBtn];
+      
+        }
+        
+        
+        return footer;
+        
+    }
+}
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZRSupermarketCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:itemID forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+    //cell.img = nil;
+    cell.goodsList = nil;
+    
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    //cell.listArr = nil;
+    //[cell setNeedsDisplay];
+    
+    if (indexPath.section == 0) {
+        
+//        NSString *path1 = [[NSBundle mainBundle] pathForResource:@"super_AdView1@2x" ofType:@"png"];
+//        NSString *path2 = [[NSBundle mainBundle] pathForResource:@"super_AdView2@2x" ofType:@"png"];
+        UIImage *path1 = ZRImage(@"super_AdView1@2x.png");
+        UIImage *path2 = ZRImage(@"super_AdView2@2x.png"); 
+
+       
+        //轮播图
+        //NSArray * imgUrl = @[@"http://img11.360buyimg.com/cms/jfs/t196/241/2413424678/109726/34738058/53cf6e32Na0cbe3e5.jpg",@"http://img11.360buyimg.com/cms/g16/M00/0C/0A/rBEbRlOK07EIAAAAAAPXHfjijrkAACZxAMOZPwAA9c1025.jpg"];
+        
+        NSArray *imgUrl = @[path1,path2];
+        
+        
+        [self setUpAdView:imgUrl SuperView:cell];
+        
+        
+    }else if (indexPath.section == 1){
+        NSString *str = @"由嘿唐在线超市配送";
+        CGSize sizeStr = [NSString getSize:str strFont:[UIFont systemFontOfSize:15] maxSize:cell.size];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-sizeStr.width)/2, (cell.height-sizeStr.height)/2, sizeStr.width, sizeStr.height)];
+        label.text = str;
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = RGBCOLOR(85, 85, 85);
+        [cell.contentView addSubview:label];
+        
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(label.x-20, (cell.height-sizeStr.height)/2+2, 8, sizeStr.height-4)];
+        imgView.image = ZRImage(@"dingwei");
+        [cell.contentView addSubview:imgView];
+        
+    }else if (indexPath.section == 2){
+        //查看全部
+        CGFloat width = 48*SCREEN_WIDTH/375;
+        CGFloat height = 48*SCREEN_HEIGHT/667;
+        CGFloat space = (SCREEN_WIDTH-width*4)/5;
+        CGFloat y = 25*SCREEN_HEIGHT/667;
+        for (int i=0; i<4; i++) {
+            //图片
+            _navListModel = _homeModel.navList[i];
+            UIButton *categoryBtn = [MyControl createButtonWithFrame:CGRectMake((i+1)*space+i*width, y, width, height) ImageName:nil Target:self Action:@selector(categoryBtnClick:) Title:_navListModel.nav_name];
+            //[categoryBtn setImage:[UIImage getImageFromURL:_navListModel.img_url] forState:UIControlStateNormal];
+            if (i==0) {
+                //粮油副食
+                [categoryBtn setImage:ZRImage(@"liangyoufushi") forState:UIControlStateNormal];
+            }else if (i==1){
+                //休闲零食
+                [categoryBtn setImage:ZRImage(@"xiuxianlingshi") forState:UIControlStateNormal];
+            }else if (i==2){
+                //火锅精选
+                [categoryBtn setImage:ZRImage(@"huoguo") forState:UIControlStateNormal];
+            }else{
+                //牛奶果汁
+                [categoryBtn setImage:ZRImage(@"niunaiguoshu") forState:UIControlStateNormal];
+            }
+            //categoryBtn.tag = kSuperMarket_Category1+i;
+            [cell.contentView addSubview:categoryBtn];
+            //title
+            UIButton *navTitle = [MyControl createButtonWithFrame:CGRectMake((i+1)*space+i*width-5, y+height, width+10, height/2) ImageName:nil Target:self Action:@selector(categoryBtnClick:) Title:_navListModel.nav_name];
+            //navTitle.tag = kSuperMarket_Category1+i;
+            navTitle.titleLabel.font = CustomFont(12);
+            [cell.contentView addSubview:navTitle];
+        }
+        
+        UIButton *checkAllBtn = (UIButton *)[self setUpBtnWithCheckAll:CGPointMake(SCREEN_WIDTH/2,  cell.height-30) WithSupermarketModel:_homeModel];
+        
+        
+        [cell.contentView addSubview:checkAllBtn];
+        
+    }else if(indexPath.section == 3){
+        
+        //cell.img = nil;
+        _goodsListModel = _homeModel.goodsList[indexPath.item];
+        if (_goodsListModel) {
+            //NSArray *arr = @[ZRImage(@"hanbao"),@"卫龙小面筋100g",@"$ 4.5",@"原价$5",ZRImage(@"chaos")];
+            //NSArray *arr = @[[UIImage getImageFromURL:_goodsListModel.img_url],_goodsListModel.goods_name,_goodsListModel.now_price,_goodsListModel.old_price,@"gouwuche-1"];
+            
+            cell.cellIndex = indexPath.item;
+            cell.supermarketID = _homeModel.kaId;
+            cell.goodsList = _goodsListModel;
+            
+            
+            //[self downloadImage:indexPath WithCell:cell];
+            
+            
+            //下载图片
+            self.imgView = [[UIImageView alloc] init];
+            self.imgView.userInteractionEnabled = YES;
+            [self.imgView sd_setImageWithURL:[NSURL URLWithString:_goodsListModel.img_url] placeholderImage:nil];
+
+            [cell.contentView addSubview:self.imgView];
+            
+            
+            if (indexPath.item%2 == 0) {
+                
+                [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(@(15*SCREEN_WIDTH/375));
+                    //make.centerY.equalTo(@(myCell.contentView.centerY));
+                    //make.centerY.equalTo(myCell.contentView.mas_centerY);
+                    make.top.equalTo(@10);
+                    make.width.equalTo(@(SCREEN_WIDTH/2-22.5));
+                    make.height.equalTo(@(SCREEN_WIDTH/2-22.5));
+                    
+                }];
+                
+            }else{
+                [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(@(7.5*SCREEN_WIDTH/375));
+                    //make.centerY.equalTo(@(myCell.contentView.centerY));
+                    //make.centerY.equalTo(myCell.contentView.mas_centerY);
+                    make.top.equalTo(@10);
+                    make.width.equalTo(@(SCREEN_WIDTH/2-22.5));
+                    make.height.equalTo(@(SCREEN_WIDTH/2-22.5));
+                    
+                }];
+                
+            }
+            
+            //添加购物车
+            self.superCarBtn = [[UIButton alloc] init];
+            self.superCarBtn.tag = indexPath.item;
+            [self.superCarBtn setImage:ZRImage(@"superCar") forState:UIControlStateNormal];
+            [self.superCarBtn addTarget:self action:@selector(superCarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+            [self.imgView addSubview:self.superCarBtn];
+            [self.superCarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(self.imgView).with.offset(-10*SCREEN_WIDTH/375);
+                make.top.equalTo(self.imgView).with.offset(10);
+                make.width.equalTo(@(20*SCREEN_WIDTH/375));
+                make.height.equalTo(@(20*SCREEN_WIDTH/375));
+                
+            }];
+
+            
+        }
+        
+    }
+    
+
+    return cell;
+}
+
+
+
+/**
+ *  每个section的header的height
+ *
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    if (section == 3) {
+       return CGSizeMake(SCREEN_WIDTH, 60*SCREEN_HEIGHT/667);
+    }else if(section == 0){
+       return CGSizeMake(SCREEN_WIDTH, 0);
+    }else if(section == 1){
+        return CGSizeMake(SCREEN_WIDTH, 25*SCREEN_HEIGHT/667);
+    }else
+       return CGSizeMake(SCREEN_WIDTH, 25*SCREEN_HEIGHT/667);
+    
+}
+
+/**
+ *  每个section的footer的height
+ *
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (section == 3) {
+        return CGSizeMake(SCREEN_WIDTH, 55);
+    }else
+        return CGSizeMake(SCREEN_WIDTH, 0);
+}
+
+
+/**
+ *  cell的size
+ *
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        return CGSizeMake(SCREEN_WIDTH, 35*SCREEN_HEIGHT/667);
+    }else if (indexPath.section == 2){
+        return CGSizeMake(SCREEN_WIDTH, 160*SCREEN_HEIGHT/667);
+    }else if (indexPath.section == 0){
+        return CGSizeMake(SCREEN_WIDTH, 150*SCREEN_HEIGHT/667);
+    }else
+        return CGSizeMake(SCREEN_WIDTH/2, 250*SCREEN_HEIGHT/667);
+}
+
+/**
+ *  最小行距
+ *
+ */
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+    
+}
+
+/**
+ *  最小列间距
+ *
+ */
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+
+
+
+#pragma mark - Click methods
+/**
+ *  粮油副食、休闲零食、火锅精选、牛奶果汁
+ *
+ *  @param sender 点击事件
+ */
+- (void)categoryBtnClick:(UIButton *)sender
+{
+    ZRSupermarketHomeController *supermarketHomeVC = [[ZRSupermarketHomeController alloc] init];
+    //supermarketHomeVC.kaIdStr = _homeModel.kaId;
+    supermarketHomeVC.supermarketModel = _homeModel;
+    supermarketHomeVC.titleStr = sender.titleLabel.text;
+    
+    [self.navigationController pushViewController:supermarketHomeVC animated:YES];
+
+    
+    
+}
+
+/**
+ *  超市首页，购物车按钮点击事件
+ */
+- (void)superCarBtnClick:(UIButton *)sender
+{
+    _goodsListModel = _homeModel.goodsList[sender.tag];
+    
+    
+    NSMutableArray *listArr = [NSMutableArray array];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:_goodsListModel.goods_id forKey:@"goodsId"];
+    [dic setObject:_homeModel.kaId forKey:@"kaId"];
+    [dic setObject:@"1" forKey:@"num"];
+    [listArr addObject:dic];
+    
+    WS(ws)
+    [ZRSupermarketRequest requestAddKaShoppingCartWithList:listArr Callback:^(NSString *codeStr, NSString *message, NSError *error) {
+        
+        if (error == nil) {
+            if ([codeStr isEqualToString:@"C004"]) {
+                //用户未登录
+                [ZRAlertControl notLoginAlert:self goLogin:^{
+                    
+                    //弹出登录页面
+                    ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+                    ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
+                    
+                    
+                }];
+                
+            }else if([codeStr isEqualToString:@"S000"]){
+                NSIndexPath *idxPath = [NSIndexPath indexPathForItem:sender.tag inSection:3];
+                ZRSupermarketCell *cell = (ZRSupermarketCell *)[ws.collectionView cellForItemAtIndexPath:idxPath];
+                //加入购物车
+                CGRect parentRect = [cell convertRect:ws.superCarBtn.frame toView:self.view];
+                // 添加动画
+                [self JoinCartAnimationWithRect:parentRect WithCell:cell];
+                
+                
+            }
+            
+        }
+        
+        
+    }];
+
+}
+
+
+#pragma mark - 网络请求获取数据
+- (void)loadData
+{
+    WS(ws)
+    //多线程
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //子线程请求数据
+        //网络请求
+        //获取超市首页
+        [ZRSupermarketRequest requestSupermarketHomePageWithLogitude:@"116.359751000" WithLatitude:@"39.936868000" Callback:^(id details, NSError *error) {
+            _homeModel = [ZRSupermarketHomeModel mj_objectWithKeyValues:details];
+            
+            //停止刷新
+            [ws.collectionView.mj_header endRefreshing];
+            //回到主线程更新UI
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.collectionView reloadData];
+                
+            });
+
+            
+            
+        }];
+        
+    });
+    
+    
+    
+}
+
+
+#pragma mark -加入购物车动画
+-(void) JoinCartAnimationWithRect:(CGRect)rect WithCell:(ZRSupermarketCell *)cell
+{
+    _endPoint_x = SCREEN_WIDTH-50;
+    _endPoint_y = 44;
+    
+    CGFloat startX = rect.origin.x;
+    CGFloat startY = rect.origin.y;
+    
+    _path= [UIBezierPath bezierPath];
+    [_path moveToPoint:CGPointMake(startX, startY)];
+    
+    //三点曲线
+    [_path addCurveToPoint:CGPointMake(_endPoint_x, _endPoint_y)
+             controlPoint1:CGPointMake(startX, startY)
+             controlPoint2:CGPointMake(startX - 180, startY - 200)];
+    _dotLayer = [CALayer layer];
+    _dotLayer.frame = self.superCarBtn.frame;
+    _dotLayer.contents = (id)[ZRImage(@"gouwuche-1") CGImage];
+    
+    
+    [self.view.layer addSublayer:_dotLayer];
+    [self groupAnimation];
+}
+
+
+#pragma mark - 组合动画
+-(void)groupAnimation
+{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    animation.path = _path.CGPath;
+    animation.rotationMode = kCAAnimationRotateAuto;
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"alpha"];
+    alphaAnimation.duration = 0.5f;
+    alphaAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    alphaAnimation.toValue = [NSNumber numberWithFloat:0.1];
+    alphaAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    CAAnimationGroup *groups = [CAAnimationGroup animation];
+    groups.animations = @[animation,alphaAnimation];
+    groups.duration = 0.8f;
+    groups.removedOnCompletion = NO;
+    groups.fillMode = kCAFillModeForwards;
+    groups.delegate = self;
+    [groups setValue:@"groupsAnimation" forKey:@"animationName"];
+    [_dotLayer addAnimation:groups forKey:nil];
+    [self performSelector:@selector(removeFromLayer:) withObject:_dotLayer afterDelay:0.8f];
+}
+- (void)removeFromLayer:(CALayer *)layerAnimation{
+    
+    [layerAnimation removeFromSuperlayer];
+}
+
+#pragma mark - CAAnimationDelegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    
+    if ([[anim valueForKey:@"animationName"]isEqualToString:@"groupsAnimation"]) {
+        
+        CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        shakeAnimation.duration = 0.25f;
+        shakeAnimation.fromValue = [NSNumber numberWithFloat:0.8];
+        shakeAnimation.toValue = [NSNumber numberWithFloat:1];
+        shakeAnimation.autoreverses = YES;
+        
+        [self.shoppingCartBtn.layer addAnimation:shakeAnimation forKey:nil];
+        
+        
+    }
+}
+
+
+
+#pragma mark - manage memory methods
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+    // 需要在这里做一些内存清理工作. 如果不处理，会被系统强制闪退。
+    
+//    // 清理图片的缓存
+//    [self.imageCache removeAllObjects];
+//    
+//    // 清理操作缓存
+    [self.operationCache removeAllObjects];
+//    
+//    // 取消下载队列里面的任务
+    [self.opQueue cancelAllOperations];
+    
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

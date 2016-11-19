@@ -1,0 +1,28 @@
+//
+//  ZRAlertControl.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/9/26.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+typedef void(^AlertCallback)();
+
+@interface ZRAlertControl : NSObject
+
+/**
+ *  未登录弹出框
+ *  @param ctl 控制器
+ */
++(void)notLoginAlert:(UIViewController *)ctl goLogin:(AlertCallback)callback;
+
+
+
+
+
+
+
+
+@end

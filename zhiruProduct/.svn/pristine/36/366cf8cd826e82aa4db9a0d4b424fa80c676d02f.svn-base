@@ -1,0 +1,120 @@
+//
+//  ZRLunchOrderController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/10/7.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRLunchOrderController.h"
+#import "ZROrderingOrderRequest.h"
+#import "ZROrderingOrderCell.h"
+#import "ZRTabBarViewController.h"
+#import "ZRNavigationController.h"
+#import "ZRMyOrderViewController.h"
+
+#import "ZROrderingDetailsController.h"
+#import "ZRLunchOrderDetailController.h"
+
+
+@interface ZRLunchOrderController ()
+
+@property (nonatomic, strong)NSMutableArray * dataArray;
+
+@end
+@implementation ZRLunchOrderController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.dataArray = [NSMutableArray array];
+    [self biubiubiu];
+}
+- (void)biubiubiu
+{
+    [ZROrderingOrderRequest myLunchOrderWithCallBack:^(id success) {
+        self.dataArray = success;
+        NSLog(@"%@", self.dataArray);
+        [self.tableView reloadData];
+    } Failure:^(id error) {
+        
+    }];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.dataArray.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellID = @"ordering";
+    ZROrderingOrderCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[ZROrderingOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.commentButton.tag = indexPath.section;
+    [cell.commentButton addTarget:self action:@selector(orderingCommentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.againButton addTarget:self action:@selector(againLunchButton) forControlEvents:UIControlEventTouchUpInside];
+    cell.lunchModel = [self.dataArray objectAtIndex:indexPath.section];
+    
+    
+    return cell;
+}
+
+// 未付款午餐订单去付款
+- (void)orderingCommentButton:(UIButton *)sender
+{
+    NSLog(@"%ld---订餐去评价", sender.tag);
+//    ZRTabBarViewController *tab = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//    ZRNavigationController *nav  = tab.childViewControllers[2];
+//    ZRMyOrderViewController *myOrdreVC = nav.viewControllers[1];
+    
+    if ([sender.titleLabel.text isEqualToString:@"去付款"]) {
+        NSLog(@"去下单");
+    }
+}
+- (void)againLunchButton
+{
+   
+    
+    
+    ZROrderingDetailsController *lunchVC = [[ZROrderingDetailsController alloc] init];
+    lunchVC.isLunch = YES;
+    ZRTabBarViewController *tab = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ZRNavigationController *nav  = tab.childViewControllers[2];
+    ZRMyOrderViewController *myOrdreVC = nav.viewControllers[1];
+    [myOrdreVC.navigationController pushViewController:lunchVC animated:YES];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    ZRLunchModel * model = [self.dataArray objectAtIndex:indexPath.section];
+     ZRLunchOrderDetailController * lunchOrder = [[ZRLunchOrderDetailController alloc] init];
+    lunchOrder.orderId = model.orderId;
+//    ZROrderingDetailsController *lunchVC = [[ZROrderingDetailsController alloc] init];
+//    lunchVC.isLunch = YES;
+    ZRTabBarViewController *tab = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ZRNavigationController *nav  = tab.childViewControllers[2];
+    ZRMyOrderViewController *myOrdreVC = nav.viewControllers[1];
+    [myOrdreVC.navigationController pushViewController:lunchOrder animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+@end

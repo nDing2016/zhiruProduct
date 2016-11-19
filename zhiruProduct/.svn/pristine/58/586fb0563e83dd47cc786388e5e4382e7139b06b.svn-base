@@ -1,0 +1,32 @@
+//
+//  ZROrderAddressCell.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/9/24.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZROrderAddressCell.h"
+
+@interface ZROrderAddressCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *userSex;
+@property (weak, nonatomic) IBOutlet UILabel *userPhone;
+@property (weak, nonatomic) IBOutlet UILabel *userAddress;
+
+@end
+
+@implementation ZROrderAddressCell
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

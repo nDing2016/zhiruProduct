@@ -1,0 +1,20 @@
+//
+//  ZROrderFormStatusCell.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/26.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ZROrderFormStatusCell : UITableViewCell
+
+@property (nonatomic, assign)NSInteger status;
+
+@property (nonatomic, strong) NSIndexPath *idxPath;
+
+
++(instancetype)cellWithTable:(UITableView *)table ForIndexPath:(NSIndexPath *)idxPath;
+
+@end

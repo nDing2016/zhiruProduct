@@ -1,0 +1,25 @@
+//
+//  ZRMarketModel.h
+//  zhiruProduct
+//
+//  Created by pj on 16/9/12.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ZRMarketModel : NSObject
+
+// 超市名称
+@property (nonatomic, copy)NSString * kaName;
+// 经度
+@property (nonatomic, copy)NSString * longitude;
+// 纬度
+@property (nonatomic, copy)NSString * latitude;
+// 产品列表
+@property (nonatomic, strong)NSArray * goodsList;
+// 选择状态
+@property (nonatomic, assign)BOOL headerSelectState;
+// 编辑状态
+@property (nonatomic, assign)BOOL editingState;
+@end

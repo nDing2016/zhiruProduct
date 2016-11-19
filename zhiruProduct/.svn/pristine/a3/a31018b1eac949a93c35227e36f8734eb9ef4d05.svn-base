@@ -1,0 +1,121 @@
+//
+//  ZRDetailAddressView.m
+//  zhiruProduct
+//
+//  Created by pj on 16/7/13.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRDetailAddressView.h"
+
+@implementation ZRDetailAddressView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createView];
+        [self setViewMasonary];
+    }
+    return self;
+}
+- (void)createView
+{
+    self.addLabel = [[UILabel alloc] init];
+    [self addSubview:_addLabel];
+    [self.addLabel setText:@"收货地址"];
+    [self.addLabel setFont:[UIFont systemFontOfSize:15]];
+//    [self.addLabel setBackgroundColor:[UIColor purpleColor]];
+    
+    self.pitchTextField = [[UITextField alloc] init];
+    [self addSubview:_pitchTextField];
+    [self.pitchTextField setPlaceholder:@"城市"];
+    [self.pitchTextField setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
+    [self.pitchTextField setUserInteractionEnabled:NO];
+    
+    self.lineView = [[UIView alloc] init];
+    [self addSubview:_lineView];
+    [self.lineView setBackgroundColor:RGBCOLOR(187, 187, 187)];
+    
+    self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.clearButton setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:_clearButton];
+    
+    self.textView = [[UITextView alloc] init];
+    [self addSubview:_textView];
+    [self.textView setFont:[UIFont systemFontOfSize:14]];
+    self.textView.scrollEnabled = YES;
+    [self.textView setDelegate:self];
+    [self.textView setText:@"详细地址(如门牌号等)"];
+    self.textView.textColor = RGBCOLOR(136, 136, 136);
+//    [self.textView setBackgroundColor:[UIColor orangeColor]];
+    
+}
+- (void)setViewMasonary
+{
+    WS(weakSelf);
+    [self.addLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.top.equalTo(weakSelf).with.offset(0);
+        make.height.mas_equalTo(@40);
+    }];
+    [self.pitchTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(85);
+        make.top.equalTo(weakSelf.addLabel);
+        make.height.equalTo(weakSelf.addLabel);
+        make.right.equalTo(weakSelf).with.offset(-15);
+    }];
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.top.equalTo(weakSelf).with.offset(39);
+        make.right.equalTo(weakSelf).with.offset(0);
+        make.height.mas_equalTo(@1);
+    }];
+    [self.clearButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(85);
+        make.top.equalTo(weakSelf).with.offset(0);
+        make.bottom.equalTo(weakSelf).with.offset(0);
+        make.right.equalTo(weakSelf).with.offset(-15);
+    }];
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(85);
+        make.top.equalTo(weakSelf).with.offset(44);
+        make.right.equalTo(weakSelf).with.offset(-15);
+        make.bottom.equalTo(weakSelf).with.offset(-4);
+    }];
+    
+}
+//- (void)textViewDidChange:(UITextView *)textView
+//{
+//    NSLog(@"1");
+//}
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    
+//    return YES;
+//}
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"详细地址(如门牌号等)"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+        [textView setFont:[UIFont systemFontOfSize:15]];
+    }
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (textView.text.length < 1) {
+        textView.text = @"详细地址(如门牌号等)";
+        [textView setFont:[UIFont systemFontOfSize:14]];
+        textView.textColor = RGBCOLOR(136, 136, 136);
+    }
+}
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

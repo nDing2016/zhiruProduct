@@ -1,0 +1,16 @@
+//
+//  ZRSuperOrderDetailsController.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/25.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZROrderDetailsController.h"
+
+@interface ZRSuperOrderDetailsController : ZROrderDetailsController
+
+//订单号
+@property (nonatomic, copy) NSString *orderIdStr;
+
+@end

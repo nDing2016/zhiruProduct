@@ -1,0 +1,139 @@
+//
+//  ZRLunchTwoCell.m
+//  zhiruProduct
+//
+//  Created by pj on 16/10/14.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRLunchTwoCell.h"
+#import "ZRLucnMenuView.h"
+#import "ZRLunchOrderModel.h"
+@implementation ZRLunchTwoCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+//        [self createView];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self.contentView setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    }
+    return self;
+}
+- (void)createView
+{
+    self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 110 + 30 * self.menuArray.count)];
+    [self.backView setBackgroundColor:[UIColor whiteColor]];
+    [self.contentView addSubview:_backView];
+    
+    self.shopName = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 40)];
+    [self.shopName setText:@"特惠午餐"];
+    [self.shopName setFont:[UIFont systemFontOfSize:16]];
+    [self.shopName setTextAlignment:NSTextAlignmentLeft];
+    [self.backView addSubview:_shopName];
+    [self.shopName setTextColor:RGBCOLOR(85, 85, 85)];
+    
+    self.rightImg = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth - 15 - 10, 10, 10, 20)];
+    [self.rightImg setImage:[UIImage imageNamed:@"jiantou-you2"]];
+    [self.backView addSubview:_rightImg];
+    
+    self.clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.clearBtn setFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+    [self.clearBtn setBackgroundColor:[UIColor clearColor]];
+    [self.backView addSubview:_clearBtn];
+    
+    self.lineView1 = [[UIView alloc] initWithFrame:CGRectMake(15, _shopName.frame.size.height, ScreenWidth, 1)];
+    [self.lineView1 setBackgroundColor:RGBCOLOR(240, 239, 245)];
+    [self.backView addSubview:_lineView1];
+    
+    self.menuBackView = [[UIView alloc] initWithFrame:CGRectMake(0, _lineView1.frame.origin.y + 1, ScreenWidth, 30 * self.menuArray.count)];
+    [self.backView addSubview:_menuBackView];
+    
+    self.lineView2 = [[UIView alloc] initWithFrame:CGRectMake(15, _menuBackView.frame.origin.y + _menuBackView.frame.size.height, ScreenWidth, 1)];
+    [self.lineView2 setBackgroundColor:RGBCOLOR(240, 239, 245)];
+    [self.backView addSubview:_lineView2];
+    
+    self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, _lineView2.frame.origin.y + 1, 100, 30)];
+    [self.taxLabel setText:@"税费"];
+    [self.taxLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.taxLabel setFont:[UIFont systemFontOfSize:14]];
+    [self.backView addSubview:_taxLabel];
+    [self.taxLabel setTextColor:RGBCOLOR(85, 85, 85)];
+    
+    self.taxMoney = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 15 - 100, _taxLabel.frame.origin.y, 100, 30)];
+//    [self.taxMoney setText:@"$5"];
+    [self.taxMoney setTextAlignment:NSTextAlignmentRight];
+    [self.taxMoney setFont:[UIFont systemFontOfSize:14]];
+    [self.backView addSubview:_taxMoney];
+    [self.taxMoney setTextColor:RGBCOLOR(85, 85, 85)];
+    
+    self.lineView3 = [[UIView alloc] initWithFrame:CGRectMake(15, _taxMoney.frame.origin.y + _taxMoney.frame.size.height, ScreenWidth, 1)];
+    [self.lineView3 setBackgroundColor:RGBCOLOR(240, 239, 245)];
+    [self.backView addSubview:_lineView3];
+    
+    self.againButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.againButton setFrame:CGRectMake(15, _lineView3.frame.origin.y + 1 + 5, 80, 30)];
+    [self.againButton setBackgroundColor:RGBCOLOR(255, 82, 82)];
+    [self.againButton setTitle:@"再来一单" forState:UIControlStateNormal];
+    [self.againButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.againButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+//    [self.againButton addTarget:self action:@selector(agaginBurron) forControlEvents:UIControlEventTouchUpInside];
+    [self.backView addSubview:_againButton];
+    
+    
+    self.allMoney = [[UILabel alloc] init];
+    [self.allMoney setFont:[UIFont systemFontOfSize:15]];
+    [self.allMoney setTextColor:RGBCOLOR(255, 82, 82)];
+    [self.allMoney setTextAlignment:NSTextAlignmentRight];
+    [self.backView addSubview:_allMoney];
+//    [self.allMoney setText:@"$21.00"];
+    
+    self.allLabel = [[UILabel alloc] init];
+    [self.allLabel setText:@"合计:"];
+    [self.allLabel setFont:[UIFont systemFontOfSize:15]];
+    [self.backView addSubview:_allLabel];
+    [self.allLabel setTextColor:RGBCOLOR(85, 85, 85)];
+    
+    WS(weakSelf);
+    [self.allMoney mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.backView).with.offset(-15);
+        make.top.equalTo(weakSelf.lineView3.mas_bottom).with.offset(0);
+        make.bottom.equalTo(weakSelf.backView.mas_bottom).with.offset(0);
+    }];
+    
+    [self.allLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.allMoney.mas_left).with.offset(-5);
+        make.top.equalTo(weakSelf.lineView3.mas_bottom).with.offset(0);
+        make.bottom.equalTo(weakSelf.backView.mas_bottom).with.offset(0);
+    }];
+}
+- (void)setMenuArray:(NSArray *)menuArray
+{
+    _menuArray = menuArray;
+    [self createView];
+    for (int i = 0; i < _menuArray.count; i++) {
+        ZRLunchOrderModel * model = [_menuArray objectAtIndex:i];
+        ZRLucnMenuView * menuView = [[ZRLucnMenuView alloc] initWithFrame:CGRectMake(0, 30 * i, ScreenWidth, 30)];
+        [menuView.menuTitle setText:model.name];
+        [menuView.menuNum setText:[NSString stringWithFormat:@"×%@", model.num]];
+        [menuView.menuMoney setText:[NSString stringWithFormat:@"$%.2f", model.price.floatValue]];
+        [_menuBackView addSubview:menuView];
+    }
+}
+//- (void)agaginBurron
+//{
+//    NSLog(@"再来一单");
+//}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

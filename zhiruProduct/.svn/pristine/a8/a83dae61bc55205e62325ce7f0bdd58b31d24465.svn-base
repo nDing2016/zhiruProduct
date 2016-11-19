@@ -1,0 +1,63 @@
+//
+//  ZRLucnMenuView.m
+//  zhiruProduct
+//
+//  Created by pj on 16/10/14.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRLucnMenuView.h"
+
+@implementation ZRLucnMenuView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createView];
+        [self setViewMasonary];
+    }
+    return self;
+}
+- (void)createView
+{
+    self.menuTitle = [[UILabel alloc] init];
+    [self.menuTitle setFont:[UIFont systemFontOfSize:14]];
+    [self addSubview:_menuTitle];
+    
+    self.menuMoney = [[UILabel alloc] init];
+    [self.menuMoney setFont:[UIFont systemFontOfSize:14]];
+    [self addSubview:_menuMoney];
+    
+    self.menuNum = [[UILabel alloc] init];
+    [self.menuNum setFont:[UIFont systemFontOfSize:14]];
+    [self addSubview:_menuNum];
+}
+- (void)setViewMasonary
+{
+    WS(weakSelf);
+    [self.menuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.centerY.equalTo(weakSelf);
+    }];
+    
+    [self.menuMoney mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf).with.offset(-15);
+        make.centerY.equalTo(weakSelf);
+    }];
+    
+    [self.menuNum mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.menuMoney.mas_left).with.offset(-60);
+        make.centerY.equalTo(weakSelf);
+    }];
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

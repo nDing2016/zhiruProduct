@@ -1,0 +1,68 @@
+//
+//  ZRWalletRuleController.m
+//  zhiruProduct
+//
+//  Created by pj on 16/9/28.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRWalletRuleController.h"
+#import "ZRWalletRuleView.h"
+@interface ZRWalletRuleController ()
+
+@end
+
+@implementation ZRWalletRuleController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self setTitle:@"钱包规则"];
+    [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
+    
+    // 5: 643.613281
+    // 6: 589.912109
+    // 6p: 551.724609
+    
+    
+//    CGFloat scrollContentHeight;
+//    
+//    if (ScreenWidth == 320.0f) {
+//        scrollContentHeight = 644;
+//    } else if (ScreenWidth == 375.0f) {
+//        scrollContentHeight = 590;
+//    } else if (ScreenWidth == 414.0f) {
+//        scrollContentHeight = ScreenHeight - 20 - 64;
+//    }
+//    
+//    UIScrollView * scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+//    [scrolView setContentSize:CGSizeMake(ScreenWidth, scrollContentHeight + 20)];
+//    [scrolView setBackgroundColor:[UIColor clearColor]];
+//    [self.view addSubview:scrolView];
+//    
+//    ZRWalletRuleView * walletRule = [[ZRWalletRuleView alloc] initWithFrame:CGRectMake(15, 0, ScreenWidth - 30, scrolView.contentSize.height)];
+//    [walletRule setBackgroundColor:[UIColor clearColor]];
+//    [scrolView addSubview:walletRule];
+    
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+//    @"http://192.168.2.10:8181/manage/agreement/PurseRules.html"
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[HOST stringByAppendingString:@"agreement/PurseRules.html"]]]];
+    [self.view addSubview:webView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

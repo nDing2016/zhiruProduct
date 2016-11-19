@@ -1,0 +1,59 @@
+//
+//  ZRFooterDetailView.m
+//  zhiruProduct
+//
+//  Created by pj on 16/7/18.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRFooterDetailView.h"
+
+@implementation ZRFooterDetailView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createView];
+        [self setViewMasonary];
+    }
+    return self;
+}
+- (void)createView
+{
+    self.titleImage = [[UIImageView alloc] init];
+    //[self.titleImage setBackgroundColor:[UIColor orangeColor]];
+    [self addSubview:_titleImage];
+    
+    self.titleLabel = [[UILabel alloc] init];
+    [self addSubview:_titleLabel];
+    [self.titleLabel setFont:[UIFont systemFontOfSize:16.]];
+    [self.titleLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.titleLabel setTextColor:RGBCOLOR(85, 85, 85)];
+}
+- (void)setViewMasonary
+{
+    CGFloat width = self.frame.size.width;
+    WS(weakSelf);
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(weakSelf.titleImage.mas_right).with.offset(10);
+        make.right.equalTo(weakSelf).with.offset(0);
+        make.left.equalTo(weakSelf).with.offset(width / 2.0);
+        make.centerY.equalTo(weakSelf);
+    }];
+    [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(weakSelf).with.offset(15);
+        make.right.equalTo(weakSelf.titleLabel.mas_left).with.offset(-10);
+        make.centerY.equalTo(weakSelf);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+}
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

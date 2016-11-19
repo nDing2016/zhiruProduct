@@ -1,0 +1,307 @@
+//
+//  ZRSupermarketHomeCell.m
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/9.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRSupermarketHomeCell.h"
+#import "ZRSupermarketHomeObj.h"
+
+#import "ZRSupermarketGoodsListModel.h"
+
+#import "ZRSupermarketRequest.h"
+
+
+#define CellWidth     (SCREEN_WIDTH-(90*ScreenWidth/375))
+#define CellHeight    (110*ScreenHeight/667)
+
+@interface ZRSupermarketHomeCell ()
+
+@property (nonatomic, strong) UIButton *minusBtn;
+
+
+@end
+
+@implementation ZRSupermarketHomeCell
+
+//-(void)setListArray:(NSArray *)listArray
+//{
+//    _listArray = listArray;
+//    
+//    [self addSubview:self.addBtn];
+//    
+//    
+//}
+
+-(void)setGoodsListModel:(ZRSupermarketGoodsListModel *)goodsListModel
+{
+    _goodsListModel = goodsListModel;
+    [self.contentView addSubview:self.addBtn];
+    
+}
+
+
+-(void)setIndexPath:(NSIndexPath *)indexPath
+{
+    _indexPath = indexPath;
+    
+    self.countStr = nil;
+    __block BOOL isShow = NO;
+    //__block NSArray *indexArr = @[@(self.indexPath.row),@(self.indexPath.section)];
+    //判断该行cell是否被添加过购物车
+    
+    [[ZRSupermarketHomeObj shareInstance].allProductsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableArray *productsArr = obj;
+        ZRSupermarketGoodsListModel *goodsList = productsArr[0];
+//        if ([productsArr[0] isEqualToArray:indexArr]) {
+//            //显示减号
+//            self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+//            [self addSubview:self.minusBtn];
+//            self.countStr = [NSString stringWithFormat:@"%lu", productsArr.count-1];
+//            isShow = YES;
+//            *stop = YES;
+//        }
+        
+        if ([goodsList.goods_id isEqualToString:_goodsListModel.goods_id]) {
+            //显示减号
+            self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+            [self.contentView addSubview:self.minusBtn];
+            self.countStr = [NSString stringWithFormat:@"%lu", productsArr.count];
+            isShow = YES;
+            *stop = YES;
+            
+        }
+        
+    }];
+    
+    if (isShow == NO) {
+        if (self.minusBtn) {
+            [self.minusBtn removeFromSuperview];
+        }
+    }
+    
+    [self setNeedsDisplay];
+
+    
+}
+
+
+
++(ZRSupermarketHomeCell *)cellWithTable:(UITableView *)table
+{
+    static NSString *cellID = @"cellIdentifier";
+    ZRSupermarketHomeCell *cell = [table dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[ZRSupermarketHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    return cell;
+}
+
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+    }
+    return self;
+}
+
+
+#pragma mark - 懒加载
+-(UIButton *)addBtn
+{
+    if (!_addBtn) {
+       _addBtn = [MyControl createButtonWithFrame:CGRectMake(CellWidth-15-22,CellHeight-10-22,22,22) ImageName:@"supermarket_plus" Target:self Action:@selector(addBtnClick:) Title:nil];
+              
+    }
+    return _addBtn;
+}
+
+
+-(UIButton *)minusBtn
+{
+    if (!_minusBtn) {
+        _minusBtn = [MyControl createButtonWithFrame:self.addBtn.frame ImageName:@"supermarket_minus" Target:self Action:@selector(minusBtnClick:) Title:nil];
+    }
+    return _minusBtn;
+}
+
+
+
+#pragma mark - click methods
+/**
+ *  添加到购物车
+ *
+ *  @param sender 
+ */
+- (void)addBtnClick:(UIButton *)sender
+{
+    
+    
+    //判断该商品是否添加过到购物车，如果从未添加过则添加减号并加动画
+    ZRSupermarketHomeObj *object = [ZRSupermarketHomeObj shareInstance];
+    //__block NSArray *indexArr = @[@(self.indexPath.row),@(self.indexPath.section)];
+    __block BOOL added = NO;
+    [object.allProductsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableArray *productsArr = obj;
+        //        if ([productsArr[0] isEqualToArray:indexArr]) {
+        //            //添加过，则更改中间数据
+        //            added = YES;
+        //
+        //            self.countStr = [NSString stringWithFormat:@"%lu",productsArr.count-1+1];
+        //
+        //            *stop = YES;
+        //        }
+        ZRSupermarketGoodsListModel *goodsList = productsArr[0];
+        if ([goodsList.goods_id isEqualToString:_goodsListModel.goods_id]) {
+            //添加过，则更改加号与减号中间的数据
+            added = YES;
+            self.countStr = [NSString stringWithFormat:@"%lu",productsArr.count+1];
+            *stop = YES;
+        }
+        
+        
+    }];
+    
+    if (added == NO) {
+        [self addAnimation];
+        
+        self.countStr = @"1";
+    }
+    [self setNeedsDisplay];
+    
+    
+    if ([self.delegate respondsToSelector:@selector(addToShoppingCar:WithData:WithIndexPath:)]) {
+        [self.delegate addToShoppingCar:self WithData:_goodsListModel WithIndexPath:self.indexPath];
+    }
+
+    
+    
+    
+    
+    
+    
+}
+
+
+- (void)minusBtnClick:(UIButton *)sender
+{
+    
+    //__block NSArray *indexArr = @[@(self.indexPath.row),@(self.indexPath.section)];
+    __weak ZRSupermarketHomeCell *mySelf = self;
+    [[ZRSupermarketHomeObj shareInstance].allProductsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableArray *productsArr = obj;
+
+        ZRSupermarketGoodsListModel *goodsList = productsArr[0];
+        if ([goodsList.goods_id isEqualToString:_goodsListModel.goods_id]) {
+            
+            if (productsArr.count>1) {
+                //直接减1
+                self.countStr = [NSString stringWithFormat:@"%ld",productsArr.count-1];
+                [self setNeedsDisplay];
+
+                //更新数据
+                [productsArr removeLastObject];
+
+            }else{
+
+                //收起减号动画
+                [mySelf deleteAnimation];
+
+
+                //更新数据
+                [[ZRSupermarketHomeObj shareInstance].allProductsArray removeObjectAtIndex:idx];
+                
+            }
+            
+            *stop = YES;
+            
+        }
+        
+        
+    }];
+    
+    
+    
+    
+    if ([self.delegate respondsToSelector:@selector(minusProduct:WithData:WithIndexPath:)]) {
+        [self.delegate minusProduct:self WithData:_goodsListModel WithIndexPath:_indexPath];
+    }
+    
+    
+}
+
+
+
+-(void)drawRect:(CGRect)rect
+{
+    if (_goodsListModel) {
+        CGFloat x = 15*SCREEN_WIDTH/375;
+        CGFloat y = 10*CellHeight/70;
+        CGFloat width = 60*SCREEN_WIDTH/375;
+        
+        //[self drawImage:[UIImage getImageFromURL:_goodsListModel.img_url] Rect:CGRectMake(x, y, width, width)];
+        //商品名
+        
+        CGSize goodsSize = [self drawWithStr:_goodsListModel.goods_name Font:[UIFont systemFontOfSize:14] Color:[UIColor blackColor] Point:CGPointMake(x+width+x, y) Size:CGSizeMake(self.width-(width+30),  width/2+15)];
+        
+        
+        
+        //商品重量
+//        CGSize weightSize = [NSString getSize:_goodsListModel.weight strFont:CustomFont(12) maxSize:CGSizeMake(SCREEN_WIDTH, CellHeight)];
+        CGSize weightSize = [self drawWithStr:@"1.000kg" Font:CustomFont(12) Color:RGBCOLOR(154, 154, 154) Point:CGPointMake(x+width+x, y+goodsSize.height+y)];
+        
+        
+        //价格
+        NSString *nowPrice = [NSString stringWithFormat:@"$%@",_goodsListModel.now_price];
+        CGSize sizePrice = [NSString getSize:nowPrice strFont:CustomFont(12) maxSize:CGSizeMake(CellWidth, CellHeight)];
+        
+        CGFloat priceY = (CellHeight-(y+goodsSize.height+y+weightSize.height+sizePrice.height))/2+(y+goodsSize.height+y+weightSize.height);
+        [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, priceY)];
+        
+        
+        if (self.countStr) {
+            CGSize size = [NSString getSize:self.countStr strFont:[UIFont systemFontOfSize:14] maxSize:CGSizeMake(CellWidth, CellHeight)];
+            [self drawWithStr:self.countStr Font:[UIFont systemFontOfSize:14] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(CGRectGetMaxX(self.minusBtn.frame)+(30-size.width)/2, CGRectGetMinY(self.addBtn.frame)+(22-size.height)/2)];
+        }
+        
+    }
+}
+
+#pragma mark - Private methods
+- (void)addAnimation
+{
+    [self.contentView addSubview:self.minusBtn];
+    //未添加过
+    [UIView animateWithDuration:2 animations:^{
+        self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+        
+        NSLog(@"test减号frame＝＝＝＝＝%@",NSStringFromCGRect(self.minusBtn.frame));
+        [self.contentView addSubview:self.minusBtn];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+
+
+- (void)deleteAnimation
+{
+    [UIView animateWithDuration:1 animations:^{
+        self.minusBtn.frame = CGRectMake(CellWidth-15-22, CellHeight-10-22, 22, 22);
+        self.countStr = nil;
+        [self setNeedsDisplay];
+        
+        
+    } completion:^(BOOL finished) {
+        [self.minusBtn removeFromSuperview];
+        self.minusBtn = nil;
+        
+    }];
+}
+
+@end

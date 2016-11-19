@@ -1,0 +1,52 @@
+//
+//  ZRAllReviewsController.h
+//  zhiruProduct
+//
+//  Created by nanding on 16/7/22.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRBaseViewController.h"
+
+typedef NS_ENUM(NSInteger, AllReviewsType) {
+    ZROrderingReviews,               //订餐评论
+    ZRShopReviews,                  //店铺评论
+    ZRGroupBuyingReviews           //团购评论
+    
+};
+
+@interface ZRAllReviewsController : ZRBaseViewController
+
+@property (nonatomic, strong) UITableView *tableView;
+
+//评论类型
+@property (nonatomic, assign) AllReviewsType reviewsType;
+
+
+
+@property (nonatomic, strong) NSMutableArray *commentListArray;
+
+//全部评论
+@property (nonatomic, copy) NSString *allReviewsCount;
+
+//好评数
+@property (nonatomic, copy) NSString *goodReviewsCount;
+
+//差评数
+@property (nonatomic, copy) NSString *badReviewsCount;
+
+//带图评论数
+@property (nonatomic, copy) NSString *imgReviewsCount;
+
+//店铺评论
+@property (nonatomic, copy) NSString *businessId;
+
+
+@property (nonatomic, assign) NSInteger btnTag;
+
+@property (nonatomic, assign) NSInteger allPage;
+@property (nonatomic, assign) NSInteger goodPage;
+@property (nonatomic, assign) NSInteger badPage;
+@property (nonatomic, assign) NSInteger picPage;
+
+@end

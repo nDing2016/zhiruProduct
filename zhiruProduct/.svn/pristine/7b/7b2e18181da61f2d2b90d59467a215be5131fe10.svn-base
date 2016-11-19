@@ -1,0 +1,335 @@
+//
+//  ZRHomeBaseViewController.m
+//  zhiruProduct
+//
+//  Created by 魏嘉楠 on 16/7/7.
+//  Copyright © 2016年 Zhiru. All rights reserved.
+//
+
+#import "ZRHomeBaseViewController.h"
+#import "JSDropDownMenu.h"
+
+@interface ZRHomeBaseViewController ()<UITableViewDelegate , UITableViewDataSource,JSDropDownMenuDelegate , JSDropDownMenuDataSource>
+
+@property (nonatomic , strong) JSDropDownMenu *menu;
+@end
+
+@implementation ZRHomeBaseViewController
+
+-(NSMutableArray *)screeningMarr{
+    if (_screeningMarr == nil) {
+        _screeningMarr = [NSMutableArray array];
+    }
+    return _screeningMarr;
+}
+
+
+
+-(UITableView *)myTableView{
+    
+    if (_myTableView == nil) {
+        UITableView * myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth , ScreenHeight - 64) style:UITableViewStylePlain];
+        
+        [self.view addSubview:myTableView];
+        
+        myTableView.backgroundColor = [UIColor clearColor];
+
+        myTableView.rowHeight = UITableViewAutomaticDimension;
+        myTableView.estimatedRowHeight = 120.0;
+        myTableView.tableFooterView = [UIView new];
+        
+        if (_isClickNav == YES) {
+            
+        }else{
+            CGFloat headVH ;
+            if (self.titleArr.count == 4) {
+                headVH = 125;
+            }else{
+                headVH = 215;
+            }
+            
+            ZRTableVIewHeadView * tableViewHeadV = [[ZRTableVIewHeadView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, headVH) andTitleArr:_titleArr andTitleImgArr:_titleImgArr];
+            
+            WS(ws)
+            tableViewHeadV.clickImgView = ^(NSInteger index){
+                
+                [ws homeBaseViewControllerHeaderClickWithBtn:index];
+            };
+            myTableView.tableHeaderView = tableViewHeadV;
+            
+        }
+        
+        _myTableView = myTableView;
+    }
+    return _myTableView;
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+                                                                     
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
+
+}
+
+#pragma mark -- 初始化方法,传入相应的数据
+- (instancetype)initWithTitleArr :(NSArray *)titleArr andScreeningDict :(NSDictionary *)screeningDict andQueryTitleArr :(NSArray*)queryTitleArr andTitleImgArr :(NSArray*)titleImgArr{
+    
+    self = [super init];
+    if (self) {
+        
+        if (titleArr == nil) {
+            _isClickNav = YES;
+        }
+        _titleArr = titleArr;
+        _ScreeningDict = screeningDict;
+        _queryArr = queryTitleArr;
+        _titleImgArr = titleImgArr;
+    }
+    return self;
+    
+}
+
+
+#pragma mark - tableView代理
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (_menu == nil) {
+        
+        _data1 = _ScreeningDict[@"地理"];
+        
+        _data2 = _ScreeningDict[@"品类"];
+        
+        _data3 = _ScreeningDict[@"排序"];
+        
+        _data4 = _ScreeningDict[@"筛选"];
+        
+        JSDropDownMenu *menu = [JSDropDownMenu alloc];
+        
+        if (_isClickNav == YES) {
+            menu = [menu initWithOrigin:CGPointMake(0, 20) andHeight:45];
+            menu.isNavClick = YES;
+        }else{
+            //加判断么 丽人,
+            if (_titleArr.count>4) {
+                menu = [menu initWithOrigin:CGPointMake(0, 215) andHeight:45];
+            }else{
+                menu = [menu initWithOrigin:CGPointMake(0, 130) andHeight:45];
+            }
+            
+        }
+        
+        WS(ws)
+        menu.btnClick = ^(){
+            
+            ws.myTableView.scrollEnabled = NO;
+            
+            if (ws.isClickNav == NO && self.modelArr.count >0) {
+                NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                [ws.myTableView  scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
+            
+        };
+        
+        menu.hide = ^(){
+            ws.myTableView.scrollEnabled = YES;
+        };
+        
+        menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
+        menu.separatorColor = [UIColor colorWithRed:210.0f/255.0f green:210.0f/255.0f blue:210.0f/255.0f alpha:1.0];
+        menu.textColor = [UIColor colorWithRed:83.f/255.0f green:83.f/255.0f blue:83.f/255.0f alpha:1.0f];
+        menu.dataSource = self;
+        menu.delegate = self;
+        
+        _menu = menu;
+    }
+    
+   
+    
+    return _menu;
+}
+
+#pragma mark -- 代理
+- (NSInteger)numberOfColumnsInMenu:(JSDropDownMenu *)menu {
+    
+    return _queryArr.count;
+}
+
+-(BOOL)displayByCollectionViewInColumn:(NSInteger)column{
+    
+    
+    return NO;
+}
+
+-(BOOL)haveRightTableViewInColumn:(NSInteger)column{
+    
+  
+    return NO;
+}
+
+-(CGFloat)widthRatioOfLeftColumn:(NSInteger)column{
+    
+    
+    return 1;
+}
+
+-(NSInteger)currentLeftSelectedRow:(NSInteger)column{
+    
+    if (column==0) {
+        
+        return _currentData1Index;
+        
+    }
+    if (column==1) {
+        
+        return _currentData2Index;
+    }
+    
+    return 0;
+}
+
+- (NSInteger)menu:(JSDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column leftOrRight:(NSInteger)leftOrRight leftRow:(NSInteger)leftRow{
+    
+    if (column==0) {
+
+        return _data1.count;
+        
+    } else if (column==1){
+        
+        return _data2.count;
+        
+    } else if (column==2){
+        
+        return _data3.count;
+    } else if (column == 3){
+        
+        return _data4.count;
+    }
+    
+    return 0;
+}
+
+- (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
+    
+    switch (column) {
+        case 0: return @"地理" ;
+            break;
+        case 1: return @"品类";
+            break;
+        case 2: return @"排序";
+            break;
+       
+        default:
+            return @"筛选";
+            break;
+    }
+}
+
+- (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath {
+    
+    
+    if (indexPath.column ==0) {
+
+        return _data1[indexPath.row];
+    } else if (indexPath.column==1) {
+
+        return _data2[indexPath.row];
+    } else if (indexPath.column == 2){
+
+        return _data3[indexPath.row];
+    }else{
+        return _data4[indexPath.row];
+    }
+}
+
+- (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
+    
+
+    
+    if (indexPath.column == 0) {
+        
+        _currentData1Index = indexPath.row;
+//        NSLog(@"%ld",indexPath.row);
+   
+    } else if(indexPath.column == 1){
+        
+        _currentData2Index = indexPath.row;
+
+    
+    } else if(indexPath.column == 2){
+        
+        _currentData3Index = indexPath.row;
+    } else {
+        
+        _currentData4Index = indexPath.row;
+    }
+    
+    NSString * distance;
+    
+    switch (_currentData1Index) {
+        case 0:
+            distance = @"3";
+            break;
+        case 1:
+            distance = @"5";
+            break;
+        case 2:
+            distance = @"8";
+            break;
+        default:
+            break;
+    }
+    
+    NSString * sort = [NSString stringWithFormat:@"%ld",_currentData3Index + 1];
+    
+    NSString * screen = [NSString stringWithFormat:@"%ld",_currentData4Index + 1];
+    [self homeBaseViewControllerPostRequestWithDistance:distance andSort:sort andScreen:screen andLabel:_currentData2Index];
+
+    
+    
+    
+}
+
+- (void)homeBaseViewControllerHeaderClickWithBtn: (NSInteger) index{
+    
+}
+
+- (void)homeBaseViewControllerPostRequestWithDistance :(NSString *)distance andSort :(NSString*)sort andScreen :(NSString *)screen andLabel :(NSInteger)labelIndex{
+    
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
