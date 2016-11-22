@@ -94,7 +94,7 @@
     
     ZRLabelModel * label = _dataArr.label[labelIndex];
     
-    ZRUserAddress * address = [[ZRUserAddress alloc] init];
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestOrderingListQueryWithLongitude:address.Longitude  andLatitude:address.Latitude andDistance:distance andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows] andPage:[NSString stringWithFormat:@"%d",1] andSuccess:^(id success) {
         NSArray * successArr = success;
@@ -113,7 +113,7 @@
 - (void)homeBaseViewControllerHeaderClickWithBtn: (NSInteger) index{
     ZRLabelModel * model =  _dataArr.label[index];
     //发送请求
-    ZRUserAddress * address = [[ZRUserAddress alloc] init];
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestOrderingListWithLongitude:address.Longitude   andLatitude:address.Latitude andLabel:model.nav_id andSuccess:^(id success) {
         

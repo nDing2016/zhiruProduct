@@ -10,4 +10,7 @@
 
 @interface ZRMapViewController : ZRBaseViewController
 
+@property (nonatomic , copy) NSString * latitude;
+@property (nonatomic , copy) NSString * longitude;
+
 @end

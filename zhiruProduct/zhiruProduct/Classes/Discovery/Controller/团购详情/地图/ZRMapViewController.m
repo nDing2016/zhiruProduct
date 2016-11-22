@@ -70,8 +70,9 @@
     _melbourneMarker = [[GMSMarker alloc] init];
     _melbourneMarker.title = @"Melbourne";
     _melbourneMarker.snippet = @"Population: 4,169,103";
-    _melbourneMarker.position = CLLocationCoordinate2DMake(53.518463, -113.517280
-);
+    
+    
+    _melbourneMarker.position = CLLocationCoordinate2DMake(53.518463, -113.517280);
     _melbourneMarker.map = self.googleMapView;
     
     

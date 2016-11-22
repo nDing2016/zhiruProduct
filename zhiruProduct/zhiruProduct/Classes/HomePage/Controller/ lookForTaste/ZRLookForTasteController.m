@@ -102,8 +102,10 @@
     if (self.currentData4Index == 2) {
         screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
     }
+    
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:_longitude andLatitude:_latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
         
         //NSLog(@"成功");
         ws.modelArr = success;
@@ -135,8 +137,9 @@
     if (self.currentData4Index == 2) {
         screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
     }
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:_longitude andLatitude:_latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
         
         //NSLog(@"成功");
         ws.modelArr = success;
@@ -176,8 +179,10 @@
     if (self.currentData4Index == 2) {
         screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
     }
+    
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:_longitude andLatitude:_latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:[NSString stringWithFormat:@"%ld",_page ] andSuccess:^(id success) {
+    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:[NSString stringWithFormat:@"%ld",_page ] andSuccess:^(id success) {
         
         //NSLog(@"成功");
         [ws.myTableView.mj_header endRefreshing];

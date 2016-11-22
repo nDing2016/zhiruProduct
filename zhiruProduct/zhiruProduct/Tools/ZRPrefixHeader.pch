@@ -51,6 +51,8 @@
 #import "ZRNavigationController.h"
 #import "ZRUser.h"
 
+
+#import "ZRUserAddress.h"
 #endif
 
 
