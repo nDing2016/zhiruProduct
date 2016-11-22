@@ -55,11 +55,32 @@
 {
     [super viewWillAppear:animated];
     
-    [self.tableView startRefreshWithCallback:^{
-        
-        [self loadDatas];
-        
-    }];
+    
+    //先判断是否登录
+    ZRUser * user = [ZRUserTool user];
+    if (user == nil) {
+        //用户未登录
+        [ZRAlertControl notLoginAlert:self goLogin:^{
+            
+            //弹出登录页面
+            ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+            ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+            
+            [self presentViewController:nav animated:YES completion:nil];
+            
+            
+        }];
+    }else{
+        [self.tableView startRefreshWithCallback:^{
+            
+            [self loadDatas];
+            
+        }];
+    }
+
+    
+    
+    
     
 }
 

@@ -154,7 +154,7 @@
         for (ZRPointsAllModel * ml in model.personalPoints) {
             [self.pointsArray addObject:ml];
         }
-        if (self.exchangeArray.count == 0) {
+        if (self.pointsArray.count == 0) {
             [self.scrollView setScrollEnabled:NO];
             [self.promptImg setHidden:NO];
             [self.promptImg setImage:[UIImage imageNamed:@"wuwodejifen-1"]];
