@@ -168,7 +168,7 @@
         if (self.allArray.count == 0) {
             [AlertText showAndText:@"未选择商品"];
         } else {
-            if (self.allMoney >= 40.0) {
+            if (self.allMoney >= 20.0) {
                 [CustomHudView show];
                 [ZRUserInterfaceModel userFineDefaultAddressCallBack:^(id result) {
                     ZRUserFindAddressModel * model = result;
@@ -238,7 +238,7 @@
                     [CustomHudView dismiss];
                 }];
             } else {
-                [AlertText showAndText:@"价钱需大于$40.0"];
+                [AlertText showAndText:@"价钱需大于$20.0"];
             }
         }
     } else {

@@ -239,7 +239,7 @@
 {
     [SVProgressHUD show];
 
-    [ZRPayOrderRequest requestForPointsExchangeWithPoints:self.dataArray[2][1] CommodityName:self.dataArray[0][0] CommodityId:self.commodityListmodel.commodityId ReceiptAddress:self.addressModel.address ReceiptName:self.addressModel.name ReceiptPhone:self.addressModel.phone Gender:self.addressModel.gender Num:self.dataArray[1][1] CallBack:^(id details, NSError *error) {
+    [ZRPayOrderRequest requestForPointsExchangeWithPoints:self.dataArray[2][1] CommodityName:self.dataArray[0][0] CommodityId:self.commodityListmodel.commodityId ReceiptAddress:self.addressModel.address ReceiptName:self.addressModel.name ReceiptPhone:self.addressModel.phone Gender:self.addressModel.gender Num:self.dataArray[1][1] Remarks:self.txView.text CallBack:^(id details, NSError *error) {
         
         if ([details[@"message"] isEqualToString:@"success"]) {
             [SVProgressHUD showSuccessWithStatus:@"兑换成功"];

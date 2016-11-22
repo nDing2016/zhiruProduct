@@ -63,7 +63,7 @@ typedef void(^SupermarketAddShoppingCarCallback) (NSString *codeStr ,NSString *m
  *  @param taxation       税费
  *  @param canadianDollar          总计
  *  @param remarks        备注
- *  @param receiptAddress 收货地址id
+ *  @param receiptAddress 收货地址id  改为收获地址
  *  @param kaOrderGoods   数组
  *  @param takeMealName   取餐人姓名
  *  @param takeMealPhone  取餐人电话

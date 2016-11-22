@@ -183,7 +183,8 @@ static NSString * const zExchangePoints = @"points/exchange";
                               ReceiptPhone:(NSString *)receiptPhone
                                     Gender:(NSString *)gender
                                        Num:(NSString *)num
-                                  CallBack:(ZRPayOrderCallback)callback
+                                   Remarks:(NSString *)remarks
+                                  CallBack:(ZRPayOrderCallback)callback;
 {
     NSString *url = [HOST stringByAppendingString:zExchangePoints];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -195,6 +196,11 @@ static NSString * const zExchangePoints = @"points/exchange";
     [parameters setObject:receiptPhone forKey:@"receiptPhone"];
     [parameters setObject:gender forKey:@"gender"];
     [parameters setObject:num forKey:@"num"];
+    
+    if(remarks){
+      [parameters setObject:remarks forKey:@"remark"];  
+        
+    }
     
     [ZRAFNRequests post:url parameters:parameters success:^(id result) {
         
