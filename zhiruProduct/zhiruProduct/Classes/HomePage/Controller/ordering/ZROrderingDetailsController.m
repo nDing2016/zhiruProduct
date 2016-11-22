@@ -467,7 +467,7 @@
 
 - (void)getOrderingDetailsData{
     
-    ZRUserAddress * address = [[ZRUserAddress alloc] init];
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestOrderingDetailsWithLongitude:address.Longitude andLatitude:address.Latitude andBusinessId:_businessId andSuccess:^(id success) {
         

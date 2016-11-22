@@ -75,7 +75,7 @@
     
     ZRNavModel * nav = self.model.nav[index];
     WS(ws)
-    ZRUserAddress * userAdd = [[ZRUserAddress alloc] init];
+    ZRUserAddress * userAdd = [ZRUserAddress sharedInstance];
     //发送请求
     [ZRHomePageRequst requestGetGroupWithNavId:nav.nav_id andLongitude:userAdd.Longitude andLatitude:userAdd.Latitude andSuccess:^(id success) {
         
@@ -118,7 +118,7 @@
         default:
             break;
     }
-     ZRUserAddress * userAdd = [[ZRUserAddress alloc] init];
+     ZRUserAddress * userAdd = [ZRUserAddress sharedInstance];
     WS(ws)
     
     [ZRHomePageRequst requestGetGroupListWithLongitude:userAdd.Longitude andLatitude:userAdd.Latitude andRegionId:region.region_id andNavId:@"" andLabel:label.nav_id andSort:sortStr andRows:[NSString stringWithFormat:@"%d",ZRRows] andPage:@"1" andSuccess:^(id success) {

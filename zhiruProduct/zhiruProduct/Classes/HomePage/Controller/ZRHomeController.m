@@ -92,13 +92,19 @@
 
 - (void)setUpButtons
 {
+    //上线注释
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    address.Longitude = @"103";
+    address.Latitude = @"26";
+
     ZRHomeHeadView * headView = [[ZRHomeHeadView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 409)];
     headView.model = _model;
     
     WS(ws)
     headView.clickBtn = ^(NSInteger index){
         NSArray * mainNav = _model.mainNav;
-         ZRUserAddress * userAdd = [[ZRUserAddress alloc] init];
+         ZRUserAddress * userAdd = [ZRUserAddress sharedInstance];
+
         [CustomHudView show];
         switch (index) {
             case 0: //寻味
@@ -136,12 +142,12 @@
             case 1: //团购
             {
 
-                if (/* DISABLES CODE */ (1)) {
-                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-                    [self.navigationController  pushViewController:setUpView animated:YES];
-                    [CustomHudView dismiss];
-                    return;
-                }
+//                if (/* DISABLES CODE */ (1)) {
+//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+//                    [self.navigationController  pushViewController:setUpView animated:YES];
+//                    [CustomHudView dismiss];
+//                    return;
+//                }
                  [ZRHomePageRequst requestGetMainNavWithUrl:[NSString stringWithFormat:@"%@group/index",HOST]  andLongitude:userAdd.Longitude andLatitude:userAdd.Latitude andSuccess:^(NSMutableArray *marr) {
                      
                      ZRHomeNavModel * model = marr[0];
@@ -193,12 +199,12 @@
             case 2: //订餐
             {
                 
-                if (/* DISABLES CODE */ (1)) {
-                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-                    [self.navigationController  pushViewController:setUpView animated:YES];
-                    [CustomHudView dismiss];
-                    return;
-                }
+//                if (/* DISABLES CODE */ (1)) {
+//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+//                    [self.navigationController  pushViewController:setUpView animated:YES];
+//                    [CustomHudView dismiss];
+//                    return;
+//                }
                 [ZRHomePageRequst requestOrderingListWithLongitude:userAdd.Longitude  andLatitude:userAdd.Latitude andLabel:nil andSuccess:^(id success) {
                     
                     
@@ -376,7 +382,7 @@
         self.edgesForExtendedLayout = UIRectEdgeAll;
     }
     //等model
-    ZRUserAddress * address = [[ZRUserAddress alloc] init];
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     _isTop = YES;
     _longitude = address.Longitude;
     _latitude = address.Latitude;

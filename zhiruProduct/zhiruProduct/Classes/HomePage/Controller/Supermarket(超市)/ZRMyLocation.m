@@ -147,6 +147,8 @@
     //NSLog(@"newLocation lng:%f", location.coordinate.longitude);
     
     CLLocationCoordinate2D coodi = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    
+    [CustomHudView show];
     [self.myGeocoder reverseGeocodeCoordinate:coodi completionHandler:^(GMSReverseGeocodeResponse * response, NSError * error) {
         
         GMSAddress *address = response.firstResult;
@@ -158,12 +160,12 @@
             
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kCoodinate_Noti object:nil userInfo:@{@"longitude":[NSString stringWithFormat:@"%f",address.coordinate.longitude],@"latitude":[NSString stringWithFormat:@"%f",address.coordinate.latitude]}];
-
+            [CustomHudView dismiss];
         } else {
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCoodinate_Noti object:nil userInfo:@{@"longitude":[NSString stringWithFormat:@"0"],@"latitude":[NSString stringWithFormat:@"0"]}];
             
-            
-            
+            [CustomHudView dismiss];
         }
 
         

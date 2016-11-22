@@ -287,6 +287,7 @@
 		A36D266D1D98D237004D1A30 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A36D266B1D98D237004D1A30 /* libssl.a */; };
 		A36D27581D98ED30004D1A30 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = A36D27561D98ED30004D1A30 /* Order.m */; };
 		A36D275F1D992164004D1A30 /* ZRAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A36D275E1D992164004D1A30 /* ZRAlertControl.m */; };
+		A38C6A1D1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C6A1C1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m */; };
 		A39E629D1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E629C1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m */; };
 		A3AC46DF1DB77ABD00ACC194 /* ZRAddKaOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AC46DE1DB77ABD00ACC194 /* ZRAddKaOrderModel.m */; };
 		A3AC46E41DB89FB600ACC194 /* ZROrderDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AC46E31DB89FB600ACC194 /* ZROrderDetailsRequest.m */; };
@@ -1109,6 +1110,8 @@
 		A36D27571D98ED30004D1A30 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		A36D275D1D992164004D1A30 /* ZRAlertControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRAlertControl.h; sourceTree = "<group>"; };
 		A36D275E1D992164004D1A30 /* ZRAlertControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRAlertControl.m; sourceTree = "<group>"; };
+		A38C6A1B1DE2D34A002EBDA8 /* ZRSuperOrderFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSuperOrderFrame.h; sourceTree = "<group>"; };
+		A38C6A1C1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSuperOrderFrame.m; sourceTree = "<group>"; };
 		A39E629B1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGroupBuyingDetailsCell.h; sourceTree = "<group>"; };
 		A39E629C1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGroupBuyingDetailsCell.m; sourceTree = "<group>"; };
 		A3AC46DD1DB77ABD00ACC194 /* ZRAddKaOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRAddKaOrderModel.h; sourceTree = "<group>"; };
@@ -2249,6 +2252,7 @@
 		A312824A1D965F3800C286AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A38C6A1A1DE2D2DF002EBDA8 /* ViewModel */,
 				2ECD0AAD1DDD9A5D0046440C /* MessageModel */,
 				2E887F911DC86D13001FB204 /* SettingModel */,
 				2EC2A9311DA8D8620021B0F0 /* OrderModel */,
@@ -3099,6 +3103,15 @@
 			path = openssl;
 			sourceTree = "<group>";
 		};
+		A38C6A1A1DE2D2DF002EBDA8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A38C6A1B1DE2D34A002EBDA8 /* ZRSuperOrderFrame.h */,
+				A38C6A1C1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A39E629A1D3F25C7003E77EE /* 团购详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3709,10 +3722,10 @@
 		BDB5424A1D1A7D5A0019C34D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BD769F911D5C672700F49EDD /* CustomProgress */,
 				2ECD09E01DD1E9A70046440C /* MD5 */,
 				BDDF616C1DC739C1003F22EC /* kaifazhong */,
 				2EAAC5CE1DBF43540027D964 /* KeychainItemWrapper */,
-				BD769F911D5C672700F49EDD /* CustomProgress */,
 				BD206B0C1DAE417E00AFA14A /* OrderPicker */,
 				2E88B4831D87E44600E2A8DD /* AlertLabel */,
 				A3FE5CC91D43085D00B6088E /* MJPhotoBrowser */,
@@ -4655,6 +4668,7 @@
 				A31283931D965F3800C286AF /* ZROrderingOrderCell.m in Sources */,
 				A32523241DB20B30000B4520 /* ZRGroupCommentImgModel.m in Sources */,
 				BD4797491D5471BB00CD4305 /* JSDropDownMenu.m in Sources */,
+				A38C6A1D1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m in Sources */,
 				A31EAC8C1D2E3DF9004FD2B6 /* ZRDiscoveryTableCell.m in Sources */,
 				A312837B1D965F3800C286AF /* ZRLoginView.m in Sources */,
 				2E3A0DB71D9BBBAE006DF7AF /* ZRVipRuleController.m in Sources */,
