@@ -19,7 +19,9 @@
 
 #import "ZRPayOrderRequest.h"
 
-@interface ZRImmediatelyExchangeController ()<UITableViewDataSource, UITableViewDelegate, ZRImmediatelyExchangeDelegate, ZRSelectAddressControllerDelegate>
+#define textViewHeight     100
+
+@interface ZRImmediatelyExchangeController ()<UITableViewDataSource, UITableViewDelegate, ZRImmediatelyExchangeDelegate, ZRSelectAddressControllerDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -29,6 +31,8 @@
 @property (nonatomic, strong) UIButton *exChangeBtn;
 
 @property (nonatomic, strong) ZRUserFindAddressModel *addressModel;
+//备注
+@property (nonatomic, strong) UITextView *txView;
 
 @end
 
@@ -90,7 +94,7 @@
 {
     if (!_exChangeBtn) {
         _exChangeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 295, 40)];
-        _exChangeBtn.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        _exChangeBtn.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT-64-40);
         _exChangeBtn.backgroundColor = RGBCOLOR(245, 57, 66);
         [_exChangeBtn setTitle:@"立即兑换" forState:UIControlStateNormal];
         [_exChangeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -104,10 +108,22 @@
 }
 
 
+-(UITextView *)txView
+{
+    if (!_txView) {
+        CGFloat x = 15*SCREEN_WIDTH/375;
+        CGFloat y = 10;
+        _txView = [[UITextView alloc] initWithFrame:CGRectMake(x, y, SCREEN_WIDTH-2*x, textViewHeight)];
+        _txView.delegate = self;
+    }
+    return _txView;
+}
+
+
 #pragma mark - UITableViewDataSource methods
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 
@@ -115,6 +131,8 @@
 {
     if (section == 0) {
         return 1;
+    }else if (section == 2){
+        return 2;
     }else
         return [self.dataArray count];
 }
@@ -123,15 +141,25 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZRImmediatelyExchangeCell *cell = [ZRImmediatelyExchangeCell cellWithTable:self.tableView IndexPath:indexPath];
+    cell.textLabel.text = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     if (indexPath.section == 0) {
         cell.addModel = self.addressModel;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }else{
+    }else if(indexPath.section == 1){
         cell.myPoints = self.mypoints;
         cell.addressArr = self.dataArray;
 
+    }else{
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"备注";
+            cell.textLabel.font = CustomFont(15);
+            cell.textLabel.textColor = RGBCOLOR(85, 85, 85);
+        }else{
+            [cell.contentView addSubview:self.txView];
+        }
+        
     }
     
     
@@ -178,10 +206,21 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat hei;
     if (indexPath.section == 0) {
-        return 100*SCREEN_HEIGHT/667;
-    }else
-        return 40*SCREEN_HEIGHT/667;
+        hei = 100*SCREEN_HEIGHT/667;
+    }else if(indexPath.section == 1){
+        hei = 40*SCREEN_HEIGHT/667;
+    }else{
+        if (indexPath.row == 0) {
+            hei = 40*SCREEN_HEIGHT/667;
+        }else{
+            hei = textViewHeight+20;
+        }
+        
+    }
+    
+    return hei;
 }
 
 

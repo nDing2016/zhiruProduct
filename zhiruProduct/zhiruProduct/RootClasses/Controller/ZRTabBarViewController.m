@@ -59,7 +59,7 @@
     //定位
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod:) name:@"kCoodinate_Noti" object:nil];
 
-//    [[ZRMyLocation shareInstance] getMylocation];
+    [[ZRMyLocation shareInstance] getMylocation];
     
     // 设置tabBar
     [self setUpTabBar];

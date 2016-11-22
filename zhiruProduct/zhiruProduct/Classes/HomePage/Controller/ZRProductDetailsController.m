@@ -330,6 +330,10 @@
         if (indexPath.row == 2) {
             //跳转到地图
             ZRMapViewController *mapVC = [[ZRMapViewController alloc] init];
+            
+            mapVC.longitude = self.model.longitude;
+            mapVC.latitude = self.model.latitude;
+            
             [self.navigationController pushViewController:mapVC animated:YES];
         }
         

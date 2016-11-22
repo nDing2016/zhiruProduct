@@ -9,6 +9,7 @@
 #import "ZRCommentRequest.h"
 
 static NSString * const zmyBusinessComment= @"user/myBusinessComment";
+static NSString * const zbusinessCommentDelete= @"businessComment/delete";
 
 
 @implementation ZRCommentRequest
@@ -34,14 +35,18 @@ static NSString * const zmyBusinessComment= @"user/myBusinessComment";
     [parameters setObject:page forKey:@"page"];
     
     [ZRAFNRequests post:url parameters:parameters success:^(id result) {
-        if ([result[@"code"] isEqualToString:@"S000"]) {
-            if (callback) {
-                callback(result[@"data"],nil);
-            }
-        }else{
-            if (callback) {
-                callback(result[@"message"],nil);
-            }
+//        if ([result[@"code"] isEqualToString:@"S000"]) {
+//            if (callback) {
+//                callback(result[@"data"],nil);
+//            }
+//        }else{
+//            if (callback) {
+//                callback(result[@"code"],nil);
+//            }
+//        }
+        
+        if (callback) {
+            callback(result,nil);
         }
         
         
@@ -52,5 +57,37 @@ static NSString * const zmyBusinessComment= @"user/myBusinessComment";
     }];
     
 }
+
+
+
+
+
+
+/**
+ *  店铺评论－删除评论
+ *
+ *  @param commentId 评论id
+ *  @param callback  回调
+ */
++ (void)requestForBusinessCommentDeleteWithCommentId:(NSString *)commentId
+                                            CallBack:(ZRCommentCallBack)callback
+{
+    NSString *url = [HOST stringByAppendingString:zbusinessCommentDelete];
+    [ZRAFNRequests post:url parameters:@{@"commentId":commentId} success:^(id result) {
+        
+        if (callback) {
+            callback(result, nil);
+        }
+        
+    } failure:^(id error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"网络请求失败"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
+        
+    }];
+}
+
+
+
 
 @end

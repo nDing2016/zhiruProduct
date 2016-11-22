@@ -187,9 +187,10 @@
             if (indexPath.row == 0 || indexPath.row == 3) {
                 height = 40*SCREEN_HEIGHT/667;
             }else if (indexPath.row == 1){
-                height = (30*self.productsArr.count+10)*SCREEN_HEIGHT/667;
+                //height = (30*self.productsArr.count+10)*SCREEN_HEIGHT/667;
+                height = self.orderFrame.cellHeight+10+10*self.productsArr.count;
             }else{
-                height = 85*SCREEN_HEIGHT/667;
+                height = 100*SCREEN_HEIGHT/667;
             }
             
         }else if (indexPath.section == 2){

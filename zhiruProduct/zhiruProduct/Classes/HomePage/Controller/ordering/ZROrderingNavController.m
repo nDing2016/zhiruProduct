@@ -67,7 +67,7 @@
     //点击筛选条件
     
     ZRLabelModel * label = _model.label[labelIndex];
-    ZRUserAddress * address = [[ZRUserAddress alloc] init];
+    ZRUserAddress * address = [ZRUserAddress   sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestOrderingListQueryWithLongitude:address.Longitude andLatitude:address.Latitude andDistance:distance andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows] andPage:[NSString stringWithFormat:@"%d",1] andSuccess:^(id success) {
         NSArray * successArr = success;

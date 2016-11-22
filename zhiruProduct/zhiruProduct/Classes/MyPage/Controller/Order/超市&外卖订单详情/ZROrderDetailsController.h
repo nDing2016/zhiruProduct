@@ -8,6 +8,8 @@
 
 #import "ZRBaseViewController.h"
 #import "ZRSuperDetailsModel.h"
+#import "ZRSuperOrderFrame.h"
+
 typedef NS_ENUM(NSInteger, OrderFormStatus) {
     OrderFormSubmitSucceed,          // 订单提交成功
     OrderFormPayoff,                 // 订单已支付
@@ -51,5 +53,8 @@ typedef NS_ENUM(NSInteger, OrderDetailsType) {
 @property (nonatomic, copy) NSString *orderImageUrl;
 
 @property (nonatomic, strong) ZRSuperDetailsModel *kaDetailModel;
+
+
+@property (nonatomic, strong) ZRSuperOrderFrame *orderFrame;
 
 @end

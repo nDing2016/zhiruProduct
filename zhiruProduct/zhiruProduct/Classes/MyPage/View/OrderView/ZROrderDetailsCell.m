@@ -66,20 +66,21 @@
         
         
     }else if (self.orderType == 1 || self.orderType == 3){
+        CGSize goodsSize = CGSizeZero;
+        CGFloat h = 0.0;
         //订餐/外卖订单详情
         //超市订单详情
-        
         if (self.idxPath.section == 1) {
             if (self.idxPath.row == 1) {
-                CGSize size;
                 for (int i=0; i<self.productsArr.count; i++) {
                     _superOrderDetailModel = self.productsArr[i];
-                    size = [NSString getSize:_superOrderDetailModel.goods_name strFont:CustomFont(13) maxSize:CGSizeMake(260*SCREEN_WIDTH/375-15, self.height)];
-                    [self drawWithStr:_superOrderDetailModel.goods_name Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10*(i+1)+size.height*i) Size:CGSizeMake(260*SCREEN_WIDTH/375-15, self.height)];
+                    h = h+goodsSize.height+10;
+                    goodsSize = [NSString getSize:_superOrderDetailModel.goods_name strFont:CustomFont(13) maxSize:CGSizeMake(260*SCREEN_WIDTH/375-15, SCREEN_HEIGHT)];
+                    [self drawWithStr:_superOrderDetailModel.goods_name Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, h) Size:CGSizeMake(260*SCREEN_WIDTH/375-15, goodsSize.height)];
                     
-                    [self drawWithStr:[NSString stringWithFormat:@"x%@",_superOrderDetailModel.num] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(260*SCREEN_WIDTH/375, 10*(i+1)+size.height*i)];
+                    [self drawWithStr:[NSString stringWithFormat:@"x%@",_superOrderDetailModel.num] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(260*SCREEN_WIDTH/375, h)];
                     
-                    [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[_superOrderDetailModel.price floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 10*(i+1)+size.height*i)];
+                    [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[_superOrderDetailModel.price floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, h)];
     
                 }
     

@@ -16,6 +16,8 @@
 #import "ZRSupermarketOrderViewController.h"
 
 
+
+
 @interface ZRSuperOrderDetailsController ()
 
 @property (nonatomic, strong) ZRSuperDetailsModel *superDetailsModel;
@@ -133,14 +135,20 @@
         [self.tableView.mj_header endRefreshing];
         if (details) {
             ws.superDetailsModel = [ZRSuperDetailsModel mj_objectWithKeyValues:details];
-            self.sectionNum = 4;
+            
+            ws.orderFrame = [[ZRSuperOrderFrame alloc] init];
+            ws.orderFrame.superDetailsModel = ws.superDetailsModel;
+            
+            
+            
+            ws.sectionNum = 4;
             
             if ([ws.superDetailsModel.status isEqualToString:@"0"]) {
-                self.orderDetailsStr = @"订单进行中";
+                ws.orderDetailsStr = @"订单进行中";
             }else if ([ws.superDetailsModel.status isEqualToString:@"1"]){
-                self.orderDetailsStr = @"订单已取消";
+                ws.orderDetailsStr = @"订单已取消";
             }else if ([ws.superDetailsModel.status isEqualToString:@"2"]){
-                self.orderDetailsStr = @"订单已完成";
+                ws.orderDetailsStr = @"订单已完成";
             }
             
             // 订单状态更新时间

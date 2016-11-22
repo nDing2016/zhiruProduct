@@ -236,7 +236,7 @@ static NSString *footerID = @"footerID";
  *  @param ges 手势
  */
 - (void)tapTitleView:(UITapGestureRecognizer *)ges
-{
+{    
     ZRSelectRecieveGoodsAddressController *selectRecieveGoodsAddressVC = [[ZRSelectRecieveGoodsAddressController alloc] init];
     ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:selectRecieveGoodsAddressVC];
     [self presentViewController:nav animated:YES completion:^{
