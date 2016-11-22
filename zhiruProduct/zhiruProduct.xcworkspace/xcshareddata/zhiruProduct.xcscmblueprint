@@ -1,30 +1,32 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C5C6E291F94964637A8E8C8F418B067CFBE3967E+++018ADCE",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : {
-
-    },
     "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++B28C678" : {
 
     },
-    "39e021df-ee34-7f43-b70d-0e9afd2cbc2c++3563+++4011D18" : {
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : {
 
     },
     "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++F5700F3" : {
 
+    },
+    "39e021df-ee34-7f43-b70d-0e9afd2cbc2c++3563+++4011D18" : {
+
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : 0,
-    "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++B28C678" : 0,
     "39e021df-ee34-7f43-b70d-0e9afd2cbc2c++3563+++4011D18" : 0,
+    "C5C6E291F94964637A8E8C8F418B067CFBE3967E+++018ADCE" : 9223372036854775807,
+    "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++B28C678" : 0,
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : 0,
     "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++F5700F3" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "48FDFFBE-BC42-47F3-882C-342746639BBF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : "ioscode\/",
-    "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++B28C678" : "ZR\/",
     "39e021df-ee34-7f43-b70d-0e9afd2cbc2c++3563+++4011D18" : "",
+    "C5C6E291F94964637A8E8C8F418B067CFBE3967E+++018ADCE" : "zhiruProduct\/",
+    "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++B28C678" : "ZR\/",
+    "665fc1e5-2ca2-4c88-9cf9-4471116b43cf++5293+++65FCC6D" : "ioscode\/",
     "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++F5700F3" : "ZR\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "zhiruProduct",
@@ -50,6 +52,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.62.160\/svn\/zhiru",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8B4E249D8D06B011B9CAAAB550719C0340DA691C+++F5700F3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nDing2016\/zhiruProduct.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C5C6E291F94964637A8E8C8F418B067CFBE3967E+++018ADCE"
     }
   ]
 }
