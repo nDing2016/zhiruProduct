@@ -37,23 +37,31 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小吃快餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB2-qW-fge">
-                        <rect key="frame" x="125" y="75.5" width="48" height="14.5"/>
+                        <rect key="frame" x="171" y="75.5" width="48" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="275-8z-j3H">
+                        <rect key="frame" x="125" y="75" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="d6p-Qa-ci1" firstAttribute="centerY" secondItem="e2F-1E-qts" secondAttribute="centerY" id="5nE-5G-yDx"/>
                     <constraint firstItem="e2F-1E-qts" firstAttribute="leading" secondItem="8D9-Fz-xAO" secondAttribute="leading" id="6Ea-Xe-t9R"/>
+                    <constraint firstItem="dB2-qW-fge" firstAttribute="leading" secondItem="275-8z-j3H" secondAttribute="trailing" constant="15" id="6Ie-Kt-6FX"/>
                     <constraint firstItem="d6p-Qa-ci1" firstAttribute="leading" secondItem="e2F-1E-qts" secondAttribute="trailing" constant="10" id="7Yn-Zd-yfJ"/>
                     <constraint firstItem="8D9-Fz-xAO" firstAttribute="top" secondItem="GXn-43-lvJ" secondAttribute="top" id="EGD-Tu-9Dj"/>
-                    <constraint firstItem="dB2-qW-fge" firstAttribute="bottom" secondItem="GXn-43-lvJ" secondAttribute="bottom" id="KBl-8y-pk0"/>
-                    <constraint firstItem="dB2-qW-fge" firstAttribute="leading" secondItem="e2F-1E-qts" secondAttribute="leading" id="PDo-dP-zMq"/>
+                    <constraint firstItem="275-8z-j3H" firstAttribute="leading" secondItem="e2F-1E-qts" secondAttribute="leading" id="OB9-p6-x9C"/>
                     <constraint firstItem="GXn-43-lvJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Rpz-oZ-U0U"/>
+                    <constraint firstItem="dB2-qW-fge" firstAttribute="bottom" secondItem="275-8z-j3H" secondAttribute="bottom" id="VIL-HI-gHI"/>
                     <constraint firstItem="e2F-1E-qts" firstAttribute="top" secondItem="8D9-Fz-xAO" secondAttribute="bottom" constant="13" id="Wuo-ir-tw9"/>
                     <constraint firstItem="8D9-Fz-xAO" firstAttribute="leading" secondItem="GXn-43-lvJ" secondAttribute="trailing" constant="10" id="YMb-ey-V4u"/>
                     <constraint firstItem="GXn-43-lvJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Ygl-GZ-3pF"/>
+                    <constraint firstItem="275-8z-j3H" firstAttribute="bottom" secondItem="GXn-43-lvJ" secondAttribute="bottom" id="f5B-jJ-Gje"/>
                     <constraint firstAttribute="bottom" secondItem="GXn-43-lvJ" secondAttribute="bottom" constant="10" id="zmd-m2-f0B"/>
                 </constraints>
             </tableViewCellContentView>
@@ -63,6 +71,7 @@
                 <outlet property="businessName" destination="8D9-Fz-xAO" id="ruY-eG-EMQ"/>
                 <outlet property="comment_count" destination="d6p-Qa-ci1" id="vFy-iD-jkO"/>
                 <outlet property="leixing" destination="dB2-qW-fge" id="tB5-N9-i3J"/>
+                <outlet property="weizhi" destination="275-8z-j3H" id="pz8-go-PPR"/>
             </connections>
             <point key="canvasLocation" x="242.5" y="336.5"/>
         </tableViewCell>

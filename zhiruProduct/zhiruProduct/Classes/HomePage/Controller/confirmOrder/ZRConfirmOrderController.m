@@ -445,7 +445,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取商品5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
             
@@ -681,7 +681,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取餐费5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
            
@@ -883,7 +883,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取餐费5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
 
@@ -1365,8 +1365,9 @@ WS(ws)
         return (3 + shouxuMoney + weightMoney) * weather ;
         
     }else if (distance >= 5000 || distance < 10000){
+        CGFloat numb = (distance - 5000)/1000;
         
-       return ((NSInteger)(distance - 5000)/1000 + 3 +shouxuMoney + weightMoney)*weather ;
+       return ([self heixinShangjia:numb] + 3 +shouxuMoney + weightMoney)*weather ;
     }else{
         return -1;
     }
@@ -1377,45 +1378,59 @@ WS(ws)
     //特殊天气
 }
 
+
+//黑心卖家,专用方法,传入原价 返回现价
+- (NSInteger)heixinShangjia :(CGFloat)numb{
+    
+    if (numb - (NSInteger)numb > 0) {
+        return numb ++;
+    }else{
+        return numb;
+    }
+    
+}
+
+
+
 - (CGFloat)getWeight :(CGFloat)weight{
     CGFloat moneyCount = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount];
     if (moneyCount < 30) {
-        return weight;
+        return [self heixinShangjia:weight];
     }else if (moneyCount >= 30 && moneyCount < 60){
-        if (weight - 3 <= 0) {
+        if ([self heixinShangjia:weight] - 3 <= 0) {
             return 0;
         }else{
-            return weight - 3;
+            return [self heixinShangjia:weight] - 3;
         }
     }else if (moneyCount >= 60 && moneyCount < 90){
-        if (weight - 6 <= 0) {
+        if ([self heixinShangjia:weight] - 6 <= 0) {
             return 0;
         }else{
-            return weight - 6;
+            return [self heixinShangjia:weight] - 6;
         }
     }else if(moneyCount >= 90 && moneyCount < 120){
-        if (weight - 9 <= 0) {
+        if ([self heixinShangjia:weight] - 9 <= 0) {
             return 0;
         }else{
-            return weight - 9;
+            return [self heixinShangjia:weight] - 9;
         }
     }else if (moneyCount>= 120 && moneyCount < 150){
-        if (weight - 12 <= 0) {
+        if ([self heixinShangjia:weight] - 12 <= 0) {
             return 0;
         }else{
-            return weight - 12;
+            return [self heixinShangjia:weight] - 12;
         }
     }else if (moneyCount>= 150 && moneyCount < 180){
-        if (weight - 15 <= 0) {
+        if ([self heixinShangjia:weight] - 15 <= 0) {
             return 0;
         }else{
-            return weight - 15;
+            return [self heixinShangjia:weight] - 15;
         }
     }else{
-        if (weight - 18 <= 0) {
+        if ([self heixinShangjia:weight] - 18 <= 0) {
             return 0;
         }else{
-            return weight - 18;
+            return [self heixinShangjia:weight] - 18;
         }
     }
 }

@@ -11,5 +11,6 @@
 @interface ZRProductDetailsController : ZRBaseViewController
 
 @property (nonatomic , copy) NSString * businessId;
+@property (nonatomic , copy) NSString * regionName;
 @property (nonatomic , assign) BOOL isGame; // 是否是 娱乐店铺进入,是yes 不是默认no
 @end
