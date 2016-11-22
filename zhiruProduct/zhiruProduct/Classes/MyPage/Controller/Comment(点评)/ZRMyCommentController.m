@@ -113,32 +113,50 @@
     WS(ws)
     [ZRCommentRequest requestForMyBusinessCommentWithScreen:@"0" Rows:@"4" Page:@"1" CallBack:^(id details, NSError *error) {
         
-        [ws.tableView.mj_header endRefreshing];
-        
-        ws.goodReviewsCount = details[@"praise"];
-        ws.badReviewsCount = details[@"bad"];
-        ws.allReviewsCount = details[@"comment_count"];
-        ws.imgReviewsCount = details[@"img_comment"];
-        
-        ws.commentListArray = [NSMutableArray array];
-        [details[@"commentList"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
-            [ws.commentListArray addObject:model];
-        }];
-        
-        
-        if (ws.commentListArray.count == 4) {
-            ws.tableView.mj_footer.hidden = NO;
-            ws.tableView.mj_footer.state = MJRefreshStateIdle;
- 
+        if ([details[@"code"] isEqualToString:@"S000"]) {
+            id datas = details[@"data"];
+            
+            [ws.tableView.mj_header endRefreshing];
+            
+            ws.goodReviewsCount = datas[@"praise"];
+            ws.badReviewsCount = datas[@"bad"];
+            ws.allReviewsCount = datas[@"comment_count"];
+            ws.imgReviewsCount = datas[@"img_comment"];
+            
+            ws.commentListArray = [NSMutableArray array];
+            [datas[@"commentList"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
+                [ws.commentListArray addObject:model];
+            }];
+            
+            
+            if (ws.commentListArray.count == 4) {
+                ws.tableView.mj_footer.hidden = NO;
+                ws.tableView.mj_footer.state = MJRefreshStateIdle;
+                
+            }
+            
+            [ws.tableView reloadData];
+            
+        }else{
+            [ws.tableView.mj_header endRefreshing];
+            //用户未登录
+            [ZRAlertControl notLoginAlert:self goLogin:^{
+                
+                //弹出登录页面
+                ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+                ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+                
+                [self presentViewController:nav animated:YES completion:nil];
+                
+                
+            }];
+            
+            
         }
-        
-        [ws.tableView reloadData];
         
         
     }];
-
-    
     
 }
 
@@ -245,6 +263,111 @@
 
     
 }
+
+
+
+
+
+
+
+//实现左滑删除方法
+
+//第一个参数：表格视图对象
+
+//第二个参数：编辑表格的方式
+
+//第三个参数：操作cell对应的位置
+
+-(void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath
+
+{
+    if (indexPath.section == 1) {
+        //如果是删除
+        
+        if(editingStyle==UITableViewCellEditingStyleDelete)
+            
+        {
+            
+            [SVProgressHUD show];
+            
+            ZRCommentListModel *model = self.commentListArray[indexPath.row];
+            
+            [ZRCommentRequest requestForBusinessCommentDeleteWithCommentId:model.commentId CallBack:^(id details, NSError *error) {
+                
+                if ([details[@"code"] isEqualToString:@"S000"]) {
+                    [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+                    [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+                    
+                    //点击删除按钮调用这里的代码
+                    
+                    //        1.数据源删除
+                    
+                    
+                    
+                    [self.commentListArray removeObjectAtIndex:indexPath.row];
+                    
+                    //        2.UI上删除
+                    
+                    //删除表视图的某个cell
+                    
+                    /*
+                     
+                     第一个参数：将要删除的所有的cell的indexPath组成的数组
+                     
+                     第二个参数：动画
+                     
+                     */
+                    
+                    //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    //将整个表格视图刷新也可以实现在UI上删除的效果，只不过它要重新执行一遍所有的方法，效率很低
+                    
+                    [tableView reloadData];
+                    
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"删除失败"];
+                    [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+                    
+                    
+                }
+                
+                
+            }];
+            
+            
+            
+            
+        }
+ 
+    }
+    
+    
+}
+
+//修改删除按钮为中文的删除
+
+-(NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexPath
+
+{
+    
+    return @"删除";
+    
+}
+
+//是否允许编辑行，默认是YES
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    return YES;
+    
+}
+
+
+
+
+
 
 
 
