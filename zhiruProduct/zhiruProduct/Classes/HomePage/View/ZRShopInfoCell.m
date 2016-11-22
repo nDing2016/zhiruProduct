@@ -41,7 +41,7 @@
     
     _openTIme.text = [NSString stringWithFormat:@"营业时间 : %@",model.open_time];
     
-    _remarks.text =[NSString stringWithFormat:@"商家信息 : %@", model.remarks];
+    _remarks.text =[NSString stringWithFormat:@"店铺公告 : %@", model.remarks];
 }
 
 - (void)awakeFromNib {

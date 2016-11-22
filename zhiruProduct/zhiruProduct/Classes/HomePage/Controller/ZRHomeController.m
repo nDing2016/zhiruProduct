@@ -92,10 +92,7 @@
 
 - (void)setUpButtons
 {
-    //上线注释
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-    address.Longitude = @"103";
-    address.Latitude = @"26";
+   
 
     ZRHomeHeadView * headView = [[ZRHomeHeadView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 409)];
     headView.model = _model;
@@ -124,7 +121,7 @@
                     
                     NSDictionary * screeningDict = [NSDictionary dictionaryGetScreeningWithModel:model isPaixu : YES];
                     
-                    ZRLookForTasteController * lookVC = [[ZRLookForTasteController alloc] initWithTitleArr:@[@"火锅",@"烧烤",@"川湘菜",@"粤菜",@"江浙菜",@"米线面食",@"小吃",@"甜品"] andScreeningDict: screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序",@"筛选"] andTitleImgArr:@[@"x---huoguo",@"shaokao",@"chuancai",@"yuecai",@"jiangzhecai",@"mianshi",@"xiaochi",@"x_tiandian-1"] ];
+                    ZRLookForTasteController * lookVC = [[ZRLookForTasteController alloc] initWithTitleArr:@[@"火锅",@"烧烤",@"川湘菜",@"粤菜",@"江浙菜",@"米线面食",@"小吃",@"甜品"] andScreeningDict: screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:@[@"x---huoguo",@"shaokao",@"chuancai",@"yuecai",@"jiangzhecai",@"mianshi",@"xiaochi",@"x_tiandian-1"] ];
                     lookVC.model = model;
 //                    lookVC.modelArr = model.businessMsg;
                     lookVC.title = modelUrl.nav_name;
@@ -148,6 +145,7 @@
 //                    [CustomHudView dismiss];
 //                    return;
 //                }
+                
                  [ZRHomePageRequst requestGetMainNavWithUrl:[NSString stringWithFormat:@"%@group/index",HOST]  andLongitude:userAdd.Longitude andLatitude:userAdd.Latitude andSuccess:^(NSMutableArray *marr) {
                      
                      ZRHomeNavModel * model = marr[0];
@@ -219,7 +217,7 @@
                     }
                     
                     
-                    ZROrderingController * orderingVC = [[ZROrderingController alloc] initWithTitleArr:@[@"简餐",@"川菜",@"粤菜",@"私厨",@"东北菜",@"甜品",@"待定",@"待定"] andScreeningDict:@{@"地理":@[@"3km以内",@"3km-5km",@"5km-8km"],@"品类": labelMarr ,@"排序":@[@"智能排序",@"离我最近",@"评价最好",@"口感最佳",@"环境最佳",@"服务最佳",@"设施最佳",@"效果最佳",@"销量最高",@"价格最低",@"价格最高",@"新品"],@"筛选":@[@"支持自取",@"在线支付",@"XX专送",@"优惠活动"]} andQueryTitleArr:@[@"地理",@"品类",@"排序",@"筛选"] andTitleImgArr:@[@"d_chuangxiangcai",@"d_yuecai",@"d_jiancan",@"d_chaocai",@"d_jiangzhecai",@"d_mianshi",@"d_xiaochitianpin",@"d_sichu"]];
+                    ZROrderingController * orderingVC = [[ZROrderingController alloc] initWithTitleArr:@[@"简餐",@"川菜",@"粤菜",@"私厨",@"东北菜",@"甜品",@"待定",@"待定"] andScreeningDict:@{@"地理":@[@"3km以内",@"3km-5km",@"5km-8km"],@"品类": labelMarr ,@"排序":@[@"智能排序",@"离我最近",@"评价最好",@"口感最佳",@"环境最佳",@"服务最佳",@"设施最佳",@"效果最佳",@"销量最高",@"价格最低",@"价格最高",@"新品"],@"筛选":@[@"支持自取",@"在线支付",@"XX专送",@"优惠活动"]} andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:@[@"d_chuangxiangcai",@"d_yuecai",@"d_jiancan",@"d_chaocai",@"d_jiangzhecai",@"d_mianshi",@"d_xiaochitianpin",@"d_sichu"]];
                     
                     orderingVC.dataArr = model;
                     
@@ -242,7 +240,10 @@
 //                }
 //                ZRNavModel * modelUrl = mainNav[3];
                 
-                   [ZRHomePageRequst requestGetMainNavWithUrl:[NSString stringWithFormat:@"%@recreation/index",HOST ]  andLongitude:_longitude andLatitude:_latitude andSuccess:^(NSMutableArray *marr) {
+                
+                ZRUserAddress * address = [ZRUserAddress sharedInstance];
+                
+                   [ZRHomePageRequst requestGetMainNavWithUrl:[NSString stringWithFormat:@"%@recreation/index",HOST ]  andLongitude:address.Longitude andLatitude:address.Latitude andSuccess:^(NSMutableArray *marr) {
                        
                        ZRHomeNavModel * model = marr[0];
                        //地理
@@ -263,7 +264,7 @@
                        
                        NSDictionary * screeningDict = @{@"地理":regionMarr, @"品类":labelMarr , @"排序":@[@"离我最近",@"评价最好",@"设施最佳",@"环境最佳",@"服务最佳"],@"筛选":@[@"优惠",@"营业中",@"新店"]};
                        
-                       ZREntertainmentController * entertainmentVC = [[ZREntertainmentController alloc] initWithTitleArr:@[@"KTV",@"密室",@"台球",@"桌球"] andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序",@"筛选"] andTitleImgArr:@[@"y_ktv",@"y_mishitaotuo",@"y_zuoqiu",@"y_zhuoyou"]];
+                       ZREntertainmentController * entertainmentVC = [[ZREntertainmentController alloc] initWithTitleArr:@[@"KTV",@"密室",@"台球",@"桌球"] andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:@[@"y_ktv",@"y_mishitaotuo",@"y_zuoqiu",@"y_zhuoyou"]];
                        
                        entertainmentVC.longitude = _longitude;
                        entertainmentVC.latitude = _latitude;
@@ -312,7 +313,7 @@
                      
                     NSDictionary * screeningDict = @{@"地理":regionMarr, @"品类":labelMarr , @"排序":@[@"离我最近",@"评价最好",@"效果最佳",@"环境最佳",@"服务最佳"],@"筛选":@[@"优惠",@"营业中",@"新店"]};
                      
-                     ZRBeautyController * beautyVC = [[ZRBeautyController alloc] initWithTitleArr:@[@"美发",@"美甲",@"美容",@"纤体"] andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序",@"筛选"] andTitleImgArr:@[@"l_MEIFA",@"L_MEIJIA",@"LI_MEIRONG",@"LIREN_XIANTI"]];
+                     ZRBeautyController * beautyVC = [[ZRBeautyController alloc] initWithTitleArr:@[@"美发",@"美甲",@"美容",@"纤体"] andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:@[@"l_MEIFA",@"L_MEIJIA",@"LI_MEIRONG",@"LIREN_XIANTI"]];
                      beautyVC.title = @"丽人";
                      beautyVC.model = model;
                      beautyVC.latitude = _latitude;
@@ -381,11 +382,17 @@
     {
         self.edgesForExtendedLayout = UIRectEdgeAll;
     }
-    //等model
+    
+    //上线注释
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    address.Longitude = @"103";
+    address.Latitude = @"26";
+    
+    //等model
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     _isTop = YES;
-    _longitude = address.Longitude;
-    _latitude = address.Latitude;
+//    _longitude = address.Longitude;
+//    _latitude = address.Latitude;
     
 
    
@@ -637,6 +644,7 @@
     
     ZRBusinessModel * model = _model.businessMsg[indexPath.row];
     detailsCV.businessId = model.businessId;
+    detailsCV.regionName = model.regionName;
     detailsCV.title = model.name;
     
     [self.navigationController pushViewController:detailsCV animated:YES];
@@ -718,7 +726,10 @@
 
 - (void)getHomeData{
     WS(ws)
-    [ZRHomePageRequst requestGetAppHomePageWithLongitude:@"116.359751000" andLatitude:@"39.936868000" andSuccess:^(NSMutableArray *marr) {
+    
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    
+    [ZRHomePageRequst requestGetAppHomePageWithLongitude:address.Longitude andLatitude:address.Latitude andSuccess:^(NSMutableArray *marr) {
         
         
         ZRHomeDataModel * model =marr[0];

@@ -298,10 +298,11 @@ static NSString *ID = @"cell";
  */
 - (void)loadRecommendData
 {
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     
     WS(ws)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [ZRDiscoverRequest requestForRecommentWithLongitude:@"116.359751000" WithLatitude:@"39.936868000" WithCallback:^(id details, NSError *error) {
+        [ZRDiscoverRequest requestForRecommentWithLongitude:address.Longitude WithLatitude:address.Latitude WithCallback:^(id details, NSError *error) {
             
             NSMutableArray *dataArr = [NSMutableArray array];
             NSMutableArray *navClickArr = [NSMutableArray array];
@@ -467,9 +468,10 @@ static NSString *ID = @"cell";
  */
 - (void)loadNewProductData
 {
+     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [ZRDiscoverRequest requestForNewProdectWithLongitude:@"116.359751000" WithLatitude:@"39.936868000" WithCallback:^(id details, NSError *error) {
+        [ZRDiscoverRequest requestForNewProdectWithLongitude:address.Longitude WithLatitude:address.Latitude WithCallback:^(id details, NSError *error) {
             
             NSIndexPath *idx = [NSIndexPath indexPathForItem:2 inSection:0];
             ZRDiscoveryCell *cell = (ZRDiscoveryCell *)[ws.collectionView cellForItemAtIndexPath:idx];

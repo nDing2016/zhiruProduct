@@ -11,4 +11,5 @@
 @interface ZRProductInfoCell : UITableViewCell
 
 @property (nonatomic , strong) ZRBusinessDetailsModel * model;
+@property (nonatomic , copy ) NSString * regionName;
 @end

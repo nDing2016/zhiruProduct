@@ -422,11 +422,12 @@
 {
     //NSLog(@"%@",self.groupId);
     WS(ws)
+     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     //多线程
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //子线程请求数据
         //网络请求
-        [ZRGroupBuyingDetailRequest getGroupBuyingDetailsWithLongitude:@"116.359751000" Latitude:@"39.936868000" GroupId:ws.groupId BusinessId:ws.businessId Callback:^(id details, NSError *error){
+        [ZRGroupBuyingDetailRequest getGroupBuyingDetailsWithLongitude:address.Longitude Latitude:address.Latitude GroupId:ws.groupId BusinessId:ws.businessId Callback:^(id details, NSError *error){
             if (details) {
                 //团购详情里 需要添加是否 收藏
                 _detailModel = [ZRGroupBuyDetailModel mj_objectWithKeyValues:details];
