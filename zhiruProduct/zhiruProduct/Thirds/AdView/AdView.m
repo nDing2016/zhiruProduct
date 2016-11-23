@@ -294,9 +294,12 @@
     if (self.adViewTag == 10000) {
         //超市轮播图专用
     }else{
-        UIImage * rellifeImg = [UIImage imageNamed:@"RellifeArc"];
+        //首页轮播图遮挡
+        UIImage * rellifeImg = [UIImage imageNamed:@"tuceng"];
         UIImageView * rellifeView = [[UIImageView alloc] initWithImage:rellifeImg];
-        rellifeView.frame = CGRectMake(0, self.height - 50, self.width, 50);
+        rellifeView.frame = CGRectMake(0, self.height - 23, self.width, 23);
+        rellifeView.contentMode =   UIViewContentModeScaleAspectFill;
+
         [self addSubview:rellifeView];
     }
     

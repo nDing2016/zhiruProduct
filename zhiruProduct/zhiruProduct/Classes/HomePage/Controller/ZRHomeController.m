@@ -84,6 +84,9 @@
         homeTableView.estimatedRowHeight = 120.0;
         
         homeTableView.tableFooterView = [[UIView alloc] init];
+        
+   
+        
     }
     return _homeTableView ;
 }
@@ -697,12 +700,12 @@
 
 #pragma mark -- 创建右按钮
 - (void)createNavRightBtn{
-    UIButton * rightBtn = [MyControl createButtonWithFrame:CGRectMake(5, 0, 50, 44) ImageName:nil Target:self Action:@selector(shoppingCart) Title:nil];
-    _rightBtn = rightBtn ;
-    
-    [rightBtn setImage:[UIImage imageNamed:@"gouwuche-1"] forState:UIControlStateNormal];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIButton * rightBtn = [MyControl createButtonWithFrame:CGRectMake(5, 0, 50, 44) ImageName:nil Target:self Action:@selector(shoppingCart) Title:nil];
+//    _rightBtn = rightBtn ;
+//    
+//    [rightBtn setImage:[UIImage imageNamed:@"gouwuche-1"] forState:UIControlStateNormal];
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+//    self.navigationItem.rightBarButtonItem = rightItem;
 }
 #pragma mark -- 左按钮点击事件
 

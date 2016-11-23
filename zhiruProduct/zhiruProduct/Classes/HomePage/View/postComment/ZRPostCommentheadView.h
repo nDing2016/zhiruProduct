@@ -23,5 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeholderText;
 @property (weak, nonatomic) IBOutlet UILabel *Tooltips;
 
+@property (weak, nonatomic) IBOutlet UILabel *kouwei;
 
+
+@property (nonatomic , assign) BOOL isGame;
+@property (nonatomic , assign) BOOL isLiren;
 @end

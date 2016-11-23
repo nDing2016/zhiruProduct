@@ -66,7 +66,12 @@
 //        _sectionOneTitleArr = @[@"口味 : 4.9 环境 : 4,9 服务 : 4.9",@"向工街基业百花园北门",@"024 -12345645", @"营业时间 : 8 : 00 - 9 : 00",@"订餐"];
         if (_isGame) {
             _sectionOneTitleArr = @[[NSString stringWithFormat:@"设施 : %@ 环境 : %@ 服务 : %@",_model.gradeOne,_model.gradeTwo,_model.gradeThree], _model.address , _model.tel ,[NSString stringWithFormat:@"营业时间 : %@",_model.open_time] ,_model.is_pack];
-        }else{
+        }else if(_isLiren){
+        
+        _sectionOneTitleArr = @[[NSString stringWithFormat:@"效果 : %@ 环境 : %@ 服务 : %@",_model.gradeOne,_model.gradeTwo,_model.gradeThree], _model.address , _model.tel ,[NSString stringWithFormat:@"营业时间 : %@",_model.open_time] ,_model.is_pack];
+        
+        }
+        else {
             _sectionOneTitleArr = @[[NSString stringWithFormat:@"口味 : %@ 环境 : %@ 服务 : %@",_model.gradeOne,_model.gradeTwo,_model.gradeThree], _model.address , _model.tel ,[NSString stringWithFormat:@"营业时间 : %@",_model.open_time] ,_model.is_pack];
         }
         
@@ -433,6 +438,14 @@
             }
             
             ZRPostCommentController * pCommentVC = [[ZRPostCommentController alloc]  init];
+            
+            if (_isLiren) {
+                pCommentVC.isLiren = YES;
+            }
+            if (_isGame) {
+                pCommentVC.isGame = YES;
+            }
+            
             pCommentVC.title = @"发表评论";
             pCommentVC.businessId = _businessId;
             pCommentVC.commentType = @"1";

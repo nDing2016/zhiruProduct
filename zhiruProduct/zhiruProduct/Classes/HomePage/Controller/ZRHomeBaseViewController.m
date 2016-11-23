@@ -23,7 +23,12 @@
     return _screeningMarr;
 }
 
-
+- (NSMutableArray *)modelArr{
+    if (_modelArr == nil) {
+        _modelArr = [NSMutableArray array];
+    }
+    return _modelArr;
+}
 
 -(UITableView *)myTableView{
     
