@@ -8,7 +8,6 @@
 
 #import "ZRAllReviewsController.h"
 #import "ZRGroupBuyingReviewDetailsCell.h"
-#import "ZRGoupBuyingReviewFrame.h"
 
 #import "ZRHomePageRequst.h"
 #import "ZRCommentListModel.h"
@@ -18,7 +17,7 @@
 @interface ZRAllReviewsController ()<UITableViewDataSource, UITableViewDelegate>
 
 
-@property (nonatomic, strong) ZRGoupBuyingReviewFrame *reviewFrame;
+
 
 
 
@@ -417,13 +416,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-//    ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//    cell.commentListModel = self.commentListArray[indexPath.row];
-//    
-//    ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
-//    [self.navigationController pushViewController:reviewDetailVC animated:YES];
-//    reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
+    ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.commentListModel = self.commentListArray[indexPath.row];
     
+    ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+    [self.navigationController pushViewController:reviewDetailVC animated:YES];
+    reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
+    reviewDetailVC.businessId = self.businessId;
 }
 
 

@@ -6,10 +6,12 @@
 //  Copyright © 2016年 Zhiru. All rights reserved.
 //  点评详情
 
-#import "ZRBaseViewController.h"
+#import "ZRAllReviewsController.h"
 
-@interface ZRReviewDetailController : ZRBaseViewController
+@interface ZRReviewDetailController : ZRAllReviewsController
 
 @property (nonatomic, copy) NSString *commentIdStr;
+
+@property (nonatomic, copy) NSString *businessId;
 
 @end

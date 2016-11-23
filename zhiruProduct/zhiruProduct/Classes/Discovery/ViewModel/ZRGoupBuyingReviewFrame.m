@@ -45,11 +45,31 @@
     CGSize priceSize = [NSString getSize:_commentListModel.perCapita strFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT)];
     _reviewPriceFrame = CGRectMake(CGRectGetMaxX(_reviewStarFrame)+10, imageY*2+nameSize.height, priceSize.width, priceSize.height);
     
+    
+    //详细评价123
+    CGSize gradeOneSize;
+    
+    
+    
+    
     //内容
     CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
-    //CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
-//    _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY, textWidth, textSize.height);
-    _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY, textWidth, nameSize.height*2+10);
+    
+    
+    if (_commentListModel.gradeOne.length>0) {
+        gradeOneSize = [NSString getSize:_commentListModel.gradeOne strFont:CustomFont(13) maxSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _gradeOneFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewPriceFrame)+imageY, gradeOneSize.width, gradeOneSize.height);
+        
+        
+        CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
+        _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY+gradeOneSize.height+imageY, textWidth, textSize.height);
+    }else{
+        _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY+gradeOneSize.height+imageY, textWidth, nameSize.height*2+10);
+ 
+    }
+
+    
+   
     
     //配图
     CGFloat picX = imageX*2+imageWH;
