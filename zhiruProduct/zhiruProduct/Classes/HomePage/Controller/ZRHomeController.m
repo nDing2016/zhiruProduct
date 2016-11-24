@@ -384,9 +384,9 @@
     }
     
     //上线注释
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-    address.Longitude = @"103";
-    address.Latitude = @"26";
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+//    address.Longitude = @"103";
+//    address.Latitude = @"26";
     
     //等model
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];

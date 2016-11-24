@@ -83,7 +83,9 @@
 
         }];
     }else{
-
+        ZRUserAddress * address = [ZRUserAddress sharedInstance];
+        address.Longitude = noti.userInfo[@"longitude"];
+        address.Latitude = noti.userInfo[@"Latitude"];
    
     }
    
