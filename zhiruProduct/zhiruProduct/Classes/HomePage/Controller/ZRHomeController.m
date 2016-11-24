@@ -85,10 +85,7 @@
         
         homeTableView.tableFooterView = [[UIView alloc] init];
         
-        homeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-             [self loadNewData];
-        }];
-        homeTableView.mj_header.automaticallyChangeAlpha = YES;
+
         
         
     }
@@ -419,9 +416,7 @@
     
     [[ZRMyLocation shareInstance] getMylocation];
     
-//    [self.homeTableView startRefreshWithCallback:^{
-//        [self loadNewData];
-//    }];
+
     
     
     dispatch_queue_t queue = dispatch_queue_create("com.zr.update", DISPATCH_QUEUE_CONCURRENT);
@@ -462,9 +457,14 @@
         
         ZRUserAddress * address = [ZRUserAddress sharedInstance];
         address.Longitude = noti.userInfo[@"longitude"];
-        address.Latitude = noti.userInfo[@"Latitude"];
+        address.Latitude = noti.userInfo[@"latitude"];
         
-        [self loadNewData];
+//        [self loadNewData];
+        
+        
+        [self.homeTableView startRefreshWithCallback:^{
+            [self loadNewData];
+        }];
         
     }
     

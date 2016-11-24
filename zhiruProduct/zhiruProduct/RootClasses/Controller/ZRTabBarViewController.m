@@ -63,31 +63,6 @@
 
 }
 
-
-- (void)noticeMethod : (NSNotification *)noti {
-    
-//    
-//    _longitude =noti.userInfo[@"longitude"];
-//    _latitude = noti.userInfo[@"latitude"];
-//    
-//    [self.homeTableView reloadData];
-    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
-        //取不到坐标
-        ZRErrorController * errorVC = [[ZRErrorController alloc] init];
-        
-        [self presentViewController:errorVC animated:YES completion:^{
-
-        }];
-    }else{
-        ZRUserAddress * address = [ZRUserAddress sharedInstance];
-        address.Longitude = noti.userInfo[@"longitude"];
-        address.Latitude = noti.userInfo[@"Latitude"];
-   
-    }
-   
-}
-
-
 #pragma mark - 添加子控制器
 
 -(void)setUpAllChildController{
