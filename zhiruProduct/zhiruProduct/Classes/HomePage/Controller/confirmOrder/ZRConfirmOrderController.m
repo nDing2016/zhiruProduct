@@ -996,7 +996,7 @@
                 timeView.okBtnClickBlock = ^(NSString * time , NSString * day){
                     //选中的时间,日期
                 
-                    _songdaDict = @{@"取餐时间":[NSString stringWithFormat:@"%@,%@",day,time]};
+                    _songdaDict = @{@"取餐时间":[NSString stringWithFormat:@"%@ %@",day,time]};
                     
                     [ws.myTableView reloadData];
                 };
