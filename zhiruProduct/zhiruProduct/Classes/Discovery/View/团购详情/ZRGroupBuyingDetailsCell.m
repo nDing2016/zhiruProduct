@@ -163,7 +163,7 @@
             btn.backgroundColor = RGBCOLOR(199, 199, 199);
             if (i==3) {
                 btn.frame = CGRectMake(x, 10*2+height, width, height);
-                [btn setTitle:[NSString stringWithFormat:@"带图 (%@)",self.detailsModel.bad] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"有图 (%@)",self.detailsModel.bad] forState:UIControlStateNormal];
             }else if (i == 0) {
                 btn.backgroundColor = RGBCOLOR(127, 199, 254);
                 [btn setTitle:[NSString stringWithFormat:@"全部 (%@)",self.detailsModel.commentCount] forState:UIControlStateNormal];

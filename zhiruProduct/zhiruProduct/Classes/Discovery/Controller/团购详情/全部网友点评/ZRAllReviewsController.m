@@ -8,15 +8,16 @@
 
 #import "ZRAllReviewsController.h"
 #import "ZRGroupBuyingReviewDetailsCell.h"
-#import "ZRGoupBuyingReviewFrame.h"
 
 #import "ZRHomePageRequst.h"
 #import "ZRCommentListModel.h"
 
+#import "ZRReviewDetailController.h"
+
 @interface ZRAllReviewsController ()<UITableViewDataSource, UITableViewDelegate>
 
 
-@property (nonatomic, strong) ZRGoupBuyingReviewFrame *reviewFrame;
+
 
 
 
@@ -138,8 +139,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZRGroupBuyingReviewDetailsCell *cell = [ZRGroupBuyingReviewDetailsCell cellWithTableView:self.tableView ForIndexPath:indexPath];
-    for (UIView *view in cell.contentView.subviews) {
-        [view removeFromSuperview];
+    for (UIView *vi in cell.contentView.subviews) {
+        [vi removeFromSuperview];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
@@ -213,7 +214,7 @@
         btn.backgroundColor = RGBCOLOR(199, 199, 199);
         if (i==3) {
             btn.frame = CGRectMake(x, 10*2+height, width, height);
-            [btn setTitle:[NSString stringWithFormat:@"带图 (%@)",self.imgReviewsCount] forState:UIControlStateNormal];
+            [btn setTitle:[NSString stringWithFormat:@"有图 (%@)",self.imgReviewsCount] forState:UIControlStateNormal];
         }else if (i == 0) {
             [btn setTitle:[NSString stringWithFormat:@"全部 (%@)",self.allReviewsCount] forState:UIControlStateNormal];
         }else if (i == 1){
@@ -408,6 +409,20 @@
         hei = 20*SCREEN_HEIGHT/667;
     }
     return hei;
+}
+
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+    ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.commentListModel = self.commentListArray[indexPath.row];
+    
+    ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+    [self.navigationController pushViewController:reviewDetailVC animated:YES];
+    reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
+    reviewDetailVC.businessId = self.businessId;
 }
 
 

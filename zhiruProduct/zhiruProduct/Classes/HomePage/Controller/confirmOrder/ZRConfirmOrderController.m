@@ -1151,6 +1151,7 @@ WS(ws)
     if (_orderType == Supermarket) {
         if (_addressModel == nil) {
             [SVProgressHUD showErrorWithStatus:@"请添加地址"];
+            [self performSelector:@selector(dismiss) withObject:nil afterDelay:1];
             return; 
         }
     }
@@ -1272,7 +1273,7 @@ WS(ws)
             }
             CGFloat total = price + _peiMoney + _shuiMoney + _weight;
             //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );
-            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.addressId KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
+            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {
@@ -1302,7 +1303,7 @@ WS(ws)
                 [AlertText showAndText:@"确认订单失败"];
             }];
         } else {
-            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.addressId KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Callback:^(id details, NSError *error) {
+            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Callback:^(id details, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (details) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];

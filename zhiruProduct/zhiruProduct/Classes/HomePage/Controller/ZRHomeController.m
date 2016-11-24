@@ -40,7 +40,7 @@
 #import "ZRSetUpController.h"
 #import "ZRSettingRequest.h"
 #import "ZRVersionNumberModel.h"
-
+#import "ZRErrorController.h"
 #import "ZRMyLocation.h"
 #define NAVBAR_CHANGE_POINT 50
 
@@ -85,7 +85,11 @@
         
         homeTableView.tableFooterView = [[UIView alloc] init];
         
-   
+        homeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+             [self loadNewData];
+        }];
+        homeTableView.mj_header.automaticallyChangeAlpha = YES;
+        
         
     }
     return _homeTableView ;
@@ -387,9 +391,9 @@
     }
     
     //上线注释
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-    address.Longitude = @"103";
-    address.Latitude = @"26";
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+//    address.Longitude = @"103";
+//    address.Latitude = @"26";
     
     //等model
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];
@@ -410,9 +414,14 @@
     [self createNavLeftBtn];
 
     
-    [self.homeTableView startRefreshWithCallback:^{
-        [self loadNewData];
-    }];
+    //定位
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod:) name:@"kCoodinate_Noti" object:nil];
+    
+    [[ZRMyLocation shareInstance] getMylocation];
+    
+//    [self.homeTableView startRefreshWithCallback:^{
+//        [self loadNewData];
+//    }];
     
     
     dispatch_queue_t queue = dispatch_queue_create("com.zr.update", DISPATCH_QUEUE_CONCURRENT);
@@ -435,6 +444,31 @@
     });
 }
 
+- (void)noticeMethod : (NSNotification *)noti {
+    
+    //
+    //    _longitude =noti.userInfo[@"longitude"];
+    //    _latitude = noti.userInfo[@"latitude"];
+    //
+    //    [self.homeTableView reloadData];
+    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+        //取不到坐标
+        ZRErrorController * errorVC = [[ZRErrorController alloc] init];
+        
+        [self presentViewController:errorVC animated:YES completion:^{
+            
+        }];
+    }else{
+        
+        ZRUserAddress * address = [ZRUserAddress sharedInstance];
+        address.Longitude = noti.userInfo[@"longitude"];
+        address.Latitude = noti.userInfo[@"Latitude"];
+        
+        [self loadNewData];
+        
+    }
+    
+}
 
 - (void)updateAPP{
     
@@ -756,6 +790,10 @@
     }];
 }
 
+
+-(void)dealloc{
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

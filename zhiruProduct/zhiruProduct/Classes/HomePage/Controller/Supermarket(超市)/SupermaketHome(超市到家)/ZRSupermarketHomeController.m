@@ -42,11 +42,27 @@
     self.navigationItem.title = @"超市到家";
     
     
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFinished:) name:kShoppingCarSelectFinished_Noti object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToShoppingCarNoti:) name:kSupermarketAddToShoppingCar_Noti object:nil];
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [SVProgressHUD show];
+    
     WS(ws)
     if (_supermarketModel.kaId) {
         
         [ZRSupermarketRequest requestSupermarketProductsListWithSuperId:_supermarketModel.kaId Callback:^(id details, NSError *error) {
             
+            [SVProgressHUD dismiss];
             //距离
             ws.longitude = details[@"longitude"];
             ws.latitude = details[@"latitude"];
@@ -99,22 +115,6 @@
 
     
     
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFinished:) name:kShoppingCarSelectFinished_Noti object:nil];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToShoppingCarNoti:) name:kSupermarketAddToShoppingCar_Noti object:nil];
-    
-    
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    //[SVProgressHUD show];
-    
-    
 }
 
 
@@ -127,11 +127,11 @@
     
     
     [super viewWillDisappear:animated];
-    self.rightArr = nil;
-    self.leftArr = nil;
-    for (UIView *view in self.view.subviews) {
-        [view removeFromSuperview];
-    }
+//    self.rightArr = nil;
+//    self.leftArr = nil;
+//    for (UIView *view in self.view.subviews) {
+//        [view removeFromSuperview];
+//    }
     
     
 }

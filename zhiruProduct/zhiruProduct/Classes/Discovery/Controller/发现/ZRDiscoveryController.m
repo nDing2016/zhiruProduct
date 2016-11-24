@@ -90,7 +90,7 @@ static NSString *ID = @"cell";
     
     
     //setUp RightBarButton For NavigationBar
-    [self setUpRightBarButton];
+    //[self setUpRightBarButton];
 
 }
 

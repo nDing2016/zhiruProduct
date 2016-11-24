@@ -123,7 +123,7 @@
  * @param takeMealName    取餐人姓名
  * @param takeMealPhone   取餐人电话
  * @param remarks         备注
- * @param receiptAddress  收获地址id
+ * @param receiptAddress  收获地址id  改为收获地址
  * @param kaOrderGoods    商品数组: [{goodsId:”物品id”,goodsName:”物品名称”,price:”当前物品总            
                                     价”,(加币)num:”当前物品总数”}]
  * @param callBack        成功

@@ -7,6 +7,7 @@
 //
 
 #import "ZRBaseViewController.h"
+#import "ZRGoupBuyingReviewFrame.h"
 
 typedef NS_ENUM(NSInteger, AllReviewsType) {
     ZROrderingReviews,               //订餐评论
@@ -48,5 +49,8 @@ typedef NS_ENUM(NSInteger, AllReviewsType) {
 @property (nonatomic, assign) NSInteger goodPage;
 @property (nonatomic, assign) NSInteger badPage;
 @property (nonatomic, assign) NSInteger picPage;
+
+
+@property (nonatomic, strong) ZRGoupBuyingReviewFrame *reviewFrame;
 
 @end

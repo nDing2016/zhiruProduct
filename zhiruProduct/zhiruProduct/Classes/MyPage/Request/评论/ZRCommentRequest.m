@@ -10,6 +10,7 @@
 
 static NSString * const zmyBusinessComment= @"user/myBusinessComment";
 static NSString * const zbusinessCommentDelete= @"businessComment/delete";
+static NSString * const zbusinessCommentDetails= @"businessComment/details";
 
 
 @implementation ZRCommentRequest
@@ -88,6 +89,30 @@ static NSString * const zbusinessCommentDelete= @"businessComment/delete";
 }
 
 
+
+/**
+ *  店铺评论－评论详情接口
+ *
+ *  @param commentId 评论ID
+ *  @param callback  回调
+ */
++ (void)requestForBusinessCommentDetailsWithCommentId:(NSString *)commentId
+                                             CallBack:(ZRCommentCallBack)callback
+{
+    NSString *url = [HOST stringByAppendingString:zbusinessCommentDetails];
+    [ZRAFNRequests post:url parameters:@{@"commentId":commentId} success:^(id result) {
+        
+        if (callback) {
+            callback(result,nil);
+        }
+        
+        
+    } failure:^(id error) {
+        [SVProgressHUD showErrorWithStatus:@"网络出问题了"];
+        [self performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+        
+    }];
+}
 
 
 @end
