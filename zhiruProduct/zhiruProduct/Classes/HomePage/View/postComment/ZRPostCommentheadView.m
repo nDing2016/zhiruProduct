@@ -27,6 +27,19 @@
     return self;
 }
 
+-(void)setIsLiren:(BOOL)isLiren{
+    _isLiren = isLiren;
+    
+    _kouwei.text = @"效果";
+    
+}
+
+- (void)setIsGame:(BOOL)isGame {
+    _isGame = isGame;
+    
+    _kouwei.text = @"设施";
+}
+
 - (void)createStarsViews{
     StarsView *overallView = [[StarsView alloc] initWithStarSize:CGSizeMake(20, 20) space:5 numberOfStar:5 starHighLightImage:@"xingxing-hei" starNormalImage:@"xingxing-hei"];
     //    view.backgroundColor = [UIColor blackColor];

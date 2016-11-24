@@ -78,6 +78,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ZRProductDetailsController * detailVC = [[ZRProductDetailsController alloc] init];
+    detailVC.isLiren = YES;
     ZRBusinessModel * model = self.modelArr[indexPath.row];
     detailVC.businessId = model.businessId;
     detailVC.title = model.name;

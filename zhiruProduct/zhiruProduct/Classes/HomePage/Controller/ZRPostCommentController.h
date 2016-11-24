@@ -14,4 +14,7 @@
 @property (nonatomic, copy)NSString * commentType; //1 店铺 2 团购
 
 @property (nonatomic , copy) void (^postOkBlock)();
+
+@property (nonatomic , assign) BOOL isGame;
+@property (nonatomic , assign) BOOL isLiren;
 @end

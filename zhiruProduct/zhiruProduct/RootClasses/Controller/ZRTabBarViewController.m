@@ -52,14 +52,9 @@
     [[UITabBar appearance] setShadowImage:[UIImage new]];
     [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
     
+
     // 添加所有子控制器
     [self setUpAllChildController];
-   
-    
-    //定位
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod:) name:@"kCoodinate_Noti" object:nil];
-
-    [[ZRMyLocation shareInstance] getMylocation];
     
     // 设置tabBar
     [self setUpTabBar];
@@ -67,6 +62,7 @@
     [self createNSNotification];
 
 }
+
 
 - (void)noticeMethod : (NSNotification *)noti {
     
@@ -90,6 +86,7 @@
     }
    
 }
+
 
 #pragma mark - 添加子控制器
 

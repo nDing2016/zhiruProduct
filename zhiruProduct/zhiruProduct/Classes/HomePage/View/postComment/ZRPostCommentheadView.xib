@@ -172,6 +172,7 @@
             <connections>
                 <outlet property="Tooltips" destination="BJN-zl-kpd" id="MhC-Ve-P4Y"/>
                 <outlet property="environmentGrade" destination="gLq-xZ-673" id="f06-JK-XJI"/>
+                <outlet property="kouwei" destination="Jye-2d-GIF" id="dMY-rk-AjU"/>
                 <outlet property="overallGrade" destination="A9r-l5-Cya" id="dvs-Tr-Zke"/>
                 <outlet property="perCapita" destination="CdT-S6-1Dk" id="X8y-Gm-DJR"/>
                 <outlet property="placeholderText" destination="xKz-pI-IZg" id="MmQ-1G-TnJ"/>

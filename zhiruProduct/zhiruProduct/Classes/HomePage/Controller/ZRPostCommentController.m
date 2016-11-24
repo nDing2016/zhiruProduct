@@ -101,6 +101,13 @@
 - (void)createHeadView{
     ZRPostCommentheadView * headView = [[[NSBundle mainBundle] loadNibNamed:@"ZRPostCommentheadView" owner:self options:nil] lastObject];
     
+    if (_isGame ) {
+        headView.isGame = YES;
+    }
+    if (_isLiren) {
+        headView.isLiren = YES;
+    }
+    
     _headView = headView;
     headView.userWord.delegate = self;
 //    headView.userWord.text = @"亲, 菜品的口味如何, 环境怎么样 , 服务满意么?";

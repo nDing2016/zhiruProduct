@@ -13,7 +13,7 @@
 
 
 @interface ZRHomeBaseViewController : ZRBaseViewController
-@property (nonatomic , strong) NSArray * modelArr;
+@property (nonatomic , strong) NSMutableArray * modelArr;
 @property (nonatomic , strong) NSArray * titleArr;
 @property (nonatomic , strong) NSDictionary * ScreeningDict;
 @property (nonatomic , strong) NSArray * queryArr;
