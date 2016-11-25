@@ -63,10 +63,11 @@ typedef void(^SupermarketAddShoppingCarCallback) (NSString *codeStr ,NSString *m
  *  @param taxation       税费
  *  @param canadianDollar          总计
  *  @param remarks        备注
- *  @param receiptAddress 收货地址id  改为收获地址
+ *  @param receiptAddress 收货地址id
  *  @param kaOrderGoods   数组
  *  @param takeMealName   取餐人姓名
  *  @param takeMealPhone  取餐人电话
+ *  @param weight         重量
  *  @param callback       回调
  */
 +(void)requestAddKaOrderWithKaId:(NSString *)kaId
@@ -80,8 +81,8 @@ typedef void(^SupermarketAddShoppingCarCallback) (NSString *codeStr ,NSString *m
                     KaOrderGoods:(NSArray *)kaOrderGoods
                     TakeMealName:(NSString *)takeMealName
                    TakeMealPhone:(NSString *)takeMealPhone
+                          Weight:(NSString *)weight
                         Callback:(SupermarketHomeCallback)callback;
-
 
 
 

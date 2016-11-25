@@ -21,7 +21,7 @@
 //图片地址
 @property (nonatomic, copy) NSString *img_url;
 
-//重量单位克
+//重量单位kg
 @property (nonatomic, copy) NSString *weight;
 
 

@@ -23,9 +23,11 @@
 - (void)createContentView
 {
     self.label = [[UILabel alloc] init];
+    [self.label setTextColor:RGBCOLOR(85, 85, 85)];
     [self addSubview:self.label];
     
     self.textField = [[UITextField alloc] init];
+    [self.textField setTextColor:RGBCOLOR(85, 85, 85)];
     [self addSubview:self.textField];
 //    [self.textField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     

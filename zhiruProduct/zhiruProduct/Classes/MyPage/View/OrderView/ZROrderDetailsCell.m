@@ -96,7 +96,7 @@
                 
                 
                 //重量
-                [self drawWithStr:[NSString stringWithFormat:@"(%.2fkg)",[self.superDetailsModel.weight floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15+weightPriceSize.width+15, 20+size.height)];
+                [self drawWithStr:[NSString stringWithFormat:@"(%.3fkg)",[self.superDetailsModel.weight floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15+weightPriceSize.width+15, 20+size.height)];
                 
                 
                 //税费

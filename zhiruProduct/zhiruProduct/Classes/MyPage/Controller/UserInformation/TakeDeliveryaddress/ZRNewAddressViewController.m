@@ -70,19 +70,30 @@
 }
 - (void)actionOkButton
 {
+    
     NSString * name = self.addView.nameView.textField.text;
     NSString * phone = self.addView.phoneNumberView.textField.text;
     NSString * address = [NSString stringWithFormat:@"%@,%@", self.addView.addressView.textView.text, self.addView.addressView.pitchTextField.text];
     NSString * longitude = self.longitude;
     NSString * latitude = self.latitude;
-    WS(weakSelf);
-    [ZRUserInterfaceModel addReceiptAddressWithName:name Phone:phone Longitude:longitude Latitude:latitude Address:address Gender:self.gender UserNewAddressCallBack:^(NSString *message) {
-        //NSLog(@"%@", message);
-        if ([message isEqualToString:@"success"]) {
-            [weakSelf.delegates newAddress];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }
-    }];
+    if (phone.length != 10) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您输入手机号格式有误" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
+    } else {
+        WS(weakSelf);
+        [ZRUserInterfaceModel addReceiptAddressWithName:name Phone:phone Longitude:longitude Latitude:latitude Address:address Gender:self.gender UserNewAddressCallBack:^(NSString *message) {
+            //NSLog(@"%@", message);
+            if ([message isEqualToString:@"success"]) {
+                [weakSelf.delegates newAddress];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
 }
 - (void)actionSelectSexButton:(UIButton *)sender
 {

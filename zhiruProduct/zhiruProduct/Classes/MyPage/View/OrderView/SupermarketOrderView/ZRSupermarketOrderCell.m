@@ -245,8 +245,6 @@
 
     [self.menuPartLabel setText:[NSString stringWithFormat:@"共%ld样,实付 ", _model.list.count]];
 
-    [self.menuPartLabel setText:[NSString stringWithFormat:@"共%ld份,实付 ", (unsigned long)_model.list.count]];
-
     [self.menuMoneyLabel setText:[NSString stringWithFormat:@"$%.2f", _model.canadianDollar.floatValue]];
 }
 /*
