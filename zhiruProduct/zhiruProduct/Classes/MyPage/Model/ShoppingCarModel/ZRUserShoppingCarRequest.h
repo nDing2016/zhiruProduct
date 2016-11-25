@@ -138,6 +138,7 @@
                     CanadianDollar:(NSString *)canadianDollar
                       TakeMealName:(NSString *)takeMealName
                      TakeMealPhone:(NSString *)takeMealPhone
+                        andWeight :(NSString*)weight
                            Remarks:(NSString *)remarks
                     ReceiptAddress:(NSString *)receiptAddress
                       KaOrderGoods:(NSMutableArray *)kaOrderGoods

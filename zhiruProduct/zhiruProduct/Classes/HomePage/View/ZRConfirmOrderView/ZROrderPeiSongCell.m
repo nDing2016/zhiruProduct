@@ -48,6 +48,13 @@
     }
     
 }
+- (IBAction)peisongShuomingClick:(id)sender {
+    
+
+    _peisongShuomingClick();
+    
+    
+}
 
 - (void)awakeFromNib {
     // Initialization code

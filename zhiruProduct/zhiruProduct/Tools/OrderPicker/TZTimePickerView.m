@@ -95,7 +95,7 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"TZTimePickerView" owner:self options:nil] lastObject];
         // 初始化设置
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        self.frame = CGRectMake(20 + mScreenWidth, (mScreenHeight - 240) / 2, mScreenWidth - 40, 240);
+        self.frame = CGRectMake(20 + mScreenWidth, (mScreenHeight - 240) / 2, mScreenWidth - 40, 135);
         [window addSubview:self.bgView];
         [window addSubview:self];
     }
@@ -133,7 +133,8 @@
     [self refreshAllDaysArr];
     
     // 初始化界面
-    _btnArr = @[_btn1,_btn2,_btn3,_btn4,_btn5,_btn6,_btn7,_btn8,_btn9,_btn10,_btn11,_btn12];
+//    _btnArr = @[_btn1,_btn2,_btn3,_btn4,_btn5,_btn6,_btn7,_btn8,_btn9,_btn10,_btn11,_btn12];
+    _btnArr = @[_btn1,_btn2,_btn3,_btn4,_btn5,_btn6];
     [self setTimeBtnUI];
     [self refreshTimeBtnEnable];
     [self refrshLastAndNextBtnEnable];
@@ -159,18 +160,18 @@
     NSInteger timeInt = dateStr.integerValue;
     NSMutableArray *arr = [NSMutableArray array];
     if (timeInt >= 1200)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1205)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1210)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1215) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1220) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1225) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    
+    if (timeInt >= 1220)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1230) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1235) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1240) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1245) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1250) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1255) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+    
+//    if (timeInt >= 1230) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+//    if (timeInt >= 1235) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+//    if (timeInt >= 1240) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+//    if (timeInt >= 1245) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+//    if (timeInt >= 1250) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+//    if (timeInt >= 1255) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
    
     // 替换数据
     self.allDaysArr[0] = arr;
