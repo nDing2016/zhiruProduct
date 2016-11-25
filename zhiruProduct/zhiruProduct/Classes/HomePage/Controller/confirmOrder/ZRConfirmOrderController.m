@@ -24,7 +24,7 @@
 #import "ZRUser.h"
 #import "ZRUserTool.h"
 #import "ZROrderRemarksView.h"
-
+#import "ZRExplainViewController.h"
 #import "ZRSupermarketGoodsListModel.h"
 #import "ZRSupermarketRequest.h"
 #import "ZRSupermarketHomeModel.h"
@@ -414,7 +414,17 @@
                 NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZROrderPeiSongCell class]) owner:self options:nil];
                 cell = [nibs lastObject];
             }
-
+            
+            //点击配送说明
+            WS(ws)
+            cell.peisongShuomingClick = ^(){
+                ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+                
+                explainVC.title = @"配送费说明";
+                
+                [ws.navigationController pushViewController:explainVC animated:YES];
+            };
+            
             _peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] / 1000 andWeight:_weight andSpecialWeather:_weather];
             
             cell.psMoney = _peiMoney;
@@ -1273,7 +1283,7 @@ WS(ws)
             }
             CGFloat total = price + _peiMoney + _shuiMoney + _weight;
             //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );
-            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
+            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%f",_weight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {

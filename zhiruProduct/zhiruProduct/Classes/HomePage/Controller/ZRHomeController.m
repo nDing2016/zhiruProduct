@@ -388,9 +388,9 @@
     }
     
     //上线注释
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-    address.Longitude = @"103";
-    address.Latitude = @"26";
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+//    address.Longitude = @"103";
+//    address.Latitude = @"26";
     
     //等model
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];
@@ -446,7 +446,7 @@
     //    _latitude = noti.userInfo[@"latitude"];
     //
     //    [self.homeTableView reloadData];
-    if (![noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
         //取不到坐标
         ZRErrorController * errorVC = [[ZRErrorController alloc] init];
         

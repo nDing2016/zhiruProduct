@@ -34,6 +34,8 @@
 - (void)createContentView
 {
     
+    self.okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:self.okButton];
     self.nameView = [[ZRRegisterView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth, 40.0)];
     [self.nameView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.nameView];
@@ -41,7 +43,7 @@
         [self.nameView labelText:@"电话" labelTextFont:16 textFieldPlaceHolder:@"请输入电话号" textFieldSecureTextEntry:NO];
         self.title = @"修改手机号";
         self.nameView.isPhone = YES;
-         self.okButton.tag = 1;
+        self.okButton.tag = 1;
     }else{
         [self.nameView labelText:@"昵称" labelTextFont:16 textFieldPlaceHolder:@"请输入昵称" textFieldSecureTextEntry:NO];
         self.okButton.tag = 0;
@@ -53,8 +55,6 @@
     
  
     
-    self.okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:self.okButton];
     WS(weakSelf);
     [self.okButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view).with.offset(40);
@@ -71,6 +71,7 @@
 }
 - (void)actionOkButton:(UIButton*)btn
 {
+    
     if (btn.tag == 1) {
         //修改电话
         
@@ -79,7 +80,7 @@
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
             
-        }else if([self.nameView.textField.text isEqualToString:@""] || self.nameView.textField.text.length!=10 ){
+        }else if([self.nameView.textField.text isEqualToString:@""] || self.nameView.textField.text.length!=10 ||  self.nameView.textField.text.length!=11 ){
             UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
@@ -106,6 +107,14 @@
 -(BOOL)textOnlyNumber: (NSString*) number{
     
     BOOL res = YES;
+    
+//    if (number.length != 10 || number.length != 11) {
+//        [SVProgressHUD showErrorWithStatus:@"电话位数不正确"];
+//        [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+//
+//        return  res=NO;
+//    }
+    
     
     NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
     int i = 0;

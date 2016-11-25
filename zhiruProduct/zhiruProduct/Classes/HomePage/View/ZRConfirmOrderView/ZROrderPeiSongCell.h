@@ -15,4 +15,6 @@
 @property (nonatomic , assign) BOOL isVip;
 //配送费
 @property (nonatomic , assign) float psMoney;
+
+@property (nonatomic , copy) void(^peisongShuomingClick)();
 @end
