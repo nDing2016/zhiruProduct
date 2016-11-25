@@ -10,4 +10,6 @@
 
 @interface ZRShoppingCarController : ZRBaseViewController
 
+@property (nonatomic, copy)NSString * pushSource;
+
 @end

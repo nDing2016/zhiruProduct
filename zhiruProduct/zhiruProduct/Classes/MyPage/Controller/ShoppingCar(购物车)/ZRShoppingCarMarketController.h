@@ -11,5 +11,5 @@
 @interface ZRShoppingCarMarketController : ZRBaseViewController
 
 @property (nonatomic, assign)BOOL state;
-
+@property (nonatomic, copy)NSString * pushSource;
 @end

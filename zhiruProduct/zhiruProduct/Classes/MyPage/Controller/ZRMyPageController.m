@@ -215,6 +215,7 @@
     }
     return _tableView;
 }
+
 - (void)createNavigationLeftButton
 {
     UIButton * leftButton = [MyControl createButtonWithFrame:CGRectMake(0, 0, 60, 40) ImageName:nil Target:self Action:@selector(contactMe) Title:@"联系我们"];
@@ -338,6 +339,7 @@
             } else if (indexPath.row == 5) {
                 //NSLog(@"我的购物车");
                 ZRShoppingCarController * shoppingCar = [[ZRShoppingCarController alloc] init];
+                shoppingCar.pushSource = @"我的";
                 [self.navigationController pushViewController:shoppingCar animated:YES];
             }
         } else if (indexPath.section == 1) {

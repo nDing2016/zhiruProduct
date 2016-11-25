@@ -88,6 +88,7 @@
     self.marketVC = [[ZRShoppingCarMarketController alloc] init];
 #pragma mark--- 等团购上来了解开注释, 并替换大小
 //    self.marketVC.view.frame = CGRectMake(0, 64 + 50 + 1, SCREEN_WIDTH, SCREEN_HEIGHT - 64 -50);
+    self.marketVC.pushSource = self.pushSource;
     self.marketVC.view.frame = CGRectMake(0, 64 + 1, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     [self.view addSubview:_marketVC.view];
 #pragma mark--- 等团购上来了解开注释

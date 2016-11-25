@@ -24,6 +24,7 @@
     self.addLabel = [[UILabel alloc] init];
     [self addSubview:_addLabel];
     [self.addLabel setText:@"收货地址"];
+    [self.addLabel setTextColor:RGBCOLOR(85, 85, 85)];
     [self.addLabel setFont:[UIFont systemFontOfSize:15]];
 //    [self.addLabel setBackgroundColor:[UIColor purpleColor]];
     
