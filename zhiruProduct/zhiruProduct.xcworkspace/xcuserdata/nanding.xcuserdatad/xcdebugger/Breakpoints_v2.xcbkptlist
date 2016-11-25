@@ -2,4 +2,86 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Controller/Comment(&#x70b9;&#x8bc4;)/ZRMyCommentController.m"
+            timestampString = "501758268.90901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-loadMoreData"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRMyCommentController loadMoreData]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/MyPage/Controller/Comment(%E7%82%B9%E8%AF%84)/ZRMyCommentController.m"
+                  timestampString = "501773121.638904"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "608">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[ZRMyCommentController loadMoreData]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/MyPage/Controller/Comment(%E7%82%B9%E8%AF%84)/ZRMyCommentController.m"
+                  timestampString = "501773121.639253"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Controller/Comment(&#x70b9;&#x8bc4;)/ZRMyCommentController.m"
+            timestampString = "501758271.05276"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-loadMoreData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Controller/Comment(&#x70b9;&#x8bc4;)/ZRMyCommentController.m"
+            timestampString = "501758357.865179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-loadMoreData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

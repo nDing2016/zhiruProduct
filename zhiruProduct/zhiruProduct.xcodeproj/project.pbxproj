@@ -272,6 +272,9 @@
 		A32B248B1D36387E00BC6F61 /* ZRShoppingCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248A1D36387E00BC6F61 /* ZRShoppingCarView.m */; };
 		A32B248E1D37357A00BC6F61 /* ZRShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248D1D37357A00BC6F61 /* ZRShoppingCarCell.m */; };
 		A3438CA11D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3438CA01D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m */; };
+		A3508ACC1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */; };
+		A3508ACF1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */; };
+		A3508AD21DE845F000D0FA67 /* ZRExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3508AD11DE845F000D0FA67 /* ZRExplainViewController.m */; };
 		A351A4021D3DB212004A3D49 /* ZRSupermarketHomeObj.m in Sources */ = {isa = PBXBuildFile; fileRef = A351A4001D3DB212004A3D49 /* ZRSupermarketHomeObj.m */; };
 		A351A4491D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A351A4481D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.m */; };
 		A36B45FE1DCC6A7B006727D0 /* ZRCommentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36B45FD1DCC6A7B006727D0 /* ZRCommentRequest.m */; };
@@ -288,6 +291,7 @@
 		A36D27581D98ED30004D1A30 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = A36D27561D98ED30004D1A30 /* Order.m */; };
 		A36D275F1D992164004D1A30 /* ZRAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A36D275E1D992164004D1A30 /* ZRAlertControl.m */; };
 		A38C6A1D1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C6A1C1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m */; };
+		A38C6A201DE45BBD002EBDA8 /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C6A1F1DE45BBD002EBDA8 /* ZRReviewDetailController.m */; };
 		A39E629D1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E629C1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m */; };
 		A3AC46DF1DB77ABD00ACC194 /* ZRAddKaOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AC46DE1DB77ABD00ACC194 /* ZRAddKaOrderModel.m */; };
 		A3AC46E41DB89FB600ACC194 /* ZROrderDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AC46E31DB89FB600ACC194 /* ZROrderDetailsRequest.m */; };
@@ -999,6 +1003,12 @@
 		A32B248D1D37357A00BC6F61 /* ZRShoppingCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRShoppingCarCell.m; sourceTree = "<group>"; };
 		A3438C9F1D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRBusinessDetailsCollectionCell.h; sourceTree = "<group>"; };
 		A3438CA01D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRBusinessDetailsCollectionCell.m; sourceTree = "<group>"; };
+		A3508ACA1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketGoodsTool.h; sourceTree = "<group>"; };
+		A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketGoodsTool.m; sourceTree = "<group>"; };
+		A3508ACD1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketAllListModel.h; sourceTree = "<group>"; };
+		A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketAllListModel.m; sourceTree = "<group>"; };
+		A3508AD01DE845F000D0FA67 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
+		A3508AD11DE845F000D0FA67 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
 		A351A4001D3DB212004A3D49 /* ZRSupermarketHomeObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketHomeObj.m; sourceTree = "<group>"; };
 		A351A4011D3DB212004A3D49 /* ZRSupermarketHomeObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketHomeObj.h; sourceTree = "<group>"; };
 		A351A4471D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGroupBuyingDetailsController.h; sourceTree = "<group>"; };
@@ -1112,6 +1122,8 @@
 		A36D275E1D992164004D1A30 /* ZRAlertControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRAlertControl.m; sourceTree = "<group>"; };
 		A38C6A1B1DE2D34A002EBDA8 /* ZRSuperOrderFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSuperOrderFrame.h; sourceTree = "<group>"; };
 		A38C6A1C1DE2D34A002EBDA8 /* ZRSuperOrderFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSuperOrderFrame.m; sourceTree = "<group>"; };
+		A38C6A1E1DE45BBD002EBDA8 /* ZRReviewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRReviewDetailController.h; sourceTree = "<group>"; };
+		A38C6A1F1DE45BBD002EBDA8 /* ZRReviewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRReviewDetailController.m; sourceTree = "<group>"; };
 		A39E629B1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGroupBuyingDetailsCell.h; sourceTree = "<group>"; };
 		A39E629C1D3F25F1003E77EE /* ZRGroupBuyingDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGroupBuyingDetailsCell.m; sourceTree = "<group>"; };
 		A3AC46DD1DB77ABD00ACC194 /* ZRAddKaOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRAddKaOrderModel.h; sourceTree = "<group>"; };
@@ -2963,8 +2975,27 @@
 				A3F167271D6ED07B00578FB9 /* ZRSupermarketProductsListModel.m */,
 				A3000F5F1D850E2300C4D62C /* ZRSelectAcceptAddressModel.h */,
 				A3000F601D850E2300C4D62C /* ZRSelectAcceptAddressModel.m */,
+				A3508ACD1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.h */,
+				A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */,
 			);
 			path = "Supermarket(超市)";
+			sourceTree = "<group>";
+		};
+		A3508AC81DE6DF5A00D0FA67 /* 数据存储 */ = {
+			isa = PBXGroup;
+			children = (
+				A3508AC91DE6DFB400D0FA67 /* Supermarket */,
+			);
+			path = "数据存储";
+			sourceTree = "<group>";
+		};
+		A3508AC91DE6DFB400D0FA67 /* Supermarket */ = {
+			isa = PBXGroup;
+			children = (
+				A3508ACA1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.h */,
+				A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */,
+			);
+			path = Supermarket;
 			sourceTree = "<group>";
 		};
 		A351A4461D3E2D43004A3D49 /* 团购详情 */ = {
@@ -3175,6 +3206,8 @@
 			children = (
 				A3B2AAC61D41D17B0089E5E1 /* ZRAllReviewsController.h */,
 				A3B2AAC71D41D17B0089E5E1 /* ZRAllReviewsController.m */,
+				A38C6A1E1DE45BBD002EBDA8 /* ZRReviewDetailController.h */,
+				A38C6A1F1DE45BBD002EBDA8 /* ZRReviewDetailController.m */,
 			);
 			path = "全部网友点评";
 			sourceTree = "<group>";
@@ -3455,6 +3488,8 @@
 		BD6C16E51D961849006BFD51 /* confirmOrder(确认订单) */ = {
 			isa = PBXGroup;
 			children = (
+				A3508AD01DE845F000D0FA67 /* ZRExplainViewController.h */,
+				A3508AD11DE845F000D0FA67 /* ZRExplainViewController.m */,
 				BD6C16E61D961887006BFD51 /* ZRConfirmOrderController.h */,
 				BD6C16E71D961887006BFD51 /* ZRConfirmOrderController.m */,
 			);
@@ -3722,6 +3757,7 @@
 		BDB5424A1D1A7D5A0019C34D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A3508AC81DE6DF5A00D0FA67 /* 数据存储 */,
 				BD769F911D5C672700F49EDD /* CustomProgress */,
 				2ECD09E01DD1E9A70046440C /* MD5 */,
 				BDDF616C1DC739C1003F22EC /* kaifazhong */,
@@ -4302,7 +4338,9 @@
 				2EC2AA231DB211900021B0F0 /* ZRSuperOrderDetailModel.m in Sources */,
 				2EC2AA061DAF7BE50021B0F0 /* ZRSelectAddressCell.m in Sources */,
 				BD6C16ED1D961A0F006BFD51 /* ZROrderAddressCell.m in Sources */,
+				A38C6A201DE45BBD002EBDA8 /* ZRReviewDetailController.m in Sources */,
 				A31283B11D965F3800C286AF /* ZRHeadImageTableViewCell.m in Sources */,
+				A3508AD21DE845F000D0FA67 /* ZRExplainViewController.m in Sources */,
 				A312836A1D965F3800C286AF /* ZRMarketModel.m in Sources */,
 				A31283331D965F3800C286AF /* ZRGroupBuyingOrderFormDetailsController.m in Sources */,
 				2EC2AA091DB0C7290021B0F0 /* ZRLunchOrderDetailController.m in Sources */,
@@ -4393,6 +4431,7 @@
 				A31283891D965F3800C286AF /* ZRGBTuiTableViewCell.m in Sources */,
 				2EC2A8A91DA7A66B0021B0F0 /* ZROrderingEvaluateController.m in Sources */,
 				A3FE5CA41D42025B00B6088E /* ZRKindsOfReview.m in Sources */,
+				A3508ACC1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m in Sources */,
 				A31EACA01D2E4DB9004FD2B6 /* ZRSupermarketController.m in Sources */,
 				A36D275F1D992164004D1A30 /* ZRAlertControl.m in Sources */,
 				BD4FEFDE1D23C7220040D240 /* UINavigationBar+ZRAwesome.m in Sources */,
@@ -4469,6 +4508,7 @@
 				2EC2A9301DA88D140021B0F0 /* ZREvaluateHeader.m in Sources */,
 				A32523251DB20B30000B4520 /* ZRGroupCommentListModel.m in Sources */,
 				A36D26121D98CF89004D1A30 /* MD5DataSigner.m in Sources */,
+				A3508ACF1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m in Sources */,
 				BD4FEFE11D23D24E0040D240 /* ZRSearchView.m in Sources */,
 				A3FE5CFF1D43085D00B6088E /* ELCImagePickerController.m in Sources */,
 				A31283811D965F3800C286AF /* ZRNeedCommentOrderingCell.m in Sources */,
@@ -4806,8 +4846,8 @@
 			baseConfigurationReference = 5DD92B5917BE36B7A724ACD8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4907,7 +4947,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4917,8 +4957,8 @@
 			baseConfigurationReference = 10D08A74F0663F053FB0868F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5018,7 +5058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
