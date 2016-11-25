@@ -19,6 +19,11 @@
 
 #import "ZRUserInterfaceModel.h"
 #import "ZRUserFindAddressModel.h"
+
+#import "ZRSupermarketAllListModel.h"
+
+#import "ZRSupermarketGoodsTool.h"
+
 @interface ZRSupermarketHomeController ()<ZRSupermarketHomeDataSource, ZRSupermarketHomeDelegate>
 
 
@@ -30,9 +35,15 @@
 
 @property (nonatomic, strong) ZRSupermarketGoodsListModel *goodsListModel;
 
+
+@property (nonatomic, strong) ZRSupermarketAllListModel *allListModel;
+
 @property (nonatomic, copy) NSString * latitude;
 @property (nonatomic , copy) NSString * longitude;
 @property (nonatomic, copy) NSString * weather;
+
+@property (nonatomic, strong) ZRSupermarketHome *supermarketHome;
+
 @end
 
 @implementation ZRSupermarketHomeController
@@ -50,61 +61,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToShoppingCarNoti:) name:kSupermarketAddToShoppingCar_Noti object:nil];
     
     
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     [SVProgressHUD show];
     
-    WS(ws)
-    if (_supermarketModel.kaId) {
-        
-        [ZRSupermarketRequest requestSupermarketProductsListWithSuperId:_supermarketModel.kaId Callback:^(id details, NSError *error) {
-            
-            [SVProgressHUD dismiss];
-            //距离
-            ws.longitude = details[@"longitude"];
-            ws.latitude = details[@"latitude"];
-            NSMutableArray *arr = [NSObject mj_objectArrayWithKeyValuesArray:details[@"list"]];
-            __block NSInteger index;
-            [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                _productsListModel = [ZRSupermarketProductsListModel mj_objectWithKeyValues:obj];
-                if (_productsListModel.goodsList.count>0) {
-                    [ws.rightArr addObject:_productsListModel];
-                    [ws.leftArr addObject:_productsListModel.navName];
-                }
-                
-                index = idx;
-                
-            }];
-            
-            if (index == arr.count-1) {
-                //[SVProgressHUD dismiss];
-                
-                ZRSupermarketHome *supermarketHome = [[ZRSupermarketHome alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
-                [ws.view addSubview:supermarketHome];
-                supermarketHome.dataSource = ws;
-                supermarketHome.delegate = ws;
-                //supermarketHome.categoryStyle = (HomeCategoryStyle)ws.style;
-                supermarketHome.leftArray = ws.leftArr;
-                supermarketHome.rightArray = ws.rightArr;
-                supermarketHome.titleString = ws.titleStr;
-                //supermarketHome.supermarketID = ws.kaIdStr;
-                supermarketHome.supermarketHomeModel = ws.supermarketModel;
-            }
-            
-            
-            
-            
-            
-            
-        }];
-        
-        
-        
-    }
+    
+    [self loadLocalData];
+    
+    
+    [self loadAllGoodsListData];
     
     
     [ZRSupermarketRequest requestWeatherandSuccess:^(id success) {
@@ -112,7 +75,16 @@
     } andFailure:^(id error) {
         
     }];
+    
 
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     
     
 }
@@ -127,14 +99,138 @@
     
     
     [super viewWillDisappear:animated];
-//    self.rightArr = nil;
-//    self.leftArr = nil;
+//    self.rightArr = [NSMutableArray array];
+//    self.leftArr = [NSMutableArray array];
 //    for (UIView *view in self.view.subviews) {
 //        [view removeFromSuperview];
 //    }
     
     
 }
+
+
+
+- (void)loadAllGoodsListData
+{
+    WS(ws)
+    if (_supermarketModel.kaId) {
+        
+        [ZRSupermarketRequest requestSupermarketProductsListWithSuperId:_supermarketModel.kaId Callback:^(id details, NSError *error) {
+            
+            ws.allListModel = [ZRSupermarketAllListModel mj_objectWithKeyValues:details];
+            //归档
+            if ([ZRSupermarketGoodsTool saveGoodsList:ws.allListModel] == YES) {
+                [SVProgressHUD dismiss];
+            }else{
+                [SVProgressHUD dismiss];
+            }
+            
+            
+            //距离
+            //            ws.longitude = details[@"longitude"];
+            //            ws.latitude = details[@"latitude"];
+            
+            ws.longitude = ws.allListModel.longitude;
+            ws.latitude = ws.allListModel.latitude;
+            
+            
+            ws.rightArr = [NSMutableArray array];
+            ws.leftArr = [NSMutableArray array];
+            
+            //NSMutableArray *arr = [NSObject mj_objectArrayWithKeyValuesArray:details[@"list"]];
+            __block NSInteger index;
+            [ws.allListModel.list enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                //_productsListModel = obj;
+                _productsListModel = [ZRSupermarketProductsListModel mj_objectWithKeyValues:obj];
+                if (_productsListModel.goodsList.count>0) {
+                    [ws.rightArr addObject:_productsListModel];
+                    [ws.leftArr addObject:_productsListModel.navName];
+                }
+                
+                index = idx;
+                
+            }];
+            
+            if (index == ws.allListModel.list.count-1) {
+                //[SVProgressHUD dismiss];
+                ws.supermarketHome.leftArray = ws.leftArr;
+                ws.supermarketHome.rightArray = ws.rightArr;
+                ws.supermarketHome.titleString = ws.titleStr;
+                ws.supermarketHome.supermarketHomeModel = ws.supermarketModel;
+                
+            }
+            
+            
+            
+            
+            
+            
+        }];
+    }
+
+}
+
+
+
+
+- (void)loadLocalData
+{
+    //先判断本地是否有缓存，如果有则直接取出
+    if ([ZRSupermarketGoodsTool allGoodsListModel]){
+        //有缓存
+        [SVProgressHUD dismiss];
+        self.allListModel = [ZRSupermarketGoodsTool allGoodsListModel];
+        self.longitude = self.allListModel.longitude;
+        self.latitude = self.allListModel.latitude;
+        
+        
+        __block NSInteger index;
+        self.rightArr = [NSMutableArray array];
+        self.leftArr = [NSMutableArray array];
+        [self.allListModel.list enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            _productsListModel = [ZRSupermarketProductsListModel mj_objectWithKeyValues:obj];
+            if (_productsListModel.goodsList.count>0) {
+                [self.rightArr addObject:_productsListModel];
+                [self.leftArr addObject:_productsListModel.navName];
+            }
+            
+            index = idx;
+            
+        }];
+        
+        if (index == self.allListModel.list.count-1) {
+            //[SVProgressHUD dismiss];
+            
+            self.supermarketHome.leftArray = self.leftArr;
+            self.supermarketHome.rightArray = self.rightArr;
+            self.supermarketHome.titleString = self.titleStr;
+            self.supermarketHome.supermarketHomeModel = self.supermarketModel;
+        }
+        
+        
+        
+    }
+
+}
+
+
+
+-(ZRSupermarketHome *)supermarketHome
+{
+    if (!_supermarketHome) {
+        _supermarketHome = [[ZRSupermarketHome alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        [self.view addSubview:_supermarketHome];
+        _supermarketHome.dataSource = self;
+        _supermarketHome.delegate = self;
+        
+        
+        
+    }
+    return _supermarketHome;
+}
+
+
 
 #pragma mark - 通知
 /**
@@ -273,31 +369,6 @@
 //    return _leftArr;
 //}
 
--(NSMutableArray *)leftArr
-{
-    if (!_leftArr) {
-        _leftArr = [NSMutableArray array];
-    }
-    return _leftArr;
-}
-
-
--(NSMutableArray *)rightArr
-{
-    if (!_rightArr) {
-        _rightArr = [NSMutableArray array];
-//        for (int i=0; i<self.leftArr.count; i++) {
-//            NSMutableArray *mutableArr = [NSMutableArray array];
-//            for (int j=0; j<12; j++) {
-//                NSArray *arr = @[ZRImage(@"yuding"),@"青柠红茶",@"$5"];
-//                [mutableArr addObject:arr];
-//            }
-//            [_rightArr addObject:mutableArr];
-//            
-//        }
-    }
-    return _rightArr;
-}
 
 
 #pragma mark - ZRSupermarketHomeDataSource methods
@@ -353,6 +424,8 @@
 
 -(void)dealloc
 {
+    self.rightArr = nil;
+    self.leftArr = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     //取消当前网络请求
     [[AFHTTPSessionManager manager].operationQueue cancelAllOperations];

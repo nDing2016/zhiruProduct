@@ -25,10 +25,10 @@
 @property (nonatomic, copy) NSString *weight;
 
 
-/**
- 保存网络下载下来的图像
- */
-@property(nonatomic,strong)UIImage *cacheImg;
+///**
+// 保存网络下载下来的图像
+// */
+//@property(nonatomic,strong)UIImage *cacheImg;
 
 
 @end
