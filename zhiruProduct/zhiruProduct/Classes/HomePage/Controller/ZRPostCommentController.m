@@ -442,7 +442,7 @@
 - (void)enterehzFilesVC :(UIButton *)btn{
     //NSLog(@"点击发表按钮");
 
-    
+    [CustomHudView show];
     if ([self checkComment]) {
         
         NSMutableArray * imgMarr = [NSMutableArray array];
@@ -469,13 +469,16 @@
         [ZRHomePageRequst requestAddBusinessCommentWithBusinessId:_businessId andContent:_headView.userWord.text andPerCapita:_headView.perCapita.text andGrade:[NSString stringWithFormat:@"%lf",_overallView.score] andGradeOne:[NSString stringWithFormat:@"%lf",_tasteView.score] andGradeTwo:[NSString stringWithFormat:@"%lf",_environmentView.score] andGradeThree:[NSString stringWithFormat:@"%lf", _serviceView.score] andCommentType:_commentType andFiles:imgMarr andSuccess:^(id success) {
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
-             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
-            ws.postOkBlock();
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
+            self.postOkBlock();
             [ws.navigationController popViewControllerAnimated:YES];
+            [CustomHudView dismiss];
         } andFailure:^(id error) {
             [SVProgressHUD showErrorWithStatus:@"发表失败,检查网络"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             [ws.navigationController popViewControllerAnimated:YES];
+            
+            [CustomHudView dismiss];
         }];
     }
     
@@ -522,7 +525,7 @@
 
 -(void)leftBtnClick{
     UIAlertView * alertV = [[UIAlertView alloc] initWithTitle:@"尚未发表点评,是否退出?" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    
+    [CustomHudView dismiss];
     [alertV show];
 }
 

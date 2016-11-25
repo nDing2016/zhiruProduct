@@ -34,9 +34,10 @@
     for (UIView * view  in self.contentView.subviews) {
         [view removeFromSuperview];
     }
-    
+    UILabel * menuT = [UILabel new];
     _lableArr = [NSMutableArray array];
     for (int i =0; i<count; i++) {
+        
         //标题
         UILabel * MenuTitle = [UILabel new];
         MenuTitle.numberOfLines = 0;
@@ -55,19 +56,34 @@
            
             
             WS(ws)
-            [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(ws.contentView).with.offset(15);
-                make.top.equalTo(ws.contentView).with.offset(15 +  i * 15 + i * 40);
-                make.width.equalTo(@100);
-                
-            }];
+            if (i == 0) {
+                [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(ws.contentView).with.offset(15);
+                    make.top.equalTo(ws.contentView).with.offset(15);
+                    make.width.equalTo(@150);
+                }];
+            
+            }
+            else{
+                [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(ws.contentView).with.offset(15);
+                    make.top.equalTo(menuT.mas_bottom).offset(15);
+                    make.width.equalTo(@150);
+                }];
+            }
+         
             if (i== count -1) {
                 [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//                    make.left.equalTo(ws.contentView).with.offset(15);
+//                    make.top.equalTo(menuT.mas_bottom).offset(15);
+//                    make.width.equalTo(@150);
                     make.bottom.equalTo(ws.contentView).with.offset(-15);
                 }];
             }
             
+  
             
+             menuT = MenuTitle;
             //加号
             UIButton * addBtn = [UIButton new];
             [addBtn setImage:[UIImage imageNamed:@"jia_hong"] forState:UIControlStateNormal];
@@ -135,17 +151,34 @@
 //            CGSize titleSize = [NSString getSize:model.goods_name strFont:TitleSize maxSize:CGSizeMake(100, 40)];
 //            [MenuTitle setFrame:CGRectMake(15, 8 + i * 15 + i * titleSize.height, 100, titleSize.height)];
             WS(ws)
-            [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(ws.contentView).with.offset(15);
-                make.top.equalTo(ws.contentView).with.offset(15 +  i * 15 + i * 40);
-                make.width.equalTo(@100);
-            }];
+//            [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.equalTo(ws.contentView).with.offset(15);
+//                make.top.equalTo(ws.contentView).with.offset(15 +  i * 15 + i * 40);
+//                make.width.equalTo(@100);
+//            }];
+            if (i == 0) {
+                [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(ws.contentView).with.offset(15);
+                    make.top.equalTo(ws.contentView).with.offset(15);
+                    make.width.equalTo(@150);
+                }];
+                
+            }else{
+                [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(ws.contentView).with.offset(15);
+                    make.top.equalTo(menuT.mas_bottom).offset(15);
+                    make.width.equalTo(@150);
+                }];
+            }
             if (i== count -1) {
                 [MenuTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//                    make.left.equalTo(ws.contentView).with.offset(15);
+//                    make.top.equalTo(menuT.mas_bottom).offset(15);
+//                    make.width.equalTo(@150);
                     make.bottom.equalTo(ws.contentView).with.offset(-15);
                 }];
             }
-            
+            menuT = MenuTitle;
             //加号
             UIButton * addBtn = [UIButton new];
             [addBtn setImage:[UIImage imageNamed:@"jia_hong"] forState:UIControlStateNormal];
@@ -295,7 +328,16 @@
     if (numb == 1) {return;}
     
     myLabel.text = [NSString stringWithFormat:@"%ld",(long)(numb-=1)];
-    NSMutableArray * marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+    NSMutableArray * marr ;
+    if (_type) {
+        //超市
+         marr =  [ZRSupermarketHomeObj shareInstance].allProductsArray;
+    }else{
+        //午餐
+         marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+    }
+    
+   
     
 //    ZROrderingMenuModel * model = [marr[index] lastObject];
 //    [marr[index] addObject:model];

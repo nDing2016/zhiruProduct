@@ -28,9 +28,9 @@
     _isXXDistribution = isXXDistribution;
     
     if (_isXXDistribution == YES) {
-        _peisongInfo.text = [NSString stringWithFormat:@"本订单由[嗖嗖专送]提供配送"];
+        _peisongInfo.text = [NSString stringWithFormat:@"本订单由 嗖嗖专送 提供配送"];
     }else{
-        _peisongInfo.text = [NSString stringWithFormat:@"本订单由[店家]提供配送"];
+        _peisongInfo.text = [NSString stringWithFormat:@"本订单由 店家 提供配送"];
     }
     
     if (_isVip == YES) {
