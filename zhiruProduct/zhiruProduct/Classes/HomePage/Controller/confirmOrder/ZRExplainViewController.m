@@ -24,15 +24,16 @@
 - (void)createMainView{
     
     UIImageView * mainView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"deliver illustrate"]];
+    mainView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
     [self.view addSubview:mainView];
     
-    WS(ws)
-    [mainView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.view.mas_top);
-        make.bottom.equalTo(ws.view.mas_top);
-        make.left.equalTo(ws.view.mas_left);
-        make.right.equalTo(ws.view.mas_right);
-    }];
+//    WS(ws)
+//    [mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(ws.view.mas_top);
+//        make.bottom.equalTo(ws.view.mas_top);
+//        make.left.equalTo(ws.view.mas_left);
+//        make.right.equalTo(ws.view.mas_right);
+//    }];
     
 }
 
