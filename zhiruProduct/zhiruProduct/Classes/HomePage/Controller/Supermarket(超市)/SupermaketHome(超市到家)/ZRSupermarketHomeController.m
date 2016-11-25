@@ -238,6 +238,7 @@
  */
 - (void)addToShoppingCarNoti:(NSNotification *)noti
 {
+    [SVProgressHUD show];
     if ([ZRSupermarketHomeObj shareInstance].allProductsArray.count>0) {
         WS(ws)
         NSMutableArray *listArr = [NSMutableArray array];
@@ -254,6 +255,7 @@
         [ZRSupermarketRequest requestAddKaShoppingCartWithList:listArr Callback:^(NSString *codeStr, NSString *message, NSError *error) {
             
             if ([codeStr isEqualToString:@"C004"]) {
+                [SVProgressHUD dismiss];
                 //用户未登录
                 [ZRAlertControl notLoginAlert:ws goLogin:^{
                     

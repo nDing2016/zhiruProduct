@@ -446,7 +446,7 @@
     //    _latitude = noti.userInfo[@"latitude"];
     //
     //    [self.homeTableView reloadData];
-    if (![noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
         //取不到坐标
         ZRErrorController * errorVC = [[ZRErrorController alloc] init];
         

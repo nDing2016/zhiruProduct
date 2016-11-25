@@ -75,71 +75,81 @@
                 for (int i=0; i<self.productsArr.count; i++) {
                     _superOrderDetailModel = self.productsArr[i];
                     h = h+goodsSize.height+10;
-                    goodsSize = [NSString getSize:_superOrderDetailModel.goods_name strFont:CustomFont(13) maxSize:CGSizeMake(260*SCREEN_WIDTH/375-15, SCREEN_HEIGHT)];
-                    [self drawWithStr:_superOrderDetailModel.goods_name Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, h) Size:CGSizeMake(260*SCREEN_WIDTH/375-15, goodsSize.height)];
+                    goodsSize = [NSString getSize:_superOrderDetailModel.goods_name strFont:CustomFont(14) maxSize:CGSizeMake(260*SCREEN_WIDTH/375-15, SCREEN_HEIGHT)];
+                    [self drawWithStr:_superOrderDetailModel.goods_name Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, h) Size:CGSizeMake(260*SCREEN_WIDTH/375-15, goodsSize.height)];
                     
-                    [self drawWithStr:[NSString stringWithFormat:@"x%@",_superOrderDetailModel.num] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(260*SCREEN_WIDTH/375, h)];
+                    [self drawWithStr:[NSString stringWithFormat:@"x%@",_superOrderDetailModel.num] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(260*SCREEN_WIDTH/375, h)];
                     
-                    [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[_superOrderDetailModel.price floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, h)];
+                    [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[_superOrderDetailModel.price floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, h)];
     
                 }
     
             }else if (self.idxPath.row == 2){
                 //配送费
-                CGSize size = [self drawWithStr:@"配送费" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                CGSize size = [self drawWithStr:@"配送费" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
                 
-                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.send_price floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.send_price floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 10)];
                 //重量费
-                [self drawWithStr:@"重量费" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 20+size.height)];
+                CGSize weightPriceSize = [self drawWithStr:@"重量费" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 20+size.height)];
                 
-                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.room_tips floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 20+size.height)];
+                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.room_tips floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 20+size.height)];
+                
+                
+                //重量
+                [self drawWithStr:[NSString stringWithFormat:@"(%.2fkg)",[self.superDetailsModel.weight floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15+weightPriceSize.width+15, 20+size.height)];
+                
+                
                 //税费
-                [self drawWithStr:@"税费" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 30+size.height*2)];
+                [self drawWithStr:@"税费" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 30+size.height*2)];
                 
-                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.taxation floatValue]] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 30+size.height*2)];
+                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.taxation floatValue]] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(320*SCREEN_WIDTH/375, 30+size.height*2)];
                 
     
             }else if (self.idxPath.row == 3){
-                [self drawWithStr:@"合计" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(272*SCREEN_WIDTH/375, 10)];
-                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.canadian_dollar floatValue]] Font:CustomFont(13) Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(312*SCREEN_WIDTH/375, 10)];
+                [self drawWithStr:@"合计" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(272*SCREEN_WIDTH/375, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[self.superDetailsModel.canadian_dollar floatValue]] Font:CustomFont(14) Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(312*SCREEN_WIDTH/375, 10)];
             }
         }else if (self.idxPath.section == 2){
             if (self.idxPath.row == 0) {
-                [self drawWithStr:@"配送信息" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:@"配送信息" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
     
             }else if (self.idxPath.row == 1){
 //                NSString *sendStyle = [NSString stringWithFormat:@"配送方式:%@",self.superDetailsModel]
-                [self drawWithStr:@"配送方式: 嗖嗖专送" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:@"配送方式: 嗖嗖专送" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
             }else{
-                NSString *qishouStr = [NSString stringWithFormat:@"骑手:%@,%@",self.superDetailsModel.rider_name,self.superDetailsModel.rider_phone];
-                [self drawWithStr:qishouStr Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                if (self.superDetailsModel.rider_name.length==0) {
+                   self.superDetailsModel.rider_name = @"等待分配骑手";
+                   self.superDetailsModel.rider_phone = @"";
+                }
+                NSString *qishouStr = [NSString stringWithFormat:@"骑手:%@ %@",self.superDetailsModel.rider_name,self.superDetailsModel.rider_phone];
+                [self drawWithStr:qishouStr Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
             }
         }else if (self.idxPath.section == 3){
             if (self.idxPath.row == 0) {
-                [self drawWithStr:@"订单详情" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:@"订单详情" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
             }else if (self.idxPath.row == 1){
                 NSString *orderCode = [NSString stringWithFormat:@"订单号: %@",self.superDetailsModel.order_id];
-                [self drawWithStr:orderCode Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:orderCode Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
     
             }else if (self.idxPath.row == 2){
                 
-                [self drawWithStr:[NSString stringWithFormat:@"联系人: %@",self.superDetailsModel.take_meal_name] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"联系人: %@",self.superDetailsModel.take_meal_name] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
             }else if (self.idxPath.row == 3){
                 
-                [self drawWithStr:[NSString stringWithFormat:@"联系电话:%@",self.superDetailsModel.take_meal_phone] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"联系电话:%@",self.superDetailsModel.take_meal_phone] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
     
             }else if (self.idxPath.row == 4){
-                [self drawWithStr:[NSString stringWithFormat:@"收货地址:%@",self.superDetailsModel.receipt_address] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"收货地址:%@",self.superDetailsModel.receipt_address] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
     
             }else if (self.idxPath.row == 5){
                 
-                [self drawWithStr:[NSString stringWithFormat:@"支付方式:%@",self.superDetailsModel.pay_method] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"支付方式:%@",self.superDetailsModel.pay_method] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
             }else if (self.idxPath.row == 6){
                 
-                [self drawWithStr:[NSString stringWithFormat:@"下单时间:%@",self.superDetailsModel.create_time] Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:[NSString stringWithFormat:@"下单时间:%@",self.superDetailsModel.create_time] Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
                 
             }else{
-                [self drawWithStr:@"送达时间:尽快送达" Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
+                [self drawWithStr:@"送达时间:尽快送达" Font:CustomFont(14) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 10)];
                 
             }
             
