@@ -24,7 +24,7 @@
 #import "ZRUser.h"
 #import "ZRUserTool.h"
 #import "ZROrderRemarksView.h"
-
+#import "ZRExplainViewController.h"
 #import "ZRSupermarketGoodsListModel.h"
 #import "ZRSupermarketRequest.h"
 #import "ZRSupermarketHomeModel.h"
@@ -414,7 +414,17 @@
                 NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZROrderPeiSongCell class]) owner:self options:nil];
                 cell = [nibs lastObject];
             }
-
+            
+            //点击配送说明
+            WS(ws)
+            cell.peisongShuomingClick = ^(){
+                ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+                
+                explainVC.title = @"配送费说明";
+                
+                [ws.navigationController pushViewController:explainVC animated:YES];
+            };
+            
             _peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] / 1000 andWeight:_weight andSpecialWeather:_weather];
             
             cell.psMoney = _peiMoney;
@@ -445,7 +455,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取商品5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
             
@@ -681,7 +691,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取餐费5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
            
@@ -791,6 +801,7 @@
                  return cell;
                 
             }else {
+                
                 UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:iphoneCellTwo];
                 
                 if (cell == nil) {
@@ -883,7 +894,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:shuiCell];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"收取餐费%5的税费";
+            cell.textLabel.text = @"收取餐费5%的税费";
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
 
@@ -995,7 +1006,7 @@
                 timeView.okBtnClickBlock = ^(NSString * time , NSString * day){
                     //选中的时间,日期
                 
-                    _songdaDict = @{@"取餐时间":[NSString stringWithFormat:@"%@,%@",day,time]};
+                    _songdaDict = @{@"取餐时间":[NSString stringWithFormat:@"%@ %@",day,time]};
                     
                     [ws.myTableView reloadData];
                 };
@@ -1150,6 +1161,7 @@ WS(ws)
     if (_orderType == Supermarket) {
         if (_addressModel == nil) {
             [SVProgressHUD showErrorWithStatus:@"请添加地址"];
+            [self performSelector:@selector(dismiss) withObject:nil afterDelay:1];
             return; 
         }
     }
@@ -1271,7 +1283,7 @@ WS(ws)
             }
             CGFloat total = price + _peiMoney + _shuiMoney + _weight;
             //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );
-            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.addressId KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
+            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%f",_weight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {
@@ -1301,7 +1313,7 @@ WS(ws)
                 [AlertText showAndText:@"确认订单失败"];
             }];
         } else {
-            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.addressId KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Callback:^(id details, NSError *error) {
+            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Callback:^(id details, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (details) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];
@@ -1364,8 +1376,9 @@ WS(ws)
         return (3 + shouxuMoney + weightMoney) * weather ;
         
     }else if (distance >= 5000 || distance < 10000){
+        CGFloat numb = (distance - 5000)/1000;
         
-       return ((NSInteger)(distance - 5000)/1000 + 3 +shouxuMoney + weightMoney)*weather ;
+       return ([self heixinShangjia:numb] + 3 +shouxuMoney + weightMoney)*weather ;
     }else{
         return -1;
     }
@@ -1376,45 +1389,59 @@ WS(ws)
     //特殊天气
 }
 
+
+//黑心卖家,专用方法,传入原价 返回现价
+- (NSInteger)heixinShangjia :(CGFloat)numb{
+    
+    if (numb - (NSInteger)numb > 0) {
+        return numb ++;
+    }else{
+        return numb;
+    }
+    
+}
+
+
+
 - (CGFloat)getWeight :(CGFloat)weight{
     CGFloat moneyCount = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount];
     if (moneyCount < 30) {
-        return weight;
+        return [self heixinShangjia:weight];
     }else if (moneyCount >= 30 && moneyCount < 60){
-        if (weight - 3 <= 0) {
+        if ([self heixinShangjia:weight] - 3 <= 0) {
             return 0;
         }else{
-            return weight - 3;
+            return [self heixinShangjia:weight] - 3;
         }
     }else if (moneyCount >= 60 && moneyCount < 90){
-        if (weight - 6 <= 0) {
+        if ([self heixinShangjia:weight] - 6 <= 0) {
             return 0;
         }else{
-            return weight - 6;
+            return [self heixinShangjia:weight] - 6;
         }
     }else if(moneyCount >= 90 && moneyCount < 120){
-        if (weight - 9 <= 0) {
+        if ([self heixinShangjia:weight] - 9 <= 0) {
             return 0;
         }else{
-            return weight - 9;
+            return [self heixinShangjia:weight] - 9;
         }
     }else if (moneyCount>= 120 && moneyCount < 150){
-        if (weight - 12 <= 0) {
+        if ([self heixinShangjia:weight] - 12 <= 0) {
             return 0;
         }else{
-            return weight - 12;
+            return [self heixinShangjia:weight] - 12;
         }
     }else if (moneyCount>= 150 && moneyCount < 180){
-        if (weight - 15 <= 0) {
+        if ([self heixinShangjia:weight] - 15 <= 0) {
             return 0;
         }else{
-            return weight - 15;
+            return [self heixinShangjia:weight] - 15;
         }
     }else{
-        if (weight - 18 <= 0) {
+        if ([self heixinShangjia:weight] - 18 <= 0) {
             return 0;
         }else{
-            return weight - 18;
+            return [self heixinShangjia:weight] - 18;
         }
     }
 }

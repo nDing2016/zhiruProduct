@@ -52,7 +52,7 @@
 #import "ZRUser.h"
 #import "ZRUserAddress.h"
 
-
+#import "MJRefresh.h"
 
 
 
@@ -272,7 +272,7 @@ alpha:1.0]
 
 
 
-//#define HOST @"http://www.hey-tang.com/zhiru/"
+#define HOST @"http://www.hey-tang.com/zhiru/"
 
 
 

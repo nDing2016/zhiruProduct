@@ -61,7 +61,7 @@
         _toolView.backgroundColor = [UIColor blackColor];
         _toolView.alpha = 0.9;
         
-        _toolView.leftStr = @"40";
+        _toolView.leftStr = @"20";
         
         [self addSubview:_toolView];
         [self bringSubviewToFront:_toolView];

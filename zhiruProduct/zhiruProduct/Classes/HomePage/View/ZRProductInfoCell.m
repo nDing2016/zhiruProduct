@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *comment_count;
 @property (weak, nonatomic) IBOutlet UILabel *didian;
 @property (weak, nonatomic) IBOutlet UILabel *leixing;
+@property (weak, nonatomic) IBOutlet UILabel *weizhi;
 
 @end
 
@@ -34,7 +35,7 @@
     
     _leixing.text = model.navName[0][@"nav_name"];
     
-    
+    _weizhi.text = _regionName;
 }
 
 - (void)awakeFromNib {

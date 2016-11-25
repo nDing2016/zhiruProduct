@@ -18,6 +18,7 @@
  *  评论id
  */
 @property (nonatomic , copy) NSString * commentId;
+
 /**
  *  评论人id
  */
@@ -62,4 +63,16 @@
  *  店家回复
  */
 @property (nonatomic , copy) NSString * reply;
+
+
+
+
+//详细评价1
+@property (nonatomic, copy) NSString *gradeOne;
+//详细评价2
+@property (nonatomic, copy) NSString *gradeTwo;
+//详细评价3
+@property (nonatomic, copy) NSString *gradeThree;
+
+
 @end

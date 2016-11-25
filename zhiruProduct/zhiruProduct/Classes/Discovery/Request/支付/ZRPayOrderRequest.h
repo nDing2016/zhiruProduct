@@ -95,6 +95,7 @@ typedef void(^ZRPayOrderCallback) (id details, NSError *error);
                               ReceiptPhone:(NSString *)receiptPhone
                                     Gender:(NSString *)gender
                                        Num:(NSString *)num
+                                   Remarks:(NSString *)remarks
                                   CallBack:(ZRPayOrderCallback)callback;
 
 

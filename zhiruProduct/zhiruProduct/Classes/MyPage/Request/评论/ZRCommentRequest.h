@@ -39,4 +39,14 @@ typedef void (^ZRCommentCallBack)(id details, NSError *error);
 
 
 
+
+/**
+ *  店铺评论－评论详情接口
+ *
+ *  @param commentId 评论ID
+ *  @param callback  回调
+ */
++ (void)requestForBusinessCommentDetailsWithCommentId:(NSString *)commentId
+                                             CallBack:(ZRCommentCallBack)callback;
+
 @end

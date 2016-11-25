@@ -24,6 +24,9 @@
 
 @property (nonatomic , strong) UIButton * dianzanBtn;
 
+
+@property (nonatomic, strong) UILabel *reviewTextLabel;
+
 @end
 
 @implementation ZRGroupBuyingReviewDetailsCell
@@ -124,6 +127,8 @@
     
 }
 
+
+
 #pragma mark - click methods
 - (void)goodReviewClick:(UIButton *)sender
 {
@@ -216,8 +221,15 @@
 
         
         //评论内容
-        CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
-        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height) Size:CGSizeMake(textWidth, SCREEN_HEIGHT)];
+//        CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
+//        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height) Size:CGSizeMake(textWidth, SCREEN_HEIGHT)];
+        self.reviewTextLabel = [[UILabel alloc] init];
+        self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, self.reviewFrame.reviewTextFrame.size.height);
+        self.reviewTextLabel.text = _commentListModel.commentContent;
+        self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
+        self.reviewTextLabel.font = CustomFont(15);
+        self.reviewTextLabel.numberOfLines = 0;
+        [self.contentView addSubview:self.reviewTextLabel];
         
         
         //时间

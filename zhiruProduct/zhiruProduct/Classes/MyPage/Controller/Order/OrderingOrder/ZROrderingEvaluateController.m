@@ -21,7 +21,7 @@
 #import "ZROrderingOrderRequest.h"
 
 #define kMaxLength 15
-#define kLength 150
+#define kLength 100
 @interface ZROrderingEvaluateController ()<UITextViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MJPhotoBrowserDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UICollectionViewDelegateFlowLayout,ELCImagePickerControllerDelegate ,UIAlertViewDelegate >
 
 @property (nonatomic , strong) NSMutableArray * itemsSectionPictureArray; //保存照片
@@ -176,10 +176,13 @@
                     //                    textView.text = [toBeString substringToIndex:kMaxLength];
                     _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"还差%lu个字可以发表评论",kMaxLength - toBeString.length];
                 }else if(toBeString.length > kMaxLength && toBeString.length < kLength){
-                    _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢得十倍积分",kLength - toBeString.length];
+                    
+                    NSLog(@"%lu",kLength - toBeString.length);
+                    
+                    _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢十倍积分",kLength - toBeString.length];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count <3){
                     
-                    _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢得十倍积分"];
+                    _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢十倍积分"];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count >=3){
                     _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"认真点评,十倍积分等你哦"];
                 }
@@ -199,9 +202,10 @@
                 //                    textView.text = [toBeString substringToIndex:kMaxLength];
                 _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"还差%lu个字可以发表评论",kMaxLength - toBeString.length];
             }else if(toBeString.length > kMaxLength && toBeString.length < kLength){
-                _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢得十倍积分",kLength - toBeString.length];
+                NSLog(@"%lu",kLength - toBeString.length);
+                _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢十倍积分",kLength - toBeString.length];
             }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count <3){
-                _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢得十倍积分"];
+                _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢十倍积分"];
             }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count >=3){
                 _evaluateHeader.textFootLabel.text = [NSString stringWithFormat:@"认真点评,十倍积分等你哦"];
             }

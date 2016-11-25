@@ -88,7 +88,7 @@
 
     
     //添加导航条右按钮
-    [self createNavRightBtn];
+//    [self createNavRightBtn];
     [self createNotification];
    
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];

@@ -51,8 +51,16 @@
                             <constraint firstAttribute="height" constant="1" id="bvp-5L-n7Q"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-5i-dxB">
+                        <rect key="frame" x="72" y="5.5" width="66" height="22"/>
+                        <state key="normal" title="Button" image="wenhao_hong"/>
+                        <connections>
+                            <action selector="peisongShuomingClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="p3s-vP-GFm"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="sbu-5i-dxB" firstAttribute="centerY" secondItem="2wA-K1-MN5" secondAttribute="centerY" id="15n-Jy-AQb"/>
                     <constraint firstItem="KeN-yN-G3A" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Wl-uK-zOZ"/>
                     <constraint firstItem="2wA-K1-MN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4Jh-0S-O8z"/>
                     <constraint firstItem="glX-Im-D2f" firstAttribute="width" secondItem="2cn-s9-dEd" secondAttribute="width" id="5td-to-NcR"/>
@@ -65,6 +73,7 @@
                     <constraint firstItem="415-gc-8m8" firstAttribute="top" secondItem="2wA-K1-MN5" secondAttribute="bottom" constant="15" id="bWx-la-1wI"/>
                     <constraint firstItem="2cn-s9-dEd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fVu-08-tlz"/>
                     <constraint firstAttribute="trailing" secondItem="KeN-yN-G3A" secondAttribute="trailing" constant="15" id="iVa-hR-0eL"/>
+                    <constraint firstItem="sbu-5i-dxB" firstAttribute="leading" secondItem="2wA-K1-MN5" secondAttribute="trailing" constant="12" id="igx-U8-cNs"/>
                     <constraint firstItem="2wA-K1-MN5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kMb-OV-HYy"/>
                     <constraint firstItem="2cn-s9-dEd" firstAttribute="leading" secondItem="C7i-DQ-DV4" secondAttribute="trailing" constant="10" id="q1b-dI-CY1"/>
                 </constraints>
@@ -79,4 +88,7 @@
             <point key="canvasLocation" x="158" y="269"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="wenhao_hong" width="12" height="12"/>
+    </resources>
 </document>

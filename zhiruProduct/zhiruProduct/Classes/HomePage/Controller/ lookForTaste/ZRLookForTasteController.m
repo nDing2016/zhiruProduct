@@ -35,6 +35,11 @@
         [ws startRefresh];
     }];
     
+    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+
+        //网络请求
+        [ws startRefresh];
+    }];
 }
 
 -(void)setModel:(ZRHomeNavModel *)model{
@@ -184,17 +189,29 @@
     WS(ws)
     [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:[NSString stringWithFormat:@"%ld",_page ] andSuccess:^(id success) {
         
+        NSArray * arr = success;
+        if (arr.count == 0) {
+            [ws.myTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [ws.myTableView.mj_header endRefreshing];
+            [ws.myTableView.mj_footer endRefreshing];
+            if (_page == 1) {
+                ws.modelArr = nil;
+                
+            }
+            [ws.modelArr addObjectsFromArray:success];
+            _page ++;
+
+        }
         //NSLog(@"成功");
-        [ws.myTableView.mj_header endRefreshing];
-        _page ++;
         
-        ws.modelArr = success;
+        
         
         [ws.myTableView reloadData];
     } andFailure:^(id error) {
          [ws.myTableView.mj_header endRefreshing];
         //NSLog(@"失败");
-        
+        [ws.myTableView.mj_footer endRefreshing];
     }];
     
 }

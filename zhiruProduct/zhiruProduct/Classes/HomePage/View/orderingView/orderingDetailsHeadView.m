@@ -77,12 +77,13 @@
         _startPrice.hidden = YES;
         _distributionPrice.hidden = YES;
         _operatingStatus.hidden = YES;
-        _distributionStatus.text = @"到店自取";
+//        _distributionStatus.text = @"到店自取";
+        _distributionStatus.hidden = YES;
         _pingxing.hidden = YES;
     }else{
         _startPrice.hidden = NO;
         _distributionPrice.hidden = NO;
-        _operatingStatus.hidden = NO;
+        _operatingStatus.hidden = NO; 
     }
     
 }

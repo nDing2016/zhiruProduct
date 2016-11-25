@@ -234,7 +234,7 @@ static NSString * const shoppingCartAddKaOrder = @"ka/shoppingCartAddKaOrder";
  * @param takeMealName    取餐人姓名
  * @param takeMealPhone   取餐人电话
  * @param remarks         备注
- * @param receiptAddress  收获地址id
+ * @param receiptAddress  收获地址id 改为 收获地址
  * @param kaOrderGoods    商品数组: [{goodsId:”物品id”,goodsName:”物品名称”,price:”当前物品总
  价”,(加币)num:”当前物品总数”}]
  * @param callBack        成功
@@ -249,6 +249,7 @@ static NSString * const shoppingCartAddKaOrder = @"ka/shoppingCartAddKaOrder";
                     CanadianDollar:(NSString *)canadianDollar
                       TakeMealName:(NSString *)takeMealName
                      TakeMealPhone:(NSString *)takeMealPhone
+                        andWeight :(NSString*)weight
                            Remarks:(NSString *)remarks
                     ReceiptAddress:(NSString *)receiptAddress
                       KaOrderGoods:(NSMutableArray *)kaOrderGoods
@@ -256,7 +257,8 @@ static NSString * const shoppingCartAddKaOrder = @"ka/shoppingCartAddKaOrder";
                             Filure:(void(^)(id error))failure
 {
     NSString * url = [HOST stringByAppendingString:shoppingCartAddKaOrder];
-    NSDictionary * param = @{@"kaId":kaId, @"kaName":kaName, @"roomTips":roomTips, @"sendPrice":sendPrice, @"taxation":taxation, @"canadianDollar":canadianDollar, @"takeMealName":takeMealName, @"takeMealPhone":takeMealPhone,@"remarks":remarks,@"receiptAddress":receiptAddress,@"kaOrderGoods":kaOrderGoods};
+    NSDictionary * param = @{@"kaId":kaId, @"kaName":kaName, @"roomTips":roomTips, @"sendPrice":sendPrice, @"taxation":taxation, @"canadianDollar":canadianDollar, @"takeMealName":takeMealName, @"takeMealPhone":takeMealPhone,@"remarks":remarks,@"receiptAddress":receiptAddress,@"kaOrderGoods":kaOrderGoods
+                             ,@"weight" :weight           };
     [ZRAFNRequests post:url parameters:param success:^(id result) {
         callBack(result);
     } failure:^(id error) {

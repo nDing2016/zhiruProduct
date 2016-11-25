@@ -454,13 +454,17 @@ static NSString *footerID = @"footerID";
 #pragma mark - 网络请求获取数据
 - (void)loadData
 {
+    
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     //多线程
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //子线程请求数据
         //网络请求
         //获取超市首页
-        [ZRSupermarketRequest requestSupermarketHomePageWithLogitude:@"116.359751000" WithLatitude:@"39.936868000" Callback:^(id details, NSError *error) {
+        
+        
+        [ZRSupermarketRequest requestSupermarketHomePageWithLogitude:address.Longitude WithLatitude:address.Latitude Callback:^(id details, NSError *error) {
             _homeModel = [ZRSupermarketHomeModel mj_objectWithKeyValues:details];
             
             //停止刷新

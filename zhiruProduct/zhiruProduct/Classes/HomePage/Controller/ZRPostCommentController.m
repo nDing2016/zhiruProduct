@@ -23,7 +23,7 @@
 
 
 #define kMaxLength 15
-#define kLength 150
+#define kLength 100
 @interface ZRPostCommentController ()<UITextViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MJPhotoBrowserDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UICollectionViewDelegateFlowLayout,ELCImagePickerControllerDelegate ,UIAlertViewDelegate >
 
 @property(nonatomic , strong) NSMutableArray * itemsSectionPictureArray; //保存照片
@@ -100,6 +100,13 @@
 #pragma mark - 创建 评星view
 - (void)createHeadView{
     ZRPostCommentheadView * headView = [[[NSBundle mainBundle] loadNibNamed:@"ZRPostCommentheadView" owner:self options:nil] lastObject];
+    
+    if (_isGame ) {
+        headView.isGame = YES;
+    }
+    if (_isLiren) {
+        headView.isLiren = YES;
+    }
     
     _headView = headView;
     headView.userWord.delegate = self;
@@ -435,7 +442,7 @@
 - (void)enterehzFilesVC :(UIButton *)btn{
     //NSLog(@"点击发表按钮");
 
-    
+    [CustomHudView show];
     if ([self checkComment]) {
         
         NSMutableArray * imgMarr = [NSMutableArray array];
@@ -462,13 +469,16 @@
         [ZRHomePageRequst requestAddBusinessCommentWithBusinessId:_businessId andContent:_headView.userWord.text andPerCapita:_headView.perCapita.text andGrade:[NSString stringWithFormat:@"%lf",_overallView.score] andGradeOne:[NSString stringWithFormat:@"%lf",_tasteView.score] andGradeTwo:[NSString stringWithFormat:@"%lf",_environmentView.score] andGradeThree:[NSString stringWithFormat:@"%lf", _serviceView.score] andCommentType:_commentType andFiles:imgMarr andSuccess:^(id success) {
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
-             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
-            ws.postOkBlock();
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
+            self.postOkBlock();
             [ws.navigationController popViewControllerAnimated:YES];
+            [CustomHudView dismiss];
         } andFailure:^(id error) {
             [SVProgressHUD showErrorWithStatus:@"发表失败,检查网络"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             [ws.navigationController popViewControllerAnimated:YES];
+            
+            [CustomHudView dismiss];
         }];
     }
     
@@ -515,7 +525,7 @@
 
 -(void)leftBtnClick{
     UIAlertView * alertV = [[UIAlertView alloc] initWithTitle:@"尚未发表点评,是否退出?" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    
+    [CustomHudView dismiss];
     [alertV show];
 }
 
@@ -594,10 +604,10 @@
 //                    textView.text = [toBeString substringToIndex:kMaxLength];
                     _headView.Tooltips.text = [NSString stringWithFormat:@"还差%lu个字可以发表评论",kMaxLength - toBeString.length];
                 }else if(toBeString.length > kMaxLength && toBeString.length < kLength){
-                    _headView.Tooltips.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢得十倍积分",kLength - toBeString.length];
+                    _headView.Tooltips.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢十倍积分",kLength - toBeString.length];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count <3){
 
-                    _headView.Tooltips.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢得十倍积分"];
+                    _headView.Tooltips.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢十倍积分"];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count >=3){
                     _headView.Tooltips.text = [NSString stringWithFormat:@"认真点评,十倍积分等你哦"];
                 }
@@ -617,9 +627,9 @@
                     //                    textView.text = [toBeString substringToIndex:kMaxLength];
                     _headView.Tooltips.text = [NSString stringWithFormat:@"还差%lu个字可以发表评论",kMaxLength - toBeString.length];
                 }else if(toBeString.length > kMaxLength && toBeString.length < kLength){
-                    _headView.Tooltips.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢得十倍积分",kLength - toBeString.length];
+                    _headView.Tooltips.text = [NSString stringWithFormat:@"再输入%lu个字并上传3张图片,有机会赢十倍积分",kLength - toBeString.length];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count <3){
-                    _headView.Tooltips.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢得十倍积分"];
+                    _headView.Tooltips.text = [NSString stringWithFormat:@"再上传3张图片,有机会赢十倍积分"];
                 }else if(toBeString.length > kLength && self.itemsSectionPictureArray.count >=3){
                     _headView.Tooltips.text = [NSString stringWithFormat:@"认真点评,十倍积分等你哦"];
                 }

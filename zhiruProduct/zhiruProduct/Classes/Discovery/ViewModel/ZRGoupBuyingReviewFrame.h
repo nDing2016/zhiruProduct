@@ -41,4 +41,9 @@
 // cell的高度
 @property (nonatomic, assign) CGFloat cellHeight;
 
+
+
+
+@property (nonatomic, assign) CGRect gradeOneFrame;
+
 @end
