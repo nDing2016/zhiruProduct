@@ -1093,6 +1093,11 @@ WS(ws)
     
     if (_orderType == Supermarket) {
         moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight];
+        
+        CGFloat allPrice = [ZRSupermarketHomeObj shareInstance].allPrice;
+
+        NSLog(@"%f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight);
+        
     }else{
             moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ];
     }
@@ -1210,6 +1215,7 @@ WS(ws)
                 paymentOrderVC.addKaOrderModel = kaOrderModel;
                 
                 
+//111111111111111111111111111111111111111111111111111111111111111111111
                 //将购物车中内容清空
                 [ZRSupermarketHomeObj shareInstance].selectedFoodsArray = nil;
                 [ZRSupermarketHomeObj shareInstance].totalPrice = 0;
@@ -1292,9 +1298,14 @@ WS(ws)
                     ZRAddKaOrderModel *kaOrderModel = [ZRAddKaOrderModel mj_objectWithKeyValues:dict[@"data"]];
                     paymentOrderVC.addKaOrderModel = kaOrderModel;
                     
+                    
+                    
+  //111111111111111111111111111111111111111111111111111111111111111111111
                     [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
                     [ZRSupermarketHomeObj shareInstance].allPrice = 0;
                     [ZRSupermarketHomeObj shareInstance].allNumber = 0;
+                    
+                    
                 } else {
                     [AlertText showAndText:@"确认订单失败"];
                 }
@@ -1321,11 +1332,11 @@ WS(ws)
                     ZRAddKaOrderModel *kaOrderModel = [ZRAddKaOrderModel mj_objectWithKeyValues:details];
                     paymentOrderVC.addKaOrderModel = kaOrderModel;
                     
-                    
+//111111111111111111111111111111111111111111111111111111111111111111111
                     //将购物车内容清空
-                    [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
-                    [ZRSupermarketHomeObj shareInstance].allPrice = 0;
-                    [ZRSupermarketHomeObj shareInstance].allNumber = 0;
+//                    [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
+//                    [ZRSupermarketHomeObj shareInstance].allPrice = 0;
+//                    [ZRSupermarketHomeObj shareInstance].allNumber = 0;
                     
                 }
             }];
