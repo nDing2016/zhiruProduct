@@ -395,10 +395,12 @@
 		BD4797591D587A9C00CD4305 /* ZRBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4797581D587A9C00CD4305 /* ZRBusinessModel.m */; };
 		BD47AB241DDEA41D00B46AA3 /* ZRUserAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB231DDEA41D00B46AA3 /* ZRUserAddress.m */; };
 		BD47AB2A1DDEE74600B46AA3 /* ZRErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB291DDEE74600B46AA3 /* ZRErrorController.m */; };
+		BD47AB2D1DE5A37D00B46AA3 /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */; };
 		BD4FEFDE1D23C7220040D240 /* UINavigationBar+ZRAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFDD1D23C7220040D240 /* UINavigationBar+ZRAwesome.m */; };
 		BD4FEFE11D23D24E0040D240 /* ZRSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE01D23D24E0040D240 /* ZRSearchView.m */; };
 		BD4FEFE51D24C01E0040D240 /* ZRHomeCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE31D24C01E0040D240 /* ZRHomeCellOne.m */; };
 		BD4FEFE61D24C01E0040D240 /* ZRHomeCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */; };
+		BD5CDBF01DE82B1C00B6CF68 /* ZRExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */; };
 		BD6C16DA1D93E6D9006BFD51 /* ZRShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */; };
 		BD6C16E11D93E864006BFD51 /* UITextView+ZSC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E01D93E864006BFD51 /* UITextView+ZSC.m */; };
 		BD6C16E41D94DDDF006BFD51 /* UIWindow+ZRShare.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E31D94DDDF006BFD51 /* UIWindow+ZRShare.m */; };
@@ -1305,6 +1307,8 @@
 		BD47AB231DDEA41D00B46AA3 /* ZRUserAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRUserAddress.m; sourceTree = "<group>"; };
 		BD47AB281DDEE74600B46AA3 /* ZRErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRErrorController.h; sourceTree = "<group>"; };
 		BD47AB291DDEE74600B46AA3 /* ZRErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRErrorController.m; sourceTree = "<group>"; };
+		BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRReviewDetailController.h; sourceTree = "<group>"; };
+		BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRReviewDetailController.m; sourceTree = "<group>"; };
 		BD4FEFDC1D23C7220040D240 /* UINavigationBar+ZRAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+ZRAwesome.h"; sourceTree = "<group>"; };
 		BD4FEFDD1D23C7220040D240 /* UINavigationBar+ZRAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+ZRAwesome.m"; sourceTree = "<group>"; };
 		BD4FEFDF1D23D24E0040D240 /* ZRSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSearchView.h; sourceTree = "<group>"; };
@@ -1312,6 +1316,8 @@
 		BD4FEFE21D24C01E0040D240 /* ZRHomeCellOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRHomeCellOne.h; sourceTree = "<group>"; };
 		BD4FEFE31D24C01E0040D240 /* ZRHomeCellOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRHomeCellOne.m; sourceTree = "<group>"; };
 		BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZRHomeCellOne.xib; sourceTree = "<group>"; };
+		BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
+		BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
 		BD6C16D81D93E6D9006BFD51 /* ZRShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRShareView.h; sourceTree = "<group>"; };
 		BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRShareView.m; sourceTree = "<group>"; };
 		BD6C16DF1D93E864006BFD51 /* UITextView+ZSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZSC.h"; sourceTree = "<group>"; };
@@ -3173,6 +3179,8 @@
 		A3B2AAC51D41D1380089E5E1 /* 全部网友点评 */ = {
 			isa = PBXGroup;
 			children = (
+				BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */,
+				BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */,
 				A3B2AAC61D41D17B0089E5E1 /* ZRAllReviewsController.h */,
 				A3B2AAC71D41D17B0089E5E1 /* ZRAllReviewsController.m */,
 			);
@@ -3457,6 +3465,8 @@
 			children = (
 				BD6C16E61D961887006BFD51 /* ZRConfirmOrderController.h */,
 				BD6C16E71D961887006BFD51 /* ZRConfirmOrderController.m */,
+				BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */,
+				BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */,
 			);
 			name = "confirmOrder(确认订单)";
 			path = Controller/confirmOrder;
@@ -4302,6 +4312,7 @@
 				2EC2AA231DB211900021B0F0 /* ZRSuperOrderDetailModel.m in Sources */,
 				2EC2AA061DAF7BE50021B0F0 /* ZRSelectAddressCell.m in Sources */,
 				BD6C16ED1D961A0F006BFD51 /* ZROrderAddressCell.m in Sources */,
+				BD47AB2D1DE5A37D00B46AA3 /* ZRReviewDetailController.m in Sources */,
 				A31283B11D965F3800C286AF /* ZRHeadImageTableViewCell.m in Sources */,
 				A312836A1D965F3800C286AF /* ZRMarketModel.m in Sources */,
 				A31283331D965F3800C286AF /* ZRGroupBuyingOrderFormDetailsController.m in Sources */,
@@ -4317,6 +4328,7 @@
 				2E3A0DE61D9E6DFC006DF7AF /* ZRWeDetailController.m in Sources */,
 				2EF57B501D35D6D0004AD05C /* ZRTabBarButton.m in Sources */,
 				A31283221D965F3800C286AF /* ZRGroupBuyingTicketController.m in Sources */,
+				BD5CDBF01DE82B1C00B6CF68 /* ZRExplainViewController.m in Sources */,
 				A31283B51D965F3800C286AF /* ZRMyWalletHeaderView.m in Sources */,
 				A312836C1D965F3800C286AF /* ZRShoppingCarModel.m in Sources */,
 				A31283571D965F3800C286AF /* ZRSuccessViewController.m in Sources */,
