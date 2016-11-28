@@ -87,11 +87,11 @@
         [CustomHudView show];
         [ZROrderingOrderRequest kaCreateSignOrderUrlWithOrderId:model.orderId CallBack:^(id success) {
             [CustomHudView dismiss];
-            ZRAddKaOrderModel * model = success;
+            ZRAddKaOrderModel * kaModel = success;
             ZRPaymentOrderController * orderVC = [[ZRPaymentOrderController alloc] init];
-            orderVC.addKaOrderModel = model;
+            orderVC.addKaOrderModel = kaModel;
             orderVC.payOrderType = 2;
-            orderVC.payPrice = [NSString stringWithFormat:@"$%.2f", model.price.floatValue];
+            orderVC.payPrice = [NSString stringWithFormat:@"$%.2f", kaModel.price.floatValue];
             ZRTabBarViewController *tab = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
             ZRNavigationController *nav  = tab.childViewControllers[2];
             ZRMyOrderViewController *myOrdreVC = nav.viewControllers[1];

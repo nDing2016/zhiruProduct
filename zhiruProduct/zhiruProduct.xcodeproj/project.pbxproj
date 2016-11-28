@@ -61,6 +61,8 @@
 		2ECD0AAC1DDAF3100046440C /* shanghuhezuo5s.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECD0AAB1DDAF3100046440C /* shanghuhezuo5s.png */; };
 		2ECD0AB01DDD9A6F0046440C /* ZRMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD0AAF1DDD9A6F0046440C /* ZRMessageModel.m */; };
 		2ED201731DC0962C0052187C /* ZRUserFindAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED201721DC0962C0052187C /* ZRUserFindAddressModel.m */; };
+		2EDD80FA1DE847E300C79E17 /* ZRExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDD80F81DE847E300C79E17 /* ZRExplainViewController.m */; };
+		2EDD80FD1DE848AC00C79E17 /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */; };
 		2EF04CC51D4B1A66001D863F /* ZREntertainmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF04CC01D4B1A66001D863F /* ZREntertainmentCell.m */; };
 		2EF04CC61D4B1A66001D863F /* ZREntertainmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF04CC11D4B1A66001D863F /* ZREntertainmentCell.xib */; };
 		2EF04CC71D4B1A66001D863F /* ZRHomeCellTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF04CC31D4B1A66001D863F /* ZRHomeCellTwo.m */; };
@@ -272,6 +274,8 @@
 		A32B248B1D36387E00BC6F61 /* ZRShoppingCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248A1D36387E00BC6F61 /* ZRShoppingCarView.m */; };
 		A32B248E1D37357A00BC6F61 /* ZRShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248D1D37357A00BC6F61 /* ZRShoppingCarCell.m */; };
 		A3438CA11D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3438CA01D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m */; };
+		A3508ACC1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */; };
+		A3508ACF1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */; };
 		A351A4021D3DB212004A3D49 /* ZRSupermarketHomeObj.m in Sources */ = {isa = PBXBuildFile; fileRef = A351A4001D3DB212004A3D49 /* ZRSupermarketHomeObj.m */; };
 		A351A4491D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A351A4481D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.m */; };
 		A36B45FE1DCC6A7B006727D0 /* ZRCommentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36B45FD1DCC6A7B006727D0 /* ZRCommentRequest.m */; };
@@ -395,12 +399,10 @@
 		BD4797591D587A9C00CD4305 /* ZRBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4797581D587A9C00CD4305 /* ZRBusinessModel.m */; };
 		BD47AB241DDEA41D00B46AA3 /* ZRUserAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB231DDEA41D00B46AA3 /* ZRUserAddress.m */; };
 		BD47AB2A1DDEE74600B46AA3 /* ZRErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB291DDEE74600B46AA3 /* ZRErrorController.m */; };
-		BD47AB2D1DE5A37D00B46AA3 /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */; };
 		BD4FEFDE1D23C7220040D240 /* UINavigationBar+ZRAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFDD1D23C7220040D240 /* UINavigationBar+ZRAwesome.m */; };
 		BD4FEFE11D23D24E0040D240 /* ZRSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE01D23D24E0040D240 /* ZRSearchView.m */; };
 		BD4FEFE51D24C01E0040D240 /* ZRHomeCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE31D24C01E0040D240 /* ZRHomeCellOne.m */; };
 		BD4FEFE61D24C01E0040D240 /* ZRHomeCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */; };
-		BD5CDBF01DE82B1C00B6CF68 /* ZRExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */; };
 		BD6C16DA1D93E6D9006BFD51 /* ZRShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */; };
 		BD6C16E11D93E864006BFD51 /* UITextView+ZSC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E01D93E864006BFD51 /* UITextView+ZSC.m */; };
 		BD6C16E41D94DDDF006BFD51 /* UIWindow+ZRShare.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E31D94DDDF006BFD51 /* UIWindow+ZRShare.m */; };
@@ -595,6 +597,10 @@
 		2ECD0AAF1DDD9A6F0046440C /* ZRMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRMessageModel.m; sourceTree = "<group>"; };
 		2ED201711DC0962C0052187C /* ZRUserFindAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRUserFindAddressModel.h; sourceTree = "<group>"; };
 		2ED201721DC0962C0052187C /* ZRUserFindAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRUserFindAddressModel.m; sourceTree = "<group>"; };
+		2EDD80F81DE847E300C79E17 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
+		2EDD80F91DE847E300C79E17 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
+		2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRReviewDetailController.m; sourceTree = "<group>"; };
+		2EDD80FC1DE848AC00C79E17 /* ZRReviewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRReviewDetailController.h; sourceTree = "<group>"; };
 		2EF04CBF1D4B1A66001D863F /* ZREntertainmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZREntertainmentCell.h; sourceTree = "<group>"; };
 		2EF04CC01D4B1A66001D863F /* ZREntertainmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZREntertainmentCell.m; sourceTree = "<group>"; };
 		2EF04CC11D4B1A66001D863F /* ZREntertainmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZREntertainmentCell.xib; sourceTree = "<group>"; };
@@ -1001,6 +1007,10 @@
 		A32B248D1D37357A00BC6F61 /* ZRShoppingCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRShoppingCarCell.m; sourceTree = "<group>"; };
 		A3438C9F1D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRBusinessDetailsCollectionCell.h; sourceTree = "<group>"; };
 		A3438CA01D38C99700EF0725 /* ZRBusinessDetailsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRBusinessDetailsCollectionCell.m; sourceTree = "<group>"; };
+		A3508ACA1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketGoodsTool.h; sourceTree = "<group>"; };
+		A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketGoodsTool.m; sourceTree = "<group>"; };
+		A3508ACD1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketAllListModel.h; sourceTree = "<group>"; };
+		A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketAllListModel.m; sourceTree = "<group>"; };
 		A351A4001D3DB212004A3D49 /* ZRSupermarketHomeObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketHomeObj.m; sourceTree = "<group>"; };
 		A351A4011D3DB212004A3D49 /* ZRSupermarketHomeObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketHomeObj.h; sourceTree = "<group>"; };
 		A351A4471D3E2E0C004A3D49 /* ZRGroupBuyingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGroupBuyingDetailsController.h; sourceTree = "<group>"; };
@@ -2969,8 +2979,27 @@
 				A3F167271D6ED07B00578FB9 /* ZRSupermarketProductsListModel.m */,
 				A3000F5F1D850E2300C4D62C /* ZRSelectAcceptAddressModel.h */,
 				A3000F601D850E2300C4D62C /* ZRSelectAcceptAddressModel.m */,
+				A3508ACD1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.h */,
+				A3508ACE1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m */,
 			);
 			path = "Supermarket(超市)";
+			sourceTree = "<group>";
+		};
+		A3508AC81DE6DF5A00D0FA67 /* 数据存储 */ = {
+			isa = PBXGroup;
+			children = (
+				A3508AC91DE6DFB400D0FA67 /* Supermarket */,
+			);
+			path = "数据存储";
+			sourceTree = "<group>";
+		};
+		A3508AC91DE6DFB400D0FA67 /* Supermarket */ = {
+			isa = PBXGroup;
+			children = (
+				A3508ACA1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.h */,
+				A3508ACB1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m */,
+			);
+			path = Supermarket;
 			sourceTree = "<group>";
 		};
 		A351A4461D3E2D43004A3D49 /* 团购详情 */ = {
@@ -3181,6 +3210,8 @@
 			children = (
 				BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */,
 				BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */,
+				2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */,
+				2EDD80FC1DE848AC00C79E17 /* ZRReviewDetailController.h */,
 				A3B2AAC61D41D17B0089E5E1 /* ZRAllReviewsController.h */,
 				A3B2AAC71D41D17B0089E5E1 /* ZRAllReviewsController.m */,
 			);
@@ -3463,6 +3494,8 @@
 		BD6C16E51D961849006BFD51 /* confirmOrder(确认订单) */ = {
 			isa = PBXGroup;
 			children = (
+				2EDD80F81DE847E300C79E17 /* ZRExplainViewController.m */,
+				2EDD80F91DE847E300C79E17 /* ZRExplainViewController.h */,
 				BD6C16E61D961887006BFD51 /* ZRConfirmOrderController.h */,
 				BD6C16E71D961887006BFD51 /* ZRConfirmOrderController.m */,
 				BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */,
@@ -3732,6 +3765,7 @@
 		BDB5424A1D1A7D5A0019C34D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A3508AC81DE6DF5A00D0FA67 /* 数据存储 */,
 				BD769F911D5C672700F49EDD /* CustomProgress */,
 				2ECD09E01DD1E9A70046440C /* MD5 */,
 				BDDF616C1DC739C1003F22EC /* kaifazhong */,
@@ -4108,6 +4142,7 @@
 					BDB542101D1A7A440019C34D = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = FM9W4WG82P;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -4312,7 +4347,6 @@
 				2EC2AA231DB211900021B0F0 /* ZRSuperOrderDetailModel.m in Sources */,
 				2EC2AA061DAF7BE50021B0F0 /* ZRSelectAddressCell.m in Sources */,
 				BD6C16ED1D961A0F006BFD51 /* ZROrderAddressCell.m in Sources */,
-				BD47AB2D1DE5A37D00B46AA3 /* ZRReviewDetailController.m in Sources */,
 				A31283B11D965F3800C286AF /* ZRHeadImageTableViewCell.m in Sources */,
 				A312836A1D965F3800C286AF /* ZRMarketModel.m in Sources */,
 				A31283331D965F3800C286AF /* ZRGroupBuyingOrderFormDetailsController.m in Sources */,
@@ -4328,7 +4362,6 @@
 				2E3A0DE61D9E6DFC006DF7AF /* ZRWeDetailController.m in Sources */,
 				2EF57B501D35D6D0004AD05C /* ZRTabBarButton.m in Sources */,
 				A31283221D965F3800C286AF /* ZRGroupBuyingTicketController.m in Sources */,
-				BD5CDBF01DE82B1C00B6CF68 /* ZRExplainViewController.m in Sources */,
 				A31283B51D965F3800C286AF /* ZRMyWalletHeaderView.m in Sources */,
 				A312836C1D965F3800C286AF /* ZRShoppingCarModel.m in Sources */,
 				A31283571D965F3800C286AF /* ZRSuccessViewController.m in Sources */,
@@ -4405,6 +4438,7 @@
 				A31283891D965F3800C286AF /* ZRGBTuiTableViewCell.m in Sources */,
 				2EC2A8A91DA7A66B0021B0F0 /* ZROrderingEvaluateController.m in Sources */,
 				A3FE5CA41D42025B00B6088E /* ZRKindsOfReview.m in Sources */,
+				A3508ACC1DE6E02F00D0FA67 /* ZRSupermarketGoodsTool.m in Sources */,
 				A31EACA01D2E4DB9004FD2B6 /* ZRSupermarketController.m in Sources */,
 				A36D275F1D992164004D1A30 /* ZRAlertControl.m in Sources */,
 				BD4FEFDE1D23C7220040D240 /* UINavigationBar+ZRAwesome.m in Sources */,
@@ -4444,6 +4478,7 @@
 				2EC2A9341DA8D8890021B0F0 /* ZROrderingOrderRequest.m in Sources */,
 				A312836B1D965F3800C286AF /* ZRShoppingCarDetailModel.m in Sources */,
 				BDD7A5D81D27B84900373338 /* ZRTableVIewHeadView.m in Sources */,
+				2EDD80FD1DE848AC00C79E17 /* ZRReviewDetailController.m in Sources */,
 				A31283A51D965F3800C286AF /* ZRSettingMessageCell.m in Sources */,
 				A312834B1D965F3800C286AF /* ZRNewPhoneViewController.m in Sources */,
 				A32523261DB20B30000B4520 /* ZROtherGroupsModel.m in Sources */,
@@ -4481,6 +4516,7 @@
 				2EC2A9301DA88D140021B0F0 /* ZREvaluateHeader.m in Sources */,
 				A32523251DB20B30000B4520 /* ZRGroupCommentListModel.m in Sources */,
 				A36D26121D98CF89004D1A30 /* MD5DataSigner.m in Sources */,
+				A3508ACF1DE6E9AE00D0FA67 /* ZRSupermarketAllListModel.m in Sources */,
 				BD4FEFE11D23D24E0040D240 /* ZRSearchView.m in Sources */,
 				A3FE5CFF1D43085D00B6088E /* ELCImagePickerController.m in Sources */,
 				A31283811D965F3800C286AF /* ZRNeedCommentOrderingCell.m in Sources */,
@@ -4511,6 +4547,7 @@
 				A31283621D965F3800C286AF /* ZRExchangAllModel.m in Sources */,
 				A31283981D965F3800C286AF /* ZRQuanTravalOrderColl.m in Sources */,
 				2EC2A9BB1DAB90A40021B0F0 /* ZRLunchModel.m in Sources */,
+				2EDD80FA1DE847E300C79E17 /* ZRExplainViewController.m in Sources */,
 				BD769F861D5ABD3700F49EDD /* ZRHomeNavModel.m in Sources */,
 				A31283A11D965F3800C286AF /* ZRPointsHeaderView.m in Sources */,
 				A31EAC891D2E3DF9004FD2B6 /* ZRImmediatelyExchangeController.m in Sources */,
@@ -4767,7 +4804,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4805,7 +4842,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4818,7 +4855,7 @@
 			baseConfigurationReference = 5DD92B5917BE36B7A724ACD8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4929,7 +4966,7 @@
 			baseConfigurationReference = 10D08A74F0663F053FB0868F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

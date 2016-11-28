@@ -26,7 +26,7 @@
     UILabel * label = [[UILabel alloc] init];
     [label setNumberOfLines:0];
     [label setFont:[UIFont systemFontOfSize:15]];
-    [label setText:@"没有找到相关问题？\n联系客服请发送邮件至customer-service@hey-tang.com\n或致电+15879266366, +15879378908"];
+    [label setText:@"没有找到相关问题？\n联系客服请发送邮件至\ncustomer-service@hey-tang.com\n或致电客服电话\n+1(587)926-6366\n+1(587)937-8908"];
     [label setTextColor:RGBCOLOR(156, 156, 156)];
     [self.view addSubview:label];
     WS(weakSelf);

@@ -21,14 +21,14 @@
 //图片地址
 @property (nonatomic, copy) NSString *img_url;
 
-//重量单位克
+//重量单位kg
 @property (nonatomic, copy) NSString *weight;
 
 
-/**
- 保存网络下载下来的图像
- */
-@property(nonatomic,strong)UIImage *cacheImg;
+///**
+// 保存网络下载下来的图像
+// */
+//@property(nonatomic,strong)UIImage *cacheImg;
 
 
 @end

@@ -98,54 +98,19 @@
             
             cell.textLabel.text = self.orderDetailsStr;
             
-            //            switch (self.orderStatus) {
-            //                case 0:
-            //                {
-            //                    cell.textLabel.text = @"订单提交成功";
-            //                }
-            //                    break;
-            //                case 1:
-            //                {
-            //                    cell.textLabel.text = @"订单已支付";
-            //                }
-            //                    break;
-            //                case 2:
-            //                {
-            //                    cell.textLabel.text = @"等待商户接单";
-            //                }
-            //                    break;
-            //                case 3:
-            //                {
-            //                    cell.textLabel.text = @"商家已经确认订单";
-            //                }
-            //                    break;
-            //                case 4:
-            //                {
-            //                    cell.textLabel.text = @"骑士已取货";
-            //                }
-            //                    break;
-            //                case 5:
-            //                {
-            //                    cell.textLabel.text = @"订单已完成";
-            //                }
-            //                    break;
-            //    
-            //                default:
-            //                    break;
-
-            
-            
-            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.textLabel.font = [UIFont systemFontOfSize:15];
             cell.textLabel.textColor = RGBCOLOR(85, 85, 85);
             cell.detailTextLabel.text = self.orderTime;
+            cell.detailTextLabel.textColor = RGBCOLOR(85, 85, 85);
+            cell.detailTextLabel.font = CustomFont(14);
             //更多状态按钮
             UIButton *moreStatusBtn = [[UIButton alloc] init];
             [moreStatusBtn setTitle:@"更多状态>>" forState:UIControlStateNormal];
             [moreStatusBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            moreStatusBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+            moreStatusBtn.titleLabel.font = CustomFont(14);
             [cell.contentView addSubview:moreStatusBtn];
             [moreStatusBtn addTarget:self action:@selector(moreStatusClick:) forControlEvents:UIControlEventTouchUpInside];
-            CGSize size = [NSString getSize:@"更多状态>> " strFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(ScreenWidth,ScreenHeight)];
+            CGSize size = [NSString getSize:@"更多状态>> " strFont:CustomFont(14) maxSize:CGSizeMake(ScreenWidth,ScreenHeight)];
             [moreStatusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(@(-15));
                 make.top.equalTo(@15);
@@ -196,7 +161,13 @@
         }else if (indexPath.section == 2){
             height = 40*SCREEN_HEIGHT/667;
         }else{
-            height = 40*SCREEN_HEIGHT/667;
+            if (indexPath.row == 4) {
+                height = 50*SCREEN_HEIGHT/667;
+            }else{
+                height = 40*SCREEN_HEIGHT/667;
+            }
+            
+            
         }
 
         

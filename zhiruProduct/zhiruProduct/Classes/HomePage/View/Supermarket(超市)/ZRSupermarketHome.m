@@ -21,10 +21,7 @@
 #define kToolHeight           (40*SCREEN_HEIGHT/667)
 
 @interface ZRSupermarketHome ()<UITableViewDataSource, UITableViewDelegate, ZRSupermarketCellDelegate>
-/*左侧tableView*/
-@property (nonatomic, strong) UITableView *categoryTable;
-/*右侧tableView*/
-@property (nonatomic, strong) UITableView *productTable;
+
 
 
 @property (nonatomic, strong) NSIndexPath *leftIndexPath;
@@ -177,6 +174,7 @@
 -(void)setTitleString:(NSString *)titleString
 {
     _titleString = titleString;
+    [self.categoryTable reloadData];
     [self.productTable reloadData];
     
     if (_leftArray.count>0) {

@@ -113,7 +113,7 @@
     [self.passWordView.textField resignFirstResponder];
     
     if (self.userNameView.textField.text.length == 0) {
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"用户名不能输入为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号不能输入为空" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
     } else if (self.passWordView.textField.text.length == 0){
@@ -180,14 +180,14 @@
                 
             } else if ([message isEqualToString:@"不存在用户"]) {
                 
-                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"用户名不存在" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号不存在" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
                 }]];
                 [weakSelf presentViewController:alert animated:YES completion:nil];
                 
             } else if ([message isEqualToString:@"手机或密码错误"]) {
-                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"用户名或密码错误" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号或密码错误" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
                 }]];

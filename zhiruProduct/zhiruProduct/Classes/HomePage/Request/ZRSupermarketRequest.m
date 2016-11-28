@@ -159,6 +159,7 @@ static NSString * const zAddKaShoppingCart = @"ka/addKaShoppingCart";
  *  @param kaOrderGoods   数组
  *  @param takeMealName   取餐人姓名
  *  @param takeMealPhone  取餐人电话
+ *  @param weight         重量
  *  @param callback       回调
  */
 +(void)requestAddKaOrderWithKaId:(NSString *)kaId
@@ -172,6 +173,7 @@ static NSString * const zAddKaShoppingCart = @"ka/addKaShoppingCart";
                     KaOrderGoods:(NSArray *)kaOrderGoods
                     TakeMealName:(NSString *)takeMealName
                    TakeMealPhone:(NSString *)takeMealPhone
+                          Weight:(NSString *)weight
                         Callback:(SupermarketHomeCallback)callback
 {
     NSString *url = [HOST stringByAppendingString:zAddKaOrder];
@@ -187,6 +189,7 @@ static NSString * const zAddKaShoppingCart = @"ka/addKaShoppingCart";
     [parameters setObject:kaOrderGoods forKey:@"kaOrderGoods"];
     [parameters setObject:takeMealName forKey:@"takeMealName"];
     [parameters setObject:takeMealPhone forKey:@"takeMealPhone"];
+    [parameters setObject:weight forKey:@"weight"];
     
     [ZRAFNRequests post:url parameters:parameters success:^(id result) {
         if ([result[@"code"] isEqualToString:@"S000"]) {

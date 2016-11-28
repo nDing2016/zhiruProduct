@@ -51,4 +51,6 @@
 //收货地址
 @property (nonatomic, copy)NSString *receipt_address;
 
+@property (nonatomic, strong)NSNumber *weight;
+
 @end

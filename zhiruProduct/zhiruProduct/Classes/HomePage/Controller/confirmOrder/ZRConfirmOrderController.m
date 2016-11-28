@@ -71,13 +71,16 @@
 //备注
 @property (nonatomic , strong) NSDictionary * beizhuDict;
 
-//重量
+//重量费
 @property (nonatomic , assign) CGFloat weight;
 //名字
 @property (nonatomic , copy) NSString * userName;
 
 //电话号
 @property (nonatomic , copy) NSString * userIphone;
+
+//总重量
+@property (nonatomic, assign) CGFloat allWeight;
 
 
 @end
@@ -119,6 +122,23 @@
     _latitude = latitude;
     
    
+}
+
+
+//总重量
+- (CGFloat)getAllGoodsWeight
+{
+    __block CGFloat wei;
+    [[ZRSupermarketHomeObj shareInstance].allProductsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray *arr = obj;
+        ZRSupermarketGoodsListModel *goodsModel = arr[0];
+        wei += [goodsModel.weight floatValue] *arr.count;
+        
+        
+        
+    }];
+    
+    return wei;
 }
 
 -(UITableView *)myTableView{
@@ -1281,15 +1301,23 @@ WS(ws)
              
              */
             CGFloat price;
+            CGFloat allWeight;
             for (int i = 0; i < self.productArr.count; i++) {
                 NSArray * array = self.productArr[i];
                 for (ZRSupermarketGoodsListModel * model in array) {
                     price += model.now_price.floatValue;
                 }
+                
+                
+                ZRSupermarketGoodsListModel *goodsModel = array[0];
+                allWeight+=[goodsModel.weight floatValue] *array.count;
+                
             }
             CGFloat total = price + _peiMoney + _shuiMoney + _weight;
-            //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );
-            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%f",_weight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
+            //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );            
+            
+            
+            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%.3f",allWeight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {
@@ -1324,7 +1352,7 @@ WS(ws)
                 [AlertText showAndText:@"确认订单失败"];
             }];
         } else {
-            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Callback:^(id details, NSError *error) {
+            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Weight:[NSString stringWithFormat:@"%.3f",[self getAllGoodsWeight]] Callback:^(id details, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (details) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];

@@ -191,8 +191,15 @@
                         
                         NSString * distanceStr = success;
                         ZRConfirmOrderController *confirmOrderVC = [[ZRConfirmOrderController alloc] init];
+                        // 判断从哪个导航push过来的
+                        int a;
+                        if ([self.pushSource isEqualToString:@"我的"]) {
+                            a = 2;
+                        } else {
+                            a = 0;
+                        }
                         ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-                        ZRNavigationController * nav = tabBar.viewControllers[2];
+                        ZRNavigationController * nav = tabBar.viewControllers[a];
                         ZRShoppingCarController * shoppingCar = nav.viewControllers[1];
                         [shoppingCar.navigationController pushViewController:confirmOrderVC animated:YES];
                         confirmOrderVC.orderType = Supermarket;
@@ -324,12 +331,19 @@
 {
     ZRMarketModel * model = [self.dataArray objectAtIndex:section];
     ZRMarketDetailModel * detailModel = [model.goodsList lastObject];
+    // 判断从哪个导航push过来的
+    int a;
+    if ([self.pushSource isEqualToString:@"我的"]) {
+        a = 2;
+    } else {
+        a = 0;
+    }
     ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ZRNavigationController * nav = tabBar.viewControllers[2];
+    ZRNavigationController * nav = tabBar.viewControllers[a];
     ZRShoppingCarController * shoppingCar = nav.viewControllers[1];
     ZRSupermarketHomeController * marketVC = [[ZRSupermarketHomeController alloc] init];
-//#warning 不传kaIdStr，传超市模型ZRSupermarketHomeModel
-//    self.superModel = [[ZRSupermarketHomeModel alloc] init];
+    //#warning 不传kaIdStr，传超市模型ZRSupermarketHomeModel
+    //    self.superModel = [[ZRSupermarketHomeModel alloc] init];
     self.superModel.kaId = detailModel.kaId;
     _superModel.kaName = model.kaName;
     marketVC.supermarketModel = _superModel;

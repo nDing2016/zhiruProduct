@@ -28,6 +28,7 @@
     
     self.manLabel = [[UILabel alloc] init];
     [self addSubview:_manLabel];
+    [self.manLabel setTextColor:RGBCOLOR(85, 85, 85)];
     [self.manLabel setText:@"先生"];
     [self.manLabel setFont:[UIFont systemFontOfSize:16]];
     [self.manLabel setTextAlignment:NSTextAlignmentLeft];
@@ -39,6 +40,7 @@
     
     self.womanLabel = [[UILabel alloc] init];
     [self addSubview:_womanLabel];
+    [self.womanLabel setTextColor:RGBCOLOR(85, 85, 85)];
     [self.womanLabel setText:@"女士"];
     [self.womanLabel setFont:[UIFont systemFontOfSize:16]];
     [self.womanLabel setTextAlignment:NSTextAlignmentLeft];

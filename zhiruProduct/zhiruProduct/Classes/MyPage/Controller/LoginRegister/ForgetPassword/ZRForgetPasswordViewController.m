@@ -88,7 +88,7 @@
             });
             dispatch_resume(_timer);
     } else {
-        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"用户名不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号不能为空" preferredStyle:UIAlertControllerStyleAlert];
         [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertVC animated:YES completion:nil];
     }
