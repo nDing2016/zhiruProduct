@@ -299,15 +299,19 @@
         NSString * longitude;
         NSString * latitude;
         if (model == nil) {
-            longitude = @"0";
-            latitude = @"0";
+            ZRUserAddress * address = [[ZRUserAddress alloc] init];
+            
+            longitude = address.Longitude;
+            latitude = address.Latitude;
         }else{
             longitude  = model.longitude;
             latitude = model.latitude;
         }
    
          [ZRSupermarketRequest requestGetDustabceWithLongitudeOne:_longitude andLatitudeOne:_latitude andLongitudeTwo:longitude andLatitudeTwo:latitude andSuccess:^(id success) {
+             
              [SVProgressHUD dismiss];
+             
              NSString * distanceStr = success;
              if ([ZRUserTool user]) { // 已经登录
                  ZRConfirmOrderController *confirmOrderVC = [[ZRConfirmOrderController alloc] init];

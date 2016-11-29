@@ -54,4 +54,6 @@
  *  是否支持 自提
  */
 @property (nonatomic , copy) NSString * pickUp;
+
+@property (nonatomic , copy) NSString * orderingId;
 @end

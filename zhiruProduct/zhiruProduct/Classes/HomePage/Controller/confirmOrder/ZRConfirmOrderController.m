@@ -685,9 +685,12 @@
                 cell = [nibs lastObject];
             }
 //---------待完善 配送费暂时未定
+//            self getOrderingDataWithIsBusiness:<#(NSString *)#> andDistance:<#(CGFloat)#> andFreeSingleMoney:<#(CGFloat)#>
+            
             cell.psMoney = 5;
             _peiMoney = 5;
-
+            
+            
             ZRUser * user = [ZRUserTool user];
             if ([user.is_vip isEqualToString:@"0"]) {
                 cell.isVip =NO;
@@ -702,7 +705,14 @@
                 cell.isXXDistribution = NO;
             }
             
-            
+            WS(ws)
+            cell.peisongShuomingClick = ^(){
+                ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+                
+                explainVC.title = @"配送费说明";
+                
+                [ws.navigationController pushViewController:explainVC animated:YES];
+            };
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
@@ -715,7 +725,7 @@
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
            
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$%lf", [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$%.2lf", [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05];
             _shuiMoney = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05;
             cell.detailTextLabel.font = [UIFont systemFontOfSize:16];
             cell.detailTextLabel.textColor = [UIColor redColor];

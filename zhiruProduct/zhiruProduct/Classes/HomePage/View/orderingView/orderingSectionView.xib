@@ -96,9 +96,6 @@
                 <outlet property="btnThree" destination="YjJ-cF-1HG" id="hCn-yA-175"/>
                 <outlet property="btnTwo" destination="zmi-bC-7z8" id="OYr-6z-kkM"/>
                 <outlet property="line" destination="WA7-d1-GO1" id="LpS-Lt-xT0"/>
-                <outlet property="lineCOnstraint" destination="DUP-0r-2Q5" id="LZY-tS-x9u"/>
-                <outlet property="oneConstraint" destination="1id-tS-VOA" id="TW5-GW-elY"/>
-                <outlet property="twoConstraint" destination="P1H-r4-BJz" id="lF4-yq-CU9"/>
             </connections>
             <point key="canvasLocation" x="135" y="-492"/>
         </view>
