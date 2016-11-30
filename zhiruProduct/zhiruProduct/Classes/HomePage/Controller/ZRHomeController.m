@@ -201,12 +201,12 @@
             case 2: //订餐
             {
                 
-                if (/* DISABLES CODE */ (1)) {
-                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-                    [self.navigationController  pushViewController:setUpView animated:YES];
-                    [CustomHudView dismiss];
-                    return;
-                }
+//                if (/* DISABLES CODE */ (1)) {
+//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+//                    [self.navigationController  pushViewController:setUpView animated:YES];
+//                    [CustomHudView dismiss];
+//                    return;
+//                }
                 [ZRHomePageRequst requestOrderingListWithLongitude:userAdd.Longitude  andLatitude:userAdd.Latitude andLabel:nil andSuccess:^(id success) {
                     
                     
@@ -676,7 +676,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-
     ZRProductDetailsController * detailsCV = [[ZRProductDetailsController alloc] init];
     
     ZRBusinessModel * model = _model.businessMsg[indexPath.row];
