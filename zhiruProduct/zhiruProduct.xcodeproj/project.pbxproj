@@ -4855,8 +4855,8 @@
 			baseConfigurationReference = 5DD92B5917BE36B7A724ACD8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4956,7 +4956,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4966,8 +4966,8 @@
 			baseConfigurationReference = 10D08A74F0663F053FB0868F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5067,7 +5067,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
