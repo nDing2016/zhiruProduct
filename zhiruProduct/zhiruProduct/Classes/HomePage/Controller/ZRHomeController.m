@@ -201,12 +201,12 @@
             case 2: //订餐
             {
                 
-//                if (/* DISABLES CODE */ (1)) {
-//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-//                    [self.navigationController  pushViewController:setUpView animated:YES];
-//                    [CustomHudView dismiss];
-//                    return;
-//                }
+                if (/* DISABLES CODE */ (1)) {
+                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+                    [self.navigationController  pushViewController:setUpView animated:YES];
+                    [CustomHudView dismiss];
+                    return;
+                }
                 [ZRHomePageRequst requestOrderingListWithLongitude:userAdd.Longitude  andLatitude:userAdd.Latitude andLabel:nil andSuccess:^(id success) {
                     
                     
@@ -779,14 +779,29 @@
         [ws.homeTableView.mj_header endRefreshingWithCompletionBlock:^{
             //NSLog(@"loadNewData"); 
             [ws setUpButtons];
-            
+            [ws.homeTableView reloadData];
         }];
 
-  
+        [CustomHudView dismiss];
+        [self.homeTableView reloadData];
+
        
     } andFailure:^(id error) {
         //NSLog(@"%@",error);
         [ws.homeTableView.mj_header endRefreshing];
+        [CustomHudView dismiss];
+        ZRErrorController * errorVC = [[ZRErrorController alloc] init];
+        errorVC.isMeiWang = YES;
+        
+        errorVC.clickBtn = ^(){
+            [CustomHudView show];
+            
+            [ws getHomeData];
+        };
+        
+        [ws presentViewController:errorVC animated:YES completion:^{
+            
+        }];
     }];
 }
 

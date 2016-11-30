@@ -10,55 +10,74 @@
 #import "ZRMyLocation.h"
 @interface ZRErrorController ()
 @property (nonatomic , strong) UIButton * btn;
+/** 背景cover */
+@property (nonatomic, strong) UIView *bgView;
 @end
 
 @implementation ZRErrorController
 
+
+
+-(void)setIsMeiWang:(BOOL)isMeiWang{
+    _isMeiWang = isMeiWang;
+   
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self createView ];
+//    self.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.3];
+    self.view.backgroundColor  = [UIColor whiteColor];
+     [self createView ];
 }
 
 - (void)createView{
     
-    UIImageView * img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"internet problem"]];
-    
-    [self.view addSubview:img];
-    
-    WS(ws)
-    [img mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo (ws.view.mas_centerX);
-        make.top.equalTo(ws.view.mas_top).offset(80);
-    }];
-    
-    
     UIButton * btn = [[UIButton alloc] init];
-    [btn setTitle:@"点击重试" forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnclick) forControlEvents:UIControlEventTouchUpInside];
     
-    _btn = btn;
+    if (_isMeiWang) {
+        [btn setImage:[UIImage imageNamed:@"net weak"] forState:UIControlStateNormal];
+
+    }else{
+        [btn setImage:[UIImage imageNamed:@"internet problem"] forState:UIControlStateNormal];
+
+    }
+    
+    
+    
     
     [self.view addSubview:btn];
     
+    WS(ws)
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(img.mas_centerX);
-        make.top.equalTo(img.mas_bottom).offset(130);
+        make.centerX.equalTo (ws.view.mas_centerX);
+        make.centerY.equalTo (ws.view.mas_centerY);
+        make.width.equalTo(@250);
+        make.height.equalTo(@250);
     }];
+    
+    [btn addTarget:self action:@selector(btnclick) forControlEvents:UIControlEventTouchUpInside];
+    
+    _btn = btn;
+
 }
 
 - (void)btnclick {
-    [CustomHudView show];
     
-    [[ZRMyLocation shareInstance] getMylocation];
-    
-    [self dismissViewControllerAnimated:YES completion:^{
+    if (_isMeiWang) {
+        self.clickBtn();
+    }else{
+        [CustomHudView show];
+        
+        [[ZRMyLocation shareInstance] getMylocation];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
 
-    }];
-    
 }
 
 

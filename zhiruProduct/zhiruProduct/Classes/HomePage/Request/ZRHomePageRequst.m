@@ -210,7 +210,7 @@ static NSString *const zBusinessCommentList = @"businessComment/list";
                                   andSuccess: (void(^)(id success))success
                                   andFailure:(void(^)(id error))failure{
     
-    NSDictionary * parameter = @{@"longitude":longitude , @"latitude":latitude , @"businessId" : businessId};
+    NSDictionary * parameter = @{@"longitude":longitude , @"latitude":latitude , @"orderingId" : businessId};
     
     [ZRAFNRequests post:[NSString stringWithFormat:@"%@%@",HOST,zAppOrderingDetails] parameters:parameter success:^(id result) {
         if (result[@"data"]) {

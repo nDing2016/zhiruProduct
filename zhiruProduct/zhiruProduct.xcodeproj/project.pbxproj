@@ -1317,6 +1317,8 @@
 		BD47AB231DDEA41D00B46AA3 /* ZRUserAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRUserAddress.m; sourceTree = "<group>"; };
 		BD47AB281DDEE74600B46AA3 /* ZRErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRErrorController.h; sourceTree = "<group>"; };
 		BD47AB291DDEE74600B46AA3 /* ZRErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRErrorController.m; sourceTree = "<group>"; };
+		BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRReviewDetailController.h; sourceTree = "<group>"; };
+		BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRReviewDetailController.m; sourceTree = "<group>"; };
 		BD4FEFDC1D23C7220040D240 /* UINavigationBar+ZRAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+ZRAwesome.h"; sourceTree = "<group>"; };
 		BD4FEFDD1D23C7220040D240 /* UINavigationBar+ZRAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+ZRAwesome.m"; sourceTree = "<group>"; };
 		BD4FEFDF1D23D24E0040D240 /* ZRSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSearchView.h; sourceTree = "<group>"; };
@@ -1324,6 +1326,8 @@
 		BD4FEFE21D24C01E0040D240 /* ZRHomeCellOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRHomeCellOne.h; sourceTree = "<group>"; };
 		BD4FEFE31D24C01E0040D240 /* ZRHomeCellOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRHomeCellOne.m; sourceTree = "<group>"; };
 		BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZRHomeCellOne.xib; sourceTree = "<group>"; };
+		BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
+		BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
 		BD6C16D81D93E6D9006BFD51 /* ZRShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRShareView.h; sourceTree = "<group>"; };
 		BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRShareView.m; sourceTree = "<group>"; };
 		BD6C16DF1D93E864006BFD51 /* UITextView+ZSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZSC.h"; sourceTree = "<group>"; };
@@ -3204,6 +3208,8 @@
 		A3B2AAC51D41D1380089E5E1 /* 全部网友点评 */ = {
 			isa = PBXGroup;
 			children = (
+				BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */,
+				BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */,
 				2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */,
 				2EDD80FC1DE848AC00C79E17 /* ZRReviewDetailController.h */,
 				A3B2AAC61D41D17B0089E5E1 /* ZRAllReviewsController.h */,
@@ -3492,6 +3498,8 @@
 				2EDD80F91DE847E300C79E17 /* ZRExplainViewController.h */,
 				BD6C16E61D961887006BFD51 /* ZRConfirmOrderController.h */,
 				BD6C16E71D961887006BFD51 /* ZRConfirmOrderController.m */,
+				BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */,
+				BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */,
 			);
 			name = "confirmOrder(确认订单)";
 			path = Controller/confirmOrder;
@@ -4847,8 +4855,9 @@
 			baseConfigurationReference = 5DD92B5917BE36B7A724ACD8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4948,7 +4957,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4958,8 +4968,9 @@
 			baseConfigurationReference = 10D08A74F0663F053FB0868F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: menghan Zhou (FM9W4WG82P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5059,7 +5070,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d53bfa3b-0403-4fc0-a924-fa0c03976c73";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

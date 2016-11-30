@@ -83,7 +83,7 @@
     ZROrderingDetailsController * detailsVC = [[ZROrderingDetailsController alloc] init];
     //...
     ZROrderingBusinessMsg * model = _cellData[indexPath.row];
-    detailsVC.businessId = model.businessId;
+    detailsVC.businessId = model.orderingId;
     [self.navigationController  pushViewController:detailsVC animated:YES];
 }
 

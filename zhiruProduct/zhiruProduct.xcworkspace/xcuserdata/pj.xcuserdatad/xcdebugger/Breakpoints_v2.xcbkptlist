@@ -13,5 +13,165 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+            timestampString = "502189305.367179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1096"
+            endingLineNumber = "1096"
+            landmarkName = "-getAddressModel:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRConfirmOrderController getAddressModel:]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+                  timestampString = "502192433.262264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1096"
+                  endingLineNumber = "1096"
+                  offsetFromSymbolStart = "708">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__44-[ZRConfirmOrderController getAddressModel:]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+                  timestampString = "502192433.264215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1097"
+                  endingLineNumber = "1097"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ordering/ZROrderingDetailsController.m"
+            timestampString = "502189310.925861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-notice:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[ZROrderingDetailsController notice:]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ordering/ZROrderingDetailsController.m"
+                  timestampString = "502192433.268342"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "177"
+                  endingLineNumber = "177"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[ZROrderingDetailsController notice:]_block_invoke_2"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ordering/ZROrderingDetailsController.m"
+                  timestampString = "502192433.270453"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "177"
+                  endingLineNumber = "177"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Controller/ShoppingCar(&#x8d2d;&#x7269;&#x8f66;)/ZRShoppingCarMarketController.m"
+            timestampString = "502189315.08386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-footViewClearingButton:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[ZRShoppingCarMarketController footViewClearingButton:]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/MyPage/Controller/ShoppingCar(%E8%B4%AD%E7%89%A9%E8%BD%A6)/ZRShoppingCarMarketController.m"
+                  timestampString = "502192433.274473"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[ZRShoppingCarMarketController footViewClearingButton:]_block_invoke_2"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pj/Desktop/ZRios/zhiruProduct/zhiruProduct/zhiruProduct/Classes/MyPage/Controller/ShoppingCar(%E8%B4%AD%E7%89%A9%E8%BD%A6)/ZRShoppingCarMarketController.m"
+                  timestampString = "502192433.276566"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Model/&#x7528;&#x6237;&#x6570;&#x636e;/ZRUserInterfaceModel.m"
+            timestampString = "502189387.649747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
+            landmarkName = "+userFineDefaultAddressCallBack:Filure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -10,4 +10,6 @@
 
 @interface ZRErrorController : UIViewController
 
+@property (nonatomic , assign) BOOL  isMeiWang;
+@property (nonatomic , copy) void(^clickBtn)();
 @end

@@ -491,13 +491,18 @@
 {
     NSString * url = [HOST stringByAppendingString:@"user/findDefaultAddress"];
     [ZRAFNRequests post:url parameters:nil success:^(id result) {
+        
         if ([result[@"code"] isEqualToString:@"S000"]) {
             NSDictionary * data = result[@"data"];
             ZRUserFindAddressModel * model = [ZRUserFindAddressModel mj_objectWithKeyValues:data];
             callBack(model);
+        }else{
+            [SVProgressHUD showErrorWithStatus:result[@"message"]];
+           
+            failure(@"error");
         }
     } failure:^(id error) {
-        
+        failure(error);
     }];
 }
 /**

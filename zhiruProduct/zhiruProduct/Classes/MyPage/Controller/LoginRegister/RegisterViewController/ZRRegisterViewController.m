@@ -65,10 +65,10 @@
     if (self.phoneNumber.textField.text.length == 0) {
         UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号不能为空" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [alertVC addAction:action];
-        [self.navigationController presentViewController:alertVC animated:YES completion:nil];
+        [self presentViewController:alertVC animated:YES completion:nil];
     } else {
         __block int timeout=60; //倒计时时间
         NSString * phone = self.phoneNumber.textField.text;
