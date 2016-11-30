@@ -54,7 +54,7 @@
     _commentCount.image = [UIImage imageWithPingfenCount:[model.grade integerValue]];
 
     
-    _distance.text =[NSString stringWithFormat:@"%@km", model.distance];
+    _distance.text =[NSString stringWithFormat:@"%.2lfkm", [model.distance floatValue] / 1000];
     
     if ([model.isPack isEqualToString:@"0"]) {
         _ding.hidden = YES;

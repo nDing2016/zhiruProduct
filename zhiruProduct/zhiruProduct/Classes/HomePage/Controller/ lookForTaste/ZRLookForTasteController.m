@@ -42,9 +42,12 @@
     }];
 }
 
+
+
+
 -(void)setModel:(ZRHomeNavModel *)model{
     _model = model;
-    self.modelArr = model.businessMsg;
+    [self.modelArr addObjectsFromArray: model.businessMsg];
 }
 
 #pragma mark - tableView代理
@@ -111,9 +114,9 @@
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
-        
+        [ws.modelArr removeAllObjects];
         //NSLog(@"成功");
-        ws.modelArr = success;
+        [ws.modelArr addObjectsFromArray:success];
 
         [ws.myTableView reloadData];
     } andFailure:^(id error) {
@@ -146,8 +149,14 @@
     WS(ws)
     [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
         
+//        //NSLog(@"成功");
+//        ws.modelArr = success;
+//        
+//        [ws.myTableView reloadData];
+        
+        [ws.modelArr removeAllObjects];
         //NSLog(@"成功");
-        ws.modelArr = success;
+        [ws.modelArr addObjectsFromArray:success];
         
         [ws.myTableView reloadData];
     } andFailure:^(id error) {

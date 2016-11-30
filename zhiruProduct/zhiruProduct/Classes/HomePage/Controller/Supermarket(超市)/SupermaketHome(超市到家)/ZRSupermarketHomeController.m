@@ -299,7 +299,7 @@
         NSString * longitude;
         NSString * latitude;
         if (model == nil) {
-            ZRUserAddress * address = [[ZRUserAddress alloc] init];
+            ZRUserAddress * address = [ZRUserAddress sharedInstance];
             
             longitude = address.Longitude;
             latitude = address.Latitude;

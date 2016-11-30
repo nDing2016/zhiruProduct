@@ -207,6 +207,9 @@
         return _currentData2Index;
     }
     
+    if (column == 2) {
+        return _currentData3Index;
+    }
     return 0;
 }
 

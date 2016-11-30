@@ -313,6 +313,7 @@
 		A3F167341D741F1000578FB9 /* ZRRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F167331D741F1000578FB9 /* ZRRecommendModel.m */; };
 		A3F167371D74203B00578FB9 /* ZRRecommendGroupListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F167361D74203B00578FB9 /* ZRRecommendGroupListModel.m */; };
 		A3F1673A1D77D35000578FB9 /* ZRFindNewProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F167391D77D35000578FB9 /* ZRFindNewProduct.m */; };
+		A3F1D6081DEED48D00FFC51E /* ZRSupermarketExplainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F1D6071DEED48D00FFC51E /* ZRSupermarketExplainController.m */; };
 		A3FBBD7F1DBF76A3007C8DF5 /* zhiruProduct.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = A3FBBD7E1DBF76A3007C8DF5 /* zhiruProduct.entitlements */; };
 		A3FBBD821DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FBBD811DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m */; };
 		A3FE5CA41D42025B00B6088E /* ZRKindsOfReview.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE5CA31D42025B00B6088E /* ZRKindsOfReview.m */; };
@@ -1169,6 +1170,8 @@
 		A3F1673C1D780A8400578FB9 /* ZRIntegralMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRIntegralMallModel.m; sourceTree = "<group>"; };
 		A3F1673E1D78332E00578FB9 /* ZRCommodityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCommodityListModel.h; sourceTree = "<group>"; };
 		A3F1673F1D78332E00578FB9 /* ZRCommodityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCommodityListModel.m; sourceTree = "<group>"; };
+		A3F1D6061DEED48D00FFC51E /* ZRSupermarketExplainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSupermarketExplainController.h; sourceTree = "<group>"; };
+		A3F1D6071DEED48D00FFC51E /* ZRSupermarketExplainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSupermarketExplainController.m; sourceTree = "<group>"; };
 		A3FBBD7E1DBF76A3007C8DF5 /* zhiruProduct.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = zhiruProduct.entitlements; sourceTree = "<group>"; };
 		A3FBBD801DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSuperOrderProcessModel.h; sourceTree = "<group>"; };
 		A3FBBD811DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRSuperOrderProcessModel.m; sourceTree = "<group>"; };
@@ -2872,6 +2875,8 @@
 				A31EAC9F1D2E4DB9004FD2B6 /* ZRSupermarketController.m */,
 				A31EACA61D2F821F004FD2B6 /* ZRSuperCollectionViewController.h */,
 				A31EACA71D2F821F004FD2B6 /* ZRSuperCollectionViewController.m */,
+				A3F1D6061DEED48D00FFC51E /* ZRSupermarketExplainController.h */,
+				A3F1D6071DEED48D00FFC51E /* ZRSupermarketExplainController.m */,
 			);
 			path = "Supermarket(超市)";
 			sourceTree = "<group>";
@@ -4452,6 +4457,7 @@
 				A31283B71D965F3800C286AF /* ZRSelectTableViewCell.m in Sources */,
 				A32B248E1D37357A00BC6F61 /* ZRShoppingCarCell.m in Sources */,
 				A30486B41D66E8C400EF3E71 /* ZRGoupBuyingReviewFrame.m in Sources */,
+				A3F1D6081DEED48D00FFC51E /* ZRSupermarketExplainController.m in Sources */,
 				A31283BC1D965F3800C286AF /* ZRMyPageTableViewCell.m in Sources */,
 				A312832F1D965F3800C286AF /* ZRNeedCommentRootController.m in Sources */,
 				A31283AC1D965F3800C286AF /* ZRTuanOneCell.m in Sources */,
