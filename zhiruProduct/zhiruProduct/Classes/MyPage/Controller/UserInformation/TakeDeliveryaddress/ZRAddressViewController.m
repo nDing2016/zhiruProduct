@@ -49,7 +49,7 @@
     // Do any additional setup after loading the view.
     
     
-    [self setTitle:@"收获地址"];
+    [self setTitle:@"收货地址"];
     [self.view setBackgroundColor:RGBCOLOR(240, 240, 240)];
     
 //    [self setData];

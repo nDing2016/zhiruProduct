@@ -274,7 +274,7 @@
     
     if (self.selectNum == 1 || self.selectNum == 2) {
         CGFloat all = [_rateStr floatValue]*[[self.payPrice substringFromIndex:1] floatValue];
-        NSString *alertStr = [NSString stringWithFormat:@"当前货币兑换率为:1加元＝%@人民币,您需支付%.2f人民币",self.rateStr,all];
+        NSString *alertStr = [NSString stringWithFormat:@"当前货币兑换率为:\n1加元＝%@人民币\n您需支付%.2f人民币",self.rateStr,all];
        [ZRAlertControl alertForRateWithController:self andActionTitle:alertStr andButtonOneCallBack:^{
            
            if (self.selectNum == 1) {

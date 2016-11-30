@@ -16,4 +16,11 @@
     return @{@"goodsList":[ZRSupermarketGoodsListModel class]};
 }
 
+
+
+
+
+
+
+
 @end

@@ -26,7 +26,7 @@
     [self.superDetailsModel.goodsList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         ZRSuperOrderDetailModel *model = obj;
-        CGSize goodsSize = [NSString getSize:model.goods_name strFont:CustomFont(13) maxSize:CGSizeMake((260*SCREEN_WIDTH/375-15), SCREEN_HEIGHT)];
+        CGSize goodsSize = [NSString getSize:model.goods_name strFont:CustomFont(14) maxSize:CGSizeMake((260*SCREEN_WIDTH/375-15), SCREEN_HEIGHT)];
         hei = hei+goodsSize.height;
         
         if (idx == ws.superDetailsModel.goodsList.count-1) {

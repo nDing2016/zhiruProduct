@@ -81,6 +81,9 @@ typedef NS_ENUM(NSInteger, HomeCategoryStyle){
 //@property (nonatomic, copy) NSString *supermarketID;
 @property (nonatomic, strong) ZRSupermarketHomeModel *supermarketHomeModel;
 
-
+/*左侧tableView*/
+@property (nonatomic, strong) UITableView *categoryTable;
+/*右侧tableView*/
+@property (nonatomic, strong) UITableView *productTable;
 
 @end
