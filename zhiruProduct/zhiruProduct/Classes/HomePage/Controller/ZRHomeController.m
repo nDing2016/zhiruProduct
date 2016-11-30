@@ -201,12 +201,12 @@
             case 2: //订餐
             {
                 
-                if (/* DISABLES CODE */ (1)) {
-                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-                    [self.navigationController  pushViewController:setUpView animated:YES];
-                    [CustomHudView dismiss];
-                    return;
-                }
+//                if (/* DISABLES CODE */ (1)) {
+//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+//                    [self.navigationController  pushViewController:setUpView animated:YES];
+//                    [CustomHudView dismiss];
+//                    return;
+//                }
                 [ZRHomePageRequst requestOrderingListWithLongitude:userAdd.Longitude  andLatitude:userAdd.Latitude andLabel:nil andSuccess:^(id success) {
                     
                     
@@ -388,9 +388,9 @@
     }
     
     //上线注释
-//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-//    address.Longitude = @"103";
-//    address.Latitude = @"26";
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    address.Longitude = @"103";
+    address.Latitude = @"26";
     
     //等model
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];
@@ -446,7 +446,7 @@
     //    _latitude = noti.userInfo[@"latitude"];
     //
     //    [self.homeTableView reloadData];
-    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+    if (![noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
         //取不到坐标
         ZRErrorController * errorVC = [[ZRErrorController alloc] init];
         
@@ -676,7 +676,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-
     ZRProductDetailsController * detailsCV = [[ZRProductDetailsController alloc] init];
     
     ZRBusinessModel * model = _model.businessMsg[indexPath.row];

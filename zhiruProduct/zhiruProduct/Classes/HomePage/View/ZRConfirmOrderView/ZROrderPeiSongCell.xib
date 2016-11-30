@@ -51,7 +51,7 @@
                             <constraint firstAttribute="height" constant="1" id="bvp-5L-n7Q"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-5i-dxB">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-5i-dxB">
                         <rect key="frame" x="72" y="5.5" width="66" height="22"/>
                         <state key="normal" title="Button" image="wenhao_hong"/>
                         <connections>

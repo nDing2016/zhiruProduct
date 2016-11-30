@@ -165,7 +165,7 @@
             NSString * longitude;
             NSString * latitude;
             if (model == nil) {
-                ZRUserAddress * address = [[ZRUserAddress alloc] init];
+                ZRUserAddress * address = [ZRUserAddress sharedInstance];
                 
                 longitude = address.Longitude;
                 latitude = address.Latitude;
@@ -236,13 +236,6 @@
     }
 
 
-
-    
-
-    
-    
-    
-    
     //..........................................
     
 //    NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
@@ -296,8 +289,6 @@
     
     
     
-    
-    
     UIWindow *myWindow = [UIApplication sharedApplication].keyWindow;
     [myWindow addSubview:_toolView];
     [_toolView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -325,8 +316,6 @@
 
 #pragma mark -- 初始化
 - (void)homeInitialization{
-    
-   
     
     [self.navigationController.navigationBar lt_setBackgroundColor:[NAVCOLOR colorWithAlphaComponent:0]];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -390,8 +379,6 @@
                 ws.sectionView.index = indexPath.row;
             };
         }
-        
-        
     }
     if (_isLunch == YES) {
         cell.isLunch = YES;
@@ -455,6 +442,7 @@
             make.height.equalTo(@50);
         }];
         
+        
         WS(ws)
         
         sectionView.btnClick = ^(NSInteger index){
@@ -465,9 +453,8 @@
         return view;
     }
     
-//    _sectionView = sectionView;
+//    _sectionView = sectionView
     
-   
 }
 
 #pragma mark -- 滑动监听
@@ -555,7 +542,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 - (void)dealloc
