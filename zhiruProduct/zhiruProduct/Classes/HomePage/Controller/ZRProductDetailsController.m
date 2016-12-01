@@ -495,37 +495,48 @@
             
         case 102: // 收藏
         {
+            _likeCarButton.userInteractionEnabled = NO;
             ZRUser * user = [ZRUserTool user];
             if (user == nil) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userLogin" object:@"1"];
             } else {
-                if (_likeCarButton.selected == YES) {
-                    [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:_businessId CallBack:^(NSString *message) {
-                        if ([message isEqualToString:@"success"]) {
-                            [AlertText showAndText:@"取消收藏成功"];
-                            _likeCarButton.selected = !_likeCarButton.selected;
-                        } else {
+//                dispatch_queue_t queue = dispatch_queue_create("com.pj.collect", DISPATCH_QUEUE_CONCURRENT);
+//                dispatch_async(queue, ^{
+                    if (_likeCarButton.selected == YES) {
+                        [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:_businessId CallBack:^(NSString *message) {
+                            if ([message isEqualToString:@"success"]) {
+                                [AlertText showAndText:@"取消收藏成功"];
+                                _likeCarButton.userInteractionEnabled = YES;
+                                _likeCarButton.selected = !_likeCarButton.selected;
+                            } else {
+                                _likeCarButton.userInteractionEnabled = YES;
+                                [AlertText showAndText:@"取消收藏失败"];
+                            }
+                        } Failure:^(id error) {
+                            _likeCarButton.userInteractionEnabled = YES;
                             [AlertText showAndText:@"取消收藏失败"];
-                        }
-                        
-                    } Failure:^(id error) {
-                        [AlertText showAndText:@"取消收藏失败"];
-                    }];
-                } else {
-                    [ZRHomePageRequst requestCollectionAddBusinessCollectionWithBusinessId:_businessId andSuccess:^(id success) {
-                        NSString * str = success;
-                        if ([str isEqualToString:@"success"]) {
-                            [AlertText showAndText:@"添加收藏成功"];
-                            _likeCarButton.selected = !_likeCarButton.selected;
-                        } else {
+                        }];
+                    } else {
+                        [ZRHomePageRequst requestCollectionAddBusinessCollectionWithBusinessId:_businessId andSuccess:^(id success) {
+                            NSString * str = success;
+                            if ([str isEqualToString:@"success"]) {
+                                [AlertText showAndText:@"添加收藏成功"];
+                                _likeCarButton.userInteractionEnabled = YES;
+                                _likeCarButton.selected = !_likeCarButton.selected;
+                            } else {
+                                _likeCarButton.userInteractionEnabled = YES;
+                                [AlertText showAndText:@"添加收藏失败"];
+                            }
+                            
+                        } andFailure:^(id error) {
+                            _likeCarButton.userInteractionEnabled = YES;
                             [AlertText showAndText:@"添加收藏失败"];
-                        }
-                        
-                    } andFailure:^(id error) {
-                        [AlertText showAndText:@"添加收藏失败"];
-                    }];
-                }
-
+                        }];
+                    }
+//                });
+//                dispatch_barrier_async(queue, ^{
+//
+//                });
             }
         }
             break;

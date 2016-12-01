@@ -135,24 +135,25 @@
         NSString * businessId = model.businessId;
         [self.dataArray removeObjectAtIndex:indexPath.row];
         [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:businessId CallBack:^(NSString *message) {
-            //NSLog(@"-----%@", message);
-            
+            if (self.dataArray.count == 0) {
+                [self addHeaderRefresh];
+            }
         } Failure:^(id error) {
             
-            
         }];
-    }
-    if (self.dataArray.count == 0) {
-        [self createImage];
     }
     [tableView reloadData];
 }
 // 添加暂无收藏图片
 - (void)createImage
 {
-    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+    UIImageView * img = [[UIImageView alloc] init];
     [img setImage:[UIImage imageNamed:@"nostore"]];
     [self.view addSubview:img];
+    WS(weakSelf);
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(weakSelf.view);
+    }];
 }
 //- (void)setShopState:(BOOL)shopState
 //{

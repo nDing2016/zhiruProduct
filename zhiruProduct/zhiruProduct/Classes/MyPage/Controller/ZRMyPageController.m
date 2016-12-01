@@ -304,15 +304,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZRUser * user = [ZRUserTool user];
-    if (user == nil) {
-        [ZRUserTool saveAccount:nil];
-        ZRLoginViewController * loginVC = [[ZRLoginViewController alloc] init];
-        loginVC.delegate = self;
-        ZRNavigationController * loginVCNav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
-        [self presentViewController:loginVCNav animated:YES completion:nil];
-    } else {
-        if (indexPath.section == 0) {
+    if (indexPath.section == 0) {
+        ZRUser * user = [ZRUserTool user];
+        if (user == nil) {
+            [ZRUserTool saveAccount:nil];
+            ZRLoginViewController * loginVC = [[ZRLoginViewController alloc] init];
+            loginVC.delegate = self;
+            ZRNavigationController * loginVCNav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+            [self presentViewController:loginVCNav animated:YES completion:nil];
+        } else {
             if (indexPath.row == 0) {
                 //NSLog(@"我的订单");
                 ZRMyOrderViewController * myOrderVC = [[ZRMyOrderViewController alloc] init];
@@ -328,7 +328,7 @@
                 [self.navigationController pushViewController:needCommentVC animated:YES];
             } else if (indexPath.row == 3) {
                 //NSLog(@"我的收藏");
-//                ZRStoreupRootViewController * storupVC = [[ZRStoreupRootViewController alloc] init];
+                //                ZRStoreupRootViewController * storupVC = [[ZRStoreupRootViewController alloc] init];
                 ZRStoreupShopController * storupVC = [[ZRStoreupShopController alloc] init];
                 [storupVC setTitle:@"我的收藏"];
                 [self.navigationController pushViewController:storupVC animated:YES];
@@ -342,31 +342,13 @@
                 shoppingCar.pushSource = @"我的";
                 [self.navigationController pushViewController:shoppingCar animated:YES];
             }
-        } else if (indexPath.section == 1) {
-            //NSLog(@"关于我们");
-            ZRWeController * settingVC = [[ZRWeController alloc] init];
-            [self.navigationController pushViewController:settingVC animated:YES];
-        } else if (indexPath.section == 2) {
-            //NSLog(@"合作");
-//            ZRRefundStateController * refundVC = [[ZRRefundStateController alloc] init];
-//            [self.navigationController pushViewController:refundVC animated:YES];
-            
-//            ZRStorePictureController * pictureVC = [[ZRStorePictureController alloc] init];
-//            [self.navigationController pushViewController:pictureVC animated:YES];
-            
-            
-            ZRCooperateController * cooperateVC = [[ZRCooperateController alloc] init];
-            [self.navigationController pushViewController:cooperateVC animated:YES];
-            
-//            ZRRechargeOrderController * VC = [[ZRRechargeOrderController alloc] init];
-//            VC.moneyCount = @"100";
-//            VC.orderName = @"会员卡";
-//            VC.count = @"1";
-//            VC.type = 1;
-//            
-//            [self.navigationController pushViewController:VC animated:YES];
-            
         }
+    } else if (indexPath.section == 1) {
+        ZRWeController * settingVC = [[ZRWeController alloc] init];
+        [self.navigationController pushViewController:settingVC animated:YES];
+    } else if (indexPath.section == 2) {
+        ZRCooperateController * cooperateVC = [[ZRCooperateController alloc] init];
+        [self.navigationController pushViewController:cooperateVC animated:YES];
     }
 }
 // 点击头部的点击登录

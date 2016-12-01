@@ -150,9 +150,17 @@
 // 添加暂无订单图片
 - (void)createImage
 {
-    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+//    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+//    [img setImage:[UIImage imageNamed:@"noorder"]];
+//    [self.view addSubview:img];
+    UIImageView * img = [[UIImageView alloc] init];
     [img setImage:[UIImage imageNamed:@"noorder"]];
     [self.view addSubview:img];
+    WS(weakSelf);
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(weakSelf.view);
+    }];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
