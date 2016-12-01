@@ -15,15 +15,26 @@
 #import "ZRHomePageRequst.h"
 @interface ZRLookForTasteNavController ()
 
+@property (nonatomic , strong) NSMutableArray * array;
 
 @end
 
 @implementation ZRLookForTasteNavController
 
+- (NSMutableArray *)array{
+    if (_array == nil) {
+            _array = [NSMutableArray array] ;
+    }
+
+    return _array   ;
+}
+
+
 - (void)setModel:(ZRHomeNavModel *)model{
     _model = model;
     
-    self.modelArr = model.businessMsg;
+    [self.array addObjectsFromArray:model.businessMsg];
+//    [self.modelArr addObjectsFromArray: model.businessMsg];
 }
 
 - (void)viewDidLoad {
@@ -37,7 +48,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.modelArr.count;
+    return self.array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -49,14 +60,15 @@
         cellTwo = [nibs lastObject];
     }
     cellTwo.selectionStyle = UITableViewCellSelectionStyleNone;
-    cellTwo.model = self.modelArr[indexPath.row];
+    cellTwo.model = self.array[indexPath.row];
     return cellTwo;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ZRProductDetailsController * detailVC = [[ZRProductDetailsController alloc] init];
-    ZRBusinessModel * model = self.modelArr[indexPath.row];
+    ZRBusinessModel * model = self.array[indexPath.row];
+    detailVC.regionName = model.regionName;
     detailVC.businessId = model.businessId;
     detailVC.title = model.name;
     
@@ -86,9 +98,9 @@
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
     [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
-        
+        [ws.array removeAllObjects];
         //NSLog(@"成功");
-        ws.modelArr = success;
+        [ws.array addObjectsFromArray:success];
         
         [ws.myTableView reloadData];
     } andFailure:^(id error) {

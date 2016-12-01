@@ -340,8 +340,21 @@
 //点击图片查看时 的代理
 -(void)showPhotos:(int)picture imageViewArray:(NSArray *)imageArray
 {
+    UIImage * image = imageArray[0];
+//    NSURL * url = [NSURL URLWithString:<#(nonnull NSString *)#>]
+////    NSURL *url = [NSURL URLWithString:@"http://dantang.liwushuo.com/posts/3121/content"];
+//    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0,ScreenWidth, ScreenHeight)];
+//    //                [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+//    [self.webView setScalesPageToFit:YES];
+//    [self.view addSubview:self.webView];
+//    self.webView.scrollView.showsVerticalScrollIndicator = NO;
+//    [self.webView sizeToFit];
+//    [self.view addSubview:self.webView];
+//    
+//    //  把CLWebPicture拖入项目中，实现这句代码
+//    self.webView.delegate = [CLWebPicture sharedCLWebPicture];
     
-
+    
 }
 
 

@@ -21,6 +21,7 @@
 #import "ZRPhotosModel.h"
 #import "ZRCommentListModel.h"
 
+static NSString * const zAppgameHome = @"recreation/index";
 static NSString * const zAppHomePage= @"index";
 static NSString * const zAppBusinessDetails= @"findtaste/details";
 static NSString * const zAppBusinessAddComment = @"businessComment/add";

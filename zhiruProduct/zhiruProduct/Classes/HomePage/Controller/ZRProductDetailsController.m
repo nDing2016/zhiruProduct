@@ -452,7 +452,7 @@
             WS(ws)
             pCommentVC.postOkBlock = ^(){
                 [ws getBusinessData];
-
+                
             };
             
             [self.navigationController pushViewController:pCommentVC animated:YES];
@@ -549,7 +549,7 @@
 #pragma mark -- 请求网络数据
 - (void)getBusinessData{
     self.commentCountArr = nil;
-    
+    self.sectionOneTitleArr = nil;
     WS(ws)
     [ZRHomePageRequst requestGetBusinessDetailsWithBusinessId:_businessId andSuccess:^(NSMutableArray *marr) {
         
