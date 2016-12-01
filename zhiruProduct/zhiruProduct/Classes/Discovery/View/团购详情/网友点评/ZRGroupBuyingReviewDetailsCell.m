@@ -218,18 +218,40 @@
         //价钱
         NSString *per = [NSString stringWithFormat:@"$%@/人",_commentListModel.perCapita];
         CGSize priceSize = [self drawWithStr:per Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewPriceFrame.origin.x, self.reviewFrame.reviewPriceFrame.origin.y)];
-
         
-        //评论内容
-//        CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
-//        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height) Size:CGSizeMake(textWidth, SCREEN_HEIGHT)];
-        self.reviewTextLabel = [[UILabel alloc] init];
-        self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, self.reviewFrame.reviewTextFrame.size.height);
-        self.reviewTextLabel.text = _commentListModel.commentContent;
-        self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
-        self.reviewTextLabel.font = CustomFont(15);
-        self.reviewTextLabel.numberOfLines = 0;
-        [self.contentView addSubview:self.reviewTextLabel];
+        
+        
+        //口味环境服务
+        if (_commentListModel.gradeOne.length>0 || _commentListModel.gradeTwo.length>0 || _commentListModel.gradeThree.length>0) {
+            
+            NSString *grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
+            
+            CGSize grade1Size = [self drawWithStr:grade1 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x, self.reviewFrame.gradeOneFrame.origin.y)];
+            
+            NSString *grade2 = [NSString stringWithFormat:@"环境:%@",_commentListModel.gradeTwo];
+            
+            CGSize grade2Size = [self drawWithStr:grade2 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x+grade1Size.width+10, self.reviewFrame.gradeOneFrame.origin.y)];
+            
+            NSString *grade3 = [NSString stringWithFormat:@"服务:%@",_commentListModel.gradeThree];
+            [self drawWithStr:grade3 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x+grade1Size.width+10+grade2Size.width+10, self.reviewFrame.gradeOneFrame.origin.y)];
+            
+            
+            [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
+                       
+            
+        }else{
+            
+            //评论内容
+    //        CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
+    //        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height) Size:CGSizeMake(textWidth, SCREEN_HEIGHT)];
+            self.reviewTextLabel = [[UILabel alloc] init];
+            self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, self.reviewFrame.reviewTextFrame.size.height);
+            self.reviewTextLabel.text = _commentListModel.commentContent;
+            self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
+            self.reviewTextLabel.font = CustomFont(15);
+            self.reviewTextLabel.numberOfLines = 0;
+            [self.contentView addSubview:self.reviewTextLabel];
+        }
         
         
         //时间

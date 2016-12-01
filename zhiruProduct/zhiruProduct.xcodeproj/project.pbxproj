@@ -62,7 +62,6 @@
 		2ECD0AB01DDD9A6F0046440C /* ZRMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD0AAF1DDD9A6F0046440C /* ZRMessageModel.m */; };
 		2ED201731DC0962C0052187C /* ZRUserFindAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED201721DC0962C0052187C /* ZRUserFindAddressModel.m */; };
 		2EDD80FA1DE847E300C79E17 /* ZRExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDD80F81DE847E300C79E17 /* ZRExplainViewController.m */; };
-		2EDD80FD1DE848AC00C79E17 /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */; };
 		2EF04CC51D4B1A66001D863F /* ZREntertainmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF04CC01D4B1A66001D863F /* ZREntertainmentCell.m */; };
 		2EF04CC61D4B1A66001D863F /* ZREntertainmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF04CC11D4B1A66001D863F /* ZREntertainmentCell.xib */; };
 		2EF04CC71D4B1A66001D863F /* ZRHomeCellTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF04CC31D4B1A66001D863F /* ZRHomeCellTwo.m */; };
@@ -314,6 +313,7 @@
 		A3F167371D74203B00578FB9 /* ZRRecommendGroupListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F167361D74203B00578FB9 /* ZRRecommendGroupListModel.m */; };
 		A3F1673A1D77D35000578FB9 /* ZRFindNewProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F167391D77D35000578FB9 /* ZRFindNewProduct.m */; };
 		A3F1D6081DEED48D00FFC51E /* ZRSupermarketExplainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F1D6071DEED48D00FFC51E /* ZRSupermarketExplainController.m */; };
+		A3F1D6091DEEE6EB00FFC51E /* ZRReviewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */; };
 		A3FBBD7F1DBF76A3007C8DF5 /* zhiruProduct.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = A3FBBD7E1DBF76A3007C8DF5 /* zhiruProduct.entitlements */; };
 		A3FBBD821DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FBBD811DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m */; };
 		A3FE5CA41D42025B00B6088E /* ZRKindsOfReview.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE5CA31D42025B00B6088E /* ZRKindsOfReview.m */; };
@@ -600,8 +600,6 @@
 		2ED201721DC0962C0052187C /* ZRUserFindAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRUserFindAddressModel.m; sourceTree = "<group>"; };
 		2EDD80F81DE847E300C79E17 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
 		2EDD80F91DE847E300C79E17 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
-		2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRReviewDetailController.m; sourceTree = "<group>"; };
-		2EDD80FC1DE848AC00C79E17 /* ZRReviewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRReviewDetailController.h; sourceTree = "<group>"; };
 		2EF04CBF1D4B1A66001D863F /* ZREntertainmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZREntertainmentCell.h; sourceTree = "<group>"; };
 		2EF04CC01D4B1A66001D863F /* ZREntertainmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZREntertainmentCell.m; sourceTree = "<group>"; };
 		2EF04CC11D4B1A66001D863F /* ZREntertainmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZREntertainmentCell.xib; sourceTree = "<group>"; };
@@ -3215,8 +3213,6 @@
 			children = (
 				BD47AB2B1DE5A37D00B46AA3 /* ZRReviewDetailController.h */,
 				BD47AB2C1DE5A37D00B46AA3 /* ZRReviewDetailController.m */,
-				2EDD80FB1DE848AC00C79E17 /* ZRReviewDetailController.m */,
-				2EDD80FC1DE848AC00C79E17 /* ZRReviewDetailController.h */,
 				A3B2AAC61D41D17B0089E5E1 /* ZRAllReviewsController.h */,
 				A3B2AAC71D41D17B0089E5E1 /* ZRAllReviewsController.m */,
 			);
@@ -4320,6 +4316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F1D6091DEEE6EB00FFC51E /* ZRReviewDetailController.m in Sources */,
 				A325232B1DB20CB6000B4520 /* ZRGroupBuyDetailModel.m in Sources */,
 				A3117D0B1D7A862E00419071 /* ZRIntegralMallModel.m in Sources */,
 				A31283391D965F3800C286AF /* ZRTravalOrderViewController.m in Sources */,
@@ -4484,7 +4481,6 @@
 				2EC2A9341DA8D8890021B0F0 /* ZROrderingOrderRequest.m in Sources */,
 				A312836B1D965F3800C286AF /* ZRShoppingCarDetailModel.m in Sources */,
 				BDD7A5D81D27B84900373338 /* ZRTableVIewHeadView.m in Sources */,
-				2EDD80FD1DE848AC00C79E17 /* ZRReviewDetailController.m in Sources */,
 				A31283A51D965F3800C286AF /* ZRSettingMessageCell.m in Sources */,
 				A312834B1D965F3800C286AF /* ZRNewPhoneViewController.m in Sources */,
 				A32523261DB20B30000B4520 /* ZROtherGroupsModel.m in Sources */,

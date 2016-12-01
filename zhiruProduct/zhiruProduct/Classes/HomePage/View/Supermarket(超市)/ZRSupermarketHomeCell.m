@@ -265,7 +265,7 @@
         //CGFloat priceY = (CellHeight-(y+goodsSize.height+y+weightSize.height+sizePrice.height))/2+(y+goodsSize.height+y+weightSize.height);
         
         if ((self.height-5-weightSize.height-5-sizePrice.height)<=y+goodsSize.height) {
-           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, y+goodsSize.height+5)];
+           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, y+goodsSize.height)];
         }else{
            [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
         }
