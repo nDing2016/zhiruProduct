@@ -239,8 +239,16 @@
 
 - (void)pushMessage
 {
-    ZRMessageController * messageVC = [[ZRMessageController alloc] init];
-    [self.navigationController pushViewController:messageVC animated:YES];
+    ZRUser * user = [ZRUserTool user];
+    if (user == nil) {
+        ZRLoginViewController * loginVC = [[ZRLoginViewController alloc] init];
+        loginVC.delegate = self;
+        ZRNavigationController * loginVCNav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:loginVCNav animated:YES completion:nil];
+    } else {
+        ZRMessageController * messageVC = [[ZRMessageController alloc] init];
+        [self.navigationController pushViewController:messageVC animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

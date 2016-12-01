@@ -160,7 +160,6 @@
     [img mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(weakSelf.view);
     }];
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
