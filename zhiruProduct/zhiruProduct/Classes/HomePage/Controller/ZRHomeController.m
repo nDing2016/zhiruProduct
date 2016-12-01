@@ -621,8 +621,7 @@
                 extensionOne.img = @"tu";
                 extensionTwo.img = @"tu";
             }
-            
-            
+ 
             
             [cellOne createAdvertisementAndImgOne:extensionOne.img AndImgTwo:extensionTwo.img];
             WS(ws)

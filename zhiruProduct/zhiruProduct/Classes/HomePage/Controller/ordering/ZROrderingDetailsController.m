@@ -148,118 +148,119 @@
 
 
 -(void)notice:(id)sender{
-    ZRUser * user = [ZRUserTool user];
-    if (user == nil) {
-        
-        //弹出登录页面
-        ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
-        ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
-        
-        [self presentViewController:nav animated:YES completion:nil];
-
-    } else {
-        WS(ws)
-        [SVProgressHUD show];
-        [ZRUserInterfaceModel userFineDefaultAddressCallBack:^(id result) {
-            ZRUserFindAddressModel * model = result;
-            NSString * longitude;
-            NSString * latitude;
-            if (model == nil) {
-                ZRUserAddress * address = [ZRUserAddress sharedInstance];
-                
-                longitude = address.Longitude;
-                latitude = address.Latitude;
-            }else{
-                longitude  = model.longitude;
-                latitude = model.latitude;
-            }
-            
-            [ZRSupermarketRequest requestGetDustabceWithLongitudeOne:_longitude andLatitudeOne:_latitude andLongitudeTwo:longitude andLatitudeTwo:latitude andSuccess:^(id success) {
-                
-                [SVProgressHUD dismiss];
-                
-                
-                NSString * distanceStr = success;
-                
-                NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
-                
-                
-                ZRConfirmOrderController *confirmOrderVC = [[ZRConfirmOrderController alloc] init];
-                [ws.navigationController pushViewController:confirmOrderVC animated:YES];
-                confirmOrderVC.longitude = ws.longitude;
-                confirmOrderVC.latitude = ws.latitude;
-                confirmOrderVC.distanceStr = distanceStr;
-                confirmOrderVC.productArr = arr;
-                
-                if (_isLunch == YES) {
-                    confirmOrderVC.orderType = lunchOrdering;
-                }
-                confirmOrderVC.addressModel = model;
-                confirmOrderVC.weather = [_weather floatValue];
-                confirmOrderVC.orderType = Ordering;
-                //                confirmOrderVC.supermarketHomeModel = ws.supermarketModel;
-                confirmOrderVC.isDeliver = YES;
-                NSArray * array = [ZRSupermarketHomeObj shareInstance].allProductsArray;
-                confirmOrderVC.productArr = array;
-                ZROrderingBusinessMsgModel * model = self.detailModel.businessMsg;
-                if ([model.paymentMethod isEqualToString:@"1"]) {
-                    confirmOrderVC.isOnlinePay = YES;
-                }
-                
-                confirmOrderVC.businessMsg = model;
-                if ([model.specialDelivery isEqualToString:@"1"]) {
-                    confirmOrderVC.isDeliver = YES;
-                }else{
-                    confirmOrderVC.isDeliver = NO;
-                }
-                
-                confirmOrderVC.title = @"确认订单";
-                
-                
-                
-            } andFailure:^(id error) {
-                [SVProgressHUD dismiss];
-                [SVProgressHUD showErrorWithStatus:@"请求失败"];
-                [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
-                
-            }];
-            //首先判断用户是否登录
-            
-            
-        } Filure:^(id error) {
-            [SVProgressHUD dismiss];
-            [SVProgressHUD showErrorWithStatus:@"请求失败"];
-            [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
-            
-            
-        }];
-    }
+//    ZRUser * user = [ZRUserTool user];
+//    if (user == nil) {
+//        
+//        //弹出登录页面
+//        ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+//        ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+//        
+//        [self presentViewController:nav animated:YES completion:nil];
+//
+//    } else {
+//        WS(ws)
+//        [SVProgressHUD show];
+//        [ZRUserInterfaceModel userFineDefaultAddressCallBack:^(id result) {
+//            ZRUserFindAddressModel * model = result;
+//            NSString * longitude;
+//            NSString * latitude;
+//            if (model == nil) {
+//                ZRUserAddress * address = [ZRUserAddress sharedInstance];
+//                
+//                longitude = address.Longitude;
+//                latitude = address.Latitude;
+//            }else{
+//                longitude  = model.longitude;
+//                latitude = model.latitude;
+//            }
+//            
+//            [ZRSupermarketRequest requestGetDustabceWithLongitudeOne:_longitude andLatitudeOne:_latitude andLongitudeTwo:longitude andLatitudeTwo:latitude andSuccess:^(id success) {
+//                
+//                [SVProgressHUD dismiss];
+//                
+//                
+//                NSString * distanceStr = success;
+//                
+//                NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+//                
+//                
+//                ZRConfirmOrderController *confirmOrderVC = [[ZRConfirmOrderController alloc] init];
+//                [ws.navigationController pushViewController:confirmOrderVC animated:YES];
+//                confirmOrderVC.longitude = ws.longitude;
+//                confirmOrderVC.latitude = ws.latitude;
+//                confirmOrderVC.distanceStr = distanceStr;
+//                confirmOrderVC.productArr = arr;
+//                
+//                if (_isLunch == YES) {
+//                    confirmOrderVC.orderType = lunchOrdering;
+//                }
+//                confirmOrderVC.addressModel = model;
+//                confirmOrderVC.weather = [_weather floatValue];
+//                confirmOrderVC.orderType = Ordering;
+//                //                confirmOrderVC.supermarketHomeModel = ws.supermarketModel;
+//                confirmOrderVC.isDeliver = YES;
+//                NSArray * array = [ZRSupermarketHomeObj shareInstance].allProductsArray;
+//                confirmOrderVC.productArr = array;
+//                ZROrderingBusinessMsgModel * model = self.detailModel.businessMsg;
+//                if ([model.paymentMethod isEqualToString:@"1"]) {
+//                    confirmOrderVC.isOnlinePay = YES;
+//                }
+//                
+//                confirmOrderVC.businessMsg = model;
+//                if ([model.specialDelivery isEqualToString:@"1"]) {
+//                    confirmOrderVC.isDeliver = YES;
+//                }else{
+//                    confirmOrderVC.isDeliver = NO;
+//                }
+//                
+//                confirmOrderVC.title = @"确认订单";
+//                
+//                
+//                
+//            } andFailure:^(id error) {
+//                [SVProgressHUD dismiss];
+//                [SVProgressHUD showErrorWithStatus:@"请求失败"];
+//                [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+//                
+//            }];
+//            //首先判断用户是否登录
+//            
+//            
+//        } Filure:^(id error) {
+//            [SVProgressHUD dismiss];
+//            [SVProgressHUD showErrorWithStatus:@"请求失败"];
+//            [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+//            
+//            
+//        }];
+//    }
 
 
     //..........................................
     
-//    NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+    NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
     
-//    ZRConfirmOrderController * confirmOrder = [[ZRConfirmOrderController alloc] init];
+    ZRConfirmOrderController * confirmOrder = [[ZRConfirmOrderController alloc] init];
     
  
+    confirmOrder.orderType = lunchOrdering;
+    confirmOrder.productArr = arr;
     
-//    confirmOrder.productArr = arr;
+    ZROrderingBusinessMsgModel * model = self.detailModel.businessMsg;
+
+    if ([model.paymentMethod isEqualToString:@"1"]) {
+        confirmOrder.isOnlinePay = YES;
+    }
     
-//    ZROrderingBusinessMsgModel * model = self.detailModel.businessMsg;
-//    if ([model.paymentMethod isEqualToString:@"1"]) {
-//        confirmOrder.isOnlinePay = YES;
-//    }
-//    
-//    confirmOrder.businessMsg = model;
-//    if ([model.specialDelivery isEqualToString:@"1"]) {
-//        confirmOrder.isDeliver = YES;
-//    }else{
-//        confirmOrder.isDeliver = NO;
-//    }
-//    
-//    confirmOrder.title = @"确认订单";
-//    [self.navigationController pushViewController:confirmOrder animated:YES];
+    confirmOrder.businessMsg = model;
+    if ([model.specialDelivery isEqualToString:@"1"]) {
+        confirmOrder.isDeliver = YES;
+    }else{
+        confirmOrder.isDeliver = NO;
+    }
+    
+    confirmOrder.title = @"确认订单";
+    [self.navigationController pushViewController:confirmOrder animated:YES];
 }
 
 - (void)setIsLunch:(BOOL)isLunch {
