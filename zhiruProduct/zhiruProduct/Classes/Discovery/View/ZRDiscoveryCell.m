@@ -174,7 +174,7 @@ static NSString *ID = @"ID";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     self.collectionView.mj_footer.hidden = self.collectionArray.count == 0;
-    return _collectionArray.count;
+    return _collectionArray.count+1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -191,7 +191,7 @@ static NSString *ID = @"ID";
         
     }else{
         cell.firstImg = nil;
-        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item]];
+        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item-1]];
         cell.commodityList = _commodityList;
         
         UIImageView *productImgView = [[UIImageView alloc] init];

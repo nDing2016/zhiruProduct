@@ -15,7 +15,7 @@
 
 #import "ZRSupermarketOrderViewController.h"
 
-
+#import "ZRMyOrderViewController.h"
 
 
 @interface ZRSuperOrderDetailsController ()
@@ -107,14 +107,17 @@
 
 - (void)popThisPage
 {
-    [self.navigationController popViewControllerAnimated:YES];
+//    
+//    for (UIViewController *vc in self.navigationController.viewControllers) {
+//        NSLog(@"==========%@",[vc class]);
+//        if ([vc isMemberOfClass:[ZRMyOrderViewController class]]) {
+//            ZRSupermarketOrderViewController *zrVC = (ZRSupermarketOrderViewController *)vc;
+//            [zrVC addHeaderRequest];
+//        }
+//    }
     
-    for (UIViewController *vc in self.navigationController.viewControllers) {
-        if ([vc isMemberOfClass:[ZRSupermarketOrderViewController class]]) {
-            ZRSupermarketOrderViewController *zrVC = (ZRSupermarketOrderViewController *)vc;
-            [zrVC addHeaderRequest];
-        }
-    }
+     [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSupermarketDetailToSupermarketList_Noti object:nil];
     
 }
 

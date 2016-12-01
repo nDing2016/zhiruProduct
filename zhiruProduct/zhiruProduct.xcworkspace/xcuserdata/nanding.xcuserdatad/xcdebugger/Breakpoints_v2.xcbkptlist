@@ -19,5 +19,307 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
+            timestampString = "502266223.070454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "-loadLatestIntegralMallData"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[ZRDiscoveryController loadLatestIntegralMallData]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Controller/%E5%8F%91%E7%8E%B0/ZRDiscoveryController.m"
+                  timestampString = "502271180.539152"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[ZRDiscoveryController loadLatestIntegralMallData]_block_invoke_2"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Controller/%E5%8F%91%E7%8E%B0/ZRDiscoveryController.m"
+                  timestampString = "502271180.539423"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+            timestampString = "502266235.721651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "+requestForIntegralMallWithRows:WithPage:WithCallback:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+            timestampString = "502266242.136029"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "+requestForIntegralMallWithRows:WithPage:WithCallback:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+            timestampString = "502266517.995556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "+requestForIntegralMallWithRows:WithPage:WithCallback:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
+            timestampString = "502266462.362185"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-loadLatestIntegralMallData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
+            timestampString = "502266639.574702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "-loadLatestIntegralMallData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
+            timestampString = "502266663.311862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "-loadLatestIntegralMallData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
+            timestampString = "502266684.718677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
+            landmarkName = "-loadLatestIntegralMallData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+            timestampString = "502266795.208619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "+requestForIntegralMallWithRows:WithPage:WithCallback:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__74+[ZRDiscoverRequest requestForIntegralMallWithRows:WithPage:WithCallback:]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+                  timestampString = "502271180.54657"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_41"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+                  timestampString = "502271180.54679"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_42"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+                  timestampString = "502271180.547003"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__74+[ZRDiscoverRequest requestForIntegralMallWithRows:WithPage:WithCallback:]_block_invoke44"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Request/ZRDiscoverRequest.m"
+                  timestampString = "502271180.547207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/View/ZRDiscoveryCell.m"
+            timestampString = "502267694.46468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/View/ZRDiscoveryCell.m"
+            timestampString = "502267700.781118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/Discovery/View/&#x56e2;&#x8d2d;&#x8be6;&#x60c5;/&#x7f51;&#x53cb;&#x70b9;&#x8bc4;/ZRGroupBuyingReviewDetailsCell.m"
+            timestampString = "502269984.684862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-drawRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Request/&#x8ba2;&#x5355;&#x8be6;&#x60c5;/ZROrderDetailsRequest.m"
+            timestampString = "502270381.951551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "+requestForKaDeleteOrderWithOrderId:Callback:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

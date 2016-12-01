@@ -16,6 +16,17 @@ typedef NS_ENUM(NSInteger, AllReviewsType) {
     
 };
 
+
+typedef NS_ENUM(NSInteger, ShopType) {
+    ZRXunWei,                //寻味评论
+    ZRYuLe,                  //娱乐评论
+    ZRLiRen                  //丽人评论
+    
+};
+
+
+
+
 @interface ZRAllReviewsController : ZRBaseViewController
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -23,7 +34,8 @@ typedef NS_ENUM(NSInteger, AllReviewsType) {
 //评论类型
 @property (nonatomic, assign) AllReviewsType reviewsType;
 
-
+//店铺类型
+@property (nonatomic, assign) ShopType shopType;
 
 @property (nonatomic, strong) NSMutableArray *commentListArray;
 

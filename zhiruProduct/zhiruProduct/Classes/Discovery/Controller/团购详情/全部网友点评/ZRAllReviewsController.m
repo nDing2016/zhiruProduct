@@ -142,11 +142,12 @@
     for (UIView *vi in cell.contentView.subviews) {
         [vi removeFromSuperview];
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         [self createTitleButton:cell WithSelectedTag:self.btnTag];
     }else{
-        
+        cell.shoptype = self.shopType;
         self.reviewFrame.commentListModel = self.commentListArray[indexPath.row];
         cell.reviewFrame = self.reviewFrame;
         cell.commentListModel = self.commentListArray[indexPath.row];

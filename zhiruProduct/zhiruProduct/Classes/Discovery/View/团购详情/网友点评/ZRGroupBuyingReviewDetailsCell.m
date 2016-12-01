@@ -224,7 +224,21 @@
         //口味环境服务
         if (_commentListModel.gradeOne.length>0 || _commentListModel.gradeTwo.length>0 || _commentListModel.gradeThree.length>0) {
             
-            NSString *grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
+            NSString *grade1;
+
+            
+            if (self.shoptype == 0) {
+                //寻味
+                grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
+            }else if (self.shoptype == 1){
+                //娱乐
+                grade1 = [NSString stringWithFormat:@"设施:%@",_commentListModel.gradeOne];
+            }else{
+                //丽人
+                grade1 = [NSString stringWithFormat:@"效果:%@",_commentListModel.gradeOne];
+            }
+            
+//            NSString *grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
             
             CGSize grade1Size = [self drawWithStr:grade1 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x, self.reviewFrame.gradeOneFrame.origin.y)];
             
