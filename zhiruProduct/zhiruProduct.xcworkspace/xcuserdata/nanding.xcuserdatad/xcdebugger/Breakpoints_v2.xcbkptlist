@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/Controller/Supermarket(&#x8d85;&#x5e02;)/SupermaketHome(&#x8d85;&#x5e02;&#x5230;&#x5bb6;)/ZRSupermarketHomeController.m"
-            timestampString = "502189506.538713"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "-selectFinished:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/Discovery/Controller/&#x53d1;&#x73b0;/ZRDiscoveryController.m"
             timestampString = "502266223.070454"
             startingColumnNumber = "9223372036854775807"
