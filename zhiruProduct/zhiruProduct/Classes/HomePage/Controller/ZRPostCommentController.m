@@ -284,7 +284,7 @@
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             //设置拍照后的图片可被编辑
-            picker.allowsEditing = YES;
+//            picker.allowsEditing = YES;
             picker.sourceType = sourceType;
             
             picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

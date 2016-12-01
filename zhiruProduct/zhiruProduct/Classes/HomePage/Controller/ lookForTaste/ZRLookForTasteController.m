@@ -78,6 +78,7 @@
     
     ZRProductDetailsController * detailVC = [[ZRProductDetailsController alloc] init];
     ZRBusinessModel * model = self.modelArr[indexPath.row];
+    detailVC.regionName = model.regionName;
     detailVC.businessId = model.businessId;
     detailVC.title = model.name;
     
@@ -135,7 +136,7 @@
     //NSLog(@"%@",region.region_name);
     //标签
     NSArray * labelArr = _model.label;
-    ZRLabelModel * label = labelArr[self.currentData2Index];
+    ZRLabelModel * label = labelArr[index];
     
     NSString * sort = [NSString stringWithFormat:@"%ld",self.currentData3Index + 1];
     
@@ -145,8 +146,10 @@
     if (self.currentData4Index == 2) {
         screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
     }
+    
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
+    
     [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
         
 //        //NSLog(@"成功");
@@ -213,8 +216,6 @@
 
         }
         //NSLog(@"成功");
-        
-        
         
         [ws.myTableView reloadData];
     } andFailure:^(id error) {

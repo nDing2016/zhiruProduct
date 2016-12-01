@@ -9,6 +9,7 @@
 #import "ELCAsset.h"
 #import "ELCConsole.h"
 #import "ELCOverlayImageView.h"
+
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/568
 #define WIDTH [UIScreen mainScreen].bounds.size.width/320
 @interface ELCAssetCell ()
@@ -176,6 +177,8 @@
                 }
                 
                 NSLog(@"点击了图片。。。。");
+
+                
                 break;
             }
             

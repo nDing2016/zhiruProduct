@@ -3483,6 +3483,13 @@
 			path = ../UINavigationBar;
 			sourceTree = "<group>";
 		};
+		BD5CDBF11DF0101900B6CF68 /* picture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = picture;
+			sourceTree = "<group>";
+		};
 		BD6C16DB1D93E77B006BFD51 /* UITextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3766,6 +3773,7 @@
 		BDB5424A1D1A7D5A0019C34D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BD5CDBF11DF0101900B6CF68 /* picture */,
 				A3508AC81DE6DF5A00D0FA67 /* 数据存储 */,
 				BD769F911D5C672700F49EDD /* CustomProgress */,
 				2ECD09E01DD1E9A70046440C /* MD5 */,
