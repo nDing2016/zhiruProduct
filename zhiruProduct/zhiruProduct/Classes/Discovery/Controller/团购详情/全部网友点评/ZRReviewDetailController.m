@@ -60,6 +60,7 @@
         [vi removeFromSuperview];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.userInteractionEnabled = NO;
     
     if (indexPath.section == 1) {
         self.reviewFrame.commentListModel = self.commentListArray[indexPath.row];

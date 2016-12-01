@@ -47,15 +47,15 @@
 -(void)getMylocation
 {
     // Setup location services
-    if (![CLLocationManager locationServicesEnabled]) {
-        //NSLog(@"Please enable location services");
-        return;
-    }
-    
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        //NSLog(@"Please authorize location services");
-        return;
-    }
+//    if (![CLLocationManager locationServicesEnabled]) {
+//        //NSLog(@"Please enable location services");
+//        return;
+//    }
+//    
+//    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+//        //NSLog(@"Please authorize location services");
+//        return;
+//    }
     
     _manager = [[CLLocationManager alloc] init];
     if ([_manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -176,6 +176,70 @@
     
     
 }
+
+
+
+
+// 代理方法中监听授权的改变,被拒绝有两种情况,一是真正被拒绝,二是服务关闭了
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+        {
+            NSLog(@"用户未决定");
+            break;
+        }
+            // 系统预留字段,暂时还没用到
+        case kCLAuthorizationStatusRestricted:
+        {
+            NSLog(@"受限制");
+            break;
+        }
+        case kCLAuthorizationStatusDenied:
+        {
+            // 被拒绝有两种情况 1.设备不支持定位服务 2.定位服务被关闭
+            if ([CLLocationManager locationServicesEnabled]) {
+                NSLog(@"真正被拒绝");
+                
+                
+                [ZRAlertControl alertToolWithLocationWithWindow:[UIApplication sharedApplication].keyWindow.rootViewController andActionTitle:@"定位服务未开启" andText:@"请进去系统‘设置’》‘隐私’》‘定位服务’中打开开关,并允许嘿唐使用定位服务" andButtonOneCallBack:^{
+                    
+                    // 跳转到设置界面
+                    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                        
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                    
+                }];
+                
+                
+                
+               
+            }
+            else {
+                NSLog(@"没有开启此功能");
+                
+
+            }
+            break;
+        }
+        case kCLAuthorizationStatusAuthorizedAlways:
+        {
+            NSLog(@"前后台定位授权");
+            break;
+        }
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        {
+            NSLog(@"前台定位授权");
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 
 
 

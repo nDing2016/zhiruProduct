@@ -30,6 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeaderRequest) name:kSupermarketDetailToSupermarketList_Noti object:nil];
+    
     // Do any additional setup after loading the view.
     self.dataArray = [NSMutableArray array];
     [self addHeaderRequest];
@@ -177,6 +180,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*

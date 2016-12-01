@@ -88,7 +88,34 @@
 }
 
 
-
+/**
+ *  定位提示
+ *
+ *  @param myWindow       <#myWindow description#>
+ *  @param title          <#title description#>
+ *  @param btnOneCallback <#btnOneCallback description#>
+ */
++ (void)alertToolWithLocationWithWindow:(id)myWindow andActionTitle:(NSString *)title  andText:(NSString *)text andButtonOneCallBack:(AlertCallback)btnOneCallback;
+{
+    UIAlertController * alertV = [UIAlertController alertControllerWithTitle:title message:text preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"立即开启" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (btnOneCallback) {
+            btnOneCallback();
+        }
+    }];
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertV addAction:action];
+    [alertV addAction:cancel];
+    
+    [myWindow presentViewController:alertV animated:YES completion:^{
+        
+    }];
+}
 
 
 
