@@ -17,6 +17,8 @@
 
 #import "ZRNavigationController.h"
 
+#import "ZRSupermarketExplainController.h"
+
 @interface ZRSupermarketController ()
 
 
@@ -197,9 +199,10 @@ static NSString *footerID = @"footerID";
         label.textColor = RGBCOLOR(85, 85, 85);
         [cell.contentView addSubview:label];
         
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(label.x-20, (cell.height-sizeStr.height)/2+2, 8, sizeStr.height-4)];
-        imgView.image = ZRImage(@"dingwei");
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-15-sizeStr.height*1/3, (cell.height-sizeStr.height*2/3)/2, sizeStr.height*1/3, sizeStr.height*2/3)];
+        imgView.image = ZRImage(@"ApplicableMerchant");
         [cell.contentView addSubview:imgView];
+        
         
     }else if (indexPath.section == 2){
         //查看全部
@@ -379,6 +382,15 @@ static NSString *footerID = @"footerID";
 }
 
 
+
+#pragma mark - UICollectionViewDelegate methods
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        ZRSupermarketExplainController *explainVC = [[ZRSupermarketExplainController alloc] init];
+        [self.navigationController pushViewController:explainVC animated:YES];
+    }
+}
 
 
 #pragma mark - Click methods

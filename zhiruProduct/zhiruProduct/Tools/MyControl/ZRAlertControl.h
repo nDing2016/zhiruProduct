@@ -40,4 +40,15 @@ typedef void(^AlertCallback)();
 + (void)alertForRateWithController:(UIViewController *)viewController andActionTitle:(NSString *)title andButtonOneCallBack:(AlertCallback)btnOneCallback;
 
 
+
+/**
+ *  定位提示
+ *
+ *  @param myWindow       <#myWindow description#>
+ *  @param title          <#title description#>
+ *  @param btnOneCallback <#btnOneCallback description#>
+ */
++ (void)alertToolWithLocationWithWindow:(id)myWindow andActionTitle:(NSString *)title  andText:(NSString *)text andButtonOneCallBack:(AlertCallback)btnOneCallback;
+
+
 @end

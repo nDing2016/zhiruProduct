@@ -11,6 +11,6 @@
 @interface ZRSupermarketOrderViewController : ZROrderingOrderViewController
 
 
-- (void)addHeaderRequest;
+
 
 @end

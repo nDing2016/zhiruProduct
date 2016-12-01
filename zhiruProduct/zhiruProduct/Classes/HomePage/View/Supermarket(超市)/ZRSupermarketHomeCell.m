@@ -258,11 +258,20 @@
         
         
         //价格
+        
         NSString *nowPrice = [NSString stringWithFormat:@"$%.2f",[_goodsListModel.now_price floatValue]];
         CGSize sizePrice = [NSString getSize:nowPrice strFont:CustomFont(12) maxSize:CGSizeMake(CellWidth, CellHeight)];
         
         //CGFloat priceY = (CellHeight-(y+goodsSize.height+y+weightSize.height+sizePrice.height))/2+(y+goodsSize.height+y+weightSize.height);
-        [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
+        
+        if ((self.height-5-weightSize.height-5-sizePrice.height)<=y+goodsSize.height) {
+           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, y+goodsSize.height)];
+        }else{
+           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
+        }
+            
+            
+        
         
         
         if (self.countStr) {
