@@ -65,4 +65,7 @@ typedef NS_ENUM(NSInteger, ShopType) {
 
 @property (nonatomic, strong) ZRGoupBuyingReviewFrame *reviewFrame;
 
+
+
+
 @end

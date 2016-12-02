@@ -11,9 +11,11 @@
 #import "ZRCommentListModel.h"
 #import "ZRGroupBuyingReviewDetailsCell.h"
 #import "ZRHomePageRequst.h"
+#import "ZRCheckReviewPictureView.h"
+@interface ZRReviewDetailController ()<ZRCheckReviewPicViewDelegate>
 
-@interface ZRReviewDetailController ()
-
+//所有评论图片数组
+@property (nonatomic, strong) NSMutableArray *reviewPicsArray;
 
 @end
 
@@ -60,7 +62,6 @@
         [vi removeFromSuperview];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.userInteractionEnabled = NO;
     
     if (indexPath.section == 1) {
         self.reviewFrame.commentListModel = self.commentListArray[indexPath.row];
@@ -95,18 +96,37 @@
         [headImgView sd_setImageWithURL:[NSURL URLWithString:cell.commentListModel.commentUserImg] placeholderImage:ZRImage(@"default_head")];
         [cell.contentView addSubview:headImgView];
         
+        
+        
         if (cell.commentListModel.commentImg.count>0) {
             UIView *commentView = [[UIView alloc] initWithFrame:cell.reviewFrame.reviewPicFrame];
             [cell.contentView addSubview:commentView];
             //评论配图
             CGFloat wid = 80*SCREEN_WIDTH/375;
             CGFloat mix = 10*SCREEN_WIDTH/375;
+            
             [cell.commentListModel.commentImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSDictionary *commentImgUrlDic = obj;
                 NSString *commentImgUrl = [commentImgUrlDic objectForKey:@"img_url"];
                 UIImageView *commentImgView = [[UIImageView alloc] initWithFrame:CGRectMake((wid+mix)*(idx%3), (wid+mix)*(idx/3), wid, wid)];
+                if (idx == 0) {
+                    for (UIGestureRecognizer *ges in commentImgView.gestureRecognizers) {
+                        [commentImgView removeGestureRecognizer:ges];
+                        
+                    }
+                    
+                }
+                
+                commentImgView.tag = idx;
+                commentImgView.userInteractionEnabled = YES;
                 [commentImgView sd_setImageWithURL:[NSURL URLWithString:commentImgUrl] placeholderImage:ZRImage(@"Default")];
                 [commentView addSubview:commentImgView];
+                
+                //添加手势
+                UITapGestureRecognizer *tapImgView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImgView:)];
+                [commentImgView addGestureRecognizer:tapImgView];
+                
+                //                [ws.reviewPicsArray addObject:commentImgUrl];
             }];
             
         }
@@ -143,6 +163,54 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+
+#pragma mark - click methods
+/**
+ *  评论图片点击事件
+ */
+- (void)tapImgView:(UIGestureRecognizer *)ges
+{
+    
+    ZRGroupBuyingReviewDetailsCell *cell = (ZRGroupBuyingReviewDetailsCell *)[[[ges.view superview] superview] superview];
+    self.reviewPicsArray = [NSMutableArray array];
+    WS(ws)
+    [cell.commentListModel.commentImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *commentImgUrlDic = obj;
+        NSString *commentImgUrl = [commentImgUrlDic objectForKey:@"img_url"];
+        [ws.reviewPicsArray addObject:commentImgUrl];
+        
+        if (idx == cell.commentListModel.commentImg.count-1) {
+            ZRCheckReviewPictureView *checkPicView = [[ZRCheckReviewPictureView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ScreenHeight)];
+            [[UIApplication sharedApplication].keyWindow addSubview:checkPicView];
+            checkPicView.delegate = ws;
+            checkPicView.curPage = ges.view.tag;
+            checkPicView.picturesArray = ws.reviewPicsArray;
+            
+        }
+        
+    }];
+    
+    
+    
+    
+    
+}
+
+
+#pragma mark - ZRCheckReviewPictureViewDelegate methods
+-(void)dismissView:(ZRCheckReviewPictureView *)view
+{
+    [UIView animateWithDuration:1 animations:^{
+        [view removeFromSuperview];
+        
+    }];
 }
 
 
@@ -193,7 +261,7 @@
 #define mark - 点赞/差评/取消点赞
 - (void)clickGoodBtn:(NSString*)commentId{
     [SVProgressHUD show];
-    WS(ws)
+   
     [ZRHomePageRequst requestAgreeWithCommentId:commentId andSuccess:^(id success) {
         [SVProgressHUD showSuccessWithStatus:@"好评成功"];
         //        [ws getBusinessData];
@@ -201,26 +269,11 @@
         [SVProgressHUD dismiss];
         
         
-        //        ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        //        UIButton *btn = [cell viewWithTag:ws.btnTag];
-        //        [self reviewButtonClick:btn];
-        
-        
-//        NSString *screenStr = nil;
-//        if (ws.btnTag == 111) {
-//            screenStr = @"0";
-//        }else if (ws.btnTag == 112){
-//            screenStr = @"1";
-//        }else if (ws.btnTag == 113){
-//            screenStr = @"2";
-//        }else{
-//            screenStr = @"3";
-//        }
-//        [self selectData:screenStr];
-        [ws.tableView startRefreshWithCallback:^{
-            [ws loadDetails];
-            
-        }];
+//
+//        [ws.tableView startRefreshWithCallback:^{
+//            [ws loadDetails];
+//            
+//        }];
         
     } andFailure:^(id error) {
         [SVProgressHUD showErrorWithStatus:@"好评失败"];
@@ -231,7 +284,7 @@
 - (void)clickeNoGoodBtn:(NSString *)commentId{
     
     [SVProgressHUD show];
-    WS(ws)
+    
     [ZRHomePageRequst requestNoAgreeWithCommentId:commentId andSuccess:^(id success) {
         [SVProgressHUD showSuccessWithStatus:@"差评成功"];
         //        [ws getBusinessData];
@@ -253,10 +306,10 @@
 //        }
 //        [self selectData:screenStr];
         
-        [ws.tableView startRefreshWithCallback:^{
-            [ws loadDetails];
-            
-        }];
+//        [ws.tableView startRefreshWithCallback:^{
+//            [ws loadDetails];
+//            
+//        }];
         
     } andFailure:^(id error) {
         [SVProgressHUD showErrorWithStatus:@"差评失败"];
@@ -267,7 +320,7 @@
 
 - (void)cancelClickBtn:(NSString *)commentId{
     [SVProgressHUD show];
-    WS(ws)
+   
     [ZRHomePageRequst requestDeleteAgreeWithCommentId:commentId andSuccess:^(id success) {
         //        [SVProgressHUD showSuccessWithStatus:@"取消成功"];
         //        [ws getBusinessData];
@@ -289,10 +342,10 @@
 //        }
 //        [self selectData:screenStr];
         
-        [ws.tableView startRefreshWithCallback:^{
-            [ws loadDetails];
-            
-        }];
+//        [ws.tableView startRefreshWithCallback:^{
+//            [ws loadDetails];
+//            
+//        }];
         
         
     } andFailure:^(id error) {

@@ -67,6 +67,9 @@
         CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
         if (textSize.height<nameSize.height*2+10) {
             _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY, textWidth, textSize.height);
+            
+            NSLog(@"dn=======%f",textSize.height);
+            
         }else{
             _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY, textWidth, nameSize.height*2+10);
         }

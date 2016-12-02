@@ -376,6 +376,7 @@ static NSString *ID = @"cell";
                 
                 _integralMall = [ZRIntegralMallModel mj_objectWithKeyValues:details];
                 
+                [ws.integralMallData addObject:_integralMall.img];
 
                 //NSMutableArray *arr = [NSMutableArray array];
                 [_integralMall.commodityLists enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -433,6 +434,7 @@ static NSString *ID = @"cell";
                     
 //#warning 假数据
 //                    //NSMutableArray *arr = [NSMutableArray array];
+                    
                     [_integralMall.commodityLists enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                         [ws.integralMallData addObject:obj];
                         

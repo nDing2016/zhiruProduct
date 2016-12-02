@@ -191,7 +191,7 @@ static NSString *ID = @"ID";
         
     }else{
         cell.firstImg = nil;
-        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item-1]];
+        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item]];
         cell.commodityList = _commodityList;
         
         UIImageView *productImgView = [[UIImageView alloc] init];
