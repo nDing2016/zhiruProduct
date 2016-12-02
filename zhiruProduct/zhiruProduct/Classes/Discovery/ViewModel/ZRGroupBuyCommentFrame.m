@@ -33,7 +33,7 @@
     _commentUserNameFrame = CGRectMake(CGRectGetMaxX(_commentUserImgFrame)+10, y, commentUsrNameSize.width, commentUsrNameSize.height);
     
     //星级
-    UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade integerValue]];
+    UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade floatValue]];
     _commentGradeFrame = CGRectMake(x, CGRectGetMaxY(_commentUserNameFrame)+y, pingxingImg.size.width, pingxingImg.size.height);
     
     //人均消费

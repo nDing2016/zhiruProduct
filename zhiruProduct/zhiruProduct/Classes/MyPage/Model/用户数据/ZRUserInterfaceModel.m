@@ -488,7 +488,7 @@
  */
 + (void)userFineDefaultAddressCallBack:(void(^)(id result))callBack
                                 Filure:(void(^)(id error))failure
-{
+{//用户未登录
     NSString * url = [HOST stringByAppendingString:@"user/findDefaultAddress"];
     [ZRAFNRequests post:url parameters:nil success:^(id result) {
         

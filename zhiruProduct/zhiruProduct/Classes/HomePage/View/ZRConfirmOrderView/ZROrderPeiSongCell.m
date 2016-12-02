@@ -33,18 +33,33 @@
         _peisongInfo.text = [NSString stringWithFormat:@"本订单由 店家 提供配送"];
     }
     
+    
+    
+    
+    
     if (_isVip == YES) {
         _vipView.hidden = NO;
         _peisongOriginalMoney.hidden = NO;
         _xianView.hidden = NO;
+        
         _peisongOriginalMoney.text = [NSString stringWithFormat:@"$%.2f",_psMoney];
         //暂时假优惠
-        _peisongMoney.text = [NSString stringWithFormat:@"$%.2f",_psMoney - _psMoney * 0.3];
+        if (_psMoney == 0) {
+            _peisongMoney.text = @"超出配送范围";
+        }else{
+           _peisongMoney.text = [NSString stringWithFormat:@"$%.2f",_psMoney - _psMoney * 0.3];
+        }
+        
     }else{
         _vipView.hidden = YES;
         _peisongOriginalMoney.hidden = YES;
         _xianView.hidden = YES;
-         _peisongMoney.text = [NSString stringWithFormat:@"$%.2f",_psMoney];
+        
+        if (_psMoney == 0) {
+            _peisongMoney.text = @"超出配送范围";
+        }else{
+            _peisongMoney.text = [NSString stringWithFormat:@"$%.2f",_psMoney];
+        }
     }
     
 }

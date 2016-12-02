@@ -72,7 +72,7 @@
 @property (nonatomic , strong) NSDictionary * beizhuDict;
 
 //重量费
-@property (nonatomic , assign) CGFloat weight;
+@property (nonatomic , assign) CGFloat weightMoney;
 //名字
 @property (nonatomic , copy) NSString * userName;
 
@@ -82,19 +82,19 @@
 //总重量
 @property (nonatomic, assign) CGFloat allWeight;
 
-
+@property (nonatomic, strong) UIButton * querenBtn;
 @end
 
 @implementation ZRConfirmOrderController
 
 -(void)setProductArr:(NSArray *)productArr{
     _productArr = productArr;
-    _weight = 0;
+    _allWeight = 0;
     _shuiMoney = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05;
     if (_orderType == Supermarket) {
         for (NSMutableArray *arr in productArr) {
             ZRSupermarketGoodsListModel *superGoodsListModel = arr[0];
-            _weight += ([superGoodsListModel.weight floatValue] ) * arr.count;
+            _allWeight += ([superGoodsListModel.weight floatValue] ) * arr.count;
         }
     }
     
@@ -390,45 +390,40 @@
             
             
             
-            //回调
+            //回调 超市点击 加减号
             WS(ws)
             cell.upDataCount = ^(){
-                //送餐小费
-//                ZROrderTipCell * tip = [tableView dequeueReusableCellWithIdentifier:tipCell];
-//                tip.percentage = ws.xiaoFei / 100 ;
-//                ws.xiaoMoney =  [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * (_xiaoFei / 100 );
-                //配送费(判断是否有配送费)
-                //                if (ws.sectionCount == 8) {
-                //
-                //                }
-                //税费
-                
+ //11111111111111111111111111111111111111
                 UITableViewCell * shui = [tableView dequeueReusableCellWithIdentifier:shuiCell];
-                shui.detailTextLabel.text = [NSString stringWithFormat:@"$%.2lf", [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05];
-                ws.shuiMoney = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05;
+                shui.detailTextLabel.text = [NSString stringWithFormat:@"$%.2lf", [ZRSupermarketHomeObj shareInstance].allPrice * 0.05];
+               
+
                 
+                ws.shuiMoney = [ZRSupermarketHomeObj shareInstance].allPrice * 0.05;
+                //重量
+                
+                ws.allWeight = 0;
+                for (NSMutableArray *arr in ws.productArr) {
+                    ZRSupermarketGoodsListModel *superGoodsListModel = arr[0];
+                    ws.allWeight += ([superGoodsListModel.weight floatValue] ) * arr.count;
+                }
+                ws.weightMoney = [ws getWeight:ws.allWeight];
+                
+                //配送
+                ws.peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] andWeight:_allWeight andSpecialWeather:_weather];
                 
                 //总计
-                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount]  + _peiMoney + _shuiMoney + _weight];
+                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice  + ws.peiMoney + ws.shuiMoney + ws.weightMoney];
                 [ws.myTableView reloadData];
                 
+//                NSLog(@"%f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] );
                 };
             
             return cell;
         }
         
         else if (indexPath.section == 3){
-//            ZROrderTipCell * cell = [tableView dequeueReusableCellWithIdentifier:tipCell];
-//            if (cell == nil) {
-//                NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZROrderTipCell class]) owner:self options:nil];
-//                cell = [nibs lastObject];
-//            }
-//            cell.percentage = _xiaoFei / 100 ;
-//            _xiaoMoney =  [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * (_xiaoFei / 100 );
-//            
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-            
+
             ZROrderPeiSongCell * cell = [tableView dequeueReusableCellWithIdentifier:peisongCell];
             if (cell == nil) {
                 NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZROrderPeiSongCell class]) owner:self options:nil];
@@ -445,11 +440,11 @@
                 [ws.navigationController pushViewController:explainVC animated:YES];
             };
             
-            _peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] / 1000 andWeight:_weight andSpecialWeather:_weather];
+            _peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] andWeight:_allWeight andSpecialWeather:_weather];
             
+          
             cell.psMoney = _peiMoney;
-
-
+  
             ZRUser * user = [ZRUserTool user];
             if ([user.is_vip isEqualToString:@"0"]) {
                 cell.isVip =NO;
@@ -500,8 +495,10 @@
             }else{
                 cell.isSpecialWeather = NO;
             }
-            _weight = [self getWeight:_weight];
-            cell.weight = [NSString stringWithFormat:@"%.2f",_weight] ;
+            _weightMoney = [self getWeight:[self getAllGoodsWeight]];
+            cell.allWeight = _allWeight;
+            cell.weightMoney = [NSString stringWithFormat:@"%.2f",_weightMoney] ;
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             
@@ -996,6 +993,14 @@
                 [ws.myTableView reloadData];
             };
         }
+        else if(indexPath.section == 5){
+            //重量说明
+            ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+            explainVC.type = 1;
+            explainVC.title = @"重量费说明";
+            
+            [self.navigationController pushViewController:explainVC animated:YES];
+        }
     }
     
     if (_orderType == lunchOrdering && _sectionCount == 6) {
@@ -1122,11 +1127,11 @@ WS(ws)
     _moneyCountLB = moneyCountLB;
     
     if (_orderType == Supermarket) {
-        moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight];
+        moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney];
         
-        CGFloat allPrice = [ZRSupermarketHomeObj shareInstance].allPrice;
+//        CGFloat allPrice = [ZRSupermarketHomeObj shareInstance].allPrice;
 
-        NSLog(@"%f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight);
+       
         
     }else{
             moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ];
@@ -1145,10 +1150,19 @@ WS(ws)
     //确认下单按钮
     UIButton * confirmBtn = [UIButton new];
     [confirmBtn setTitle:@"确认下单" forState:UIControlStateNormal];
-    [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
+    
+    if (_peiMoney == 0) {
+        confirmBtn.userInteractionEnabled = NO;
+        [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }else{
+        confirmBtn.userInteractionEnabled = YES;
+        [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+
+//    [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
     [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    
+    _querenBtn = confirmBtn;
     [toolView addSubview:confirmBtn];
     
     [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -1196,7 +1210,7 @@ WS(ws)
     if (_orderType == Supermarket) {
         if (_addressModel == nil) {
             [SVProgressHUD showErrorWithStatus:@"请添加地址"];
-            [self performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
             return; 
         }
     }
@@ -1262,7 +1276,7 @@ WS(ws)
         
     }else if (self.orderType == Supermarket){
         paymentOrderVC.payOrderType = ZRPayOrderSupermarket;
-        paymentOrderVC.payPrice = [NSString stringWithFormat:@"$%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight];
+        paymentOrderVC.payPrice = [NSString stringWithFormat:@"$%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney];
         //paymentOrderVC.superHomeModel = self.supermarketHomeModel;
         NSMutableArray *kaOrderGoodsArr = [NSMutableArray array];
         for (NSMutableArray *arr in self.productArr) {
@@ -1323,11 +1337,11 @@ WS(ws)
                 allWeight+=[goodsModel.weight floatValue] *array.count;
                 
             }
-            CGFloat total = price + _peiMoney + _shuiMoney + _weight;
+            CGFloat total = price + _peiMoney + _shuiMoney + _weightMoney;
             //NSLog(@"%@",[NSString stringWithFormat:@"%.2f",_shuiMoney] );            
             
             
-            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%.3f",allWeight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
+            [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weightMoney] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%.3f",allWeight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {
@@ -1362,7 +1376,7 @@ WS(ws)
                 [AlertText showAndText:@"确认订单失败"];
             }];
         } else {
-            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weight] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weight] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Weight:[NSString stringWithFormat:@"%.3f",[self getAllGoodsWeight]] Callback:^(id details, NSError *error) {
+            [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weightMoney] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Weight:[NSString stringWithFormat:@"%.3f",[self getAllGoodsWeight]] Callback:^(id details, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (details) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];
@@ -1421,15 +1435,18 @@ WS(ws)
     CGFloat shouxuMoney = [ZRSupermarketHomeObj shareInstance].allPrice * 0.05;
     //配送费
     if (distance < 5000) {
-        
+
+
         return (3 + shouxuMoney + weightMoney) * weather ;
         
-    }else if (distance >= 5000 || distance < 10000){
+    }else if (distance >= 5000 && distance < 10000){
         CGFloat numb = (distance - 5000)/1000;
-        
+
+
        return ([self heixinShangjia:numb] + 3 +shouxuMoney + weightMoney)*weather ;
     }else{
-        return -1;
+
+        return 0;
     }
     //手续费
     
@@ -1443,7 +1460,7 @@ WS(ws)
 - (NSInteger)heixinShangjia :(CGFloat)numb{
     
     if (numb - (NSInteger)numb > 0) {
-        return numb ++;
+        return numb + 1;
     }else{
         return numb;
     }

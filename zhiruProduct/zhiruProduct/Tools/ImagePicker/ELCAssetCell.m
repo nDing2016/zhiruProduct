@@ -95,6 +95,7 @@
         if (i < [_overlayViewArray count]) {
             ELCOverlayImageView *overlayView = [_overlayViewArray objectAtIndex:i];
             
+//            overlayView.canClick = YES;
             overlayView.hidden = asset.selected ? NO : YES;
             overlayView.labIndex.text = [NSString stringWithFormat:@"%d", asset.index + 1];
             
@@ -103,6 +104,8 @@
                 overlayImage = [UIImage imageNamed:@"radio_btn_on@2x.png"];//选择了图片的标记图
             }
             ELCOverlayImageView *overlayView = [[ELCOverlayImageView alloc] initWithImage:overlayImage];
+            
+//            overlayView.canClick = YES;
             
             [_overlayViewArray addObject:overlayView];
             overlayView.hidden = asset.selected ? NO : YES;
@@ -173,12 +176,11 @@
             if (CGRectContainsPoint(frame, point)) {
                 
                 if ([self.celldelegate respondsToSelector:@selector(showPhotos:imageViewArray:)]) {
-                    [self.celldelegate showPhotos:1 imageViewArray:nil];
+                    [self.celldelegate showPhotos:self.imageViewArray.count imageViewArray:self.imageViewArray];
                 }
                 
                 NSLog(@"点击了图片。。。。");
 
-                
                 break;
             }
             
@@ -218,7 +220,8 @@
         [self addSubview:subscriptImage];
         
         ELCOverlayImageView *overlayView = [_overlayViewArray objectAtIndex:i];;
-       [overlayView setFrame:framePoint];
+
+        [overlayView setFrame:framePoint];
 //        overlayView.center = subscriptImage.center;
         [self addSubview:overlayView];
 		

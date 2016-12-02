@@ -246,7 +246,7 @@
         CGSize nameSize = [self drawWithStr:_commentListModel.commentUserName Font:[UIFont systemFontOfSize:15] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewNameFrame.origin.x, self.reviewFrame.reviewNameFrame.origin.y)];
         
         //评星
-        UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade integerValue]];
+        UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade floatValue]];
         [self drawImage:pingxingImg Rect:self.reviewFrame.reviewStarFrame];
         
         //价钱

@@ -254,6 +254,7 @@
     NSInteger index = btn.tag;
     
     UILabel * myLabel =  _lableArr[index];
+    
      NSInteger numb =  [myLabel.text integerValue];
     myLabel.text = [NSString stringWithFormat:@"%ld",(long)(numb+=1)];
     NSMutableArray * marr;
@@ -336,9 +337,6 @@
         //午餐
          marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
     }
-    
-   
-    
 //    ZROrderingMenuModel * model = [marr[index] lastObject];
 //    [marr[index] addObject:model];
     [marr[index] removeLastObject];

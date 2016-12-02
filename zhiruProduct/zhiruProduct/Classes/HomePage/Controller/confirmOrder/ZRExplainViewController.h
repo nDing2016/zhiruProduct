@@ -9,5 +9,6 @@
 #import "ZRBaseViewController.h"
 
 @interface ZRExplainViewController : ZRBaseViewController
-
+//如果 type == 1 重量费说明
+@property (nonatomic , assign) NSInteger  type;
 @end

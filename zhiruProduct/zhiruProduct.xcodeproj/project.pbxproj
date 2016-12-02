@@ -405,6 +405,7 @@
 		BD4FEFE11D23D24E0040D240 /* ZRSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE01D23D24E0040D240 /* ZRSearchView.m */; };
 		BD4FEFE51D24C01E0040D240 /* ZRHomeCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4FEFE31D24C01E0040D240 /* ZRHomeCellOne.m */; };
 		BD4FEFE61D24C01E0040D240 /* ZRHomeCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */; };
+		BD5CDBF71DF01D9900B6CF68 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5CDBF61DF01D9900B6CF68 /* ClickImage.m */; };
 		BD6C16DA1D93E6D9006BFD51 /* ZRShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */; };
 		BD6C16E11D93E864006BFD51 /* UITextView+ZSC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E01D93E864006BFD51 /* UITextView+ZSC.m */; };
 		BD6C16E41D94DDDF006BFD51 /* UIWindow+ZRShare.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C16E31D94DDDF006BFD51 /* UIWindow+ZRShare.m */; };
@@ -1332,6 +1333,8 @@
 		BD4FEFE41D24C01E0040D240 /* ZRHomeCellOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZRHomeCellOne.xib; sourceTree = "<group>"; };
 		BD5CDBEE1DE82B1C00B6CF68 /* ZRExplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRExplainViewController.h; sourceTree = "<group>"; };
 		BD5CDBEF1DE82B1C00B6CF68 /* ZRExplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRExplainViewController.m; sourceTree = "<group>"; };
+		BD5CDBF51DF01D9900B6CF68 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
+		BD5CDBF61DF01D9900B6CF68 /* ClickImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickImage.m; sourceTree = "<group>"; };
 		BD6C16D81D93E6D9006BFD51 /* ZRShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRShareView.h; sourceTree = "<group>"; };
 		BD6C16D91D93E6D9006BFD51 /* ZRShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRShareView.m; sourceTree = "<group>"; };
 		BD6C16DF1D93E864006BFD51 /* UITextView+ZSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZSC.h"; sourceTree = "<group>"; };
@@ -3491,6 +3494,8 @@
 		BD5CDBF11DF0101900B6CF68 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				BD5CDBF51DF01D9900B6CF68 /* ClickImage.h */,
+				BD5CDBF61DF01D9900B6CF68 /* ClickImage.m */,
 			);
 			path = picture;
 			sourceTree = "<group>";
@@ -4513,6 +4518,7 @@
 				BD0D17EA1D3C719700AC688A /* ZRProductInfoCell.m in Sources */,
 				A32523211DB20B30000B4520 /* ZRGoodsListModel.m in Sources */,
 				BDE860E91D30A1A2000D436B /* UIButton+ZRButtonColor.m in Sources */,
+				BD5CDBF71DF01D9900B6CF68 /* ClickImage.m in Sources */,
 				A31283401D965F3800C286AF /* ZRShoppingCarGroupController.m in Sources */,
 				A31283761D965F3800C286AF /* ZRDetailAddressView.m in Sources */,
 				BD6C17051D98FCEB006BFD51 /* ZROrderPeiSongCell.m in Sources */,

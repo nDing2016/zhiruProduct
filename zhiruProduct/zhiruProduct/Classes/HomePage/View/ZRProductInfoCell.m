@@ -29,7 +29,7 @@
     
     _businessName.text = model.name;
     
-    _businessGrade.image = [UIImage imageWithPingfenCount:[model.grade integerValue]];
+    _businessGrade.image = [UIImage imageWithPingfenCount:[model.grade floatValue]];
     
     _comment_count.text =[NSString stringWithFormat:@"%@条评论", model.comment_count];
     
