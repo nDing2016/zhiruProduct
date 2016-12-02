@@ -341,7 +341,6 @@
         }
     } else if (ScreenHeight == 667.0) {
         if (scrollView == self.scrollView) {
-            NSLog(@"%f", scrollView.contentOffset.y);
             if (scrollView.contentOffset.y == 175.0) {
                 [self.pointTableView setScrollEnabled:YES];
             } else {

@@ -36,6 +36,9 @@
 @property (nonatomic , strong) StarsView * environmentView;
 @property (nonatomic , strong) StarsView * serviceView;
 @property (nonatomic , strong) StarsView * overallView;
+
+
+@property (nonatomic , strong) UIButton * informationCardBtn;
 @end
 
 @implementation ZRPostCommentController
@@ -431,7 +434,7 @@
     informationCardBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [informationCardBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
-    
+    _informationCardBtn = informationCardBtn;
     [informationCardBtn sizeToFit];
     UIBarButtonItem *fabiaoCardItem = [[UIBarButtonItem alloc] initWithCustomView:informationCardBtn];
     
@@ -442,6 +445,7 @@
 - (void)enterehzFilesVC :(UIButton *)btn{
     //NSLog(@"点击发表按钮");
 
+    _informationCardBtn.userInteractionEnabled = NO;
     [CustomHudView show];
     if ([self checkComment]) {
         
@@ -473,11 +477,12 @@
             self.postOkBlock();
             [ws.navigationController popViewControllerAnimated:YES];
             [CustomHudView dismiss];
+            ws.informationCardBtn.userInteractionEnabled = YES;
         } andFailure:^(id error) {
             [SVProgressHUD showErrorWithStatus:@"发表失败,检查网络"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             [ws.navigationController popViewControllerAnimated:YES];
-            
+            ws.informationCardBtn.userInteractionEnabled = YES;
             [CustomHudView dismiss];
         }];
     }

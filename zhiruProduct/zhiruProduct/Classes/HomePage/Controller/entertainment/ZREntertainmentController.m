@@ -113,7 +113,7 @@
     }
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+    [ZRHomePageRequst requestGetYuLeListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
         
         //NSLog(@"成功");
         ws.modelArr = success;
@@ -134,7 +134,7 @@
     WS(ws)
     [CustomHudView show];
     //跳转
-    [ZRHomePageRequst requestGetFindtasteIndexWithLongitude:_longitude andLatitude:_latitude andLabel:labelModel.nav_id andSuccess:^(id success) {
+    [ZRHomePageRequst requestGetYuleIndexWithLongitude :_longitude andLatitude:_latitude andLabel:labelModel.nav_id andSuccess:^(id success) {
         
         ZRHomeNavModel * model = ws.model;
         //地理

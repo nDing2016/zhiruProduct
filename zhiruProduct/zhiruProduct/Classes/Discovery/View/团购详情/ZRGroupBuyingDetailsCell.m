@@ -303,7 +303,7 @@
     }else if (_idxPath.section == 1 ){
         if (_idxPath.row == 1) {
             [self drawWithStr:self.detailsModel.businessName Font:[UIFont systemFontOfSize:15] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(15, 17)];
-            UIImage *pingxingImg = [UIImage imageWithPingfenCount:[self.detailsModel.grade integerValue]];
+            UIImage *pingxingImg = [UIImage imageWithPingfenCount:[self.detailsModel.grade floatValue]];
             //评星
             [self drawImage:pingxingImg Rect:CGRectMake(15, 75*SCREEN_HEIGHT/667-17-pingxingImg.size.height, pingxingImg.size.width, pingxingImg.size.height)];
             
@@ -469,7 +469,7 @@
         //name
         CGSize size1 = [self drawWithStr:_commentListModel.commentUserName Font:[UIFont systemFontOfSize:15] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x+wid+10,y)];
         //评星
-        UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade integerValue]];
+        UIImage *pingxingImg = [UIImage imageWithPingfenCount:[_commentListModel.commentGrade floatValue]];
         [self drawImage:pingxingImg Rect:CGRectMake(x+wid+10, y+size1.height+y, pingxingImg.size.width, pingxingImg.size.height)];
         //价钱
         CGSize size2 = [self drawWithStr:_commentListModel.perCapita Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x+wid+10+pingxingImg.size.width+10, y+size1.height+y)];

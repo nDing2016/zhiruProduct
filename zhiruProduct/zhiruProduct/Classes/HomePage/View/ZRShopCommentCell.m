@@ -43,7 +43,7 @@
     
     _commentDate.text = model.commentDate;
     
-    _commentGrade.image = [UIImage imageWithPingfenCount:[model.commentGrade integerValue]];
+    _commentGrade.image = [UIImage imageWithPingfenCount:[model.commentGrade floatValue]];
     
     _commentContent.text = model.commentContent;
     

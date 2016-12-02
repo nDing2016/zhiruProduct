@@ -16,20 +16,23 @@
 
 @implementation ZROrderSelectTwoCell
 
-
-
--(void)setWeight:(NSString *)weight{
-    _weight = weight;
+-(void)setWeightMoney:(NSString *)weightMoney{
+    _weightMoney = weightMoney;
     
     if (_isSpecialWeather) {
-        _titleText.text = @"重量费(因特殊天气包含额外费用)";
+
+        _titleText.text = [NSString stringWithFormat:@"重量费(总重约:%.2lf kg)",_allWeight];
+         _SubtitleText.text = [NSString stringWithFormat:@"$%@(因特殊天气包含额外费用)",weightMoney];
     }else{
-        _titleText.text = @"重量费";
+
+        _titleText.text = [NSString stringWithFormat:@"重量费(总重约:%.2lf kg)",_allWeight];
+         _SubtitleText.text = [NSString stringWithFormat:@"$%@",weightMoney];
     }
     
-    
-    _SubtitleText.text = [NSString stringWithFormat:@"$%@",weight];
+    _SubtitleText.textColor = [UIColor redColor];
 }
+
+
 
 - (void)setTitleDict:(NSDictionary *)titleDict{
     _titleDict = titleDict;

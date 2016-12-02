@@ -29,8 +29,12 @@ static NSString * const zAppGroupNavId = @"group/navIndex";
 static NSString * const zAppOrderingList = @"ordering";
 static NSString * const zAppOrderingDetails = @"ordering/details";
 static NSString * const zAppOrderingQuery = @"ordering/list";
+static NSString * const zAppLiRenQuery = @"modelling/list";
+static NSString * const zAppYuLeQuery = @"recreation/list";
 static NSString * const zAppFindtasteList = @"findtaste/list";
 static NSString * const zAppFindtasteIndex = @"findtaste/index";
+static NSString * const zAppLiRenIndex = @"modelling/index";
+static NSString * const zAppYuLeIndex = @"recreation/index";
 static NSString * const zAppGrouplist = @"group/list";
 static NSString * const zAppModellingList = @"modelling/list";
 static NSString * const zAppcollectionAddGroupCollection = @"collection/addGroupCollection";
@@ -644,7 +648,126 @@ static NSString *const zBusinessCommentList = @"businessComment/list";
 
 
 
++ (void)requestGetLiRenListWithLongitude :(NSString *)longitude
+                                 andLatitude :(NSString *)latitude
+                                 andRegionId :(NSString *)regionId
+                                     andCity :(NSString *)city
+                                    andLabel : (NSString *)label
+                                     andSort :(NSString *)sort
+                                   andScreen :(NSString *)screen
+                                     andRows :(NSString *)rows
+                                     andPage :(NSString *)page
+                                   andSuccess: (void(^)(id success))success
+                                   andFailure:(void(^)(id error))failure{
+    
+    NSDictionary * parameter = @{@"longitude": longitude ,@"latitude" : latitude , @"regionId" : regionId, @"city" : city  , @"label":label , @"sort":sort , @"screen":screen,@"rows" : rows , @"page" : page};
+    [ZRAFNRequests post:[NSString stringWithFormat:@"%@%@",HOST,zAppLiRenQuery] parameters:parameter success:^(id result) {
+        NSMutableArray * resultMarr = [NSMutableArray array];
+        NSArray * resultArr = result[@"data"];
+        for (int i =0;i < resultArr.count ; i++) {
+            
+            ZRBusinessModel *model = [ZRBusinessModel mj_objectWithKeyValues:resultArr[i]];
+            [resultMarr addObject:model];
+        }
+        
+        success (resultMarr);
+        
+    } failure:^(id error) {
+        
+        failure(error);
+    }];
+}
 
 
++ (void)requestGetYuLeListWithLongitude :(NSString *)longitude
+                            andLatitude :(NSString *)latitude
+                            andRegionId :(NSString *)regionId
+                                andCity :(NSString *)city
+                               andLabel : (NSString *)label
+                                andSort :(NSString *)sort
+                              andScreen :(NSString *)screen
+                                andRows :(NSString *)rows
+                                andPage :(NSString *)page
+                              andSuccess: (void(^)(id success))success
+                              andFailure:(void(^)(id error))failure{
+    NSDictionary * parameter = @{@"longitude": longitude ,@"latitude" : latitude , @"regionId" : regionId, @"city" : city  , @"label":label , @"sort":sort , @"screen":screen,@"rows" : rows , @"page" : page};
+    [ZRAFNRequests post:[NSString stringWithFormat:@"%@%@",HOST,zAppYuLeQuery] parameters:parameter success:^(id result) {
+        NSMutableArray * resultMarr = [NSMutableArray array];
+        NSArray * resultArr = result[@"data"];
+        for (int i =0;i < resultArr.count ; i++) {
+            
+            ZRBusinessModel *model = [ZRBusinessModel mj_objectWithKeyValues:resultArr[i]];
+            [resultMarr addObject:model];
+        }
+        
+        success (resultMarr);
+        
+    } failure:^(id error) {
+        
+        failure(error);
+    }];
+}
 
+
++ (void)requestGetYuleIndexWithLongitude :(NSString *)longitude
+                                  andLatitude :(NSString *)latitude
+                                     andLabel :(NSString *)label
+                                    andSuccess: (void(^)(id success))success
+                                    andFailure:(void(^)(id error))failure{
+    
+    if (longitude == nil || latitude == nil || label == nil) {
+        longitude = ZRLongitude;
+        latitude = ZRLatitude;
+        label = @"0";
+    }
+    
+    NSDictionary * parameter = @{@"longitude":longitude , @"latitude":latitude , @"label" : label};
+    
+    [ZRAFNRequests post:[NSString stringWithFormat:@"%@%@",HOST,zAppYuLeIndex] parameters:parameter success:^(id result) {
+        
+        if (result[@"data"]) {
+            NSMutableArray * marr = [NSMutableArray array];
+            ZRHomeNavModel * dataM = [ZRHomeNavModel mj_objectWithKeyValues:result[@"data"]];
+            
+            [marr addObject:dataM];
+            success(marr);
+        }else{
+            failure(@"null");
+        }
+        
+    } failure:^(id error) {
+        failure(error);
+    }];
+}
+
++ (void)requestGetLiRenIndexWithLongitude :(NSString *)longitude
+                                  andLatitude :(NSString *)latitude
+                                     andLabel :(NSString *)label
+                                    andSuccess: (void(^)(id success))success
+                                    andFailure:(void(^)(id error))failure{
+    
+    if (longitude == nil || latitude == nil || label == nil) {
+        longitude = ZRLongitude;
+        latitude = ZRLatitude;
+        label = @"0";
+    }
+    
+    NSDictionary * parameter = @{@"longitude":longitude , @"latitude":latitude , @"label" : label};
+    
+    [ZRAFNRequests post:[NSString stringWithFormat:@"%@%@",HOST,zAppLiRenIndex] parameters:parameter success:^(id result) {
+        
+        if (result[@"data"]) {
+            NSMutableArray * marr = [NSMutableArray array];
+            ZRHomeNavModel * dataM = [ZRHomeNavModel mj_objectWithKeyValues:result[@"data"]];
+            
+            [marr addObject:dataM];
+            success(marr);
+        }else{
+            failure(@"null");
+        }
+        
+    } failure:^(id error) {
+        failure(error);
+    }];
+}
 @end

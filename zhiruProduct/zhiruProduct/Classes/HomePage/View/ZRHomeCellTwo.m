@@ -51,7 +51,7 @@
     
     
     
-    _commentCount.image = [UIImage imageWithPingfenCount:[model.grade integerValue]];
+    _commentCount.image = [UIImage imageWithPingfenCount:[model.grade floatValue]];
 
     
     _distance.text =[NSString stringWithFormat:@"%.2lfkm", [model.distance floatValue] / 1000];

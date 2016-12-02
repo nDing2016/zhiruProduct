@@ -292,8 +292,10 @@
 //选好了跳转事件
 - (void)selectFinished:(NSNotification *)noti
 {
+    
     WS(ws)
     [SVProgressHUD show];
+  
     [ZRUserInterfaceModel userFineDefaultAddressCallBack:^(id result) {
         ZRUserFindAddressModel * model = result;
         NSString * longitude;
@@ -346,7 +348,7 @@
          } andFailure:^(id error) {
              [SVProgressHUD dismiss];
              [SVProgressHUD showErrorWithStatus:@"请求失败"];
-             [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
              
          }];
         //首先判断用户是否登录
@@ -355,7 +357,7 @@
     } Filure:^(id error) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"请求失败"];
-        [ws performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
         
         
     }];

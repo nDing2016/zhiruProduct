@@ -370,6 +370,7 @@
             count = _commentListArr.count;
         }
         if (indexPath.row == count + 1) {
+#warning 查看所有评价 跳转口
             //跳转到查看全部网友评论。  店铺评论
             ZRAllReviewsController *allReviewsVC = [[ZRAllReviewsController alloc] init];
             [self.navigationController pushViewController:allReviewsVC animated:YES];
