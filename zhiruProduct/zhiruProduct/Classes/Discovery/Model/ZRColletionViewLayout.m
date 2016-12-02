@@ -125,7 +125,9 @@ static const int ColumsCount = 2;
         //h = 120*SCREEN_HEIGHT/667;
         h = w;
     }else{
-        h = 180*SCREEN_HEIGHT/667;
+        
+        //h = 180*SCREEN_HEIGHT/667;
+        h = 240*SCREEN_HEIGHT/667;
     }
     
     // 找出最短那一列的 列号 和 最大Y值
