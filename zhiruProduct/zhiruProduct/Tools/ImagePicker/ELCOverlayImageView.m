@@ -34,6 +34,7 @@
     self = [super init];
     if (self) {
         UIImageView *img = [[UIImageView alloc] initWithImage:image];
+
         [self addSubview:img];
         
         if ([[ELCConsole mainConsole] onOrder]) {

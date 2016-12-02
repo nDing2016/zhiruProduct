@@ -143,12 +143,12 @@
             case 1: //团购
             {
 
-//                if (/* DISABLES CODE */ (1)) {
-//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-//                    [self.navigationController  pushViewController:setUpView animated:YES];
-//                    [CustomHudView dismiss];
-//                    return;
-//                }
+                if (/* DISABLES CODE */ (1)) {
+                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+                    [self.navigationController  pushViewController:setUpView animated:YES];
+                    [CustomHudView dismiss];
+                    return;
+                }
                 
                  [ZRHomePageRequst requestGetMainNavWithUrl:[NSString stringWithFormat:@"%@group/index",HOST]  andLongitude:userAdd.Longitude andLatitude:userAdd.Latitude andSuccess:^(NSMutableArray *marr) {
                      
@@ -201,12 +201,12 @@
             case 2: //订餐
             {
                 
-//                if (/* DISABLES CODE */ (1)) {
-//                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
-//                    [self.navigationController  pushViewController:setUpView animated:YES];
-//                    [CustomHudView dismiss];
-//                    return;
-//                }
+                if (/* DISABLES CODE */ (1)) {
+                    ZRSetUpController * setUpView = [[ZRSetUpController alloc] init];
+                    [self.navigationController  pushViewController:setUpView animated:YES];
+                    [CustomHudView dismiss];
+                    return;
+                }
                 [ZRHomePageRequst requestOrderingListWithLongitude:userAdd.Longitude  andLatitude:userAdd.Latitude andLabel:nil andSuccess:^(id success) {
                     
                     
@@ -388,15 +388,16 @@
     }
     
     //上线注释
-//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-//    address.Longitude = @"103";
-//    address.Latitude = @"26";
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    address.Longitude = @"103";
+    address.Latitude = @"26";
+    _longitude = address.Longitude;
+    _latitude = address.Latitude;
     
     //等model
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     _isTop = YES;
-//    _longitude = address.Longitude;
-//    _latitude = address.Latitude;
+   
     
 
    
@@ -446,7 +447,7 @@
     //    _latitude = noti.userInfo[@"latitude"];
     //
     //    [self.homeTableView reloadData];
-    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+    if (![noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
         //取不到坐标
         ZRErrorController * errorVC = [[ZRErrorController alloc] init];
         
@@ -458,7 +459,8 @@
         ZRUserAddress * address = [ZRUserAddress sharedInstance];
         address.Longitude = noti.userInfo[@"longitude"];
         address.Latitude = noti.userInfo[@"latitude"];
-        
+        _longitude = address.Longitude;
+        _latitude = address.Latitude;
 //        [self loadNewData];
         
         

@@ -435,4 +435,55 @@ typedef void(^ZRBusinessCommentCallback) (id details, NSError *error);
                                                Page:(NSString *)page
                                            Callback:(ZRBusinessCommentCallback)callback;
 
+
+/**
+ *  丽人列表
+ *
+ *  @param longitude <#longitude description#>
+ *  @param latitude  <#latitude description#>
+ *  @param regionId  <#regionId description#>
+ *  @param city      <#city description#>
+ *  @param label     <#label description#>
+ *  @param sort      <#sort description#>
+ *  @param screen    <#screen description#>
+ *  @param rows      <#rows description#>
+ *  @param page      <#page description#>
+ *  @param success   <#success description#>
+ *  @param failure   <#failure description#>
+ */
++ (void)requestGetLiRenListWithLongitude :(NSString *)longitude
+                             andLatitude :(NSString *)latitude
+                             andRegionId :(NSString *)regionId
+                                 andCity :(NSString *)city
+                                andLabel : (NSString *)label
+                                 andSort :(NSString *)sort
+                               andScreen :(NSString *)screen
+                                 andRows :(NSString *)rows
+                                 andPage :(NSString *)page
+                               andSuccess: (void(^)(id success))success
+                               andFailure:(void(^)(id error))failure;
+
++ (void)requestGetYuLeListWithLongitude :(NSString *)longitude
+                             andLatitude :(NSString *)latitude
+                             andRegionId :(NSString *)regionId
+                                 andCity :(NSString *)city
+                                andLabel : (NSString *)label
+                                 andSort :(NSString *)sort
+                               andScreen :(NSString *)screen
+                                 andRows :(NSString *)rows
+                                 andPage :(NSString *)page
+                               andSuccess: (void(^)(id success))success
+                              andFailure:(void(^)(id error))failure;
+
++ (void)requestGetLiRenIndexWithLongitude :(NSString *)longitude
+                              andLatitude :(NSString *)latitude
+                                 andLabel :(NSString *)label
+                                andSuccess: (void(^)(id success))success
+                                andFailure:(void(^)(id error))failure;
+
++ (void)requestGetYuleIndexWithLongitude :(NSString *)longitude
+                             andLatitude :(NSString *)latitude
+                                andLabel :(NSString *)label
+                               andSuccess: (void(^)(id success))success
+                               andFailure:(void(^)(id error))failure;
 @end

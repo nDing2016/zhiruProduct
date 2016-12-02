@@ -10,10 +10,12 @@
 #import "ELCAsset.h"
 #import "ELCAlbumPickerController.h"
 #import "ELCConsole.h"
-
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
+#import "PictureCollectionViewCell.h"
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/568
 
-@interface ELCAssetTablePicker ()<ShowPhotosDelegate>
+@interface ELCAssetTablePicker ()<ShowPhotosDelegate,MJPhotoBrowserDelegate>
 
 @property (nonatomic, assign) int columns;
 
@@ -340,7 +342,7 @@
 //点击图片查看时 的代理
 -(void)showPhotos:(int)picture imageViewArray:(NSArray *)imageArray
 {
-    UIImage * image = imageArray[0];
+    
 //    NSURL * url = [NSURL URLWithString:<#(nonnull NSString *)#>]
 ////    NSURL *url = [NSURL URLWithString:@"http://dantang.liwushuo.com/posts/3121/content"];
 //    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0,ScreenWidth, ScreenHeight)];
@@ -354,12 +356,26 @@
 //    //  把CLWebPicture拖入项目中，实现这句代码
 //    self.webView.delegate = [CLWebPicture sharedCLWebPicture];
     
-    
+//    NSMutableArray *photoArray = [[NSMutableArray alloc] init];
+//
+//    UIImage *image = imageArray[0];
+//        
+//    MJPhoto *photo = [MJPhoto new];
+//    photo.image = image;
+////        PictureCollectionViewCell *cell = (PictureCollectionViewCell *)[UICollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+//        
+////        photo.srcImageView = cell.imageView;
+//    [photoArray addObject:photo];
+//    
+//    
+//    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+//    browser.photoBrowserdelegate = self;
+////    browser.currentPhotoIndex = 0;
+////    browser.photos = imageArray;
+//    [browser show];
 }
 
 
 
+
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

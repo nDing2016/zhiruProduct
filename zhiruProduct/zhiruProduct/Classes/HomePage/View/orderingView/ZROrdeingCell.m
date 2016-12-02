@@ -38,7 +38,7 @@
     
     _startingPrice.text = [NSString stringWithFormat:@"$%@元起送",businessModel.startingPrice];
     
-    _grade.image = [UIImage imageWithPingfenCount:[businessModel.grade integerValue]];
+    _grade.image = [UIImage imageWithPingfenCount:[businessModel.grade floatValue]];
     
     _distance.text = businessModel.distance;
     

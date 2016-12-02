@@ -13,5 +13,8 @@
 @property (nonatomic , strong) NSDictionary * titleDict;
 
 @property (nonatomic , assign) BOOL isSpecialWeather;
-@property (nonatomic , copy)NSString * weight;
+//重量费
+@property (nonatomic , copy)NSString * weightMoney;
+//总重量
+@property (nonatomic , assign) CGFloat allWeight;
 @end

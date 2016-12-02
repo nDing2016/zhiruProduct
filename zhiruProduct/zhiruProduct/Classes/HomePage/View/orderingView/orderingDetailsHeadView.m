@@ -71,7 +71,7 @@
     
     _distributionPrice.text = [NSString stringWithFormat:@"配送费 $%@ 起",model.pCosts];
     
-    _pingxing.image =  [UIImage imageWithPingfenCount:[model.grade integerValue]];
+    _pingxing.image =  [UIImage imageWithPingfenCount:[model.grade floatValue]];
     //午餐
     if (_isLunch == YES) {
         _startPrice.hidden = YES;
