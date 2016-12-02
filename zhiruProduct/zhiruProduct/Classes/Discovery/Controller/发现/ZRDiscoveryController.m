@@ -352,52 +352,43 @@ static NSString *ID = @"cell";
 - (void)loadLatestIntegralMallData
 {
     //每次下拉获取最新数据时，应清空数组
-    _integralMallData = nil;
+    _integralMallData = [NSMutableArray array];
     _page = 1;
     
     
     WS(ws)
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    [ZRDiscoverRequest requestForIntegralMallWithRows:@"6" WithPage:@"1" WithCallback:^(id details, NSError *error) {
         
-        [ZRDiscoverRequest requestForIntegralMallWithRows:@"6" WithPage:@"1" WithCallback:^(id details, NSError *error) {
+        NSIndexPath *idx = [NSIndexPath indexPathForItem:1 inSection:0];
+        ZRDiscoveryCell *cell = (ZRDiscoveryCell *)[ws.collectionView cellForItemAtIndexPath:idx];
+        [cell.collectionView.mj_header endRefreshing];
+        cell.collectionView.mj_footer.state = MJRefreshStateIdle;
+        
+        cell.cellIndex = index1;
+        //cell.collectionArray = @[@"1",@"2"];
+        [cell showUpButton:NO];
+        
+        
+        _integralMall = [ZRIntegralMallModel mj_objectWithKeyValues:details];
+        
+        [_integralMall.commodityLists enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [ws.integralMallData addObject:obj];
             
-            NSIndexPath *idx = [NSIndexPath indexPathForItem:1 inSection:0];
-            ZRDiscoveryCell *cell = (ZRDiscoveryCell *)[ws.collectionView cellForItemAtIndexPath:idx];
-            [cell.collectionView.mj_header endRefreshing];
-            cell.collectionView.mj_footer.state = MJRefreshStateIdle;
-            //[cell.collectionView.mj_footer endRefreshing];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                cell.cellIndex = index1;
-                //cell.collectionArray = @[@"1",@"2"];
-                [cell showUpButton:NO];
-
-                
-                _integralMall = [ZRIntegralMallModel mj_objectWithKeyValues:details];
-                
-                [ws.integralMallData addObject:_integralMall.img];
-
-                //NSMutableArray *arr = [NSMutableArray array];
-                [_integralMall.commodityLists enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                     [ws.integralMallData addObject:obj];
-                    
-                }];
-                
-                
+            if (idx == _integralMall.commodityLists.count-1) {
+                [ws.integralMallData insertObject:_integralMall.img atIndex:0];
                 cell.collectionFirstImg = _integralMall.img;
                 cell.collectionArray = ws.integralMallData;
-                
-                
-                
-            });
-            
-            
+            }
             
         }];
+
         
         
-    });
+    }];
+
+    
+    
 }
 
 /**
@@ -438,11 +429,15 @@ static NSString *ID = @"cell";
                     [_integralMall.commodityLists enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                         [ws.integralMallData addObject:obj];
                         
+                        if (idx == _integralMall.commodityLists.count-1) {
+                            cell.collectionFirstImg = _integralMall.img;
+                            cell.collectionArray = ws.integralMallData;
+                        }
+                        
                     }];
                     
                     
-                    cell.collectionFirstImg = _integralMall.img;
-                    cell.collectionArray = ws.integralMallData;
+                    
                     
                     
                     

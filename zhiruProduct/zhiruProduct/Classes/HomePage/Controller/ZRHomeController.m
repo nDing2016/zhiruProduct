@@ -391,7 +391,7 @@
 //    ZRUserAddress * address = [ZRUserAddress sharedInstance];
 //    address.Longitude = @"103";
 //    address.Latitude = @"26";
-
+//
 //    _longitude = address.Longitude;
 //    _latitude = address.Latitude;
 

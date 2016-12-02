@@ -174,7 +174,7 @@ static NSString *ID = @"ID";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     self.collectionView.mj_footer.hidden = self.collectionArray.count == 0;
-    return _collectionArray.count+1;
+    return _collectionArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -204,7 +204,8 @@ static NSString *ID = @"ID";
             //make.centerY.equalTo(myCell.contentView.mas_centerY);
             make.top.equalTo(@0);
             make.width.equalTo(@(cell.contentView.width));
-            make.height.equalTo(@(cell.contentView.width*0.6));
+//            make.height.equalTo(@(cell.contentView.width*0.6));
+            make.height.equalTo(@(cell.contentView.width));
             
         }];
         
