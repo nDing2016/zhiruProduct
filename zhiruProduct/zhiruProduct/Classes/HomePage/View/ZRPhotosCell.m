@@ -76,12 +76,7 @@
 //    [self.imgView setImage:ZRPlaceholderImage];
     WS(ws);
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.img_url] placeholderImage:ZRPlaceholderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        NSLog(@"%@", [NSThread currentThread]);
-        NSLog(@"%f %f", image.size.width, image.size.height);
-        
-        NSLog(@"%@ %@ %ld %@", image, error, cacheType, imageURL);
-        NSLog(@"下载成功");
-        if (image.size.width > ScreenWidth && image.size.height > ScreenHeight - 64) {
+        if (image.size.width > ScreenWidth) {
             [ws.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.center.equalTo(ws);
                 make.width.mas_equalTo(ScreenWidth);

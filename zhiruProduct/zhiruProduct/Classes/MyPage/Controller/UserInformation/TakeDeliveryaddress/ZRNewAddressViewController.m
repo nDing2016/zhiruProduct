@@ -85,10 +85,12 @@
         [self.navigationController presentViewController:alertVC animated:YES
                                               completion:nil];
     } else {
+        [CustomHudView show];
         WS(weakSelf);
         [ZRUserInterfaceModel addReceiptAddressWithName:name Phone:phone Longitude:longitude Latitude:latitude Address:address Gender:self.gender UserNewAddressCallBack:^(NSString *message) {
             //NSLog(@"%@", message);
             if ([message isEqualToString:@"success"]) {
+                [CustomHudView dismiss];
                 [weakSelf.delegates newAddress];
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             }

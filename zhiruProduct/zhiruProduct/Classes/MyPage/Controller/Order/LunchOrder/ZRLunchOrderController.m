@@ -108,7 +108,9 @@
             NSString * message = success;
             if ([message isEqualToString:@"success"]) {
                 [AlertText showAndText:@"取消成功"];
-                [self addHeaderRequest];
+                model.status = @"3";
+                NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
+                [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
             } else {
                 [AlertText showAndText:@"取消订单失败"];
             }

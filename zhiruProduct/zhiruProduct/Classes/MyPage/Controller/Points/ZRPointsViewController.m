@@ -62,12 +62,13 @@
         [self.scrollView setDelegate:self];
         
         self.headerView = [[ZRPointsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40 + 175.0 / 667.0 * ScreenHeight)];
+//        self.headerView = [[ZRPointsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40 + 175.0)];
         [self.scrollView addSubview:self.headerView];
         [self.headerView.sectionHeaderView.pointDetailButton addTarget:self action:@selector(actionSectionHeaderView:) forControlEvents:UIControlEventTouchUpInside];
         [self.headerView.sectionHeaderView.pointExchangeButton addTarget:self action:@selector(actionSectionHeaderView:) forControlEvents:UIControlEventTouchUpInside];
         
         
-        _pointTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _headerView.frame.size.height, ScreenWidth, ScreenHeight - 64 - 40) style:UITableViewStylePlain];
+        _pointTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _headerView.frame.size.height, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
         [self.scrollView addSubview:_pointTableView];
         [self.pointTableView setDelegate:self];
         [self.pointTableView setDataSource:self];
@@ -330,12 +331,30 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView == self.scrollView) {
-//        NSLog(@"%f", scrollView.contentOffset.y);
-        if (scrollView.contentOffset.y == 175.0 / 667.0 * ScreenHeight) {
-            [self.pointTableView setScrollEnabled:YES];
-        } else {
-            [self.pointTableView setScrollEnabled:NO];
+    if (ScreenHeight == 568.0) {
+        if (scrollView == self.scrollView) {
+            if (scrollView.contentOffset.y == 149.0) {
+                [self.pointTableView setScrollEnabled:YES];
+            } else {
+                [self.pointTableView setScrollEnabled:NO];
+            }
+        }
+    } else if (ScreenHeight == 667.0) {
+        if (scrollView == self.scrollView) {
+            NSLog(@"%f", scrollView.contentOffset.y);
+            if (scrollView.contentOffset.y == 175.0) {
+                [self.pointTableView setScrollEnabled:YES];
+            } else {
+                [self.pointTableView setScrollEnabled:NO];
+            }
+        }
+    } else if (ScreenHeight == 736.0) {
+        if (scrollView == self.scrollView) {
+            if (scrollView.contentOffset.y == 193.0) {
+                [self.pointTableView setScrollEnabled:YES];
+            } else {
+                [self.pointTableView setScrollEnabled:NO];
+            }
         }
     }
 }

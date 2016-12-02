@@ -65,13 +65,16 @@
     dispatch_async(quede, ^{
         [ZRUserInterfaceModel userGetMessageNumCallBack:^(id result) {
             NSDictionary * dict = result;
-            NSLog(@"信封: %@", dict);
             if ([dict[@"code"] isEqualToString:@"S000"] && [dict[@"message"] isEqualToString:@"success"]) {
                 // 回到主线程, 刷新UI
                 NSString * data = dict[@"data"];
                 if (data.integerValue > 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [_rightBtn setImage:[UIImage imageNamed:@"xinfeng-dian"] forState:UIControlStateNormal];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_rightBtn setImage:[UIImage imageNamed:@"xinfeng"] forState:UIControlStateNormal];
                     });
                 }
             }

@@ -221,14 +221,23 @@
         
         WS(ws)
         [ZRUserInterfaceModel delReceiptAddressWithId:businessId CallBack:^(NSString *message) {
-            [AlertText showAndText:message];
-            [ws.array removeObjectAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
-            [tableView reloadData];
+            if ([message isEqualToString:@"success"]) {
+                [AlertText showAndText:@"删除成功"];
+                [ws.array removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                [tableView reloadData];
+            } else {
+                [AlertText showAndText:@"删除失败"];
+            }
+            
         } Failure:^(id error) {
             [AlertText showAndText:@"删除失败"];
         }];
     }
+}
+- (void)deleteAddress
+{
+    [self addHeaderRefresh];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

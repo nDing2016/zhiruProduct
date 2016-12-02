@@ -115,17 +115,21 @@
 - (void)superAgainButton:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
-        //NSLog(@"取消订单");
+        [CustomHudView show];
         ZRSuperOderModel * orderModel = [self.dataArray objectAtIndex:sender.tag];
         [ZROrderingOrderRequest kaCanacelOrderWithOrderId:orderModel.orderId CallBack:^(id success) {
             NSString * message = success;
+            [CustomHudView dismiss];
             if ([message isEqualToString:@"success"]) {
                 [AlertText showAndText:@"取消成功"];
-                [self addHeaderRequest];
+                orderModel.process = @"24";
+                NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
+                [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
             } else {
                 [AlertText showAndText:@"取消订单失败"];
             }
         } Failure:^(id error) {
+            [CustomHudView dismiss];
              [AlertText showAndText:@"取消订单失败"];
         }];
     } else {

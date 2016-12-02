@@ -28,6 +28,11 @@
 @end
 
 @implementation ZRStoreupShopController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self addHeaderRefresh];
+}
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
@@ -48,7 +53,7 @@
     
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
-    [self addHeaderRefresh];
+//    [self addHeaderRefresh];
     [self addFooterRefresh];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

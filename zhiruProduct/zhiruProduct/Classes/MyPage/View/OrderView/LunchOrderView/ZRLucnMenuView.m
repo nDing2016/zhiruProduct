@@ -50,7 +50,7 @@
     }];
     
     [self.menuNum mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf).with.offset(-140);
+        make.right.equalTo(weakSelf).with.offset(-100);
         make.centerY.equalTo(weakSelf);
     }];
 }
