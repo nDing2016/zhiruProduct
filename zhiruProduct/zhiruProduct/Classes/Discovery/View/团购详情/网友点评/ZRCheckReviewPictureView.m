@@ -55,6 +55,7 @@
         
         for (int i=0; i<self.picturesArray.count; i++) {
             UIImageView *imgView = [[UIImageView alloc] init];
+            imgView.userInteractionEnabled = YES;
             imgView.backgroundColor = [UIColor whiteColor];
             [_scrollView addSubview:imgView];
             [SVProgressHUD dismiss];
@@ -64,6 +65,9 @@
                 imgView.frame = CGRectMake(i*SCREEN_WIDTH, y, SCREEN_WIDTH, h);
                 
             }];
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
+            [imgView addGestureRecognizer:tap];
             
         }
         

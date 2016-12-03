@@ -25,8 +25,9 @@
 #import "ZRUserStoreupRequest.h"
 
 #import "ZRReviewDetailController.h"
+#import "ZRCheckReviewPictureView.h"
 
-@interface ZRProductDetailsController ()<UITableViewDelegate , UITableViewDataSource>
+@interface ZRProductDetailsController ()<UITableViewDelegate , UITableViewDataSource,ZRShopCommentCellDelegate, ZRCheckReviewPicViewDelegate>
 @property (nonatomic , strong) UITableView * myTableView;
 @property (nonatomic , strong) NSArray * sectionOneTitleArr;
 @property (nonatomic , strong) ZRBusinessDetailsModel * model;
@@ -245,10 +246,14 @@
         
         static NSString * identifier = @"commentCell";
         ZRShopCommentCell * commentCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
         if (commentCell == nil) {
             NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZRShopCommentCell class]) owner:self options:nil];
             commentCell = [nibs lastObject];
         }
+        
+        //指定代理
+        commentCell.delegate = self;
         
         //如果等于最后一个返回 普通cell
         NSInteger count ;
@@ -400,26 +405,34 @@
 
             
             
-        }
-        
-        ZRShopCommentCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
-        [self.navigationController pushViewController:reviewDetailVC animated:YES];
-        reviewDetailVC.commentIdStr = cell.model.commentId;
-        if (_isGame) {
-            //娱乐
-            reviewDetailVC.shoptype = 101;
+        }else{
+            ZRCommentListModel *model;
+            if (_commentListArr.count>0) {
+                model = _commentListArr[indexPath.row - 1];
+                
+                ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+                [self.navigationController pushViewController:reviewDetailVC animated:YES];
+                reviewDetailVC.commentIdStr = model.commentId;
+                if (_isGame) {
+                    //娱乐
+                    reviewDetailVC.shoptype = 101;
+                    
+                }else if(_isLiren){
+                    
+                    //丽人
+                    reviewDetailVC.shoptype = 102;
+                }
+                else {
+                    //寻味
+                    reviewDetailVC.shoptype = 100;
+                }
+
+                
+            }
+
             
-        }else if(_isLiren){
             
-            //丽人
-            reviewDetailVC.shoptype = 102;
         }
-        else {
-            //寻味
-            reviewDetailVC.shoptype = 100;
-        }
-        
         
         
         
@@ -428,6 +441,26 @@
     
 }
 
+
+
+#pragma mark - ZRShopCommentCellDelegate methods
+-(void)checkPickDetailsWithCell:(ZRShopCommentCell *)cell WithGesture:(UIGestureRecognizer *)gesture WithPictureArray:(NSArray *)array
+{
+    ZRCheckReviewPictureView *checkPicView = [[ZRCheckReviewPictureView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ScreenHeight)];
+    [[UIApplication sharedApplication].keyWindow addSubview:checkPicView];
+    checkPicView.delegate = self;
+    checkPicView.curPage = gesture.view.tag;
+    checkPicView.picturesArray = array;
+}
+
+
+-(void)dismissView:(ZRCheckReviewPictureView *)view
+{
+    [UIView animateWithDuration:1 animations:^{
+        [view removeFromSuperview];
+        
+    }];
+}
 
 
 #pragma mark -- 创建导航条右标题

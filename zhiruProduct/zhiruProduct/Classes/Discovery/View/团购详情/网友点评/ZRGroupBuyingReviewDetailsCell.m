@@ -302,7 +302,7 @@
             
 
             self.reviewTextLabel.text = _commentListModel.commentContent;
-
+            self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
             self.reviewTextLabel.font = CustomFont(15);
             self.reviewTextLabel.numberOfLines = 0;
             [self.contentView addSubview:self.reviewTextLabel];
