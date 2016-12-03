@@ -46,7 +46,7 @@
 -(UIWebView *)webView
 {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-40)];
         _webView.delegate = self;
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]];
         [_webView loadRequest:request];
@@ -71,31 +71,7 @@
     [super viewWillAppear:animated];
     self.immediatelyBtn.hidden = NO;
     
-//    [self.tableView startRefreshWithCallback:^{
-//        
-//        [self loadProductDetailsData];
-//        
-//        
-//    }];
-    
-    //判断是否登录
-    ZRUser * user = [ZRUserTool user];
-    if (user == nil) {
-        //用户未登录
-        [ZRAlertControl notLoginAlert:self goLogin:^{
-            
-            //弹出登录页面
-            ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
-            ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
-            
-            [self presentViewController:nav animated:YES completion:nil];
-            
-            
-        }];
-    }else{
-        [self loadProductDetailsData];
-    }
-    
+    [self loadProductDetailsData];
     
     
     
@@ -128,10 +104,32 @@
 #pragma mark - click methods
 - (void)immediatelyExchange:(UIButton *)sender
 {
-    ZRImmediatelyExchangeController *exchangeVC = [[ZRImmediatelyExchangeController alloc] init];
-    [self.navigationController pushViewController:exchangeVC animated:YES];
-    exchangeVC.commodityListmodel = self.commodityListModel;
-    exchangeVC.mypoints = self.productDetail.myPoints;
+    
+    //判断是否登录
+    ZRUser * user = [ZRUserTool user];
+    if (user == nil) {
+        //用户未登录
+        [ZRAlertControl notLoginAlert:self goLogin:^{
+            
+            //弹出登录页面
+            ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+            ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+            
+            [self presentViewController:nav animated:YES completion:nil];
+            
+            
+        }];
+    }else{
+        
+        ZRImmediatelyExchangeController *exchangeVC = [[ZRImmediatelyExchangeController alloc] init];
+        [self.navigationController pushViewController:exchangeVC animated:YES];
+        exchangeVC.commodityListmodel = self.commodityListModel;
+        exchangeVC.mypoints = self.productDetail.myPoints;
+
+        
+    }
+
+    
 }
 
 
@@ -205,13 +203,20 @@
     WS(ws)
     [ZRDiscoverRequest requestForIntegralMallProductDetailsWithCommodityId:ws.commodityListModel.commodityId WithCallback:^(id details, NSError *error) {
         ws.productDetail = [ZRProductDetailModel mj_objectWithKeyValues:details];
-        
+        //0未下架1下架
+        if ([ws.productDetail.state isEqualToString:@"1"]) {
+            [SVProgressHUD showInfoWithStatus:@"该商品已下架"];
+            [self performSelector:@selector(dismiss) withObject:nil afterDelay:2];
+            
+        }else{
+            //加载网页
+            //        ws.webUrl = [NSString stringWithFormat:@"http://192.168.2.22:8080/zhiru%@",ws.productDetail.url];
+            ws.webUrl = [NSString stringWithFormat:@"%@",ws.productDetail.url];
+            [ws.view addSubview:ws.webView];
+        }
         
              
-        //加载网页
-//        ws.webUrl = [NSString stringWithFormat:@"http://192.168.2.22:8080/zhiru%@",ws.productDetail.url];
-        ws.webUrl = [NSString stringWithFormat:@"%@",ws.productDetail.url];
-        [ws.view addSubview:ws.webView];
+
         
         
         

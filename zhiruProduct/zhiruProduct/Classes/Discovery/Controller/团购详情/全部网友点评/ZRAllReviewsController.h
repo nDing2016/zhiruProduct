@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, AllReviewsType) {
 
 
 typedef NS_ENUM(NSInteger, ShopType) {
-    ZRXunWei,                //寻味评论
+    ZRXunWei =100,               //寻味评论
     ZRYuLe,                  //娱乐评论
     ZRLiRen                  //丽人评论
     

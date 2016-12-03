@@ -48,4 +48,7 @@
 
 @property (nonatomic, copy) NSString *vipfraction;
 
+//0未下架1下架
+@property (nonatomic, copy) NSString *state;
+
 @end

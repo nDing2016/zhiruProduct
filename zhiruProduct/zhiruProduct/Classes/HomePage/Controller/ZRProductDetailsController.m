@@ -23,6 +23,9 @@
 #import "ZRAllReviewsController.h"
 #import "ZRStorePictureController.h"
 #import "ZRUserStoreupRequest.h"
+
+#import "ZRReviewDetailController.h"
+
 @interface ZRProductDetailsController ()<UITableViewDelegate , UITableViewDataSource>
 @property (nonatomic , strong) UITableView * myTableView;
 @property (nonatomic , strong) NSArray * sectionOneTitleArr;
@@ -381,7 +384,45 @@
             allReviewsVC.badReviewsCount = _model.bad;
             allReviewsVC.imgReviewsCount = _model.img_comment;
             
+            if (_isGame) {
+                //娱乐
+                allReviewsVC.shopType = ZRYuLe;
+                
+            }else if(_isLiren){
+                
+                //丽人
+                allReviewsVC.shopType = ZRLiRen;
+            }
+            else {
+                //寻味
+                allReviewsVC.shopType = ZRXunWei;
+            }
+
+            
+            
         }
+        
+        ZRShopCommentCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+        [self.navigationController pushViewController:reviewDetailVC animated:YES];
+        reviewDetailVC.commentIdStr = cell.model.commentId;
+        if (_isGame) {
+            //娱乐
+            reviewDetailVC.shoptype = 101;
+            
+        }else if(_isLiren){
+            
+            //丽人
+            reviewDetailVC.shoptype = 102;
+        }
+        else {
+            //寻味
+            reviewDetailVC.shoptype = 100;
+        }
+        
+        
+        
+        
     }
     
     

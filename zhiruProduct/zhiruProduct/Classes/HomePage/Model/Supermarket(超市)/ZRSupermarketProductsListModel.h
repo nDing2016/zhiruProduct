@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZRSupermarketProductsListModel : NSObject<NSCoding>
+@interface ZRSupermarketProductsListModel : NSObject
 
 //首页导航ID
 @property (nonatomic, copy) NSString *navId;

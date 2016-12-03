@@ -261,13 +261,13 @@
             NSString *grade1;
 
             
-            if (self.shoptype == 0) {
+            if (self.shoptype == 100) {
                 //寻味
                 grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
-            }else if (self.shoptype == 1){
+            }else if (self.shoptype == 101){
                 //娱乐
                 grade1 = [NSString stringWithFormat:@"设施:%@",_commentListModel.gradeOne];
-            }else{
+            }else if (self.shoptype == 102){
                 //丽人
                 grade1 = [NSString stringWithFormat:@"效果:%@",_commentListModel.gradeOne];
             }

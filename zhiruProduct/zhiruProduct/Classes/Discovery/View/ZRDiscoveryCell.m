@@ -209,6 +209,23 @@ static NSString *ID = @"ID";
             
         }];
         
+        //剩余数量
+        UILabel *leftLabel = [[UILabel alloc] init];
+        leftLabel.text = [NSString stringWithFormat:@"剩余:%@",_commodityList.num];
+        leftLabel.textColor = [UIColor whiteColor];
+        leftLabel.backgroundColor = [UIColor blackColor];
+        leftLabel.font = CustomFont(14);
+        leftLabel.textAlignment = NSTextAlignmentCenter;
+        leftLabel.alpha = 0.8;
+        [productImgView addSubview:leftLabel];
+        [leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(@0);
+            make.right.equalTo(@0);
+            make.bottom.equalTo(@0);
+            make.height.equalTo(@20);
+            
+        }];
+        
         
     }
    
