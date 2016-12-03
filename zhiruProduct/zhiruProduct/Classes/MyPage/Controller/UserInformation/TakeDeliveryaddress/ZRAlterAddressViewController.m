@@ -84,6 +84,31 @@
         [alertVC addAction:action];
         [self.navigationController presentViewController:alertVC animated:YES
                                               completion:nil];
+    } else if (gender.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请选择性别" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
+
+    } else if (name.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请输入联系人的名称" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
+    } else if (longitude.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"地址有误" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
     } else {
         WS(weakSelf);
         [ZRUserInterfaceModel updateReceiptAddressWithID:ID Name:name Phone:phone Longitude:longitude Latitude:latitude Address:address Gender:gender Isdefault:isdefault UserUpdateAddressCallBack:^(NSString *message) {
@@ -95,6 +120,7 @@
             }
             
         }];
+
     }
     
 }

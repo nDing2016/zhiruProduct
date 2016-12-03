@@ -297,7 +297,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.state == 2) {
-        //NSLog(@"跳转到积分商品详情");
         ZRProductDetalController * productVC = [[ZRProductDetalController alloc] init];
         [self.navigationController pushViewController:productVC animated:YES];
     }

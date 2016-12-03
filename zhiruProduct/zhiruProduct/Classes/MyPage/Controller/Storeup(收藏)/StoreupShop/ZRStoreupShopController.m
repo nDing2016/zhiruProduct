@@ -81,6 +81,12 @@
     ZRProductDetailsController * productVC = [[ZRProductDetailsController alloc] init];
     ZRBusinessModel * model = [self.dataArray objectAtIndex:indexPath.row];
     productVC.businessId = model.businessId;
+    productVC.regionName = model.regionName;
+    if ([model.navId isEqualToString:@"yule"]) {
+        productVC.isGame = YES;
+    } else if ([model.navId isEqualToString:@"liren"]) {
+        productVC.isLiren = YES;
+    }
     ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     ZRNavigationController * nav = tabBar.viewControllers[2];
     ZRStoreupRootViewController * storeVC = nav.viewControllers[1];
