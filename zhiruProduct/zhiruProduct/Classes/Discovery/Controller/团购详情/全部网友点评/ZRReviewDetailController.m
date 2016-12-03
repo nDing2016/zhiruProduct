@@ -67,7 +67,7 @@
         self.reviewFrame.commentListModel = self.commentListArray[indexPath.row];
         cell.reviewFrame = self.reviewFrame;
         cell.commentListModel = self.commentListArray[indexPath.row];
-        
+        cell.shoptype = (int)self.shoptype;
         WS(ws)
         cell.clickGoodBtn = ^(UIButton* btn , NSString * commentId ,BOOL isCancel){
             if (btn.tag == 0) {
