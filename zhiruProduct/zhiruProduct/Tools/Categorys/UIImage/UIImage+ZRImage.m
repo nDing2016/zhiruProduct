@@ -87,20 +87,20 @@
     
     if ( pingfenCount >= 1 && pingfenCount <= 1.2) {
         return [UIImage imageNamed:@"1"];
-    }else if ( pingfenCount >= 1.3 && pingfenCount <= 1.7){
-        return [UIImage imageNamed:@"1.5"];
-    }else if ( pingfenCount >= 1.8 && pingfenCount <= 2.2){
+    }else if ( pingfenCount >= 1.3 && pingfenCount < 1.8){
+        return [UIImage imageNamed:@"yidianwu"];
+    }else if ( pingfenCount >= 1.8 && pingfenCount < 2.3){
         return [UIImage imageNamed:@"2"];
-    }else if ( pingfenCount >= 2.3 && pingfenCount <= 2.7){
-        return [UIImage imageNamed:@"2.5"];
-    }else if ( pingfenCount >= 2.8 && pingfenCount <= 3.2){
+    }else if ( pingfenCount >= 2.3 && pingfenCount < 2.8){
+        return [UIImage imageNamed:@"erdianwu"];
+    }else if ( pingfenCount >= 2.8 && pingfenCount < 3.3){
         return [UIImage imageNamed:@"3"];
-    }else if ( pingfenCount >= 3.3 && pingfenCount <= 3.7){
-        return [UIImage imageNamed:@"3.5"];
-    }else if ( pingfenCount >= 3.8 && pingfenCount <= 4.2){
+    }else if ( pingfenCount >= 3.3 && pingfenCount < 3.8){
+        return [UIImage imageNamed:@"sandianwu"];
+    }else if ( pingfenCount >= 3.8 && pingfenCount < 4.3){
         return [UIImage imageNamed:@"4"];
-    }else if ( pingfenCount >= 4.3 && pingfenCount <= 4.7){
-        return [UIImage imageNamed:@"4.5"];
+    }else if ( pingfenCount >= 4.3 && pingfenCount <4.8){
+        return [UIImage imageNamed:@"sidianwu"];
     }else if( pingfenCount >= 4.8){
         return [UIImage imageNamed:@"5"];
     }else{

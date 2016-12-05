@@ -335,7 +335,7 @@
             {
                 ZROrderingDetailsController * detailsVC = [[ZROrderingDetailsController alloc] init];
                 detailsVC.isLunch = YES;
-                
+                detailsVC.title = @"学生午餐";
                  [CustomHudView dismiss];
                 [self.navigationController  pushViewController:detailsVC animated:YES];
 

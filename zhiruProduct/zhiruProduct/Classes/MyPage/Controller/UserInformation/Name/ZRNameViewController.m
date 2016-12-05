@@ -80,12 +80,20 @@
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
             
-        }else if([self.nameView.textField.text isEqualToString:@""] || self.nameView.textField.text.length!=10 ||  self.nameView.textField.text.length!=11 ){
+        }else if([self.nameView.textField.text isEqualToString:@""] ){
             UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
-        }else{
+        }
+        else if( self.nameView.textField.text.length != 10&& self.nameView.textField.text.length != 11){
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else{
+              [self.navigationController popViewControllerAnimated:YES];
             self.clickBaocun(self.nameView.textField.text);
+            
         }
     }else{
         if (![self.nameView.textField.text isEqualToString:@""]) {

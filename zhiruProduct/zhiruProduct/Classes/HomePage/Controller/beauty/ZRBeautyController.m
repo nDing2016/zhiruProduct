@@ -15,7 +15,7 @@
 #import "ZRHomePageRequst.h"
 #import "ZRLookForTasteNavController.h"
 @interface ZRBeautyController ()
-
+@property (nonatomic , assign) NSInteger page;
 @end
 
 @implementation ZRBeautyController
@@ -23,6 +23,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _page = 1;
+    
+    
+    WS(ws)
+    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        //网络请求
+        [ws startRefresh];
+    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //下拉加载最新
+    WS(ws)
+    [self.myTableView startRefreshWithCallback:^{
+        ws.page = 1;
+        //网络请求
+        [ws startRefresh];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,6 +184,56 @@
         
         
         [CustomHudView dismiss];
+    }];
+    
+}
+- (void)startRefresh{
+    
+    //地域
+    NSArray * regionArr = _model.region;
+    ZRRegionModel * region = regionArr[self.currentData1Index];
+    //NSLog(@"%@",region.region_name);
+    //标签
+    NSArray * labelArr = _model.label;
+    ZRLabelModel * label = labelArr[self.currentData2Index];
+    
+    NSString * sort = [NSString stringWithFormat:@"%ld",self.currentData3Index + 1];
+    
+    
+    NSString * screen = [NSString stringWithFormat:@"%ld",(long)self.currentData4Index ];
+    
+    if (self.currentData4Index == 2) {
+        screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
+    }
+    
+    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    WS(ws)
+    [ZRHomePageRequst requestGetLiRenListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:[NSString stringWithFormat:@"%ld",_page ] andSuccess:^(id success) {
+        
+        NSArray * arr = success;
+        if (arr.count == 0) {
+            [ws.myTableView.mj_footer endRefreshingWithNoMoreData];
+              [ws.myTableView.mj_header endRefreshing];
+        }else{
+            [ws.myTableView.mj_header endRefreshing];
+            [ws.myTableView.mj_footer endRefreshing];
+            if (_page == 1) {
+                ws.modelArr = nil;
+                
+            }
+            [ws.modelArr addObjectsFromArray:success];
+            _page ++;
+            
+        }
+        //NSLog(@"成功");
+        
+        [ws.myTableView reloadData];
+    } andFailure:^(id error) {
+        
+
+        [ws.myTableView.mj_header endRefreshing];
+        //NSLog(@"失败");
+        [ws.myTableView.mj_footer endRefreshing];
     }];
     
 }

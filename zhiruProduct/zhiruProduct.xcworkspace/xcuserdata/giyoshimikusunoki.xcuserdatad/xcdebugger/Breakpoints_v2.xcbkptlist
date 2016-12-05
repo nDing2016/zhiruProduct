@@ -35,22 +35,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/View/Supermarket(&#x8d85;&#x5e02;)/ZRAddShoppingCarView.m"
-            timestampString = "496316487.466833"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "-modelView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Tools/Categorys/UIWindow/ZRShareView.m"
             timestampString = "496474598.157446"
             startingColumnNumber = "9223372036854775807"
@@ -74,22 +58,6 @@
             startingLineNumber = "210"
             endingLineNumber = "210"
             landmarkName = "-shareToWechatSession"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/View/Supermarket(&#x8d85;&#x5e02;)/ZRShoppingCarCell.m"
-            timestampString = "496754604.381039"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-addBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -164,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502358763.365468"
+            timestampString = "502622929.471198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1314"
-            endingLineNumber = "1314"
+            startingLineNumber = "1316"
+            endingLineNumber = "1316"
             landmarkName = "-confirmBtnClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/beauty/ZRBeautyController.m"
-            timestampString = "501567230.175018"
+            timestampString = "502613268.783408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-homeBaseViewControllerHeaderClickWithBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -196,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502358763.365468"
+            timestampString = "502622929.471198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "677"
-            endingLineNumber = "677"
+            startingLineNumber = "680"
+            endingLineNumber = "680"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502358763.365468"
+            timestampString = "502622929.471198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "679"
-            endingLineNumber = "679"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,28 +292,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteController.m"
-            timestampString = "502195645.726712"
+            timestampString = "502612776.940418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-screenToolClick"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteController.m"
-            timestampString = "502195645.726712"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-startRefresh"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -563,38 +515,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502358763.365468"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1183"
-            endingLineNumber = "1183"
-            landmarkName = "-confirmBtnClick"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/Request/ZRHomePageRequst.m"
-            timestampString = "502366213.362544"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "665"
-            endingLineNumber = "665"
-            landmarkName = "+requestGetLiRenListWithLongitude:andLatitude:andRegionId:andCity:andLabel:andSort:andScreen:andRows:andPage:andSuccess:andFailure:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Request/ZRHomePageRequst.m"
             timestampString = "502366218.343481"
             startingColumnNumber = "9223372036854775807"
@@ -612,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/beauty/ZRBeautyController.m"
-            timestampString = "502366924.079982"
+            timestampString = "502613268.783408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-screenToolClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,6 +618,86 @@
             startingLineNumber = "739"
             endingLineNumber = "739"
             landmarkName = "+requestGetYuleIndexWithLongitude:andLatitude:andLabel:andSuccess:andFailure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+            timestampString = "502597457.380687"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "799"
+            endingLineNumber = "799"
+            landmarkName = "-getHomeData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/View/ZRProductInfoCell.m"
+            timestampString = "502612296.95187"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-setModel:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/beauty/ZRBeautyController.m"
+            timestampString = "502613690.1307"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "-startRefresh"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/MyPage/Controller/UserInformation/Name/ZRNameViewController.m"
+            timestampString = "502617695.460158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-actionOkButton:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+            timestampString = "502622929.471198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "660"
+            endingLineNumber = "660"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -33,7 +33,7 @@
 #import "ZROrderingDetailsController.h"
 
 
-@interface ZRPaymentOrderController ()<UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate, WXApiDelegate>
+@interface ZRPaymentOrderController ()<UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate, WXApiDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -59,7 +59,8 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"支付订单";
     [self.view addSubview:self.tableView];
-    
+    [self setLeftBtnClick];
+
     //微信支付成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatResultNoti:) name:kWechatResult_Noti object:nil];
     
@@ -72,6 +73,25 @@
 
 }
 
+- (void)setLeftBtnClick{
+
+    
+    UIButton * cancel = [[UIButton alloc] init];
+    [cancel setTitle:@"取消支付" forState:UIControlStateNormal];
+    [cancel addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    cancel.titleLabel.font = [UIFont systemFontOfSize:15];
+    [cancel setTitleColor:Color_Gray forState:UIControlStateNormal];
+    [cancel sizeToFit];
+    UIBarButtonItem * barBtnItem = [[UIBarButtonItem alloc] initWithCustomView:cancel];
+    self.navigationItem.leftBarButtonItem = barBtnItem;
+    
+}
+
+-(void)leftBtnClick{
+    UIAlertView * alertV = [[UIAlertView alloc] initWithTitle:@"订单已生成,是否退出?" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//    [CustomHudView dismiss];
+    [alertV show];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -549,11 +569,30 @@
 }
 
 
+
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWechatResult_Noti object:nil];
 }
 
+#pragma mark -- Alert代理方法
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //
+    if (buttonIndex == 0) {
+        [self.view endEditing:YES];
+        //0.5秒后执行pop 防止键盘动画未执行完,导致键盘闪现
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.navigationController popViewControllerAnimated:YES];
+            
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+        });
+        
+    }else{
+        return;
+    }
+}
 
 /*
 #pragma mark - Navigation
