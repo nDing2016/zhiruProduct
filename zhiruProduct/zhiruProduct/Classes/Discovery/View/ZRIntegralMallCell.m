@@ -77,8 +77,8 @@
         //[self drawImage:[UIImage getImageFromURL:_commodityList.img] Rect:CGRectMake(0, 0, self.width, self.width)];
         
         //商品名
-        CGSize size = [NSString getSize:@"牙膏" strFont:CustomFont(13) maxSize:CGSizeMake(self.width, 35)];
-        CGSize size1 = [self drawWithStr:_commodityList.commodityName Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5, self.width+5) Size:CGSizeMake(self.width, size.height*2)];
+        CGSize size = [NSString getSize:_commodityList.commodityName strFont:CustomFont(13) maxSize:CGSizeMake(self.width-10, self.height)];
+        CGSize size1 = [self drawWithStr:_commodityList.commodityName Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5, self.width+5) Size:CGSizeMake(self.width-10, size.height)];
         
         //VIP图标
         [self drawImage:ZRImage(@"VIP") Rect:CGRectMake(5, self.width+5+size1.height+5, 18, 18)];
@@ -87,11 +87,11 @@
          [self drawWithStr:_commodityList.vipfraction Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5+18+10, self.width+5+size1.height+5)];
         
         //添加金币
-        [self drawImage:ZRImage(@"jifenyue-81") Rect:CGRectMake(5, self.width+5+(size1.height+5)*2+5, 18, 18)];
+        [self drawImage:ZRImage(@"jifenyue-81") Rect:CGRectMake(5, self.width+5+(size1.height+5)+18+5, 18, 18)];
         
         
         //所需积分
-        [self drawWithStr:_commodityList.fraction Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5+18+10, self.width+5+(size1.height+5)*2+5)];
+        [self drawWithStr:_commodityList.fraction Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5+18+10, self.width+5+(size1.height+5)+18+5)];
         
         //[self vipLabel:size1];
  

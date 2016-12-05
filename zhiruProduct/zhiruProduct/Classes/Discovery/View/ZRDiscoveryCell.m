@@ -37,6 +37,7 @@
 //@property (nonatomic, strong) NSMutableArray *groupListArray;
 
 
+@property (nonatomic, strong) ZRColletionViewLayout *layout;
 
 @end
 
@@ -62,9 +63,9 @@ static NSString *ID = @"ID";
 {
     if (!_collectionView) {
         //流水布局
-        ZRColletionViewLayout *layout = [[ZRColletionViewLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+        _layout = [[ZRColletionViewLayout alloc] init];
+        _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_layout];
         [_collectionView registerClass:[ZRIntegralMallCell class] forCellWithReuseIdentifier:ID];
         _collectionView.backgroundColor = RGBCOLOR(240, 240, 240);
         _collectionView.delegate = self;
@@ -139,35 +140,10 @@ static NSString *ID = @"ID";
 -(void)setCollectionArray:(NSArray *)collectionArray
 {
     _collectionArray = collectionArray;
-    
+    _layout.attributeArray = [NSMutableArray arrayWithArray:collectionArray];
     [self.collectionView reloadData];
     
 }
-
-///**
-// *  积分商城数据
-// *
-// *  @return
-// */
-//-(NSMutableArray *)dataArr
-//{
-//    if (!_dataArr) {
-//        
-//        _dataArr = [NSMutableArray array];
-//        for (int i=0; i<100; i++) {
-//            if (i==0) {
-//                [_dataArr addObject:@[@"titleImage"]];
-//            }else{
-//                NSArray *arr = @[@"tu-0",@"[牙膏中的爱马仕]意大利",@"Marvis玛尔斯25ml*7支套装",@"100"];
-//                [_dataArr addObject:arr];
-//            }
-//            
-//        }
-//        
-//    }
-//    return _dataArr;
-//}
-
 
 #pragma mark - UICollectionViewDataSource   
 
@@ -479,7 +455,7 @@ static NSString *ID = @"ID";
     }else{
 
         [SVProgressHUD showErrorWithStatus:@"暂无推荐"];
-        [self performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
     }
     
 }

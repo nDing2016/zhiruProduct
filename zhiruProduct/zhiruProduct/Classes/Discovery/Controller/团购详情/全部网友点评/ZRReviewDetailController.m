@@ -67,7 +67,20 @@
         self.reviewFrame.commentListModel = self.commentListArray[indexPath.row];
         cell.reviewFrame = self.reviewFrame;
         cell.commentListModel = self.commentListArray[indexPath.row];
-        cell.shoptype = (int)self.shoptype;
+        if (cell.commentListModel.navId.length>0) {
+            if ([cell.commentListModel.navId isEqualToString:@"xunwei"]) {
+                cell.shoptype = 100;
+                
+            }else if ([cell.commentListModel.navId isEqualToString:@"liren"]){
+                cell.shoptype = 102;
+                
+            }else if ([cell.commentListModel.navId isEqualToString:@"yule"]){
+                cell.shoptype = 101;
+            }
+        }else{
+           cell.shoptype = (int)self.shoptype;
+        }
+       
         WS(ws)
         cell.clickGoodBtn = ^(UIButton* btn , NSString * commentId ,BOOL isCancel){
             if (btn.tag == 0) {

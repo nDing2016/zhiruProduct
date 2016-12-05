@@ -413,7 +413,7 @@ static NSString *ID = @"cell";
             if (_integralMall.commodityLists.count<1) {
                 //无更多数据了
                 cell.collectionView.mj_footer.state = MJRefreshStateNoMoreData;
-                
+                _page--;
                 
             }else{
                 
