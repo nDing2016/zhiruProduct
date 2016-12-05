@@ -71,5 +71,9 @@
     _navName.text = model.regionName;
     
     _regionName.text = model.navName;
+    
+    if (model.navId.length != 0) {
+        [_distance setHidden:YES];
+    }
 }
 @end
