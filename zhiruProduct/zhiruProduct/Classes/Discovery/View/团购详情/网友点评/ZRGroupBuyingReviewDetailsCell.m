@@ -284,7 +284,7 @@
             [self drawWithStr:grade3 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x+grade1Size.width+10+grade2Size.width+10, self.reviewFrame.gradeOneFrame.origin.y)];
             
             
-            [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
+            [self drawWithStr:_commentListModel.commentContent Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
                        
             
         }else{
@@ -292,7 +292,7 @@
             //评论内容
             self.reviewTextLabel = [[UILabel alloc] init];
             CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
-            CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
+            CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(13) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
             if (textSize.height<nameSize.height*2+10) {
                 self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, textSize.height);
                 
@@ -303,7 +303,7 @@
 
             self.reviewTextLabel.text = _commentListModel.commentContent;
             self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
-            self.reviewTextLabel.font = CustomFont(15);
+            self.reviewTextLabel.font = CustomFont(13);
             self.reviewTextLabel.numberOfLines = 0;
             [self.contentView addSubview:self.reviewTextLabel];
         }

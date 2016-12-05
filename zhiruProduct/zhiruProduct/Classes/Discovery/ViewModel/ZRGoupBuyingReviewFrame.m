@@ -61,10 +61,10 @@
         _gradeOneFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewPriceFrame)+imageY, gradeOneSize.width, gradeOneSize.height);
         
         
-        CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
+        CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(13) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
         _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY+gradeOneSize.height+imageY, textWidth, textSize.height);
     }else{
-        CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(15) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
+        CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(13) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
         if (textSize.height<nameSize.height*2+10) {
             _reviewTextFrame = CGRectMake(imageX*2+imageWH, CGRectGetMaxY(_reviewStarFrame)+imageY, textWidth, textSize.height);
             

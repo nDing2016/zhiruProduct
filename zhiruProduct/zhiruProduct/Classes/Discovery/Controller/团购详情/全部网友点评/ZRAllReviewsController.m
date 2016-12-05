@@ -566,6 +566,22 @@
         }else{
             //无更多数据了
             ws.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+            if (self.btnTag == 111) {
+                //全部
+                self.allPage--;
+            }else if (self.btnTag == 112){
+                //好评
+                self.goodPage--;
+            }else if (self.btnTag == 113){
+                //差评
+                self.badPage--;
+                
+            }else if (self.btnTag == 114){
+                //带图
+                self.picPage--;
+                
+            }
+
         }
         
         

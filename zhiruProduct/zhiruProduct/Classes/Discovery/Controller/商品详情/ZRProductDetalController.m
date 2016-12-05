@@ -64,14 +64,19 @@
     //添加立即兑换
     [self setUpImmediatelyExchange];
     
+    [SVProgressHUD show];
+    
+    self.immediatelyBtn.hidden = NO;
+    
+    [self loadProductDetailsData];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.immediatelyBtn.hidden = NO;
     
-    [self loadProductDetailsData];
+    
     
     
     
@@ -121,11 +126,25 @@
         }];
     }else{
         
-        ZRImmediatelyExchangeController *exchangeVC = [[ZRImmediatelyExchangeController alloc] init];
-        [self.navigationController pushViewController:exchangeVC animated:YES];
-        exchangeVC.commodityListmodel = self.commodityListModel;
-        exchangeVC.mypoints = self.productDetail.myPoints;
+        
+        //判断是否可以兑换
+        if ([self.productDetail.islogin isEqualToString:@"success"] && [self.productDetail.myPoints intValue]>=[self.productDetail.fraction intValue]) {
+            
+            ZRImmediatelyExchangeController *exchangeVC = [[ZRImmediatelyExchangeController alloc] init];
+            [self.navigationController pushViewController:exchangeVC animated:YES];
+            exchangeVC.commodityListmodel = self.commodityListModel;
+            exchangeVC.mypoints = self.productDetail.myPoints;
 
+            
+        }else{
+            //积分不够
+            [SVProgressHUD showInfoWithStatus:@"您的积分不够,无法兑换"];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
+        }
+
+        
+        
+       
         
     }
 
@@ -143,24 +162,17 @@
 #pragma mark - UIWebViewDelegate methods
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    [SVProgressHUD showErrorWithStatus:@"加载失败"];
+    [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
 }
 
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    //判断是否可以兑换
-    if ([self.productDetail.islogin isEqualToString:@"success"] && [self.productDetail.myPoints intValue]>=[self.productDetail.fraction intValue]) {
-        self.immediatelyBtn.backgroundColor = RGBCOLOR(255, 82, 82);
-        self.immediatelyBtn.alpha = 1;
-        self.immediatelyBtn.enabled = YES;
-        
-    }else{
-        //积分不够
-        [SVProgressHUD showInfoWithStatus:@"您的积分不够,无法兑换"];
-        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
-    }
+    
+    
+    
 
 }
 
@@ -202,17 +214,31 @@
 {
     WS(ws)
     [ZRDiscoverRequest requestForIntegralMallProductDetailsWithCommodityId:ws.commodityListModel.commodityId WithCallback:^(id details, NSError *error) {
+        
+        [SVProgressHUD dismiss];
+        
         ws.productDetail = [ZRProductDetailModel mj_objectWithKeyValues:details];
         //0未下架1下架
         if ([ws.productDetail.state isEqualToString:@"1"]) {
             [SVProgressHUD showInfoWithStatus:@"该商品已下架"];
-            [self performSelector:@selector(dismiss) withObject:nil afterDelay:2];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
             
         }else{
             //加载网页
             //        ws.webUrl = [NSString stringWithFormat:@"http://192.168.2.22:8080/zhiru%@",ws.productDetail.url];
             ws.webUrl = [NSString stringWithFormat:@"%@",ws.productDetail.url];
             [ws.view addSubview:ws.webView];
+            
+            
+            //判断是否可以兑换
+            if ([self.productDetail.myPoints intValue]>=[self.productDetail.fraction intValue]) {
+                self.immediatelyBtn.backgroundColor = RGBCOLOR(255, 82, 82);
+                self.immediatelyBtn.alpha = 1;
+                self.immediatelyBtn.enabled = YES;
+                
+                
+            }
+            
         }
         
              
