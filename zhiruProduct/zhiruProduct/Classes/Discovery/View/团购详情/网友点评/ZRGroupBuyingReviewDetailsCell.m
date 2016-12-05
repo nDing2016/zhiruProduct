@@ -310,7 +310,9 @@
         
         
         //时间
-        [self drawWithStr:_commentListModel.commentDate Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTimeFrame.origin.x, self.reviewFrame.reviewTimeFrame.origin.y)];
+        NSLog(@"事间＝＝＝＝＝%@",self.commentListModel.commentDate);
+        CGSize timeSize = [NSString getSize:_commentListModel.commentDate strFont:CustomFont(12) maxSize:CGSizeMake(SCREEN_WIDTH, self.height)];
+        [self drawWithStr:_commentListModel.commentDate Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.width-timeSize.width-imageX, self.reviewFrame.reviewTimeFrame.origin.y)];
         
         
         //添加所有子控件

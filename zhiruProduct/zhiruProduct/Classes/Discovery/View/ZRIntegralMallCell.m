@@ -61,12 +61,12 @@
 }
 
 
--(void)setFirstImg:(NSString *)firstImg
-{
-    _firstImg = firstImg;
-    [self setNeedsDisplay];
-}
-
+//-(void)setFirstImg:(NSString *)firstImg
+//{
+//    _firstImg = firstImg;
+//    [self setNeedsDisplay];
+//}
+//
 
 -(void)drawRect:(CGRect)rect
 {
@@ -77,7 +77,7 @@
         //[self drawImage:[UIImage getImageFromURL:_commodityList.img] Rect:CGRectMake(0, 0, self.width, self.width)];
         
         //商品名
-        CGSize size = [NSString getSize:_commodityList.commodityName strFont:CustomFont(13) maxSize:CGSizeMake(self.width-10, self.height)];
+        CGSize size = [NSString getSize:_commodityList.commodityName strFont:CustomFont(13) maxSize:CGSizeMake(self.width-10, self.width)];
         CGSize size1 = [self drawWithStr:_commodityList.commodityName Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(5, self.width+5) Size:CGSizeMake(self.width-10, size.height)];
         
         //VIP图标
@@ -98,7 +98,7 @@
     }
     
     if (_firstImg) {
-       [self drawImage:[UIImage getImageFromURL:_firstImg] Rect:CGRectMake(0, 0, self.width, self.height)];
+       //[self drawImage:[UIImage getImageFromURL:_firstImg] Rect:CGRectMake(0, 0, self.width, self.height)];
     }
   
     
