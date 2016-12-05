@@ -28,6 +28,11 @@
 @end
 
 @implementation ZRStoreupShopController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self addHeaderRefresh];
+}
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
@@ -48,7 +53,7 @@
     
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
-    [self addHeaderRefresh];
+//    [self addHeaderRefresh];
     [self addFooterRefresh];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -76,6 +81,12 @@
     ZRProductDetailsController * productVC = [[ZRProductDetailsController alloc] init];
     ZRBusinessModel * model = [self.dataArray objectAtIndex:indexPath.row];
     productVC.businessId = model.businessId;
+    productVC.regionName = model.regionName;
+    if ([model.navId isEqualToString:@"yule"]) {
+        productVC.isGame = YES;
+    } else if ([model.navId isEqualToString:@"liren"]) {
+        productVC.isLiren = YES;
+    }
     ZRTabBarViewController * tabBar = (ZRTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     ZRNavigationController * nav = tabBar.viewControllers[2];
     ZRStoreupRootViewController * storeVC = nav.viewControllers[1];
@@ -135,24 +146,25 @@
         NSString * businessId = model.businessId;
         [self.dataArray removeObjectAtIndex:indexPath.row];
         [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:businessId CallBack:^(NSString *message) {
-            //NSLog(@"-----%@", message);
-            
+            if (self.dataArray.count == 0) {
+                [self addHeaderRefresh];
+            }
         } Failure:^(id error) {
             
-            
         }];
-    }
-    if (self.dataArray.count == 0) {
-        [self createImage];
     }
     [tableView reloadData];
 }
 // 添加暂无收藏图片
 - (void)createImage
 {
-    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
+    UIImageView * img = [[UIImageView alloc] init];
     [img setImage:[UIImage imageNamed:@"nostore"]];
     [self.view addSubview:img];
+    WS(weakSelf);
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(weakSelf.view);
+    }];
 }
 //- (void)setShopState:(BOOL)shopState
 //{

@@ -116,12 +116,15 @@
         }
         
         self.dataArray = array;
-        if (self.dataArray.count == 1) {
-            ZRMarketModel * model = [self.dataArray objectAtIndex:0];
-            if (model.goodsList.count == 0) {
-                [self createImage];
-            }
+        if (self.dataArray.count == 0) {
+            [self createImage];
         }
+//        if (self.dataArray.count == 1) {
+//            ZRMarketModel * model = [self.dataArray objectAtIndex:0];
+//            if (model.goodsList.count == 0) {
+//                [self createImage];
+//            }
+//        }
         [self.marketTableView.mj_header endRefreshing];
         [self.marketTableView reloadData];
         
@@ -163,7 +166,6 @@
 // 结算+删除
 - (void)footViewClearingButton:(UIButton *)sender
 {
-
     if (sender.selected == NO) {
         if (self.allArray.count == 0) {
             [AlertText showAndText:@"未选择商品"];
@@ -589,9 +591,16 @@
 // 添加暂无订单图片
 - (void)createImage
 {
-    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+//    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
+//    [img setImage:[UIImage imageNamed:@"nocar"]];
+//    [self.view addSubview:img];
+    UIImageView * img = [[UIImageView alloc] init];
     [img setImage:[UIImage imageNamed:@"nocar"]];
     [self.view addSubview:img];
+    WS(weakSelf);
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(weakSelf.view);
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

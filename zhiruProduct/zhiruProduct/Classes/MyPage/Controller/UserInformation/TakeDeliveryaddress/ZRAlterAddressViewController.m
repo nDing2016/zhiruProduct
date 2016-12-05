@@ -55,8 +55,18 @@
     NSString * ID = self.model.addressId;
     NSString * name = self.addView.nameView.textField.text;
     NSString * phone = self.addView.phoneNumberView.textField.text;
-    NSString * longitude = self.longitudeAlter;
-    NSString * latitude = self.latitudeAlter;
+    NSString * longitude;
+    if (self.longitudeAlter.length == 0) {
+        longitude = self.model.longitude;
+    } else {
+        longitude = self.longitudeAlter;
+    }
+    NSString * latitude;
+    if (self.latitudeAlter.length == 0) {
+        latitude = self.model.latitude;
+    } else {
+        latitude = self.latitudeAlter;
+    }
     NSString * address = [NSString stringWithFormat:@"%@,%@", self.addView.addressView.textView.text, self.addView.addressView.pitchTextField.text];
     NSString * gender;
     if (self.addView.sexView.manButton.selected == YES && self.addView.sexView.womanButton.selected == NO) {
@@ -74,6 +84,31 @@
         [alertVC addAction:action];
         [self.navigationController presentViewController:alertVC animated:YES
                                               completion:nil];
+    } else if (gender.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请选择性别" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
+
+    } else if (name.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请输入联系人的名称" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
+    } else if (longitude.length == 0) {
+        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"地址有误" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertVC addAction:action];
+        [self.navigationController presentViewController:alertVC animated:YES
+                                              completion:nil];
     } else {
         WS(weakSelf);
         [ZRUserInterfaceModel updateReceiptAddressWithID:ID Name:name Phone:phone Longitude:longitude Latitude:latitude Address:address Gender:gender Isdefault:isdefault UserUpdateAddressCallBack:^(NSString *message) {
@@ -85,6 +120,7 @@
             }
             
         }];
+
     }
     
 }
@@ -120,7 +156,18 @@
 }
 - (void)deleteButton
 {
-    //NSLog(@"删除");
+    WS(weakSelf);
+    [ZRUserInterfaceModel delReceiptAddressWithId:self.model.addressId CallBack:^(NSString *message) {
+        if ([message isEqualToString:@"success"]) {
+            [AlertText showAndText:@"删除成功"];
+            [weakSelf.delegate deleteAddress];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } else {
+            [AlertText showAndText:@"删除失败"];
+        }
+    } Failure:^(id error) {
+        [AlertText showAndText:@"删除失败"];
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

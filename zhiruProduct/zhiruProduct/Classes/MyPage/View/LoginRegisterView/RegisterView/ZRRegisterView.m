@@ -29,6 +29,7 @@
     self.textField = [[UITextField alloc] init];
     [self.textField setTextColor:RGBCOLOR(85, 85, 85)];
     [self addSubview:self.textField];
+    
 //    [self.textField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     
     WS(weakSelf);
@@ -36,7 +37,7 @@
         make.left.equalTo(weakSelf).with.offset(15);
         make.top.equalTo(weakSelf).with.offset(0);
         make.bottom.equalTo(weakSelf).with.offset(-0);
-        make.width.mas_equalTo(@65);
+        make.width.mas_equalTo(@72);
     }];
     
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,7 +47,6 @@
         make.right.equalTo(weakSelf).with.offset(-15);
     }];
 }
-
 -(void)setIsPhone:(BOOL)isPhone{
     _isPhone = isPhone;
      [self.textField setKeyboardType:UIKeyboardTypePhonePad];
@@ -59,7 +59,6 @@
     [self.label setFont:[UIFont systemFontOfSize:font]];
     [self.textField setPlaceholder:textFieldStr];
     [self.textField setSecureTextEntry:YesOrNo];
-   
 }
 - (void)updateMasonary:(NSString *)text labelFont:(CGFloat)font
 {

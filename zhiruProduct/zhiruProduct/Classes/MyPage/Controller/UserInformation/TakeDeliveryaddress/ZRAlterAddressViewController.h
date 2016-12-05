@@ -13,6 +13,8 @@
 
 - (void)alterSuccess;
 
+- (void)deleteAddress;
+
 @end
 
 @interface ZRAlterAddressViewController : ZRNewAddressViewController

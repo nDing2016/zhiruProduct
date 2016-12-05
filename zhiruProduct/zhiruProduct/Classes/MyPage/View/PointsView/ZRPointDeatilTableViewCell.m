@@ -45,8 +45,6 @@
     [self.timeLabel setTextColor:R_G_B_16(0x555555)];
     [self.timeLabel setFont:[UIFont systemFontOfSize:13]];
     [self.timeLabel setTextAlignment:NSTextAlignmentRight];
-    
-
 }
 - (void)setViewMasonary
 {
@@ -55,10 +53,6 @@
         make.left.equalTo(weakSelf).with.offset(15);
         make.top.equalTo(weakSelf).with.offset(7);
     }];
-    [self.pointSource mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(weakSelf).with.offset(15);
-        make.bottom.equalTo(weakSelf).with.offset(-7);
-    }];
     [self.pointLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(weakSelf).with.offset(-15);
         make.top.equalTo(weakSelf).with.offset(7);
@@ -66,6 +60,11 @@
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(weakSelf).with.offset(-15);
         make.bottom.equalTo(weakSelf).with.offset(-7);
+    }];
+    [self.pointSource mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf).with.offset(15);
+        make.bottom.equalTo(weakSelf).with.offset(-7);
+        make.right.equalTo(weakSelf.timeLabel.mas_left).with.offset(-5);
     }];
 }
 - (void)setModel:(ZRPointsDeatilModel *)model

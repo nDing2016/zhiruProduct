@@ -80,7 +80,6 @@
 // 点击item触发方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld", indexPath.row);
     ZRPhotosController * photosVC = [[ZRPhotosController alloc] init];
     photosVC.dataArray = self.dataArray;
     photosVC.page = indexPath.row;

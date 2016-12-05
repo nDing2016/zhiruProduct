@@ -19,4 +19,6 @@
 @property (nonatomic , copy) NSString * isGroup;
 @property (nonatomic , copy) NSString * navName;
 @property (nonatomic , copy) NSString * regionName;
+
+@property (nonatomic, copy)NSString * navId;
 @end
