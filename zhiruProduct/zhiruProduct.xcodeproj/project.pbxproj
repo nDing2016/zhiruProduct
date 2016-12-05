@@ -269,6 +269,7 @@
 		A32523271DB20B30000B4520 /* ZRRecommendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32523201DB20B30000B4520 /* ZRRecommendListModel.m */; };
 		A325232A1DB20B95000B4520 /* ZRTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A32523291DB20B95000B4520 /* ZRTest.m */; };
 		A325232B1DB20CB6000B4520 /* ZRGroupBuyDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32523181DB20B30000B4520 /* ZRGroupBuyDetailModel.m */; };
+		A329A00A1DF1688800190221 /* ZRCheckReviewPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A329A0091DF1688800190221 /* ZRCheckReviewPictureView.m */; };
 		A32B24851D33881F00BC6F61 /* ZRAddShoppingCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B24841D33881F00BC6F61 /* ZRAddShoppingCarView.m */; };
 		A32B248B1D36387E00BC6F61 /* ZRShoppingCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248A1D36387E00BC6F61 /* ZRShoppingCarView.m */; };
 		A32B248E1D37357A00BC6F61 /* ZRShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B248D1D37357A00BC6F61 /* ZRShoppingCarCell.m */; };
@@ -999,6 +1000,8 @@
 		A32523201DB20B30000B4520 /* ZRRecommendListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRRecommendListModel.m; sourceTree = "<group>"; };
 		A32523281DB20B95000B4520 /* ZRTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRTest.h; sourceTree = "<group>"; };
 		A32523291DB20B95000B4520 /* ZRTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRTest.m; sourceTree = "<group>"; };
+		A329A0081DF1688800190221 /* ZRCheckReviewPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCheckReviewPictureView.h; sourceTree = "<group>"; };
+		A329A0091DF1688800190221 /* ZRCheckReviewPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCheckReviewPictureView.m; sourceTree = "<group>"; };
 		A32B24831D33881F00BC6F61 /* ZRAddShoppingCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRAddShoppingCarView.h; sourceTree = "<group>"; };
 		A32B24841D33881F00BC6F61 /* ZRAddShoppingCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRAddShoppingCarView.m; sourceTree = "<group>"; };
 		A32B24891D36387E00BC6F61 /* ZRShoppingCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRShoppingCarView.h; sourceTree = "<group>"; };
@@ -3288,6 +3291,8 @@
 				A3FE5CA31D42025B00B6088E /* ZRKindsOfReview.m */,
 				A3FE5CA51D42047A00B6088E /* ZRGroupBuyingReviewDetailsCell.h */,
 				A3FE5CA61D42047A00B6088E /* ZRGroupBuyingReviewDetailsCell.m */,
+				A329A0081DF1688800190221 /* ZRCheckReviewPictureView.h */,
+				A329A0091DF1688800190221 /* ZRCheckReviewPictureView.m */,
 			);
 			path = "网友点评";
 			sourceTree = "<group>";
@@ -4724,6 +4729,7 @@
 				A31283A41D965F3800C286AF /* ZRSettingCell.m in Sources */,
 				BDB542DA1D1BA3C60019C34D /* ZRBaseViewController.m in Sources */,
 				A31283941D965F3800C286AF /* ZRSupermarketOrderCell.m in Sources */,
+				A329A00A1DF1688800190221 /* ZRCheckReviewPictureView.m in Sources */,
 				BDEC3E4F1D431AB8009B762D /* ZRHomePageRequst.m in Sources */,
 				A3FE5CF61D43085D00B6088E /* MJPhotoProgressView.m in Sources */,
 				A31283261D965F3800C286AF /* ZRRegionViewController.m in Sources */,
@@ -4872,7 +4878,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FM9W4WG82P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4972,7 +4979,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4983,7 +4991,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: menghan Zhou (R9LLZRJ5T3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FM9W4WG82P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5083,7 +5092,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiru.heytang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "214d714e-3ed8-4f66-b962-f18bc61ce4aa";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

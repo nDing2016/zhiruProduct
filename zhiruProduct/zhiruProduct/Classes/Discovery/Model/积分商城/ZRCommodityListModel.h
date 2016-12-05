@@ -25,5 +25,7 @@
 //商品名称
 @property (nonatomic, copy) NSString *commodityName;
 
+//剩余数量
+@property (nonatomic, copy) NSString *num;
 
 @end

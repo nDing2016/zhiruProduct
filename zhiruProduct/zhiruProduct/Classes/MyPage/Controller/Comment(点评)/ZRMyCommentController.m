@@ -51,6 +51,9 @@
 }
 
 
+
+
+
 #pragma mark - manage memory methods
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -109,8 +112,8 @@
 #pragma mark - 网络请求获取数据
 -(void)loadData
 {
-    
     WS(ws)
+    
     [ZRCommentRequest requestForMyBusinessCommentWithScreen:@"0" Rows:@"4" Page:@"1" CallBack:^(id details, NSError *error) {
         
         if ([details[@"code"] isEqualToString:@"S000"]) {
@@ -118,39 +121,51 @@
             
             [ws.tableView.mj_header endRefreshing];
             
-            ws.goodReviewsCount = datas[@"praise"];
-            ws.badReviewsCount = datas[@"bad"];
-            ws.allReviewsCount = datas[@"comment_count"];
-            ws.imgReviewsCount = datas[@"img_comment"];
+            super.goodReviewsCount = datas[@"praise"];
+            super.badReviewsCount = datas[@"bad"];
+            super.allReviewsCount = datas[@"comment_count"];
+            super.imgReviewsCount = datas[@"img_comment"];
             
-            ws.commentListArray = [NSMutableArray array];
+            super.commentListArray = [NSMutableArray array];
             [datas[@"commentList"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
-                [ws.commentListArray addObject:model];
+                [super.commentListArray addObject:model];
+                
+                
+                if (idx == super.commentListArray.count-1) {
+                    if (super.commentListArray.count == 4) {
+                        super.tableView.mj_footer.hidden = NO;
+                        super.tableView.mj_footer.state = MJRefreshStateIdle;
+                        
+                    }
+                    
+                    [super.tableView reloadData];
+                }
             }];
             
-            
-            if (ws.commentListArray.count == 4) {
-                ws.tableView.mj_footer.hidden = NO;
-                ws.tableView.mj_footer.state = MJRefreshStateIdle;
-                
-            }
-            
-            [ws.tableView reloadData];
             
         }else{
             [ws.tableView.mj_header endRefreshing];
-            //用户未登录
-            [ZRAlertControl notLoginAlert:self goLogin:^{
-                
-                //弹出登录页面
-                ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
-                ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
-                
-                [self presentViewController:nav animated:YES completion:nil];
-                
-                
-            }];
+            
+            if ([details[@"code"] isEqualToString:@"C004"]) {
+                //用户未登录
+                [ZRAlertControl notLoginAlert:self goLogin:^{
+                    
+                    //弹出登录页面
+                    ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+                    ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
+                    
+                    
+                }];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"获取数据出现错误,请稍候重试"];
+                [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+            }
+            
+           
+            
             
             
         }
@@ -185,23 +200,50 @@
     WS(ws)
     [ZRCommentRequest requestForMyBusinessCommentWithScreen:screenStr Rows:@"4" Page:[NSString stringWithFormat:@"%ld",(long)page] CallBack:^(id details, NSError *error) {
         
-        [ws.tableView.mj_header endRefreshing];
-        ws.tableView.mj_footer.hidden = NO;
-        ws.tableView.mj_footer.state = MJRefreshStateIdle;
-        
-        NSArray *listArr = details[@"commentList"];
-        if (listArr.count>0) {
-            [listArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
-                [ws.commentListArray addObject:model];
-            }];
+        if ([details[@"code"] isEqualToString:@"S000"]) {
+            id detail = details[@"data"];
             
-            [ws.tableView reloadData];
+            [ws.tableView.mj_header endRefreshing];
+            ws.tableView.mj_footer.hidden = NO;
+            ws.tableView.mj_footer.state = MJRefreshStateIdle;
+            
+            NSArray *listArr = detail[@"commentList"];
+            if (listArr.count>0) {
+                [listArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
+                    [ws.commentListArray addObject:model];
+                    
+                    if (idx == listArr.count-1) {
+                        [ws.tableView reloadData];
+                    }
+                }];
+                
+                
+                
+            }else{
+                //无更多数据了
+                ws.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+                if (self.btnTag == 111) {
+                    //全部
+                    self.allPage--;
+                }else if (self.btnTag == 112){
+                    //好评
+                    self.goodPage--;
+                }else if (self.btnTag == 113){
+                    //差评
+                    self.badPage--;
+                    
+                }else if (self.btnTag == 114){
+                    //带图
+                    self.picPage--;
+                    
+                }
 
-        }else{
-            //无更多数据了
-            ws.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+                
+            }
 
+            
+            
         }
         
         
@@ -236,27 +278,61 @@
     WS(ws)
     [ZRCommentRequest requestForMyBusinessCommentWithScreen:screen Rows:@"4" Page:@"1" CallBack:^(id details, NSError *error) {
         
-        [ws.tableView.mj_header endRefreshing];
+        if ([details[@"code"] isEqualToString:@"S000"]) {
+            id detail = details[@"data"];
+            
+            [ws.tableView.mj_header endRefreshing];
+            
+            
+            ws.goodReviewsCount = detail[@"praise"];
+            ws.badReviewsCount = detail[@"bad"];
+            ws.allReviewsCount = detail[@"comment_count"];
+            ws.imgReviewsCount = detail[@"img_comment"];
+            
+            ws.commentListArray = [NSMutableArray array];
+            [detail[@"commentList"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
+                [ws.commentListArray addObject:model];
                 
-        ws.goodReviewsCount = details[@"praise"];
-        ws.badReviewsCount = details[@"bad"];
-        ws.allReviewsCount = details[@"comment_count"];
-        ws.imgReviewsCount = details[@"img_comment"];
-        
-        ws.commentListArray = [NSMutableArray array];
-        [details[@"commentList"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
-            [ws.commentListArray addObject:model];
-        }];
-        
-        
-        if (ws.commentListArray.count == 4) {
-            ws.tableView.mj_footer.hidden = NO;
-            ws.tableView.mj_footer.state = MJRefreshStateIdle;
+                
+                if (idx == ws.commentListArray.count-1) {
+                    if (ws.commentListArray.count == 4) {
+                        ws.tableView.mj_footer.hidden = NO;
+                        ws.tableView.mj_footer.state = MJRefreshStateIdle;
+                        
+                    }
+                    
+                    [ws.tableView reloadData];
+                    
+                }
+                
+            }];
+
+            
+        }else{
+            
+            if ([details[@"code"] isEqualToString:@"C004"]) {
+                [ws.tableView.mj_header endRefreshing];
+                //用户未登录
+                [ZRAlertControl notLoginAlert:self goLogin:^{
+                    
+                    //弹出登录页面
+                    ZRLoginViewController *loginVC = [[ZRLoginViewController alloc] init];
+                    ZRNavigationController *nav = [[ZRNavigationController alloc] initWithRootViewController:loginVC];
+                    
+                    [self presentViewController:nav animated:YES completion:nil];
+                    
+                    
+                }];
+            }
+            
             
         }
         
-        [ws.tableView reloadData];
+        
+        
+        
+        
         
         
     }];

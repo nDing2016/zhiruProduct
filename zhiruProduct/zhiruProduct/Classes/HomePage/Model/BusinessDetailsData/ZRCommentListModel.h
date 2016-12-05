@@ -75,4 +75,18 @@
 @property (nonatomic, copy) NSString *gradeThree;
 
 
+//区分寻味丽人娱乐
+///**
+// 
+// /*美食分类id*/
+//public static final String DELICIOUSFOOD="24fe49cb9aff4aaeb92f836700387716";
+///**娱乐id*/
+//public static final String ENTERTAINMENT="d69c3d058ec14ef2bd79e377e64b98de";
+///**丽人id*/
+//public static final String MODELLING="3f7ca1dc60ff4d2a842f6a351beb2297";
+//
+//*/
+@property (nonatomic, copy) NSString *navId;
+
+
 @end

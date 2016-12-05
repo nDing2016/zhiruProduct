@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *goodBtn;
 @property (weak, nonatomic) IBOutlet UIButton *noGoodBtn;
 @property (nonatomic , strong) UIButton * dianzanBtn;
+
+//保存每个cell里所有图片的URL
+@property (nonatomic, strong) NSMutableArray *pictureArray;
+
 @end
 
 @implementation ZRShopCommentCell
@@ -82,6 +86,7 @@
             count = 3;
         }
         
+        self.pictureArray = [NSMutableArray array];
         for (int i =0; i < count; i++) {
             //创建图片
             CGFloat imgW = (_commentImgView.width - 10) / 3;
@@ -90,9 +95,18 @@
             
             UIImageView * contentImg = [[UIImageView alloc] initWithFrame:CGRectMake(imgX, 0, imgW, imgH)];
             NSURL * url = [NSURL URLWithString:_model.commentImg[i][@"img_url"]];
+            //保存所有图片URL字符串
+            [self.pictureArray addObject:_model.commentImg[i][@"img_url"]];
+            
             [contentImg sd_setImageWithURL: url placeholderImage:ZRPlaceholderImage];
             
             [_commentImgView addSubview:contentImg];
+            
+            contentImg.userInteractionEnabled = YES;
+            contentImg.tag = i;
+            //添加手势
+            UITapGestureRecognizer *tapImgView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImgView:)];
+            [contentImg addGestureRecognizer:tapImgView];
             
             if (i == 2 && _model.commentImg.count - 3 != 0) {
                 UILabel * lb = [[UILabel alloc] initWithFrame:CGRectMake(imgW - 20, imgH - 20, 20, 20)];
@@ -109,6 +123,24 @@
         _commentImgViewConstraint.constant = 0;
     }
 }
+
+
+
+#pragma mark - 图片点击事件byDN
+/**
+ *  评论图片点击事件
+ */
+- (void)tapImgView:(UIGestureRecognizer *)ges
+{
+    
+    if ([self.delegate respondsToSelector:@selector(checkPickDetailsWithCell:WithGesture: WithPictureArray:)]) {
+        [self.delegate checkPickDetailsWithCell:self WithGesture:ges WithPictureArray:self.pictureArray];
+    }
+    
+    
+}
+
+
 
 - (void)awakeFromNib {
     // Initialization code

@@ -23,7 +23,11 @@
 #import "ZRAllReviewsController.h"
 #import "ZRStorePictureController.h"
 #import "ZRUserStoreupRequest.h"
-@interface ZRProductDetailsController ()<UITableViewDelegate , UITableViewDataSource>
+
+#import "ZRReviewDetailController.h"
+#import "ZRCheckReviewPictureView.h"
+
+@interface ZRProductDetailsController ()<UITableViewDelegate , UITableViewDataSource,ZRShopCommentCellDelegate, ZRCheckReviewPicViewDelegate>
 @property (nonatomic , strong) UITableView * myTableView;
 @property (nonatomic , strong) NSArray * sectionOneTitleArr;
 @property (nonatomic , strong) ZRBusinessDetailsModel * model;
@@ -242,10 +246,14 @@
         
         static NSString * identifier = @"commentCell";
         ZRShopCommentCell * commentCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
         if (commentCell == nil) {
             NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ZRShopCommentCell class]) owner:self options:nil];
             commentCell = [nibs lastObject];
         }
+        
+        //指定代理
+        commentCell.delegate = self;
         
         //如果等于最后一个返回 普通cell
         NSInteger count ;
@@ -381,12 +389,78 @@
             allReviewsVC.badReviewsCount = _model.bad;
             allReviewsVC.imgReviewsCount = _model.img_comment;
             
+            if (_isGame) {
+                //娱乐
+                allReviewsVC.shopType = ZRYuLe;
+                
+            }else if(_isLiren){
+                
+                //丽人
+                allReviewsVC.shopType = ZRLiRen;
+            }
+            else {
+                //寻味
+                allReviewsVC.shopType = ZRXunWei;
+            }
+
+            
+            
+        }else{
+            ZRCommentListModel *model;
+            if (_commentListArr.count>0) {
+                model = _commentListArr[indexPath.row - 1];
+                
+                ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+                [self.navigationController pushViewController:reviewDetailVC animated:YES];
+                reviewDetailVC.commentIdStr = model.commentId;
+                if (_isGame) {
+                    //娱乐
+                    reviewDetailVC.shoptype = 101;
+                    
+                }else if(_isLiren){
+                    
+                    //丽人
+                    reviewDetailVC.shoptype = 102;
+                }
+                else {
+                    //寻味
+                    reviewDetailVC.shoptype = 100;
+                }
+
+                
+            }
+
+            
+            
         }
+        
+        
+        
     }
     
     
 }
 
+
+
+#pragma mark - ZRShopCommentCellDelegate methods
+-(void)checkPickDetailsWithCell:(ZRShopCommentCell *)cell WithGesture:(UIGestureRecognizer *)gesture WithPictureArray:(NSArray *)array
+{
+    ZRCheckReviewPictureView *checkPicView = [[ZRCheckReviewPictureView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ScreenHeight)];
+    [[UIApplication sharedApplication].keyWindow addSubview:checkPicView];
+    checkPicView.delegate = self;
+    checkPicView.curPage = gesture.view.tag;
+    checkPicView.picturesArray = array;
+}
+
+
+-(void)dismissView:(ZRCheckReviewPictureView *)view
+{
+    [UIView animateWithDuration:1 animations:^{
+        [view removeFromSuperview];
+        
+    }];
+}
 
 
 #pragma mark -- 创建导航条右标题
@@ -496,37 +570,48 @@
             
         case 102: // 收藏
         {
+            _likeCarButton.userInteractionEnabled = NO;
             ZRUser * user = [ZRUserTool user];
             if (user == nil) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userLogin" object:@"1"];
             } else {
-                if (_likeCarButton.selected == YES) {
-                    [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:_businessId CallBack:^(NSString *message) {
-                        if ([message isEqualToString:@"success"]) {
-                            [AlertText showAndText:@"取消收藏成功"];
-                            _likeCarButton.selected = !_likeCarButton.selected;
-                        } else {
+//                dispatch_queue_t queue = dispatch_queue_create("com.pj.collect", DISPATCH_QUEUE_CONCURRENT);
+//                dispatch_async(queue, ^{
+                    if (_likeCarButton.selected == YES) {
+                        [ZRUserStoreupRequest delBusinessCollectionWithBusinessId:_businessId CallBack:^(NSString *message) {
+                            if ([message isEqualToString:@"success"]) {
+                                [AlertText showAndText:@"取消收藏成功"];
+                                _likeCarButton.userInteractionEnabled = YES;
+                                _likeCarButton.selected = !_likeCarButton.selected;
+                            } else {
+                                _likeCarButton.userInteractionEnabled = YES;
+                                [AlertText showAndText:@"取消收藏失败"];
+                            }
+                        } Failure:^(id error) {
+                            _likeCarButton.userInteractionEnabled = YES;
                             [AlertText showAndText:@"取消收藏失败"];
-                        }
-                        
-                    } Failure:^(id error) {
-                        [AlertText showAndText:@"取消收藏失败"];
-                    }];
-                } else {
-                    [ZRHomePageRequst requestCollectionAddBusinessCollectionWithBusinessId:_businessId andSuccess:^(id success) {
-                        NSString * str = success;
-                        if ([str isEqualToString:@"success"]) {
-                            [AlertText showAndText:@"添加收藏成功"];
-                            _likeCarButton.selected = !_likeCarButton.selected;
-                        } else {
+                        }];
+                    } else {
+                        [ZRHomePageRequst requestCollectionAddBusinessCollectionWithBusinessId:_businessId andSuccess:^(id success) {
+                            NSString * str = success;
+                            if ([str isEqualToString:@"success"]) {
+                                [AlertText showAndText:@"添加收藏成功"];
+                                _likeCarButton.userInteractionEnabled = YES;
+                                _likeCarButton.selected = !_likeCarButton.selected;
+                            } else {
+                                _likeCarButton.userInteractionEnabled = YES;
+                                [AlertText showAndText:@"添加收藏失败"];
+                            }
+                            
+                        } andFailure:^(id error) {
+                            _likeCarButton.userInteractionEnabled = YES;
                             [AlertText showAndText:@"添加收藏失败"];
-                        }
-                        
-                    } andFailure:^(id error) {
-                        [AlertText showAndText:@"添加收藏失败"];
-                    }];
-                }
-
+                        }];
+                    }
+//                });
+//                dispatch_barrier_async(queue, ^{
+//
+//                });
             }
         }
             break;

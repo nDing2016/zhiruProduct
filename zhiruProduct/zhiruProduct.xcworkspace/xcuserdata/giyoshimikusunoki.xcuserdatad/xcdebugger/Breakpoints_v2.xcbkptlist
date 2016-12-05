@@ -137,7 +137,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1316"
             endingLineNumber = "1316"
-            landmarkName = "-confirmBtnClick"
+            landmarkName = "-createConfirmToolbar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -315,6 +315,98 @@
             endingLineNumber = "791"
             landmarkName = "-getHomeData"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRHomeController getHomeData]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.869442"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "791"
+                  endingLineNumber = "791"
+                  offsetFromSymbolStart = "433">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[ZRHomeController getHomeData]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.869592"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "791"
+                  endingLineNumber = "791"
+                  offsetFromSymbolStart = "881">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[ZRHomeController getHomeData]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.869718"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "791"
+                  endingLineNumber = "791"
+                  offsetFromSymbolStart = "937">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_514"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.869843"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_515"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.869972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[ZRHomeController getHomeData]_block_invoke517"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zhirugit/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/ZRHomeController.m"
+                  timestampString = "502625599.8701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "791"
+                  endingLineNumber = "791"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

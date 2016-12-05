@@ -14,10 +14,13 @@
 
 #import "ZRReviewDetailController.h"
 
-@interface ZRAllReviewsController ()<UITableViewDataSource, UITableViewDelegate>
+#import "ZRCheckReviewPictureView.h"
+
+@interface ZRAllReviewsController ()<UITableViewDataSource, UITableViewDelegate, ZRCheckReviewPicViewDelegate>
 
 
-
+//所有评论图片数组
+@property (nonatomic, strong) NSMutableArray *reviewPicsArray;
 
 
 
@@ -120,6 +123,7 @@
 }
 
 
+
 #pragma mark - UITableViewDataSource methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -180,19 +184,42 @@
         [headImgView sd_setImageWithURL:[NSURL URLWithString:cell.commentListModel.commentUserImg] placeholderImage:ZRImage(@"default_head")];
         [cell.contentView addSubview:headImgView];
         
+        
+        
         if (cell.commentListModel.commentImg.count>0) {
             UIView *commentView = [[UIView alloc] initWithFrame:cell.reviewFrame.reviewPicFrame];
             [cell.contentView addSubview:commentView];
             //评论配图
             CGFloat wid = 80*SCREEN_WIDTH/375;
             CGFloat mix = 10*SCREEN_WIDTH/375;
+            
             [cell.commentListModel.commentImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSDictionary *commentImgUrlDic = obj;
                 NSString *commentImgUrl = [commentImgUrlDic objectForKey:@"img_url"];
                 UIImageView *commentImgView = [[UIImageView alloc] initWithFrame:CGRectMake((wid+mix)*(idx%3), (wid+mix)*(idx/3), wid, wid)];
+                if (idx == 0) {
+                    for (UIGestureRecognizer *ges in commentImgView.gestureRecognizers) {
+                        [commentImgView removeGestureRecognizer:ges];
+
+                    }
+                    
+                }
+                
+                commentImgView.tag = idx;
+                commentImgView.userInteractionEnabled = YES;
                 [commentImgView sd_setImageWithURL:[NSURL URLWithString:commentImgUrl] placeholderImage:ZRImage(@"Default")];
                 [commentView addSubview:commentImgView];
+                
+                //添加手势
+                UITapGestureRecognizer *tapImgView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImgView:)];
+                [commentImgView addGestureRecognizer:tapImgView];
+                
+//                [ws.reviewPicsArray addObject:commentImgUrl];
             }];
+            
+            
+            
+            
 
         }
         
@@ -264,7 +291,7 @@
         }else{
             screenStr = @"3";
         }
-        [self selectData:screenStr];
+        //[self selectData:screenStr];
         
     } andFailure:^(id error) {
         [SVProgressHUD showErrorWithStatus:@"好评失败"];
@@ -295,7 +322,7 @@
         }else{
             screenStr = @"3";
         }
-        [self selectData:screenStr];
+        //[self selectData:screenStr];
 
     } andFailure:^(id error) {
         [SVProgressHUD showErrorWithStatus:@"差评失败"];
@@ -326,7 +353,7 @@
         }else{
             screenStr = @"3";
         }
-        [self selectData:screenStr];
+        //[self selectData:screenStr];
 
         
     } andFailure:^(id error) {
@@ -384,6 +411,47 @@
     
 }
 
+/**
+ *  评论图片点击事件
+ */
+- (void)tapImgView:(UIGestureRecognizer *)ges
+{
+    
+    ZRGroupBuyingReviewDetailsCell *cell = (ZRGroupBuyingReviewDetailsCell *)[[[ges.view superview] superview] superview];
+    self.reviewPicsArray = [NSMutableArray array];
+    WS(ws)
+    [cell.commentListModel.commentImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *commentImgUrlDic = obj;
+        NSString *commentImgUrl = [commentImgUrlDic objectForKey:@"img_url"];
+        [ws.reviewPicsArray addObject:commentImgUrl];
+        
+        if (idx == cell.commentListModel.commentImg.count-1) {
+            ZRCheckReviewPictureView *checkPicView = [[ZRCheckReviewPictureView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ScreenHeight)];
+            [[UIApplication sharedApplication].keyWindow addSubview:checkPicView];
+            checkPicView.delegate = ws;
+            checkPicView.curPage = ges.view.tag;
+            checkPicView.picturesArray = ws.reviewPicsArray;
+
+        }
+        
+    }];
+    
+    
+    
+    
+    
+}
+
+
+#pragma mark - ZRCheckReviewPictureViewDelegate methods
+-(void)dismissView:(ZRCheckReviewPictureView *)view
+{
+    [UIView animateWithDuration:1 animations:^{
+        [view removeFromSuperview];
+        
+    }];
+}
+
 
 #pragma mark - UITableViewDelegate methods
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -416,14 +484,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-    ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.commentListModel = self.commentListArray[indexPath.row];
+    if (indexPath.section != 0) {
+        ZRGroupBuyingReviewDetailsCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.commentListModel = self.commentListArray[indexPath.row];
+        
+        ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
+        [self.navigationController pushViewController:reviewDetailVC animated:YES];
+        reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
+        reviewDetailVC.businessId = self.businessId;
+    }
     
-    ZRReviewDetailController *reviewDetailVC = [[ZRReviewDetailController alloc] init];
-    [self.navigationController pushViewController:reviewDetailVC animated:YES];
-    reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
-    reviewDetailVC.businessId = self.businessId;
 }
 
 
@@ -445,9 +515,13 @@
         [details enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
             [ws.commentListArray addObject:model];
+            
+            if (idx == ws.commentListArray.count-1) {
+               [ws.tableView reloadData]; 
+            }
         }];
         
-        [ws.tableView reloadData];
+        
         
     }];
 }
@@ -482,12 +556,32 @@
             [details enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
                 [ws.commentListArray addObject:model];
+                
+                if (idx == arr.count-1) {
+                   [ws.tableView reloadData];
+                }
             }];
             
-            [ws.tableView reloadData];
+            
         }else{
             //无更多数据了
             ws.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+            if (self.btnTag == 111) {
+                //全部
+                self.allPage--;
+            }else if (self.btnTag == 112){
+                //好评
+                self.goodPage--;
+            }else if (self.btnTag == 113){
+                //差评
+                self.badPage--;
+                
+            }else if (self.btnTag == 114){
+                //带图
+                self.picPage--;
+                
+            }
+
         }
         
         
@@ -526,15 +620,20 @@
         [details enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             ZRCommentListModel *model = [ZRCommentListModel mj_objectWithKeyValues:obj];
             [ws.commentListArray addObject:model];
+            
+            if (idx == ws.commentListArray.count-1) {
+                [ws.tableView reloadData];
+                [ws.tableView.mj_header endRefreshing];
+                
+                if (ws.commentListArray.count==4) {
+                    ws.tableView.mj_footer.hidden = NO;
+                    ws.tableView.mj_footer.state = MJRefreshStateIdle;
+                }
+            }
+            
         }];
         
-        [ws.tableView reloadData];
-        [ws.tableView.mj_header endRefreshing];
         
-        if (ws.commentListArray.count==4) {
-            ws.tableView.mj_footer.hidden = NO;
-            ws.tableView.mj_footer.state = MJRefreshStateIdle;
-        }
        
     }];
 

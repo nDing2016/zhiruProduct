@@ -115,17 +115,21 @@
 - (void)superAgainButton:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqualToString:@"取消订单"]) {
-        //NSLog(@"取消订单");
+        [CustomHudView show];
         ZRSuperOderModel * orderModel = [self.dataArray objectAtIndex:sender.tag];
         [ZROrderingOrderRequest kaCanacelOrderWithOrderId:orderModel.orderId CallBack:^(id success) {
             NSString * message = success;
+            [CustomHudView dismiss];
             if ([message isEqualToString:@"success"]) {
                 [AlertText showAndText:@"取消成功"];
-                [self addHeaderRequest];
+                orderModel.process = @"24";
+                NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
+                [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
             } else {
                 [AlertText showAndText:@"取消订单失败"];
             }
         } Failure:^(id error) {
+            [CustomHudView dismiss];
              [AlertText showAndText:@"取消订单失败"];
         }];
     } else {
@@ -166,9 +170,16 @@
 // 添加暂无订单图片
 - (void)createImage
 {
-    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+//    UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+//    [img setImage:[UIImage imageNamed:@"noorder"]];
+//    [self.view addSubview:img];
+    UIImageView * img = [[UIImageView alloc] init];
     [img setImage:[UIImage imageNamed:@"noorder"]];
     [self.view addSubview:img];
+    WS(weakSelf);
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(weakSelf.view);
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

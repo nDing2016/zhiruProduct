@@ -37,6 +37,7 @@
 //@property (nonatomic, strong) NSMutableArray *groupListArray;
 
 
+@property (nonatomic, strong) ZRColletionViewLayout *layout;
 
 @end
 
@@ -62,9 +63,9 @@ static NSString *ID = @"ID";
 {
     if (!_collectionView) {
         //流水布局
-        ZRColletionViewLayout *layout = [[ZRColletionViewLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+        _layout = [[ZRColletionViewLayout alloc] init];
+        _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_layout];
         [_collectionView registerClass:[ZRIntegralMallCell class] forCellWithReuseIdentifier:ID];
         _collectionView.backgroundColor = RGBCOLOR(240, 240, 240);
         _collectionView.delegate = self;
@@ -139,42 +140,17 @@ static NSString *ID = @"ID";
 -(void)setCollectionArray:(NSArray *)collectionArray
 {
     _collectionArray = collectionArray;
-    
+    _layout.attributeArray = [NSMutableArray arrayWithArray:collectionArray];
     [self.collectionView reloadData];
     
 }
-
-///**
-// *  积分商城数据
-// *
-// *  @return
-// */
-//-(NSMutableArray *)dataArr
-//{
-//    if (!_dataArr) {
-//        
-//        _dataArr = [NSMutableArray array];
-//        for (int i=0; i<100; i++) {
-//            if (i==0) {
-//                [_dataArr addObject:@[@"titleImage"]];
-//            }else{
-//                NSArray *arr = @[@"tu-0",@"[牙膏中的爱马仕]意大利",@"Marvis玛尔斯25ml*7支套装",@"100"];
-//                [_dataArr addObject:arr];
-//            }
-//            
-//        }
-//        
-//    }
-//    return _dataArr;
-//}
-
 
 #pragma mark - UICollectionViewDataSource   
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     self.collectionView.mj_footer.hidden = self.collectionArray.count == 0;
-    return _collectionArray.count+1;
+    return _collectionArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -191,7 +167,7 @@ static NSString *ID = @"ID";
         
     }else{
         cell.firstImg = nil;
-        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item-1]];
+        _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item]];
         cell.commodityList = _commodityList;
         
         UIImageView *productImgView = [[UIImageView alloc] init];
@@ -204,7 +180,25 @@ static NSString *ID = @"ID";
             //make.centerY.equalTo(myCell.contentView.mas_centerY);
             make.top.equalTo(@0);
             make.width.equalTo(@(cell.contentView.width));
-            make.height.equalTo(@(cell.contentView.width*0.6));
+//            make.height.equalTo(@(cell.contentView.width*0.6));
+            make.height.equalTo(@(cell.contentView.width));
+            
+        }];
+        
+        //剩余数量
+        UILabel *leftLabel = [[UILabel alloc] init];
+        leftLabel.text = [NSString stringWithFormat:@"剩余:%@",_commodityList.num];
+        leftLabel.textColor = [UIColor whiteColor];
+        leftLabel.backgroundColor = [UIColor blackColor];
+        leftLabel.font = CustomFont(14);
+        leftLabel.textAlignment = NSTextAlignmentCenter;
+        leftLabel.alpha = 0.8;
+        [productImgView addSubview:leftLabel];
+        [leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(@0);
+            make.right.equalTo(@0);
+            make.bottom.equalTo(@0);
+            make.height.equalTo(@20);
             
         }];
         
@@ -461,7 +455,7 @@ static NSString *ID = @"ID";
     }else{
 
         [SVProgressHUD showErrorWithStatus:@"暂无推荐"];
-        [self performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
     }
     
 }

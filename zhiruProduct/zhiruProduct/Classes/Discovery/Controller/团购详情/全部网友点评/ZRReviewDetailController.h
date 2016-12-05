@@ -14,4 +14,7 @@
 
 @property (nonatomic, copy) NSString *businessId;
 
+//100寻味，101娱乐，102丽人
+@property (nonatomic, assign) NSInteger shoptype;
+
 @end

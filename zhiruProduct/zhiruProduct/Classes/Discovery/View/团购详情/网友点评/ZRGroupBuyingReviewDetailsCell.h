@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) ZRCommentListModel *commentListModel;
 
-
+//
 @property (nonatomic, assign) int shoptype;
 
 @property (nonatomic , copy) void (^clickGoodBtn)(UIButton *goodAndNoGood , NSString * commentId , BOOL isCancel);

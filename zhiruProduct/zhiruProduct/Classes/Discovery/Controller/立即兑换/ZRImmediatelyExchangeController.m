@@ -19,6 +19,8 @@
 
 #import "ZRPayOrderRequest.h"
 
+#import "ZRDiscoveryController.h"
+
 #define textViewHeight     100
 
 @interface ZRImmediatelyExchangeController ()<UITableViewDataSource, UITableViewDelegate, ZRImmediatelyExchangeDelegate, ZRSelectAddressControllerDelegate, UITextViewDelegate>
@@ -245,6 +247,18 @@
             [SVProgressHUD showSuccessWithStatus:@"兑换成功"];
             //[SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
             [SVProgressHUD dismiss];
+//            for (UIViewController *vc in self.navigationController.viewControllers){
+//                
+//                if ([vc isMemberOfClass:[ZRDiscoveryController class]]) {
+//                    self.navigationController pop
+//                    
+//                }
+//                
+//                
+//            }
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
         }else{
             [SVProgressHUD dismiss];
         }

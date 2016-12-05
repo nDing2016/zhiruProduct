@@ -109,7 +109,7 @@ static NSString * const zbusinessCommentDetails= @"businessComment/details";
         
     } failure:^(id error) {
         [SVProgressHUD showErrorWithStatus:@"网络出问题了"];
-        [self performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+        [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
         
     }];
 }

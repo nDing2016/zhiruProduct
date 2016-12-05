@@ -89,6 +89,7 @@
     if (cell == nil) {
         cell = [[ZRMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = [self.dataArray objectAtIndex:indexPath.row];
     return cell;
 }

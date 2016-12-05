@@ -67,7 +67,7 @@
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(weakSelf.selectButton.mas_right).with.offset(10);
+        make.left.equalTo(weakSelf.selectButton.mas_right).with.offset(15);
         make.centerY.equalTo(weakSelf);
     }];
     

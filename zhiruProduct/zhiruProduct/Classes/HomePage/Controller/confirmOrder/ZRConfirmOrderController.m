@@ -1152,16 +1152,34 @@ WS(ws)
     UIButton * confirmBtn = [UIButton new];
     [confirmBtn setTitle:@"确认下单" forState:UIControlStateNormal];
     
+//<<<<<<< HEAD
     if (_peiMoney == 0 && _orderType == Supermarket) {
         confirmBtn.userInteractionEnabled = NO;
         [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
+//=======
+//#warning 由于午餐无法下单，丁楠在此稍作改动，不知对错，请嘉楠再确认一下
+//    
+//    if (_orderType == Supermarket) {
+//        if (_peiMoney == 0) {
+//            confirmBtn.userInteractionEnabled = NO;
+//            [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
+//        }else{
+//            confirmBtn.userInteractionEnabled = YES;
+//            [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
+//        }
+// 
+//>>>>>>> 7a263b1c31fd9e0978947483fc065930681a0000
     }else{
         confirmBtn.userInteractionEnabled = YES;
         [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
     }
-
+    
+    
+#warning 给以上加了个判断,else里的内容是我后加上去的
+    
+    
 //    [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+   // [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     _querenBtn = confirmBtn;
     [toolView addSubview:confirmBtn];

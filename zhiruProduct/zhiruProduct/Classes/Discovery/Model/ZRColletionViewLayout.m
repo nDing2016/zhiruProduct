@@ -7,6 +7,7 @@
 //
 
 #import "ZRColletionViewLayout.h"
+#import "ZRCommodityListModel.h"
 
 /** 每一行之间的间距 */
 static const CGFloat RowMargin = 10;
@@ -24,6 +25,9 @@ static const int ColumsCount = 2;
 /** 存放所有cell的布局属性 */
 @property (nonatomic, strong) NSMutableArray *attrsArray;
 
+//存放所有cell的height
+@property (nonatomic, strong) NSMutableArray *heightArray;
+
 
 @end
 
@@ -39,12 +43,35 @@ static const int ColumsCount = 2;
     return _columnMaxYs;
 }
 
-- (NSMutableArray *)attrsArray
+
+-(NSMutableArray *)attrsArray
 {
     if (!_attrsArray) {
-        _attrsArray = [[NSMutableArray alloc] init];
+        _attrsArray = [NSMutableArray array];
     }
     return _attrsArray;
+}
+
+
+-(void)setAttributeArray:(NSMutableArray *)attributeArray
+{
+    _attributeArray = attributeArray;
+    _heightArray = [NSMutableArray array];
+    //计算
+    for (int i=0; i<_attributeArray.count; i++) {
+        CGFloat hei;
+        // 水平方向上的总间距
+        CGFloat xMargin = Insets.left + Insets.right + (ColumsCount - 1) * ColumnMargin;
+        // cell的宽度
+        CGFloat w = (SCREEN_WIDTH - xMargin) / ColumsCount;
+        if (i>0) {
+            ZRCommodityListModel *model = [ZRCommodityListModel mj_objectWithKeyValues:_attributeArray[i]];
+            CGSize nameSize = [NSString getSize:model.commodityName strFont:CustomFont(13) maxSize:CGSizeMake(w, w)];
+            hei = w+5+nameSize.height+5+18+5+18+10;
+            [_heightArray addObject:@(hei)];
+        }
+    }
+    
 }
 
 
@@ -125,7 +152,10 @@ static const int ColumsCount = 2;
         //h = 120*SCREEN_HEIGHT/667;
         h = w;
     }else{
-        h = 180*SCREEN_HEIGHT/667;
+        
+        //h = 180*SCREEN_HEIGHT/667;
+        //h = 270*SCREEN_HEIGHT/667;
+        h = [self.heightArray[indexPath.item-1] floatValue];
     }
     
     // 找出最短那一列的 列号 和 最大Y值

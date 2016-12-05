@@ -27,6 +27,10 @@
 
 @property (nonatomic, strong) UILabel *reviewTextLabel;
 
+
+@property (nonatomic, strong) UILabel *goodCount;
+@property (nonatomic, strong) UILabel *badCount;
+
 @end
 
 @implementation ZRGroupBuyingReviewDetailsCell
@@ -125,6 +129,21 @@
     [self.contentView addSubview:self.badBtn];
     
     
+    //点赞数
+    self.goodCount = [[UILabel alloc] initWithFrame:CGRectMake(280*SCREEN_WIDTH/375, CGRectGetMinY(self.goodBtn.frame), 25*SCREEN_WIDTH/375, ZRImage(@"haoping").size.height)];
+    self.goodCount.textColor = RGBCOLOR(85, 85, 85);
+    self.goodCount.font = CustomFont(12);
+    [self.contentView addSubview:self.goodCount];
+    
+    //反对数
+    self.badCount = [[UILabel alloc] initWithFrame:CGRectMake(330*SCREEN_WIDTH/375, CGRectGetMinY(self.badBtn.frame), 25*SCREEN_WIDTH/375, ZRImage(@"chaping").size.height)];
+    self.badCount.textColor = RGBCOLOR(85, 85, 85);
+    self.badCount.font = CustomFont(12);
+    [self.contentView addSubview:self.badCount];
+    
+    
+    
+    
 }
 
 
@@ -136,22 +155,28 @@
     if (sender.tag == 0) {
        //点赞按钮
         if ([_commentListModel.isClick isEqualToString:@"1"]) {
-            //[self.goodBtn setImage:ZRImage(@"haoping") forState:UIControlStateNormal];
+            [self.goodBtn setImage:ZRImage(@"haoping") forState:UIControlStateNormal];
             _clickGoodBtn(sender,_commentListModel.commentId, YES);
+            _commentListModel.isClick = @"0";
+            
+            self.goodCount.text = [NSString stringWithFormat:@"%d",[self.goodCount.text intValue]-1];
+            
         }else{
-            //[self.goodBtn setImage:ZRImage(@"zan_hong") forState:UIControlStateNormal];
-          
+            [self.goodBtn setImage:ZRImage(@"zan_hong") forState:UIControlStateNormal];
+            self.goodCount.text = [NSString stringWithFormat:@"%d",[self.goodCount.text intValue]+1];
                 
-                if ([_commentListModel.isClick isEqualToString:@"2"]) {
-                    //_clickGoodBtn(self.badBtn,_commentListModel.commentId, YES);
-                    [self cancelBtn:_commentListModel.commentId WithBtn:sender];
-                    
-                    
-                }else{
-                   _clickGoodBtn(sender,_commentListModel.commentId, NO);
-                }
+            if ([_commentListModel.isClick isEqualToString:@"2"]) {
+                _clickGoodBtn(self.badBtn,_commentListModel.commentId, YES);
+                [self cancelBtn:_commentListModel.commentId WithBtn:sender];
+                [self.badBtn setImage:ZRImage(@"chaping") forState:UIControlStateNormal];
+                self.badCount.text = [NSString stringWithFormat:@"%d",[self.badCount.text intValue]-1];
                 
+            }else{
+                _clickGoodBtn(sender,_commentListModel.commentId, NO);
                 
+            }
+                
+            _commentListModel.isClick = @"1";
             
             //
             
@@ -160,18 +185,27 @@
     }else{
        //点反对赞按钮
         if ([_commentListModel.isClick isEqualToString:@"2"]) {
-            //[self.goodBtn setImage:ZRImage(@"chaping") forState:UIControlStateNormal];
+            [self.badBtn setImage:ZRImage(@"chaping") forState:UIControlStateNormal];
             _clickGoodBtn(sender,_commentListModel.commentId, YES);
+            _commentListModel.isClick = @"0";
+            
+            self.badCount.text = [NSString stringWithFormat:@"%d",[self.badCount.text intValue] -1];
         }else{
-            //[self.goodBtn setImage:ZRImage(@"cha_hong") forState:UIControlStateNormal];
+            [self.badBtn setImage:ZRImage(@"cha_hong") forState:UIControlStateNormal];
+            
+            self.badCount.text = [NSString stringWithFormat:@"%d",[self.badCount.text intValue]+1];
+            
             if ([_commentListModel.isClick isEqualToString:@"1"]) {
-                //_clickGoodBtn(self.goodBtn,_commentListModel.commentId, YES);
+                _clickGoodBtn(self.goodBtn,_commentListModel.commentId, YES);
                 [self cancelBtn:_commentListModel.commentId WithBtn:sender];
+                [self.goodBtn setImage:ZRImage(@"haoping") forState:UIControlStateNormal];
+                
+                self.goodCount.text = [NSString stringWithFormat:@"%d",[self.goodCount.text intValue]-1];
             }else{
                 _clickGoodBtn(sender,_commentListModel.commentId, NO);
             }
            
-            
+            _commentListModel.isClick = @"2";
         }
 
     }
@@ -227,13 +261,13 @@
             NSString *grade1;
 
             
-            if (self.shoptype == 0) {
+            if (self.shoptype == 100) {
                 //寻味
                 grade1 = [NSString stringWithFormat:@"口味:%@",_commentListModel.gradeOne];
-            }else if (self.shoptype == 1){
+            }else if (self.shoptype == 101){
                 //娱乐
                 grade1 = [NSString stringWithFormat:@"设施:%@",_commentListModel.gradeOne];
-            }else{
+            }else if (self.shoptype == 102){
                 //丽人
                 grade1 = [NSString stringWithFormat:@"效果:%@",_commentListModel.gradeOne];
             }
@@ -250,19 +284,26 @@
             [self drawWithStr:grade3 Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.gradeOneFrame.origin.x+grade1Size.width+10+grade2Size.width+10, self.reviewFrame.gradeOneFrame.origin.y)];
             
             
-            [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
+            [self drawWithStr:_commentListModel.commentContent Font:CustomFont(13) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.reviewFrame.reviewTextFrame.origin.x, self.reviewFrame.reviewTextFrame.origin.y) Size:self.reviewFrame.reviewTextFrame.size];
                        
             
         }else{
             
             //评论内容
-    //        CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
-    //        [self drawWithStr:_commentListModel.commentContent Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height) Size:CGSizeMake(textWidth, SCREEN_HEIGHT)];
             self.reviewTextLabel = [[UILabel alloc] init];
-            self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, self.reviewFrame.reviewTextFrame.size.height);
+            CGFloat textWidth = SCREEN_WIDTH-imageX-imageX*2-imageWH;
+            CGSize textSize = [NSString getSize:_commentListModel.commentContent strFont:CustomFont(13) maxSize:CGSizeMake(textWidth,SCREEN_HEIGHT)];
+            if (textSize.height<nameSize.height*2+10) {
+                self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, textSize.height);
+                
+            }else{
+                self.reviewTextLabel.frame = CGRectMake(imageX*2+imageWH, imageY*3+nameSize.height+priceSize.height, self.reviewFrame.reviewTextFrame.size.width, nameSize.height*2+10);
+            }
+            
+
             self.reviewTextLabel.text = _commentListModel.commentContent;
             self.reviewTextLabel.textColor = RGBCOLOR(85, 85, 85);
-            self.reviewTextLabel.font = CustomFont(15);
+            self.reviewTextLabel.font = CustomFont(13);
             self.reviewTextLabel.numberOfLines = 0;
             [self.contentView addSubview:self.reviewTextLabel];
         }
@@ -295,10 +336,12 @@
 
         
         //点赞
-        [self drawWithStr:_commentListModel.good Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(280*SCREEN_WIDTH/375, CGRectGetMinY(self.goodBtn.frame))];
+        //[self drawWithStr:_commentListModel.good Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(280*SCREEN_WIDTH/375, CGRectGetMinY(self.goodBtn.frame))];
+        self.goodCount.text = _commentListModel.good;
         
         //反对点赞
-        [self drawWithStr:_commentListModel.notGood Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(330*SCREEN_WIDTH/375, CGRectGetMinY(self.badBtn.frame))];
+        //[self drawWithStr:_commentListModel.notGood Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(330*SCREEN_WIDTH/375, CGRectGetMinY(self.badBtn.frame))];
+        self.badCount.text = _commentListModel.notGood;
  
     }
     

@@ -353,7 +353,7 @@
             ZRAllReviewsController *allReviewVC = [[ZRAllReviewsController alloc] init];
             [self.navigationController pushViewController:allReviewVC animated:YES];
             allReviewVC.reviewsType = ZRGroupBuyingReviews;
-            allReviewVC.commentListArray = _detailModel.commentList;
+            allReviewVC.commentListArray = [NSMutableArray arrayWithArray: _detailModel.commentList];
 //            if (_detailModel.praise == nil) {//好评数
 //                _detailModel.praise = @"0";
 //            }else if (_detailModel.commentCount == nil){//全部评论
