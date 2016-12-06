@@ -142,7 +142,13 @@
     [self.contentView addSubview:self.badCount];
     
     
-    
+    //时间
+    CGSize timeSize = [NSString getSize:_commentListModel.commentDate strFont:CustomFont(12) maxSize:CGSizeMake(SCREEN_WIDTH, self.height)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-15-timeSize.width, self.reviewFrame.reviewTimeFrame.origin.y, timeSize.width+10, timeSize.height)];
+    timeLabel.text = _commentListModel.commentDate;
+    timeLabel.textColor = RGBCOLOR(85, 85, 85);
+    timeLabel.font = CustomFont(12);
+    [self.contentView addSubview:timeLabel];
     
 }
 
@@ -309,18 +315,11 @@
         }
         
         
-        //时间
-        NSLog(@"事间＝＝＝＝＝%@",self.commentListModel.commentDate);
-        CGSize timeSize = [NSString getSize:_commentListModel.commentDate strFont:CustomFont(12) maxSize:CGSizeMake(SCREEN_WIDTH, self.height)];
-        [self drawWithStr:_commentListModel.commentDate Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(self.width-timeSize.width-imageX, self.reviewFrame.reviewTimeFrame.origin.y)];
         
         
         //添加所有子控件
         [self setUpAllChildviews];
-        //点赞
-//        [self.contentView addSubview:self.goodBtn];
-//        //反对
-//        [self.contentView addSubview:self.badBtn];
+
         
         if ([_commentListModel.isClick isEqualToString:@"1"]) {//赞
             [self.goodBtn setImage:ZRImage(@"zan_hong") forState:UIControlStateNormal];
@@ -338,11 +337,11 @@
 
         
         //点赞
-        //[self drawWithStr:_commentListModel.good Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(280*SCREEN_WIDTH/375, CGRectGetMinY(self.goodBtn.frame))];
+        
         self.goodCount.text = _commentListModel.good;
         
         //反对点赞
-        //[self drawWithStr:_commentListModel.notGood Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(330*SCREEN_WIDTH/375, CGRectGetMinY(self.badBtn.frame))];
+        
         self.badCount.text = _commentListModel.notGood;
  
     }

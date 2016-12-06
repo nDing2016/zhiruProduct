@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"我的点评";
     self.view.backgroundColor = RGBCOLOR(240, 240, 240);
-   
+
     
 }
 

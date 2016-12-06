@@ -370,6 +370,7 @@
             allReviewVC.allReviewsCount = _detailModel.commentCount;
             allReviewVC.badReviewsCount = _detailModel.bad;
             allReviewVC.imgReviewsCount = _detailModel.imgComment;
+            
         }
     }
 }
