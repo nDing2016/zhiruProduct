@@ -91,7 +91,23 @@ static NSString *ID = @"cell";
     
     //setUp RightBarButton For NavigationBar
     //[self setUpRightBarButton];
+    
+    //更新积分商城首页通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshIntegralMall) name:kIntegralMallRefresh_Noti object:nil];
+    
 
+}
+
+#pragma mark - 通知
+- (void)refreshIntegralMall
+{
+    //积分商城
+    NSIndexPath *idxPath = [NSIndexPath indexPathForItem:1 inSection:0];
+    ZRDiscoveryCell *cell = (ZRDiscoveryCell *)[self.collectionView cellForItemAtIndexPath:idxPath];
+    [cell.collectionView startRefreshWithCallback:^{
+        [self loadLatestIntegralMallData];
+        
+    }];
 }
 
 #pragma mark - 懒加载

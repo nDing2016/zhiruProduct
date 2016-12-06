@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, ShopType) {
 @property (nonatomic, strong) ZRGoupBuyingReviewFrame *reviewFrame;
 
 
+//从该页面到点评详情，纪录行号，再返回的时候直接滚到该行
+@property (nonatomic, assign) NSInteger indexPathRow;
 
 
 @end

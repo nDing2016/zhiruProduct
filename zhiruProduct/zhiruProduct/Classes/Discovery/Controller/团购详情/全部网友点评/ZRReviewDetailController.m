@@ -41,6 +41,13 @@
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+}
+
+
 #pragma mark - get methods
 
 

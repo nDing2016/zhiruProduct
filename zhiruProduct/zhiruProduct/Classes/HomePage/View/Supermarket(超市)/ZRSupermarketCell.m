@@ -57,7 +57,11 @@
         
         //context
         //商品名
-        CGSize nameSize = [self drawWithStr:_goodsList.goods_name Font:CustomFont(12) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(rect.origin.x, rect.size.height+10+5) Size:CGSizeMake(self.width-22.5, self.height)];
+        CGSize nameSize = [NSString getSize:@"综合粉丝" strFont:CustomFont(12) maxSize:CGSizeMake(self.width-22.5, self.height)];
+        
+        [self setUpProductName:_goodsList.goods_name AndRect:CGRectMake(rect.origin.x, rect.size.height+15, self.width-22.5, nameSize.height+5)];
+        
+        
         //现价
         NSString *nowPrice = [NSString stringWithFormat:@"$%@",_goodsList.now_price];
         CGSize nowPriceSize = [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(rect.origin.x, CGRectGetMaxY(rect)+nameSize.height+10)];
@@ -70,14 +74,7 @@
         
         //商品重量千克
         NSString *weightStr = [NSString stringWithFormat:@"%@kg",_goodsList.weight];
-        [self drawWithStr:weightStr Font:CustomFont(12) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(rect.origin.x+nowPriceSize.width+size.width+17+10, CGRectGetMaxY(rect)+nameSize.height+10)];
-        
-        
-        //购物车按钮
-        //[self setUpShoppingCar:CGRectMake(self.width-31.5, rect.size.height+nameSize.height+10, 20, 18)];
-        
-        
-        //[self drawImage:_listArr[4] Rect:CGRectMake(self.width-40, rect.size.height+nameSize.height+10, 20, 18)];
+        [self drawWithStr:weightStr Font:CustomFont(12) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(rect.origin.x, CGRectGetMaxY(rect)+nameSize.height+10+size.height+5)];
         
     }else if (_travelArr){
         [self drawImage:_travelArr[0] Rect:CGRectMake((self.width-60)/2, (self.height-60)/2-10, 60, 60)];
@@ -111,6 +108,16 @@
         
     }
     
+}
+
+
+- (void)setUpProductName:(NSString *)name AndRect:(CGRect)rect
+{
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:rect];
+    nameLabel.text = name;
+    nameLabel.textColor = RGBCOLOR(85, 85, 85);
+    nameLabel.font = CustomFont(12);
+    [self.contentView addSubview:nameLabel];
 }
 
 

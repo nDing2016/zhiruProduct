@@ -49,6 +49,8 @@
     
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.exChangeBtn];
+    [self loadDatas];
+    
     
 }
 
@@ -57,9 +59,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.tableView startRefreshWithCallback:^{
-        [self loadDatas];
-    }];
+    
     
 }
 
@@ -245,22 +245,19 @@
         
         if ([details[@"message"] isEqualToString:@"success"]) {
             [SVProgressHUD showSuccessWithStatus:@"兑换成功"];
-            //[SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
-            [SVProgressHUD dismiss];
-//            for (UIViewController *vc in self.navigationController.viewControllers){
-//                
-//                if ([vc isMemberOfClass:[ZRDiscoveryController class]]) {
-//                    self.navigationController pop
-//                    
-//                }
-//                
-//                
-//            }
+            [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:1];
+ 
+
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kIntegralMallRefresh_Noti object:nil];
+            
             [self.navigationController popToRootViewControllerAnimated:YES];
             
             
         }else{
-            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"兑换失败"];
+            
+            [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:1];
         }
         
         
@@ -285,7 +282,7 @@
 {
     WS(ws)
     [ZRUserInterfaceModel userFineDefaultAddressCallBack:^(id result) {
-        [ws.tableView.mj_header endRefreshing];
+        //[ws.tableView.mj_header endRefreshing];
         
         ZRUserFindAddressModel * model = result;
 //        NSArray *arr = @[ZRImage(@"dingwei_hong"),model.name,model.gender,model.phone,model.address];

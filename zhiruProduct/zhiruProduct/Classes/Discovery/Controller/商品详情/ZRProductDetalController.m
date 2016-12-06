@@ -64,11 +64,11 @@
     //添加立即兑换
     [self setUpImmediatelyExchange];
     
-    [SVProgressHUD show];
+    //[SVProgressHUD show];
     
-    self.immediatelyBtn.hidden = NO;
+    //self.immediatelyBtn.hidden = NO;
     
-    [self loadProductDetailsData];
+    //[self loadProductDetailsData];
     
 }
 
@@ -76,8 +76,14 @@
 {
     [super viewWillAppear:animated];
     
+    self.immediatelyBtn.hidden = NO;
     
-    
+    ZRUser *usr = [ZRUserTool user];
+    if (usr && self.productDetail.myPoints.length == 0) {
+        [SVProgressHUD show];
+        [self loadProductDetailsData];
+        
+    }
     
     
 }
@@ -86,7 +92,10 @@
 {
     [super viewWillDisappear:animated];
     self.immediatelyBtn.hidden = YES;
+    
 }
+
+
 
 
 #pragma mark - Private methods
@@ -99,7 +108,6 @@
     _immediatelyBtn.alpha = 0.3;
     [_immediatelyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _immediatelyBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    _immediatelyBtn.enabled = NO;
     [myWindow addSubview:_immediatelyBtn];
     
     
@@ -234,7 +242,7 @@
             if ([self.productDetail.myPoints intValue]>=[self.productDetail.fraction intValue]) {
                 self.immediatelyBtn.backgroundColor = RGBCOLOR(255, 82, 82);
                 self.immediatelyBtn.alpha = 1;
-                self.immediatelyBtn.enabled = YES;
+
                 
                 
             }
@@ -253,6 +261,7 @@
 
     
 }
+
 
 
 

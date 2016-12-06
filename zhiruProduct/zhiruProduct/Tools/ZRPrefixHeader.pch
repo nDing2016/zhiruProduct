@@ -260,10 +260,10 @@ alpha:1.0]
 #pragma mark -------    网络请求    -------
 
 
-#define HOST @"http://192.168.2.22:8080/zhiru/"
+//#define HOST @"http://192.168.2.22:8080/zhiru/"
 //#define HOST @"http://192.168.2.17:8080/zhiru/"
 
-#define HOST @"http://192.168.2.22:8080/zhiru/"
+//#define HOST @"http://192.168.2.22:8080/zhiru/"
 
 //#define HOST @"http://192.168.2.17:8080/zhiru/"
 //#define HOST @"http://192.168.2.7:8181/zhiru/"
@@ -272,7 +272,7 @@ alpha:1.0]
 
 
 
-//#define HOST @"http://www.hey-tang.com/zhiru/"
+#define HOST @"http://www.hey-tang.com/zhiru/"
 
 
 
@@ -384,3 +384,14 @@ alpha:1.0]
 
 //超市订单详情跳到超市订单列表通知
 #define kSupermarketDetailToSupermarketList_Noti  @"kSupermarketDetailToSupermarketList_Noti"
+
+
+
+//积分商城立即兑换，跳转到积分商城首页，通知更新首页
+#define kIntegralMallRefresh_Noti                 @"kIntegralMallRefresh_Noti"
+
+
+
+
+//从评价详情返回所有评价的时候通知滑到相应的行
+#define kReviewDetailToReviewList_Noti            @"kReviewDetailToReviewList_Noti"
