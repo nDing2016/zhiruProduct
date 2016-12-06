@@ -27,14 +27,9 @@
     [super viewDidLoad];
     
     _page = 1;
-    //下拉加载最新
-    WS(ws)
-    [self.myTableView startRefreshWithCallback:^{
-        ws.page = 1;
-        //网络请求
-        [ws startRefresh];
-    }];
+ 
     
+    WS(ws)
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
 
         //网络请求
@@ -43,7 +38,16 @@
 }
 
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+       //下拉加载最新
+    WS(ws)
+    [self.myTableView startRefreshWithCallback:^{
+        ws.page = 1;
+        //网络请求
+        [ws startRefresh];
+    }];
+}
 
 -(void)setModel:(ZRHomeNavModel *)model{
     _model = model;
@@ -131,41 +135,65 @@
 - (void)homeBaseViewControllerHeaderClickWithBtn: (NSInteger) index{
     
     //地域
-    NSArray * regionArr = _model.region;
-    ZRRegionModel * region = regionArr[self.currentData1Index];
-    //NSLog(@"%@",region.region_name);
-    //标签
-    NSArray * labelArr = _model.label;
-    ZRLabelModel * label = labelArr[index];
+//    NSArray * regionArr = _model.region;
+//    ZRRegionModel * region = regionArr[self.currentData1Index];
+//    //NSLog(@"%@",region.region_name);
+//    //标签
+//    NSArray * labelArr = _model.label;
+//    ZRLabelModel * label = labelArr[index];
+//    
+//    NSString * sort = [NSString stringWithFormat:@"%ld",self.currentData3Index + 1];
+//    
+//    
+//    NSString * screen = [NSString stringWithFormat:@"%ld",(long)self.currentData4Index ];
+//    
+//    if (self.currentData4Index == 2) {
+//        screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
+//    }
+//    
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    NSArray * labelArr = self.model.label;
+    ZRLabelModel * labelModel = labelArr[index + 1];
     
-    NSString * sort = [NSString stringWithFormat:@"%ld",self.currentData3Index + 1];
-    
-    
-    NSString * screen = [NSString stringWithFormat:@"%ld",(long)self.currentData4Index ];
-    
-    if (self.currentData4Index == 2) {
-        screen = [NSString stringWithFormat:@"%ld",self.currentData4Index + 1];
-    }
-    
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
     WS(ws)
-    
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+    [CustomHudView show];
+    //跳转
+    [ZRHomePageRequst requestGetFindtasteIndexWithLongitude:_longitude andLatitude:_latitude andLabel:labelModel.nav_id andSuccess:^(id success) {
         
-//        //NSLog(@"成功");
-//        ws.modelArr = success;
-//        
-//        [ws.myTableView reloadData];
+        ZRHomeNavModel * model = ws.model;
+        //地理
+        NSMutableArray * regionMarr = [NSMutableArray array];
+        for (ZRRegionModel * region in model.region) {
+            if (region.region_name != nil) {
+                [regionMarr addObject:region.region_name];
+            }
+            
+        }
+        //品类
+        NSMutableArray * labelMarr = [NSMutableArray array];
+        for (ZRLabelModel * label in model.label) {
+            if (label.nav_name != nil) {
+                [labelMarr addObject:label.nav_name];
+            }
+        }
         
-        [ws.modelArr removeAllObjects];
-        //NSLog(@"成功");
-        [ws.modelArr addObjectsFromArray:success];
         
-        [ws.myTableView reloadData];
+        //        NSDictionary * screeningDict = [NSDictionary dictionaryGetScreeningWithModel:ws.model isPaixu:YES];
+        NSDictionary * screeningDict = @{@"地理":regionMarr, @"品类":labelMarr , @"排序":@[@"智能排序,"@"离我最近",@"评价最好",@"设施最佳",@"环境最佳",@"服务最佳"]};
+        
+        ZRLookForTasteNavController * navVC = [[ZRLookForTasteNavController alloc]  initWithTitleArr:nil andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:nil];
+        navVC.title = @"寻味";
+        navVC.model = success[0];
+        navVC.latitude = _latitude;
+        navVC.longitude = _longitude;
+        [ws.navigationController pushViewController:navVC animated:YES];
+        [CustomHudView dismiss];
+
+
     } andFailure:^(id error) {
         
         //NSLog(@"失败");
-        
+        [CustomHudView dismiss];
     }];
 
     

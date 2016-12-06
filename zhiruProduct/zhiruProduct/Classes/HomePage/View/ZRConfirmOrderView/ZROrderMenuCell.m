@@ -258,15 +258,28 @@
      NSInteger numb =  [myLabel.text integerValue];
     myLabel.text = [NSString stringWithFormat:@"%ld",(long)(numb+=1)];
     NSMutableArray * marr;
+    
+    
     if (self.type == YES) {
          marr =  [ZRSupermarketHomeObj shareInstance].allProductsArray;
+         ZRSupermarketGoodsListModel * model = [marr[index] lastObject];
+        [ZRSupermarketHomeObj shareInstance].allNumber ++;
+        [ZRSupermarketHomeObj shareInstance].allPrice += [model.now_price floatValue];
+       
+         [marr[index] addObject:model];
     }else{
           marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+         ZROrderingMenuModel * model = [marr[index] lastObject];
+        [ZRSupermarketHomeObj shareInstance].totalNumber ++;
+        [ZRSupermarketHomeObj shareInstance].totalPrice += [model.unit_price floatValue];
+       
+         [marr[index] addObject:model];
     }
 
     
-    ZROrderingMenuModel * model = [marr[index] lastObject];
-    [marr[index] addObject:model];
+   
+    
+   
     
     //执行回调
     if (self.upDataCount) {
@@ -330,14 +343,40 @@
     
     myLabel.text = [NSString stringWithFormat:@"%ld",(long)(numb-=1)];
     NSMutableArray * marr ;
-    if (_type) {
-        //超市
-         marr =  [ZRSupermarketHomeObj shareInstance].allProductsArray;
-    }else{
-        //午餐
-         marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
-    }
+//    if (_type) {
+//        //超市
+//         marr =  [ZRSupermarketHomeObj shareInstance].allProductsArray;
+//    }else{
+//        //午餐
+//         marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+//    }
 //    ZROrderingMenuModel * model = [marr[index] lastObject];
+    if (self.type == YES) {
+        
+      
+        
+         marr =  [ZRSupermarketHomeObj shareInstance].allProductsArray;
+         ZRSupermarketGoodsListModel * model = [marr[index] lastObject];
+       
+        if ([ZRSupermarketHomeObj shareInstance].allPrice - [model.now_price floatValue] < 20) {
+            [SVProgressHUD showInfoWithStatus:@"再减就低于起送费啦"];
+            myLabel.text = [NSString stringWithFormat:@"%ld",(long)(numb+=1)];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
+            return;
+        }
+        [ZRSupermarketHomeObj shareInstance].allNumber --;
+        [ZRSupermarketHomeObj shareInstance].allPrice -= [model.now_price floatValue];
+    }else{
+        marr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
+//        [ZRSupermarketHomeObj shareInstance].totalNumber --;
+//        [ZRSupermarketHomeObj shareInstance].totalPrice -= [model.unit_price floatValue];
+        
+        ZROrderingMenuModel * model = [marr[index] lastObject];
+        [ZRSupermarketHomeObj shareInstance].totalNumber --;
+        [ZRSupermarketHomeObj shareInstance].totalPrice -= [model.unit_price floatValue];
+    }
+    
+//
 //    [marr[index] addObject:model];
     [marr[index] removeLastObject];
 

@@ -55,7 +55,7 @@
 
 -(void)setBusinessId:(NSString *)businessId{
     _businessId = businessId;
-    
+ 
     //发送网络请求
    WS(ws)
     [self.myTableView startRefreshWithCallback:^{
@@ -630,7 +630,8 @@
         
         ws.model = marr[0];
 
-        
+        ws.myTableView.delegate = ws;
+        ws.myTableView.dataSource = ws;
         
         [ws.commentCountArr addObject:ws.model.comment_count];
         [ws.commentCountArr addObject:ws.model.praise];
@@ -640,8 +641,7 @@
         
 
 
-        ws.myTableView.delegate = ws;
-        ws.myTableView.dataSource = ws;
+       
         if ([ws.model.isCollection isEqualToString:@"0"]) {
             _likeCarButton.selected = NO;
         } else if ([ws.model.isCollection isEqualToString:@"1"]) {

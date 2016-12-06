@@ -29,7 +29,11 @@
     
     _businessName.text = model.name;
     
+//    CGFloat grade = [model.grade floatValue];
+    
     _businessGrade.image = [UIImage imageWithPingfenCount:[model.grade floatValue]];
+    
+//    _businessGrade.image = [UIImage imageNamed:@"sandianwu"];
     
     _comment_count.text =[NSString stringWithFormat:@"%@条评论", model.comment_count];
     
