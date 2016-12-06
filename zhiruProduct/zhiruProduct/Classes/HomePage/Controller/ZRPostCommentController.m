@@ -485,6 +485,8 @@
             ws.informationCardBtn.userInteractionEnabled = YES;
             [CustomHudView dismiss];
         }];
+    }else{
+        self.informationCardBtn.userInteractionEnabled = YES;
     }
     
 }
@@ -495,10 +497,14 @@
     
     if (_headView.userWord.text.length< 15) {
         [SVProgressHUD showErrorWithStatus:@"用户评价不可少于15字"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
+        [CustomHudView dismiss];
         return NO;
     }
     else if (_headView.perCapita.text.length == 0){
         [SVProgressHUD showErrorWithStatus:@"请输入人均消费"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
+         [CustomHudView dismiss];
         return NO;
     }else{
         

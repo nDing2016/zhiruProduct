@@ -152,8 +152,7 @@
         myTableView.estimatedRowHeight = 80.0;
         UIView * footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
         myTableView.tableFooterView = footView;
-        
-         
+
     }
     return _myTableView;
 }
@@ -413,7 +412,10 @@
                 ws.peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] andWeight:_allWeight andSpecialWeather:_weather];
                 
                 //总计
-                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice  + ws.peiMoney + ws.shuiMoney + ws.weightMoney];
+                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice  + ws.peiMoney + ws.shuiMoney + ws.weightMoney) * _weather];
+                
+                NSLog(@"%lf",[ZRSupermarketHomeObj shareInstance].allPrice);
+                
                 [ws.myTableView reloadData];
                 
 //                NSLog(@"%f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] );
@@ -491,7 +493,8 @@
             
             ZROrderSelectTwoCell * cell = [tableView dequeueReusableCellWithIdentifier:wightCell];
             if (_weather != 1.0) {
-                cell.isSpecialWeather = YES;
+//                cell.isSpecialWeather = YES;
+                [self createWeateLabei:cell];
             }else{
                 cell.isSpecialWeather = NO;
             }
@@ -654,7 +657,7 @@
                 ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney];
                 [ws.myTableView reloadData];
                 
-                
+                NSLog(@"%lf",_weather);
 //               NSArray * arr =  [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
 
             };
@@ -822,6 +825,7 @@
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:iphoneCell];
                 }
+                
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.text = @"手机号:";
                 cell.textLabel.font = [UIFont systemFontOfSize:15];
@@ -907,7 +911,7 @@
                 ws.shuiMoney = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05;
                 
                 //总计
-                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] +  _shuiMoney];
+                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] +  _shuiMoney) * _weather];
                 [ws.myTableView reloadData];
 
             };
@@ -1127,14 +1131,11 @@ WS(ws)
     _moneyCountLB = moneyCountLB;
     
     if (_orderType == Supermarket) {
-        moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney];
-        
-//        CGFloat allPrice = [ZRSupermarketHomeObj shareInstance].allPrice;
-
-       
+            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney ) * _weather];
+     
         
     }else{
-            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ];
+            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ) * _weather];
     }
     
     moneyCountLB.font = [UIFont systemFontOfSize:15];
@@ -1151,17 +1152,23 @@ WS(ws)
     UIButton * confirmBtn = [UIButton new];
     [confirmBtn setTitle:@"确认下单" forState:UIControlStateNormal];
     
-#warning 由于午餐无法下单，丁楠在此稍作改动，不知对错，请嘉楠再确认一下
-    
-    if (_orderType == Supermarket) {
-        if (_peiMoney == 0) {
-            confirmBtn.userInteractionEnabled = NO;
-            [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
-        }else{
-            confirmBtn.userInteractionEnabled = YES;
-            [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
-        }
- 
+//<<<<<<< HEAD
+    if (_peiMoney == 0 && _orderType == Supermarket) {
+        confirmBtn.userInteractionEnabled = NO;
+        [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
+//=======
+//#warning 由于午餐无法下单，丁楠在此稍作改动，不知对错，请嘉楠再确认一下
+//    
+//    if (_orderType == Supermarket) {
+//        if (_peiMoney == 0) {
+//            confirmBtn.userInteractionEnabled = NO;
+//            [confirmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateNormal];
+//        }else{
+//            confirmBtn.userInteractionEnabled = YES;
+//            [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
+//        }
+// 
+//>>>>>>> 7a263b1c31fd9e0978947483fc065930681a0000
     }else{
         confirmBtn.userInteractionEnabled = YES;
         [confirmBtn setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -1202,6 +1209,7 @@ WS(ws)
             
             return  ;
         }else if(self.userIphone == nil){
+            
             [SVProgressHUD showErrorWithStatus:@"请输入用户电话"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             return ;
@@ -1397,10 +1405,10 @@ WS(ws)
                     paymentOrderVC.addKaOrderModel = kaOrderModel;
                     
 //111111111111111111111111111111111111111111111111111111111111111111111
-                    //将购物车内容清空
-//                    [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
-//                    [ZRSupermarketHomeObj shareInstance].allPrice = 0;
-//                    [ZRSupermarketHomeObj shareInstance].allNumber = 0;
+//                    将购物车内容清空
+                    [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
+                    [ZRSupermarketHomeObj shareInstance].allPrice = 0;
+                    [ZRSupermarketHomeObj shareInstance].allNumber = 0;
                     
                 }
             }];
@@ -1522,6 +1530,23 @@ WS(ws)
             return [self heixinShangjia:weight] - 18;
         }
     }
+}
+
+- (void)createWeateLabei:(UITableViewCell *)cell{
+    
+    UILabel * lab = [UILabel new];
+//    lab.text = @"因特殊天气包含额外费用(*";
+    lab.text = [NSString stringWithFormat:@"因特殊天气包含额外费用(x%.1f)",_weather];
+    lab.textColor = [UIColor grayColor];
+    lab.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:lab];
+    
+    WS(ws)
+    [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(ws.myTableView.mas_bottom).offset(-55);
+        make.left.equalTo(ws.view.mas_left).offset(15);
+        make.right.equalTo(ws.view.mas_right);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

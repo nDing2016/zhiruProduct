@@ -33,6 +33,8 @@
     self.navigationItem.title = @"网友点评";
     // Do any additional setup after loading the view.
     [self.view addSubview:self.tableView];
+
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -51,8 +53,8 @@
     
     [self.tableView startFooterRefresh:self Action:@selector(loadMoreData)];
     self.tableView.mj_footer.hidden = YES;
+       
 }
-
 
 #pragma mark - set方法
 
@@ -492,6 +494,7 @@
         [self.navigationController pushViewController:reviewDetailVC animated:YES];
         reviewDetailVC.commentIdStr = cell.commentListModel.commentId;
         reviewDetailVC.businessId = self.businessId;
+        reviewDetailVC.indexPathRow = indexPath.row;
     }
     
 }

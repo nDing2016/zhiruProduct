@@ -56,7 +56,10 @@ static NSString *footerID = @"footerID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    [self.collectionView startRefreshWithCallback:^{
+        [self loadData];
+        
+    }];
     
 }
 
@@ -65,11 +68,6 @@ static NSString *footerID = @"footerID";
     [super viewWillAppear:animated];
     //collectionView下拉加载
     
-    //[self.collectionView startRefresh:self Action:@selector(loadData)];
-    [self.collectionView startRefreshWithCallback:^{
-        [self loadData];
-        
-    }];
     
     
 }
@@ -261,7 +259,7 @@ static NSString *footerID = @"footerID";
             //下载图片
             self.imgView = [[UIImageView alloc] init];
             self.imgView.userInteractionEnabled = YES;
-            [self.imgView sd_setImageWithURL:[NSURL URLWithString:_goodsListModel.img_url] placeholderImage:nil];
+            [self.imgView sd_setImageWithURL:[NSURL URLWithString:_goodsListModel.img_url] placeholderImage:ZRImage(@"Default")];
 
             [cell.contentView addSubview:self.imgView];
             
@@ -357,7 +355,7 @@ static NSString *footerID = @"footerID";
     }else if (indexPath.section == 2){
         return CGSizeMake(SCREEN_WIDTH, 160*SCREEN_HEIGHT/667);
     }else if (indexPath.section == 0){
-        return CGSizeMake(SCREEN_WIDTH, 150*SCREEN_HEIGHT/667);
+        return CGSizeMake(SCREEN_WIDTH, 160*SCREEN_HEIGHT/667);
     }else
         return CGSizeMake(SCREEN_WIDTH/2, 250*SCREEN_HEIGHT/667);
 }

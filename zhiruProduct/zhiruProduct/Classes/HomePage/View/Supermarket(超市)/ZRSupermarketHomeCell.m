@@ -264,13 +264,20 @@
         
         //CGFloat priceY = (CellHeight-(y+goodsSize.height+y+weightSize.height+sizePrice.height))/2+(y+goodsSize.height+y+weightSize.height);
         
+        CGSize nowPriceSize;
+        CGFloat nowPriceY;
         if ((self.height-5-weightSize.height-5-sizePrice.height)<=y+goodsSize.height) {
-           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, y+goodsSize.height)];
+            nowPriceSize = [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(x+width+x, y+goodsSize.height)];
+            nowPriceY = y+goodsSize.height;
+            
         }else{
-           [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:[UIColor redColor] Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
+            nowPriceSize = [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
+            nowPriceY = self.height-5-weightSize.height-5-sizePrice.height;
         }
-            
-            
+        
+        if ([_goodsListModel.now_price floatValue] != [_goodsListModel.old_price floatValue]) {
+            [self drawWithStr:[NSString stringWithFormat:@"原价$%.2f",[_goodsListModel.old_price floatValue]] Font:CustomFont(12) Color:RGBCOLOR(154, 154, 154) Point:CGPointMake(x+width+x+nowPriceSize.width+10, nowPriceY)];
+        }
         
         
         

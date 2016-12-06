@@ -26,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *pingxing;
 
+@property (weak, nonatomic) IBOutlet UIImageView *wucanImg;
 
 @end
 
@@ -80,10 +81,16 @@
 //        _distributionStatus.text = @"到店自取";
         _distributionStatus.hidden = YES;
         _pingxing.hidden = YES;
+        
+        
+        //显示大图
+        self.wucanImg.hidden = NO;
+        self.wucanImg.image = [UIImage imageNamed:@"wucan_datu"];
     }else{
         _startPrice.hidden = NO;
         _distributionPrice.hidden = NO;
-        _operatingStatus.hidden = NO; 
+        _operatingStatus.hidden = NO;
+        self.wucanImg.hidden = YES;
     }
     
 }

@@ -467,6 +467,10 @@
         CGFloat alpha = 1 - ((64 - offsetY) / 64);
         [self.navigationController.navigationBar lt_setBackgroundColor:[NAVCOLOR colorWithAlphaComponent:alpha]];
         [self.navigationItem setTitleView:[MyControl createNavigationTitle:_detailModel.businessMsg.businessName]];
+        if (_isLunch) {
+            [self createNavTitle];
+        }
+        
     } else {
         [self.navigationItem setTitleView:[UIView new]];
         [self homeInitialization];
@@ -474,7 +478,33 @@
     
 }
 
-
+-(void)createNavTitle{
+    UILabel* titleLabel = [[UILabel
+                   alloc] initWithFrame:CGRectMake(0,
+                                                   0, 200, 44)];
+    
+    
+    titleLabel.backgroundColor = [UIColor clearColor];
+    
+    
+    titleLabel.font = [UIFont
+                       boldSystemFontOfSize:15];
+    
+    
+    titleLabel.textColor = [UIColor
+                            grayColor];
+    
+    
+    titleLabel.textAlignment = 
+    NSTextAlignmentCenter;
+    
+    
+    titleLabel.text = 
+    @"特惠午餐";
+    
+    
+    self.navigationItem.titleView = titleLabel;
+}
 
 - (void)createNotification{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tableViewDidScroll:) name:@"tableViewDidScroll" object:nil];

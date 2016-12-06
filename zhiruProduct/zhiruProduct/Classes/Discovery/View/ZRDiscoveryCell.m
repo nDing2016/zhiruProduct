@@ -163,27 +163,57 @@ static NSString *ID = @"ID";
     cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.item == 0) {
         cell.commodityList = nil;
-        cell.firstImg = _collectionFirstImg;
+        //cell.firstImg = _collectionFirstImg;
+        UIImageView *productImgView = [cell viewWithTag:222];
+        if (productImgView == nil) {
+            
+            productImgView = [[UIImageView alloc] init];
+            productImgView.tag = 222;
+            [productImgView sd_setImageWithURL:[NSURL URLWithString:_collectionFirstImg] placeholderImage:ZRImage(@"Default") completed:nil];
+            [cell.contentView addSubview:productImgView];
+            
+            [productImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(@0);
+                //make.centerY.equalTo(@(myCell.contentView.centerY));
+                //make.centerY.equalTo(myCell.contentView.mas_centerY);
+                make.top.equalTo(@0);
+                make.width.equalTo(@(cell.contentView.width));
+                //            make.height.equalTo(@(cell.contentView.width*0.6));
+                make.height.equalTo(@(cell.contentView.width));
+                
+            }];
+            
+            
+        }
+        
         
     }else{
         cell.firstImg = nil;
         _commodityList = [ZRCommodityListModel mj_objectWithKeyValues:_collectionArray[indexPath.item]];
         cell.commodityList = _commodityList;
         
-        UIImageView *productImgView = [[UIImageView alloc] init];
-        [productImgView sd_setImageWithURL:[NSURL URLWithString:_commodityList.img] placeholderImage:ZRImage(@"Default") completed:nil];
-        [cell.contentView addSubview:productImgView];
         
-        [productImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(@0);
-            //make.centerY.equalTo(@(myCell.contentView.centerY));
-            //make.centerY.equalTo(myCell.contentView.mas_centerY);
-            make.top.equalTo(@0);
-            make.width.equalTo(@(cell.contentView.width));
-//            make.height.equalTo(@(cell.contentView.width*0.6));
-            make.height.equalTo(@(cell.contentView.width));
+        UIImageView *productImgView = [cell viewWithTag:222];
+        if (productImgView == nil) {
             
-        }];
+            productImgView = [[UIImageView alloc] init];
+            productImgView.tag = 222;
+            [productImgView sd_setImageWithURL:[NSURL URLWithString:_commodityList.img] placeholderImage:ZRImage(@"Default") completed:nil];
+            [cell.contentView addSubview:productImgView];
+            
+            [productImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(@0);
+                //make.centerY.equalTo(@(myCell.contentView.centerY));
+                //make.centerY.equalTo(myCell.contentView.mas_centerY);
+                make.top.equalTo(@0);
+                make.width.equalTo(@(cell.contentView.width));
+                //            make.height.equalTo(@(cell.contentView.width*0.6));
+                make.height.equalTo(@(cell.contentView.width));
+                
+            }];
+
+            
+        }
         
         //剩余数量
         UILabel *leftLabel = [[UILabel alloc] init];
@@ -225,6 +255,40 @@ static NSString *ID = @"ID";
     
 }
 
+
+//
+//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    CGFloat w = (SCREEN_WIDTH - 36) / 2;
+//    if (indexPath.row==0) {
+//        return CGSizeMake(w, w);
+//    }else{
+//        CGFloat h;
+//        ZRCommodityListModel *model = [ZRCommodityListModel mj_objectWithKeyValues:self.collectionArray[indexPath.item]];
+//        CGSize nameSize = [NSString getSize:model.commodityName strFont:CustomFont(13) maxSize:CGSizeMake(w, w)];
+//        h = w+5+nameSize.height+5+18+5+18+10;
+//        
+//        return CGSizeMake(w, h);
+//        
+//        
+//    }
+//}
+//
+//
+//// 设置整个组的缩进量是多少
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+//    return UIEdgeInsetsMake(13, 13, 13, 13);
+//}
+//
+//
+//// 设置最小行间距，也就是前一行与后一行的中间最小间隔
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+//    return 10;
+//}
+//
+//// 设置最小列间距，也就是左行与右一行的中间最小间隔
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+//    return 10;
+//}
 
 
 
