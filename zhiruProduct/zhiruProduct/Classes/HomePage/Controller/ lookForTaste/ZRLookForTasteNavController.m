@@ -77,6 +77,7 @@
 
 - (void)screenToolClick{
     
+   
     
     //地域
     NSArray * regionArr = _model.region;
@@ -96,18 +97,50 @@
     }
     
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
+    
     WS(ws)
-    [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
-        [ws.array removeAllObjects];
-        //NSLog(@"成功");
-        [ws.array addObjectsFromArray:success];
+    if (_type == 0) {
+        //丽人  requestGetLiRenListWithLongitude
         
-        [ws.myTableView reloadData];
-    } andFailure:^(id error) {
-        
-        //NSLog(@"失败");
-        
-    }];
+        [ZRHomePageRequst requestGetLiRenListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+            [ws.array removeAllObjects];
+            //NSLog(@"成功");
+            [ws.array addObjectsFromArray:success];
+            
+            [ws.myTableView reloadData];
+        } andFailure:^(id error) {
+            
+            //NSLog(@"失败");
+            
+        }];
+
+    } else if(_type == 1){
+        //yule  requestGetYuLeListWithLongitude
+        [ZRHomePageRequst requestGetYuLeListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+            [ws.array removeAllObjects];
+            //NSLog(@"成功");
+            [ws.array addObjectsFromArray:success];
+            
+            [ws.myTableView reloadData];
+        } andFailure:^(id error) {
+            
+            //NSLog(@"失败");
+            
+        }];
+    }else{
+        [ZRHomePageRequst requestGetFindtasteListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
+            [ws.array removeAllObjects];
+            //NSLog(@"成功");
+            [ws.array addObjectsFromArray:success];
+            
+            [ws.myTableView reloadData];
+        } andFailure:^(id error) {
+            
+            //NSLog(@"失败");
+            
+        }];
+    }
+   
 }
 
 //- (void)homeBaseViewControllerPostRequestWithDistance :(NSString *)distance andSort :(NSString*)sort andScreen :(NSString *)screen andLabel :(NSInteger)labelIndex{
