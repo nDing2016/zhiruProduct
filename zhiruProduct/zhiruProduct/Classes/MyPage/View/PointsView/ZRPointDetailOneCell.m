@@ -38,7 +38,21 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)setModel:(ZRPointOrderDetailModel *)model
+{
+    _model = model;
+    [self.orderId setText:_model.order_id];
+    [self.orderName setText:_model.commodity_name];
+    if ([_model.status isEqualToString:@"0"]) {
+        [self.orderState setText:@"进行中"];
+    } else if ([_model.status isEqualToString:@"1"]) {
+        [self.orderState setText:@"已完成"];
+    }
+    [self.orderTime setText:_model.create_date];
+    [self.orderPoint setText:_model.points];
+    [self.orderNum setText:_model.num];
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

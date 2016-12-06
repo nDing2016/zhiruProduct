@@ -149,6 +149,8 @@
 - (void)getPointsDataList:(NSString *)page
 {
     [ZRUserPointsRequest personPointsRows:@"6" page:page CallBack:^(NSMutableArray *array) {
+        [self.pointTableView.mj_header endRefreshing];
+        [self.pointTableView.mj_footer endRefreshing];
         if (self.pointsUpLoading == YES) {
             [self.pointsArray removeAllObjects];
         }
@@ -164,8 +166,7 @@
             [self.scrollView setScrollEnabled:YES];
             [self.promptImg setHidden:YES];
         }
-        [self.pointTableView.mj_header endRefreshing];
-        [self.pointTableView.mj_footer endRefreshing];
+        
         [self.pointTableView reloadData];
         [self.headerView.pointLabel setText:model.allPoints];
         
@@ -318,26 +319,26 @@
 {
     [self.promptImg setHidden:YES];
     if (sender.tag == 1000) {
+        _pointTableView.contentOffset = CGPointMake(0, 0);
+        [self.pointTableView.mj_header endRefreshing];
+        
         [self.headerView.sectionHeaderView.pointDetail.titleLabel setTextColor:R_G_B_16(0xffae02)];
         [self.headerView.sectionHeaderView.pointDetail.titleImage setImage:ZRImage(@"wdjfhuang")];
         [self.headerView.sectionHeaderView.pointExchange.titleLabel setTextColor:R_G_B_16(0x555555)];
         [self.headerView.sectionHeaderView.pointExchange.titleImage setImage:ZRImage(@"dhjlhui")];
         self.state = 1;
         [self addHeaderRefresh];
-        [self.pointTableView reloadData];
-//        NSString * page = [NSString stringWithFormat:@"%ld", self.pointsPage];
-//        [self getPointsDataList:page];
     } else if (sender.tag == 2000) {
+        _pointTableView.contentOffset = CGPointMake(0, 0);
+        [self.pointTableView.mj_header endRefreshing];
         [self.headerView.sectionHeaderView.pointDetail.titleLabel setTextColor:R_G_B_16(0x555555)];
         [self.headerView.sectionHeaderView.pointDetail.titleImage setImage:ZRImage(@"wdjfhui")];
         [self.headerView.sectionHeaderView.pointExchange.titleLabel setTextColor:R_G_B_16(0xffae02)];
         [self.headerView.sectionHeaderView.pointExchange.titleImage setImage:ZRImage(@"dhjlhuang")];
         
         self.state = 2;
-//        NSString * page = [NSString stringWithFormat:@"%ld", self.exchangePage];
-//        [self getExchangePointDataList:page];
         [self addHeaderRefresh];
-        [self.pointTableView reloadData];
+//        [self.pointTableView reloadData];
     }
 }
 

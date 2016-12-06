@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ZRPointOrderDetailModel.h"
 @interface ZRPointDetailThreeCell : UITableViewCell
 
 @property (nonatomic, strong)UILabel * orderTitle;
 @property (nonatomic, strong)UIView * lineView1;
 @property (nonatomic, strong)UILabel * orderRemark;
+
+@property (nonatomic, strong)ZRPointOrderDetailModel * model;
 
 @end

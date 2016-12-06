@@ -40,7 +40,6 @@
     [self.orderRemark setTextColor:RGBCOLOR(85, 85, 85)];
     [self.orderRemark setFont:[UIFont systemFontOfSize:15]];
     [self.contentView addSubview:_orderRemark];
-    [self.orderRemark setText:@"暂无"];
 }
 - (void)setViewMasonary
 {
@@ -62,6 +61,15 @@
         make.right.equalTo(weakSelf.contentView).with.offset(-15);
         make.bottom.equalTo(weakSelf.contentView).with.offset(-10);
     }];
+}
+- (void)setModel:(ZRPointOrderDetailModel *)model
+{
+    _model = model;
+    if (_model.remarks.length == 0) {
+        [self.orderRemark setText:@"暂无"];
+    } else {
+        [self.orderRemark setText:_model.remarks];
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

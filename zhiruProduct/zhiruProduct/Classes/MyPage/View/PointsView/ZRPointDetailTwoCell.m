@@ -28,7 +28,13 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)setModel:(ZRPointOrderDetailModel *)model
+{
+    _model = model;
+    [self.orderName setText:_model.receipt_name];
+    [self.orderPhone setText:_model.receipt_phone];
+    [self.orderAddress setText:_model.receipt_address];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

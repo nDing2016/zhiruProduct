@@ -41,6 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:@"积分兑换详情"];
+    [self getRequestData];
 }
 - (void)getRequestData
 {
@@ -51,8 +52,7 @@
         [self.tableView reloadData];
         [CustomHudView dismiss];
     } Failure:^(id error) {
-        
-        
+        [AlertText showAndText:@"错误"];
     }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -92,6 +92,7 @@
             NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailOneCell class]) owner:self options:nil];
             cell = [nib lastObject];
         }
+        cell.model = _modelData;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
@@ -102,6 +103,7 @@
             NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailTwoCell class]) owner:self options:nil];
             cell = [nib lastObject];
         }
+        cell.model = _modelData;
         return cell;
     }
     else {
@@ -110,6 +112,7 @@
         if (cell == nil) {
             cell = [[ZRPointDetailThreeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
+        cell.model = _modelData;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
