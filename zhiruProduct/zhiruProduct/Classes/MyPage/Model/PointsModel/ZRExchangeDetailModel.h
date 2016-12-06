@@ -18,4 +18,6 @@
 @property (nonatomic, copy)NSString * points;
 // 来源途径
 @property (nonatomic ,copy)NSString * channel;
+// 订单id
+@property (nonatomic, copy)NSString * orderId;
 @end

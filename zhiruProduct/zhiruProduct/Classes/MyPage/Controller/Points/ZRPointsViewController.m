@@ -21,6 +21,7 @@
 #import "ZRExchangeDetailModel.h"
 #import "ZRProductDetalController.h"
 #import "ZRPointsRuleController.h"
+#import "ZRPointDetailController.h"
 @interface ZRPointsViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView * scrollView;
@@ -297,8 +298,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.state == 2) {
-        ZRProductDetalController * productVC = [[ZRProductDetalController alloc] init];
-        [self.navigationController pushViewController:productVC animated:YES];
+        ZRExchangAllModel * model = [self.exchangeArray objectAtIndex:indexPath.section];
+        ZRExchangeDetailModel * detailModel = [model.list objectAtIndex:indexPath.row];
+        if (detailModel.orderId.length != 0) {
+            ZRPointDetailController * detailVC = [[ZRPointDetailController alloc] init];
+            detailVC.orderId = detailModel.orderId;
+            [self.navigationController pushViewController:detailVC animated:YES];
+        } else {
+            UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"订单已被您删除" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alertVC addAction:action];
+            [self.navigationController presentViewController:alertVC animated:YES completion:nil];
+        }
     }
 }
 - (void)actionSectionHeaderView:(UIButton *)sender
