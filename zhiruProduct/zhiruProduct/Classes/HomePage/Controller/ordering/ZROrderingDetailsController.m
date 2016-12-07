@@ -68,7 +68,8 @@
        
         if (_isLunch == YES) {
             headView.isLunch = YES;
-        }
+            
+                   }
         
         //ZROrderingBusinessMsgModel * model;
         headView.frame = CGRectMake(0, 0, ScreenWidth, headView.height);
@@ -279,7 +280,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+
     [self homeInitialization];
     [self weatherNumber];
     //底部加入购物车工具条

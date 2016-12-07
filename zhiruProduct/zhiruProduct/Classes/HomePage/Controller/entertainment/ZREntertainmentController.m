@@ -179,6 +179,7 @@
           NSDictionary * screeningDict = @{@"地理":regionMarr, @"品类":labelMarr , @"排序":@[@"智能排序,"@"离我最近",@"评价最好",@"设施最佳",@"环境最佳",@"服务最佳"]};
         
         ZRLookForTasteNavController * navVC = [[ZRLookForTasteNavController alloc]  initWithTitleArr:nil andScreeningDict:screeningDict andQueryTitleArr:@[@"地理",@"品类",@"排序"] andTitleImgArr:nil];
+        navVC.type = yule;
         navVC.title = @"娱乐";
         navVC.model = success[0];
         navVC.latitude = _latitude;

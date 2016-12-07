@@ -85,7 +85,7 @@
         
         //显示大图
         self.wucanImg.hidden = NO;
-        self.wucanImg.image = [UIImage imageNamed:@"wucan_datu"];
+        self.wucanImg.image = [UIImage imageNamed:@"wucan_tu"];
     }else{
         _startPrice.hidden = NO;
         _distributionPrice.hidden = NO;
