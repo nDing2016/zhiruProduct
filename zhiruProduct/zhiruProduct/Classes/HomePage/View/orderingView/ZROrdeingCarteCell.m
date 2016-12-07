@@ -309,6 +309,7 @@
     carteCell.menuModel = model.menu[indexPath.row];
     carteCell.selectionStyle = UITableViewCellSelectionStyleNone;
     carteCell.delegate = self;
+    carteCell.productsArr = nil;
     carteCell.idxPath = indexPath;
     
     return carteCell;
