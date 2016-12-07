@@ -146,6 +146,10 @@
     cell.textLabel.text = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    
     if (indexPath.section == 0) {
         cell.addModel = self.addressModel;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -94,15 +94,19 @@
                 //好评
                 if (isCancel == YES) {
                     [ws cancelClickBtn:commentId];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewDetailToReviewListCancelGood_Noti object:nil];
                 }else{
                     [ws clickGoodBtn:commentId];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewDetailToReviewListGood_Noti object:nil];
                 }
             }else{
                 //差评
                 if (isCancel == YES) {
                     [ws cancelClickBtn:commentId];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewDetailToReviewListCancelBad_Noti object:nil];
                 }else{
                     [ws clickeNoGoodBtn:commentId];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kReviewDetailToReviewListBad_Noti object:nil];
                 }
             }
             

@@ -393,5 +393,12 @@ alpha:1.0]
 
 
 
-//从评价详情返回所有评价的时候通知滑到相应的行
-#define kReviewDetailToReviewList_Noti            @"kReviewDetailToReviewList_Noti"
+//从评价详情返回所有评价的时候通知
+//好评
+#define kReviewDetailToReviewListGood_Noti             @"kReviewDetailToReviewListGood_Noti"
+//取消好评
+#define kReviewDetailToReviewListCancelGood_Noti       @"kReviewDetailToReviewListCancelGood_Noti"
+//差评
+#define kReviewDetailToReviewListBad_Noti              @"kReviewDetailToReviewListBad_Noti"
+//取消差评
+#define kReviewDetailToReviewListCancelBad_Noti        @"kReviewDetailToReviewListCancelBad_Noti"

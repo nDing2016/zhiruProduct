@@ -403,7 +403,7 @@
     if (self.tag == kSupermarketShoppingCar_Tag) {
         CGSize size = [NSString getSize:[NSString stringWithFormat:@"$%.2f",[ZRSupermarketHomeObj shareInstance].allPrice] strFont:[UIFont systemFontOfSize:16] maxSize:self.bounds.size];
         CGFloat x = CGRectGetMaxX(_shoppingCatBtn.frame)+10;
-        CGFloat y = (40-size.height)/2;
+        CGFloat y = (self.height-size.height)/2;
         
         //价格
         CGSize priceSize = [self drawWithStr:[NSString stringWithFormat:@"$%.2f",[ZRSupermarketHomeObj shareInstance].allPrice] Font:[UIFont systemFontOfSize:16] Color:[UIColor whiteColor] Point:CGPointMake(x, y)];
