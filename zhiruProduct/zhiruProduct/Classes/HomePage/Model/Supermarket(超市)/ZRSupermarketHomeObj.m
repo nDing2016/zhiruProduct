@@ -128,13 +128,17 @@
 -(void)replaceProducts:(NSMutableArray *)products withObject:(NSObject *)object
 {
     __block NSUInteger index;
+    NSLog(@"%@",self.selectedFoodsArray);
     [self.selectedFoodsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj[0] isEqual:object]) {
+        NSArray *arr = obj;
+        if ([arr[0] isEqual:object]) {
             index = idx;
+            
         }
     }];
     
     [self.selectedFoodsArray replaceObjectAtIndex:index withObject:products];
+   
     
 }
 

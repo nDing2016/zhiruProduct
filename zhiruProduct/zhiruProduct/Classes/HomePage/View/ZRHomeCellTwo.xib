@@ -7,17 +7,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="121" id="KGk-i7-Jjw" customClass="ZRHomeCellTwo">
-            <rect key="frame" x="0.0" y="0.0" width="386" height="121"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="108" id="KGk-i7-Jjw" customClass="ZRHomeCellTwo">
+            <rect key="frame" x="0.0" y="0.0" width="386" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="386" height="120.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="386" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hanbao" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-db-aZg">
-                        <rect key="frame" x="15" y="14" width="100" height="93"/>
+                        <rect key="frame" x="15" y="14" width="100" height="80"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="93" id="AB1-eH-FxR"/>
+                            <constraint firstAttribute="height" constant="80" id="AB1-eH-FxR"/>
                             <constraint firstAttribute="width" constant="100" id="udG-ev-gsT"/>
                         </constraints>
                     </imageView>
@@ -31,13 +31,13 @@
                         <rect key="frame" x="125" y="49" width="68" height="12"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中街" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAE-fr-g6J">
-                        <rect key="frame" x="125" y="92" width="24" height="14.5"/>
+                        <rect key="frame" x="125" y="79" width="24" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小吃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EsO-fM-Ud4">
-                        <rect key="frame" x="169" y="92" width="24" height="14.5"/>
+                        <rect key="frame" x="169" y="79" width="24" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -49,10 +49,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellTubiao" translatesAutoresizingMaskIntoConstraints="NO" id="3LV-tD-0OY">
-                        <rect key="frame" x="321" y="87" width="20" height="20"/>
+                        <rect key="frame" x="321" y="74" width="20" height="20"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ding" translatesAutoresizingMaskIntoConstraints="NO" id="LV8-QP-KSk">
-                        <rect key="frame" x="351" y="87" width="20" height="20"/>
+                        <rect key="frame" x="351" y="74" width="20" height="20"/>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -86,7 +86,7 @@
                 <outlet property="regionName" destination="EsO-fM-Ud4" id="eSS-Ke-LIS"/>
                 <outlet property="tuan" destination="3LV-tD-0OY" id="pVC-Rw-GmK"/>
             </connections>
-            <point key="canvasLocation" x="303" y="346.5"/>
+            <point key="canvasLocation" x="303" y="340"/>
         </tableViewCell>
     </objects>
     <resources>

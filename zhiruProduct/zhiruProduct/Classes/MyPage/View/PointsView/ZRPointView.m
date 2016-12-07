@@ -1,15 +1,14 @@
 //
-//  ZRLunchView.m
+//  ZRPointView.m
 //  zhiruProduct
 //
-//  Created by pj on 16/10/14.
+//  Created by pj on 16/12/7.
 //  Copyright © 2016年 Zhiru. All rights reserved.
 //
 
-#import "ZRLunchView.h"
+#import "ZRPointView.h"
 
-@implementation ZRLunchView
-
+@implementation ZRPointView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -51,9 +50,9 @@
         make.left.equalTo(weakSelf).with.offset(15);
         make.top.equalTo(weakSelf).with.offset(0);
         
-        make.size.mas_equalTo(CGSizeMake(75, 40));
-//        make.right.equalTo(weakSelf.contentLabel.mas_left).with.offset(-10);
-//        make.height.mas_equalTo(@40);
+        make.size.mas_equalTo(CGSizeMake(90, 40));
+        //        make.right.equalTo(weakSelf.contentLabel.mas_left).with.offset(-10);
+        //        make.height.mas_equalTo(@40);
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

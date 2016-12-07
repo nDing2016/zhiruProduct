@@ -34,4 +34,9 @@
 - (void)animateWithMinusBtnOff;
 - (IBAction)addBtnClick:(id)sender ;
 - (void)minusBtnClick:(UIButton *)sender;
+
+
+@property (nonatomic, strong) NSMutableArray *productsArr;
+
+
 @end

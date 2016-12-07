@@ -12,6 +12,7 @@
 #import "ZRPointDetailThreeCell.h"
 #import "ZRUserPointsRequest.h"
 #import "ZRPointOrderDetailModel.h"
+#import "ZRStringWithLabel.h"
 @interface ZRPointDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView * tableView;
@@ -63,16 +64,22 @@
 {
     return 1;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 0) {
-//        return 280;
-//    } else if (indexPath.section == 1) {
-//        return 160;
-//    } else {
-//        return 280;
-//    }
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 280;
+    } else if (indexPath.section == 1) {
+        return 160;
+    } else {
+        CGFloat height;
+        if (_modelData.remarks.length == 0) {
+            height = [ZRStringWithLabel returanHeightWithText:@"暂无" width:ScreenWidth - 30 font:[UIFont systemFontOfSize:15]];
+        } else {
+            height = [ZRStringWithLabel returanHeightWithText:_modelData.remarks width:ScreenWidth - 30 font:[UIFont systemFontOfSize:15]];
+        }
+        return height + 40 + 20;
+    }
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 15;
@@ -89,8 +96,9 @@
         static NSString * cellId = @"cellOne";
         ZRPointDetailOneCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
-            NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailOneCell class]) owner:self options:nil];
-            cell = [nib lastObject];
+//            NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailOneCell class]) owner:self options:nil];
+//            cell = [nib lastObject];
+            cell = [[ZRPointDetailOneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         cell.model = _modelData;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -100,8 +108,9 @@
         static NSString * cellId = @"cellTwo";
         ZRPointDetailTwoCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
-            NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailTwoCell class]) owner:self options:nil];
-            cell = [nib lastObject];
+//            NSArray * nib = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([ZRPointDetailTwoCell class]) owner:self options:nil];
+//            cell = [nib lastObject];
+            cell = [[ZRPointDetailTwoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         cell.model = _modelData;
         return cell;
