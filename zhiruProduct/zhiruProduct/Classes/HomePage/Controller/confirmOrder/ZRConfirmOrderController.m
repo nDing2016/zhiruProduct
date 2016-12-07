@@ -911,7 +911,7 @@
                 ws.shuiMoney = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] * 0.05;
                 
                 //总计
-                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] +  _shuiMoney) * _weather];
+                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] +  _shuiMoney) ];
                 [ws.myTableView reloadData];
 
             };
@@ -1135,7 +1135,7 @@ WS(ws)
      
         
     }else{
-            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ) * _weather];
+            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] + _xiaoMoney + _peiMoney + _shuiMoney ) ];
     }
     
     moneyCountLB.font = [UIFont systemFontOfSize:15];

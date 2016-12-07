@@ -162,9 +162,9 @@
     if (timeInt >= 1200)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1210)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     if (timeInt >= 1220)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1230) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1240) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
-    if (timeInt >= 1250) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+    if (timeInt >= 1230)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+    if (timeInt >= 1240)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
+    if (timeInt >= 1250)  { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
     
 //    if (timeInt >= 1230) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
 //    if (timeInt >= 1235) { [arr addObject:@"0"]; } else { [arr addObject:@"1"]; };
