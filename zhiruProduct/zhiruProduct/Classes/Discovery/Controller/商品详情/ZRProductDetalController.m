@@ -170,8 +170,8 @@
 #pragma mark - UIWebViewDelegate methods
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [SVProgressHUD showErrorWithStatus:@"加载失败"];
-    [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
+//    [SVProgressHUD showErrorWithStatus:@"加载失败"];
+//    [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
 }
 
 

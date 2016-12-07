@@ -15,7 +15,7 @@
 
 
 #define CellWidth     (SCREEN_WIDTH-(90*ScreenWidth/375))
-#define CellHeight    (110*ScreenHeight/667)
+#define CellHeight    (130*ScreenHeight/667)
 
 @interface ZRSupermarketHomeCell ()
 
@@ -66,7 +66,7 @@
         
         if ([goodsList.goods_id isEqualToString:_goodsListModel.goods_id]) {
             //显示减号
-            self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+            self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-5-22, 22, 22);
             [self.contentView addSubview:self.minusBtn];
             self.countStr = [NSString stringWithFormat:@"%lu", (unsigned long)productsArr.count];
             isShow = YES;
@@ -114,7 +114,7 @@
 -(UIButton *)addBtn
 {
     if (!_addBtn) {
-       _addBtn = [MyControl createButtonWithFrame:CGRectMake(CellWidth-15-22,CellHeight-10-22,22,22) ImageName:@"supermarket_plus" Target:self Action:@selector(addBtnClick:) Title:nil];
+       _addBtn = [MyControl createButtonWithFrame:CGRectMake(CellWidth-15-22,CellHeight-5-22,22,22) ImageName:@"supermarket_plus" Target:self Action:@selector(addBtnClick:) Title:nil];
               
     }
     return _addBtn;
@@ -254,7 +254,7 @@
         CGSize weightSize = [NSString getSize:[NSString stringWithFormat:@"%@kg",_goodsListModel.weight] strFont:CustomFont(12) maxSize:CGSizeMake(SCREEN_WIDTH, CellHeight)];
        
         
-        [self drawWithStr:[NSString stringWithFormat:@"%@kg",_goodsListModel.weight] Font:CustomFont(12) Color:RGBCOLOR(154, 154, 154) Point:CGPointMake(x+width+x, self.height-5-weightSize.height)];
+        [self drawWithStr:[NSString stringWithFormat:@"%@kg",_goodsListModel.weight] Font:CustomFont(12) Color:RGBCOLOR(154, 154, 154) Point:CGPointMake(x+width+x, self.height-5-weightSize.height-10)];
         
         
         //价格
@@ -271,8 +271,8 @@
             nowPriceY = y+goodsSize.height;
             
         }else{
-            nowPriceSize = [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height)];
-            nowPriceY = self.height-5-weightSize.height-5-sizePrice.height;
+            nowPriceSize = [self drawWithStr:nowPrice Font:[UIFont systemFontOfSize:12] Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(x+width+x, self.height-5-weightSize.height-5-sizePrice.height-10)];
+            nowPriceY = self.height-5-weightSize.height-5-sizePrice.height-10;
         }
         
         if ([_goodsListModel.now_price floatValue] != [_goodsListModel.old_price floatValue]) {
@@ -295,7 +295,7 @@
     [self.contentView addSubview:self.minusBtn];
     //未添加过
     [UIView animateWithDuration:2 animations:^{
-        self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+        self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-5-22, 22, 22);
         
         //NSLog(@"test减号frame＝＝＝＝＝%@",NSStringFromCGRect(self.minusBtn.frame));
         [self.contentView addSubview:self.minusBtn];
@@ -310,7 +310,7 @@
 - (void)deleteAnimation
 {
     [UIView animateWithDuration:1 animations:^{
-        self.minusBtn.frame = CGRectMake(CellWidth-15-22, CellHeight-10-22, 22, 22);
+        self.minusBtn.frame = CGRectMake(CellWidth-15-22, CellHeight-5-22, 22, 22);
         self.countStr = nil;
         [self setNeedsDisplay];
         
