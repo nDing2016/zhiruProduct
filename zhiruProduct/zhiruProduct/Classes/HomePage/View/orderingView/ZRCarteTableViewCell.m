@@ -18,8 +18,6 @@
 
 @property (nonatomic, strong) UIButton *minusBtn;
 
-@property (nonatomic, strong) NSMutableArray *productsArr;
-
 @property (nonatomic , assign) NSInteger count;
 
 @end
@@ -69,15 +67,7 @@
 -(void)setIdxPath:(NSIndexPath *)idxPath
 {
     _idxPath = idxPath;
-//    self.productsArr = [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
-//    if (self.productsArr) {
-//       self.minusBtn.hidden = NO;
-//        
-//    }else{
-//    
-//        self.minusBtn.hidden = YES;
-//    }
-//    [self setNeedsDisplay];
+    //self.productsArr = [ZRSupermarketHomeObj shareInstance].selectedFoodsArray;
     self.countStr = nil;
     __block BOOL isShow = NO;
     WS(ws)
@@ -85,20 +75,20 @@
         NSMutableArray *productsArr = obj;
 //        self.productsArr = productsArr;
         ZROrderingMenuModel *goodsList = productsArr[0];
-        //        if ([productsArr[0] isEqualToArray:indexArr]) {
-        //            //显示减号
-        //            self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
-        //            [self addSubview:self.minusBtn];
-        //            self.countStr = [NSString stringWithFormat:@"%lu", productsArr.count-1];
-        //            isShow = YES;
-        //            *stop = YES;
-        //        }
-//        
+//                if ([productsArr[0] isEqualToArray:indexArr]) {
+//                    //显示减号
+//                    self.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+//                    [self addSubview:self.minusBtn];
+//                    self.countStr = [NSString stringWithFormat:@"%lu", productsArr.count-1];
+//                    isShow = YES;
+//                    *stop = YES;
+//                }
+//
         if ([goodsList.menu_id isEqualToString:_menuModel.menu_id]) {
-            ws.productsArr = productsArr;
+            ws.productsArr = [NSMutableArray arrayWithArray:productsArr];
             
             //显示减号
-            ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame), 22, 22);
+            ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame) + 15, 22, 22);
             [ws.contentView addSubview:ws.minusBtn];
 //            self.count = productsArr.count;
             ws.countStr = [NSString stringWithFormat:@"%lu", (unsigned long)productsArr.count];
