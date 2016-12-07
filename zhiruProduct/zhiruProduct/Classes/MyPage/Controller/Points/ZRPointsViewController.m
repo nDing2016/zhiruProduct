@@ -21,6 +21,7 @@
 #import "ZRExchangeDetailModel.h"
 #import "ZRProductDetalController.h"
 #import "ZRPointsRuleController.h"
+#import "ZRPointDetailController.h"
 @interface ZRPointsViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView * scrollView;
@@ -148,6 +149,8 @@
 - (void)getPointsDataList:(NSString *)page
 {
     [ZRUserPointsRequest personPointsRows:@"6" page:page CallBack:^(NSMutableArray *array) {
+        [self.pointTableView.mj_header endRefreshing];
+        [self.pointTableView.mj_footer endRefreshing];
         if (self.pointsUpLoading == YES) {
             [self.pointsArray removeAllObjects];
         }
@@ -163,8 +166,7 @@
             [self.scrollView setScrollEnabled:YES];
             [self.promptImg setHidden:YES];
         }
-        [self.pointTableView.mj_header endRefreshing];
-        [self.pointTableView.mj_footer endRefreshing];
+        
         [self.pointTableView reloadData];
         [self.headerView.pointLabel setText:model.allPoints];
         
@@ -297,34 +299,46 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.state == 2) {
-        ZRProductDetalController * productVC = [[ZRProductDetalController alloc] init];
-        [self.navigationController pushViewController:productVC animated:YES];
+        ZRExchangAllModel * model = [self.exchangeArray objectAtIndex:indexPath.section];
+        ZRExchangeDetailModel * detailModel = [model.list objectAtIndex:indexPath.row];
+        if (detailModel.orderId.length != 0) {
+            ZRPointDetailController * detailVC = [[ZRPointDetailController alloc] init];
+            detailVC.orderId = detailModel.orderId;
+            [self.navigationController pushViewController:detailVC animated:YES];
+        } else {
+            UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"订单已被您删除" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alertVC addAction:action];
+            [self.navigationController presentViewController:alertVC animated:YES completion:nil];
+        }
     }
 }
 - (void)actionSectionHeaderView:(UIButton *)sender
 {
     [self.promptImg setHidden:YES];
     if (sender.tag == 1000) {
+        _pointTableView.contentOffset = CGPointMake(0, 0);
+        [self.pointTableView.mj_header endRefreshing];
+        
         [self.headerView.sectionHeaderView.pointDetail.titleLabel setTextColor:R_G_B_16(0xffae02)];
         [self.headerView.sectionHeaderView.pointDetail.titleImage setImage:ZRImage(@"wdjfhuang")];
         [self.headerView.sectionHeaderView.pointExchange.titleLabel setTextColor:R_G_B_16(0x555555)];
         [self.headerView.sectionHeaderView.pointExchange.titleImage setImage:ZRImage(@"dhjlhui")];
         self.state = 1;
         [self addHeaderRefresh];
-        [self.pointTableView reloadData];
-//        NSString * page = [NSString stringWithFormat:@"%ld", self.pointsPage];
-//        [self getPointsDataList:page];
     } else if (sender.tag == 2000) {
+        _pointTableView.contentOffset = CGPointMake(0, 0);
+        [self.pointTableView.mj_header endRefreshing];
         [self.headerView.sectionHeaderView.pointDetail.titleLabel setTextColor:R_G_B_16(0x555555)];
         [self.headerView.sectionHeaderView.pointDetail.titleImage setImage:ZRImage(@"wdjfhui")];
         [self.headerView.sectionHeaderView.pointExchange.titleLabel setTextColor:R_G_B_16(0xffae02)];
         [self.headerView.sectionHeaderView.pointExchange.titleImage setImage:ZRImage(@"dhjlhuang")];
         
         self.state = 2;
-//        NSString * page = [NSString stringWithFormat:@"%ld", self.exchangePage];
-//        [self getExchangePointDataList:page];
         [self addHeaderRefresh];
-        [self.pointTableView reloadData];
+//        [self.pointTableView reloadData];
     }
 }
 

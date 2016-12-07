@@ -49,6 +49,7 @@
     [self.merchandiseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf).with.offset(15);
         make.top.equalTo(weakSelf).with.offset(7);
+        make.right.equalTo(weakSelf.pointImage.mas_left).with.offset(-15);
     }];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf).with.offset(15);

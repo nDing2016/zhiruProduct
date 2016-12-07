@@ -9,10 +9,12 @@
 #import "ZRUserPointsRequest.h"
 #import "ZRPointsModel.h"
 #import "ZRExchangeModel.h"
+#import "ZRPointOrderDetailModel.h"
 @implementation ZRUserPointsRequest
 
 static NSString * const personalPoints = @"points/PersonalPoints";
 static NSString * const pointsExchange = @"points/PointsExchange";
+static NSString * const getPointsOrder = @"points/getPointsOrder";
 /**
  * 用户积分列表-积分明细
  * @param rows: 条数
@@ -58,6 +60,24 @@ static NSString * const pointsExchange = @"points/PointsExchange";
     } failure:^(id error) {
         failure(error);
         
+    }];
+}/**
+  * 积分订单详情
+  * @param orderId: 订单Id
+  * @param callBack: 成功
+  * @param failure: 失败
+  */
++ (void)pointDetailOrderId:(NSString *)orderId
+                  CallBack:(void(^)(id result))callBack
+                   Failure:(void(^)(id error))failure
+{
+    NSString * url = [HOST stringByAppendingString:getPointsOrder];
+    NSDictionary * param = @{@"orderId":orderId};
+    [ZRAFNRequests post:url parameters:param success:^(id result) {
+        ZRPointOrderDetailModel * model = [ZRPointOrderDetailModel mj_objectWithKeyValues:result[@"data"]];
+        callBack(model);
+    } failure:^(id error) {
+        failure(error);
     }];
 }
 @end

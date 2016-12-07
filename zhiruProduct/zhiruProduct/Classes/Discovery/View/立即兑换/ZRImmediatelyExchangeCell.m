@@ -70,7 +70,7 @@
     
     if (self.idxPath.section == 0) {     
         //content
-        [self drawWithStr:_addModel.name Font:[UIFont systemFontOfSize:16] Color:[UIColor blackColor] Point:CGPointMake(50, 25)];
+        //CGSize nameSize =[self drawWithStr:_addModel.name Font:[UIFont systemFontOfSize:16] Color:[UIColor blackColor] Point:CGPointMake(50, 25)];
         
         NSString *sex;
         if ([_addModel.gender integerValue] == 0) {
@@ -78,15 +78,21 @@
         }else{
             sex = @"女";
         }
-        [self drawWithStr:sex Font:[UIFont systemFontOfSize:16] Color:[UIColor grayColor] Point:CGPointMake(90, 25)];
+        //[self drawWithStr:sex Font:[UIFont systemFontOfSize:16] Color:[UIColor grayColor] Point:CGPointMake(90, 25)];
         
-        [self drawWithStr:_addModel.phone Font:[UIFont systemFontOfSize:16] Color:[UIColor grayColor] Point:CGPointMake(130, 25)];
+        CGSize phoneSize = [self drawWithStr:_addModel.phone Font:[UIFont systemFontOfSize:16] Color:[UIColor grayColor] Point:CGPointMake(50+50+10, 25)];
+        [self setUpLabelWiteString:_addModel.name AndRect:CGRectMake(50, 25, 50, phoneSize.height)];
+
         
         [self drawWithStr:_addModel.address Font:[UIFont systemFontOfSize:12] Color:[UIColor grayColor] Point:CGPointMake(50, 55) Size:CGSizeMake(SCREEN_WIDTH-100, self.height)];
     }else if (self.idxPath.section == 1){
         CGSize size = [NSString getSize:_addressArr[self.idxPath.row][0] strFont:CustomFont(15) maxSize:CGSizeMake(SCREEN_WIDTH, self.height)];
         CGFloat x = 15*SCREEN_WIDTH/375;
-        [self drawWithStr:_addressArr[self.idxPath.row][0] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, (self.height-size.height)/2)];
+        //[self drawWithStr:_addressArr[self.idxPath.row][0] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, (self.height-size.height)/2)];
+        
+        [self setUpLabelWiteString:_addressArr[self.idxPath.row][0] AndRect:CGRectMake(x, (self.height-size.height)/2, SCREEN_WIDTH*2/3, size.height)];
+        
+        
         if (self.idxPath.row == 1) {
             CGFloat btnWid = 32*SCREEN_WIDTH/375;
             CGFloat btnHei = 28*SCREEN_HEIGHT/667;
@@ -116,6 +122,7 @@
                 [self drawWithStr:self.addressArr[self.idxPath.row][1] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(SCREEN_WIDTH-x-size1.width, (self.height-size1.height)/2)];
             }
             CGFloat w = 18*SCREEN_WIDTH/375;
+            
             [self drawImage:ZRImage(@"jifenyue-81") Rect:CGRectMake(SCREEN_WIDTH-x-size1.width-w-w, (self.height-w)/2, w, w)];
         }
         
@@ -130,6 +137,15 @@
     
     
     
+}
+
+- (void)setUpLabelWiteString:(NSString *)text AndRect:(CGRect)rect
+{
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:rect];
+    textLabel.text = text;
+    textLabel.textColor = RGBCOLOR(85, 85, 85);
+    textLabel.font = CustomFont(15);
+    [self.contentView addSubview:textLabel];
 }
 
 

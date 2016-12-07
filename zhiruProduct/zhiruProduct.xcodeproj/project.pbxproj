@@ -73,6 +73,13 @@
 		2EF57B501D35D6D0004AD05C /* ZRTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB542C71D1B824A0019C34D /* ZRTabBarButton.m */; };
 		2EF57B511D35D6DF004AD05C /* ZRTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB5424F1D1A7F620019C34D /* ZRTabBarViewController.m */; };
 		2EF65B281D992BA90047A4B0 /* ZRPointsRuleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF65B271D992BA90047A4B0 /* ZRPointsRuleController.m */; };
+		2EF6CCB11DF539DC004E7029 /* ZRPointDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6CCB01DF539DC004E7029 /* ZRPointDetailController.m */; };
+		2EF6CD001DF54821004E7029 /* ZRPointDetailOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6CCFE1DF54821004E7029 /* ZRPointDetailOneCell.m */; };
+		2EF6CD011DF54821004E7029 /* ZRPointDetailOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF6CCFF1DF54821004E7029 /* ZRPointDetailOneCell.xib */; };
+		2EF6CD051DF55906004E7029 /* ZRPointDetailTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6CD031DF55906004E7029 /* ZRPointDetailTwoCell.m */; };
+		2EF6CD061DF55906004E7029 /* ZRPointDetailTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF6CD041DF55906004E7029 /* ZRPointDetailTwoCell.xib */; };
+		2EF6CD091DF56687004E7029 /* ZRPointDetailThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6CD081DF56687004E7029 /* ZRPointDetailThreeCell.m */; };
+		2EF6CD0C1DF6AF5C004E7029 /* ZRPointOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6CD0B1DF6AF5C004E7029 /* ZRPointOrderDetailModel.m */; };
 		A3000F581D816BA000C4D62C /* ZRSelectRecieveGoodsAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3000F571D816BA000C4D62C /* ZRSelectRecieveGoodsAddressController.m */; };
 		A3000F5B1D82B2B300C4D62C /* ZRMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3000F5A1D82B2B300C4D62C /* ZRMyLocation.m */; };
 		A3000F5E1D83BB0F00C4D62C /* ZRSelcetAcceptGoodsAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3000F5D1D83BB0F00C4D62C /* ZRSelcetAcceptGoodsAddressCell.m */; };
@@ -613,6 +620,18 @@
 		2EF57B4A1D35D509004AD05C /* ZROrdeingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZROrdeingCell.xib; sourceTree = "<group>"; };
 		2EF65B261D992BA90047A4B0 /* ZRPointsRuleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointsRuleController.h; sourceTree = "<group>"; };
 		2EF65B271D992BA90047A4B0 /* ZRPointsRuleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointsRuleController.m; sourceTree = "<group>"; };
+		2EF6CCAF1DF539DB004E7029 /* ZRPointDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointDetailController.h; sourceTree = "<group>"; };
+		2EF6CCB01DF539DC004E7029 /* ZRPointDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointDetailController.m; sourceTree = "<group>"; };
+		2EF6CCFD1DF54821004E7029 /* ZRPointDetailOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointDetailOneCell.h; sourceTree = "<group>"; };
+		2EF6CCFE1DF54821004E7029 /* ZRPointDetailOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointDetailOneCell.m; sourceTree = "<group>"; };
+		2EF6CCFF1DF54821004E7029 /* ZRPointDetailOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZRPointDetailOneCell.xib; sourceTree = "<group>"; };
+		2EF6CD021DF55906004E7029 /* ZRPointDetailTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointDetailTwoCell.h; sourceTree = "<group>"; };
+		2EF6CD031DF55906004E7029 /* ZRPointDetailTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointDetailTwoCell.m; sourceTree = "<group>"; };
+		2EF6CD041DF55906004E7029 /* ZRPointDetailTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZRPointDetailTwoCell.xib; sourceTree = "<group>"; };
+		2EF6CD071DF56687004E7029 /* ZRPointDetailThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointDetailThreeCell.h; sourceTree = "<group>"; };
+		2EF6CD081DF56687004E7029 /* ZRPointDetailThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointDetailThreeCell.m; sourceTree = "<group>"; };
+		2EF6CD0A1DF6AF5C004E7029 /* ZRPointOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRPointOrderDetailModel.h; sourceTree = "<group>"; };
+		2EF6CD0B1DF6AF5C004E7029 /* ZRPointOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRPointOrderDetailModel.m; sourceTree = "<group>"; };
 		5DD92B5917BE36B7A724ACD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5EB508ED8ADB95154FACBBB8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3000F561D816BA000C4D62C /* ZRSelectRecieveGoodsAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRSelectRecieveGoodsAddressController.h; sourceTree = "<group>"; };
@@ -2029,6 +2048,8 @@
 			children = (
 				A31281EC1D965F3800C286AF /* ZRPointsViewController.h */,
 				A31281ED1D965F3800C286AF /* ZRPointsViewController.m */,
+				2EF6CCAF1DF539DB004E7029 /* ZRPointDetailController.h */,
+				2EF6CCB01DF539DC004E7029 /* ZRPointDetailController.m */,
 				2EF65B261D992BA90047A4B0 /* ZRPointsRuleController.h */,
 				2EF65B271D992BA90047A4B0 /* ZRPointsRuleController.m */,
 			);
@@ -2306,6 +2327,8 @@
 				A31282581D965F3800C286AF /* ZRPointsModel.m */,
 				A31282591D965F3800C286AF /* ZRUserPointsRequest.h */,
 				A312825A1D965F3800C286AF /* ZRUserPointsRequest.m */,
+				2EF6CD0A1DF6AF5C004E7029 /* ZRPointOrderDetailModel.h */,
+				2EF6CD0B1DF6AF5C004E7029 /* ZRPointOrderDetailModel.m */,
 			);
 			path = PointsModel;
 			sourceTree = "<group>";
@@ -2599,6 +2622,14 @@
 				A31282E21D965F3800C286AF /* ZRSectionHeaderDetailView.m */,
 				A31282E31D965F3800C286AF /* ZRSectionHeaderView.h */,
 				A31282E41D965F3800C286AF /* ZRSectionHeaderView.m */,
+				2EF6CCFD1DF54821004E7029 /* ZRPointDetailOneCell.h */,
+				2EF6CCFE1DF54821004E7029 /* ZRPointDetailOneCell.m */,
+				2EF6CCFF1DF54821004E7029 /* ZRPointDetailOneCell.xib */,
+				2EF6CD021DF55906004E7029 /* ZRPointDetailTwoCell.h */,
+				2EF6CD031DF55906004E7029 /* ZRPointDetailTwoCell.m */,
+				2EF6CD041DF55906004E7029 /* ZRPointDetailTwoCell.xib */,
+				2EF6CD071DF56687004E7029 /* ZRPointDetailThreeCell.h */,
+				2EF6CD081DF56687004E7029 /* ZRPointDetailThreeCell.m */,
 				2E3A0DAC1D9B5FCD006DF7AF /* ZRPointsRuleView.h */,
 				2E3A0DAD1D9B5FCD006DF7AF /* ZRPointsRuleView.m */,
 			);
@@ -3783,10 +3814,10 @@
 		BDB5424A1D1A7D5A0019C34D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				2ECD09E01DD1E9A70046440C /* MD5 */,
 				BD5CDBF11DF0101900B6CF68 /* picture */,
 				A3508AC81DE6DF5A00D0FA67 /* 数据存储 */,
 				BD769F911D5C672700F49EDD /* CustomProgress */,
-				2ECD09E01DD1E9A70046440C /* MD5 */,
 				BDDF616C1DC739C1003F22EC /* kaifazhong */,
 				2EAAC5CE1DBF43540027D964 /* KeychainItemWrapper */,
 				BD206B0C1DAE417E00AFA14A /* OrderPicker */,
@@ -4212,6 +4243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF6CD061DF55906004E7029 /* ZRPointDetailTwoCell.xib in Resources */,
 				BD1CA8051D2371570005EF92 /* placeHoder.jpg in Resources */,
 				BD2D92E21DB8C74E009626B3 /* ZROrderRemarksView.xib in Resources */,
 				BD4797481D5471BB00CD4305 /* ico_make.png in Resources */,
@@ -4239,6 +4271,7 @@
 				A310A0C21DD1E27B0081DFCC /* super_AdView2@2x.png in Resources */,
 				A31283611D965F3800C286AF /* letterProvince.plist in Resources */,
 				BD7FCB401D2E2A130098455E /* ZRGroupBuyingCell.xib in Resources */,
+				2EF6CD011DF54821004E7029 /* ZRPointDetailOneCell.xib in Resources */,
 				A3FE5CC51D43082100B6088E /* Star.png in Resources */,
 				BD6C16EE1D961A0F006BFD51 /* ZROrderAddressCell.xib in Resources */,
 				A312832A1D965F3800C286AF /* sortedEnames.plist in Resources */,
@@ -4388,6 +4421,7 @@
 				A31283651D965F3800C286AF /* ZRPointsAllModel.m in Sources */,
 				2EC2A8A61DA7A61F0021B0F0 /* ZRAViewController.m in Sources */,
 				A31283311D965F3800C286AF /* ZRRefundHelpController.m in Sources */,
+				2EF6CD0C1DF6AF5C004E7029 /* ZRPointOrderDetailModel.m in Sources */,
 				2EF57B4F1D35D6BB004AD05C /* ZROrderingController.m in Sources */,
 				A3FE5CBC1D43080F00B6088E /* ZRPostCommentheadView.m in Sources */,
 				2EF57B4D1D35D66A004AD05C /* ZRColletionViewLayout.m in Sources */,
@@ -4465,6 +4499,7 @@
 				A31283741D965F3800C286AF /* ZRAddressTableViewCell.m in Sources */,
 				A30486B11D66DA2800EF3E71 /* ZRGroupBuyDetailsFrame.m in Sources */,
 				A31283551D965F3800C286AF /* ZRRechargeViewController.m in Sources */,
+				2EF6CCB11DF539DC004E7029 /* ZRPointDetailController.m in Sources */,
 				A31283641D965F3800C286AF /* ZRExchangeModel.m in Sources */,
 				BD0197171D7D66CC00EC4A41 /* ZROrderingNavController.m in Sources */,
 				A31283631D965F3800C286AF /* ZRExchangeDetailModel.m in Sources */,
@@ -4550,6 +4585,7 @@
 				A31283511D965F3800C286AF /* ZRUpdatePasswordController.m in Sources */,
 				A312833F1D965F3800C286AF /* ZRShoppingCarController.m in Sources */,
 				A3FBBD821DC0B6BC007C8DF5 /* ZRSuperOrderProcessModel.m in Sources */,
+				2EF6CD001DF54821004E7029 /* ZRPointDetailOneCell.m in Sources */,
 				A3B2AABC1D41C1030089E5E1 /* ZRGroupBuyingDetailsToolView.m in Sources */,
 				2E3A0DBA1D9BBC3C006DF7AF /* ZRVipRuleView.m in Sources */,
 				BDE860E21D2F89AD000D436B /* orderingDetailsHeadView.m in Sources */,
@@ -4608,6 +4644,7 @@
 				A3AC46E41DB89FB600ACC194 /* ZROrderDetailsRequest.m in Sources */,
 				BD0D17E61D3C6BB600AC688A /* ZRProductDetailsController.m in Sources */,
 				A31283341D965F3800C286AF /* ZRMyOrderViewController.m in Sources */,
+				2EF6CD051DF55906004E7029 /* ZRPointDetailTwoCell.m in Sources */,
 				A312837C1D965F3800C286AF /* ZRCaptchaView.m in Sources */,
 				BD08D39A1D6D8BA300CBBBDE /* ZROrderingFootListModel.m in Sources */,
 				BD6C16DA1D93E6D9006BFD51 /* ZRShareView.m in Sources */,
@@ -4711,6 +4748,7 @@
 				A32B24851D33881F00BC6F61 /* ZRAddShoppingCarView.m in Sources */,
 				BDD7A5E61D2BA03700373338 /* ZRGroupBuyingController.m in Sources */,
 				BD6C16E81D961887006BFD51 /* ZRConfirmOrderController.m in Sources */,
+				2EF6CD091DF56687004E7029 /* ZRPointDetailThreeCell.m in Sources */,
 				A36D27581D98ED30004D1A30 /* Order.m in Sources */,
 				A31283351D965F3800C286AF /* ZROrderingOrderViewController.m in Sources */,
 				BDB542531D1A81770019C34D /* ZRNavigationController.m in Sources */,

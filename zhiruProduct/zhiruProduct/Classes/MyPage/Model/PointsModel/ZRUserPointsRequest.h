@@ -29,4 +29,14 @@
                      Page:(NSString *)page
                  CallBack:(void(^)(NSMutableArray * array))callBack
                   Failure:(void(^)(id error))failure;
+
+/**
+ * 积分订单详情
+ * @param orderId: 订单Id
+ * @param callBack: 成功
+ * @param failure: 失败
+ */
++ (void)pointDetailOrderId:(NSString *)orderId
+                  CallBack:(void(^)(id result))callBack
+                   Failure:(void(^)(id error))failure;
 @end

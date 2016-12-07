@@ -334,7 +334,7 @@
     if (tableView == self.categoryTable) {
         return 35*SCREEN_HEIGHT/667;
     }else{
-        return 110*SCREEN_HEIGHT/667;
+        return 130*SCREEN_HEIGHT/667;
     }
 }
 
