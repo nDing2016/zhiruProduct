@@ -46,8 +46,8 @@
     WS(weakSelf);
     [self.titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf).with.offset(15);
-//        make.top.equalTo(weakSelf).with.offset(10);
-        make.centerY.equalTo(weakSelf);
+        make.top.equalTo(weakSelf.contentView).with.offset(10);
+//        make.centerY.equalTo(weakSelf);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     
@@ -63,8 +63,9 @@
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.titleLabel);
-        make.top.equalTo(weakSelf.titleLabel.mas_bottom).with.offset(4);
+        make.top.equalTo(weakSelf.dateLabel.mas_bottom).with.offset(8);
         make.right.equalTo(weakSelf).with.offset(-15);
+        make.bottom.equalTo(weakSelf.contentView).with.offset(-8);
     }];
     
 }
