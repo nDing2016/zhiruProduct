@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502871202.270192"
+            timestampString = "502881057.658803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1610"
-            endingLineNumber = "1610"
+            startingLineNumber = "1613"
+            endingLineNumber = "1613"
             landmarkName = "-createWeateLabei:"
             landmarkType = "5">
          </BreakpointContent>
@@ -91,6 +91,230 @@
             endingLineNumber = "168"
             landmarkName = "-addReloadTable:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881227.413619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRLookForTasteNavController screenToolClick]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881417.110962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "2289">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[ZRLookForTasteNavController screenToolClick]_block_invoke_2106"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881417.111134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881140.777544"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881214.129267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881511.714478"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRLookForTasteNavController screenToolClick]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881511.71709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "1491">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[ZRLookForTasteNavController screenToolClick]_block_invoke_2"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881511.717347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881516.019458"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRLookForTasteNavController screenToolClick]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881516.022202"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[ZRLookForTasteNavController screenToolClick]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881516.022404"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/ lookForTaste/ZRLookForTasteNavController.m"
+            timestampString = "502881516.92425"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-screenToolClick"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZRLookForTasteNavController screenToolClick]"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881516.9268"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[ZRLookForTasteNavController screenToolClick]_block_invoke"
+                  moduleName = "zhiruProduct"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
+                  timestampString = "502881516.927038"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
