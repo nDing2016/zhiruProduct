@@ -90,7 +90,8 @@
             //显示减号
             //ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame) + 15, 22, 22);
             //update by dingnan
-            ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame), 22, 22);
+            ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CellHeight-10-22, 22, 22);
+            
             
             [ws.contentView addSubview:ws.minusBtn];
 //            self.count = productsArr.count;
