@@ -46,6 +46,8 @@
     self.view.backgroundColor = RGBCOLOR(240, 240, 240);
     [self setTitle:@"消息"];
     self.dataArray = [NSMutableArray array];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 80.0;
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self addHeader];
@@ -75,13 +77,13 @@
 {
     return self.dataArray.count;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGFloat width = ScreenWidth - 80;
-    ZRMessageModel * model = [self.dataArray objectAtIndex:indexPath.row];
-    CGFloat height = [ZRStringWithLabel returanHeightWithText:model.content width:width font:[UIFont systemFontOfSize:13]];
-    return height + 45;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CGFloat width = ScreenWidth - 80;
+//    ZRMessageModel * model = [self.dataArray objectAtIndex:indexPath.row];
+//    CGFloat height = [ZRStringWithLabel returanHeightWithText:model.content width:width font:[UIFont systemFontOfSize:13]];
+//    return height + 45;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * cellID = @"cell";

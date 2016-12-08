@@ -86,6 +86,7 @@
         //显示大图
         self.wucanImg.hidden = NO;
         self.wucanImg.image = [UIImage imageNamed:@"wucan_tu"];
+        self.wucanImg.contentMode = UIViewContentModeScaleAspectFill;
     }else{
         _startPrice.hidden = NO;
         _distributionPrice.hidden = NO;
