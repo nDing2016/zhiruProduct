@@ -90,18 +90,13 @@
             //显示减号
             //ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame) + 15, 22, 22);
             //update by dingnan
-            //ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(ws.addBtn.frame), 22, 22);
+
             [ws.contentView addSubview:ws.minusBtn];
             [ws.minusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.equalTo(@22);
-                make.height.equalTo(@22);
-                make.centerX.equalTo(ws.addBtn.mas_centerX).width.offset(52);
-                make.centerY.equalTo(@(ws.addBtn.centerY));
-                
-            }];
-            
-            
-            
+                    make.centerY.equalTo(ws.addBtn.mas_centerY);
+                    make.right.equalTo(ws.addBtn.mas_left).offset(-30);
+                }];
+
 //            self.count = productsArr.count;
             ws.countStr = [NSString stringWithFormat:@"%lu", (unsigned long)productsArr.count];
             isShow = YES;

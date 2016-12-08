@@ -36,12 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/View/orderingView/ZRCarteTableViewCell.m"
-            timestampString = "502873159.080553"
+            timestampString = "502873955.476212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-minusBtnClick:"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-setIdxPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -52,12 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/View/orderingView/ZRCarteTableViewCell.m"
-            timestampString = "502873159.080553"
+            timestampString = "502873955.476212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-addBtnClick:"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-minusBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
