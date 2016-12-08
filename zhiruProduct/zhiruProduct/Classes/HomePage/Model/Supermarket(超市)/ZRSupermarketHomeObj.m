@@ -127,17 +127,34 @@
 //替换某行的内容
 -(void)replaceProducts:(NSMutableArray *)products withObject:(NSObject *)object
 {
-    __block NSUInteger index;
-    NSLog(@"%@",self.selectedFoodsArray);
-    [self.selectedFoodsArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    
+   
+    
+    __block NSInteger index;
+//    NSLog(@"%@",self.selectedFoodsArray);
+    
+//    for (NSArray *arr in self.selectedFoodsArray) {
+//        if ([arr[0] isEqual:object]) {
+//            index = [self.selectedFoodsArray indexOfObject:arr];
+//            [self.selectedFoodsArray replaceObjectAtIndex:index withObject:products];
+//            
+//        }
+//    }
+    
+    NSMutableArray *tmpArr = [NSMutableArray arrayWithArray:self.selectedFoodsArray];
+    
+    [tmpArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSArray *arr = obj;
-        if ([arr[0] isEqual:object]) {
+        ZROrderingMenuModel *model = arr[0];
+        ZROrderingMenuModel *objectModel = (ZROrderingMenuModel *)object;
+        if ([model.menu_id isEqualToString:objectModel.menu_id]) {
             index = idx;
-            
+            [self.selectedFoodsArray replaceObjectAtIndex:index withObject:products];
+            *stop = YES;
         }
     }];
     
-    [self.selectedFoodsArray replaceObjectAtIndex:index withObject:products];
+   
    
     
 }
