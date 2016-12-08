@@ -119,7 +119,10 @@
                 
                 [self drawWithStr:self.addressArr[self.idxPath.row][1] Font:CustomFont(15) Color:RGBCOLOR(255, 82, 82) Point:CGPointMake(SCREEN_WIDTH-x-size1.width, (self.height-size1.height)/2)];
             }else{
-                [self drawWithStr:self.addressArr[self.idxPath.row][1] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(SCREEN_WIDTH-x-size1.width, (self.height-size1.height)/2)];
+                if (self.idxPath.row != 0) {
+                     [self drawWithStr:self.addressArr[self.idxPath.row][1] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(SCREEN_WIDTH-x-size1.width, (self.height-size1.height)/2)];
+                }
+               
             }
             CGFloat w = 18*SCREEN_WIDTH/375;
             
