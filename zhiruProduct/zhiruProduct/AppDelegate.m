@@ -144,10 +144,6 @@ static BOOL isProduction = FALSE;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
    
     [IQKeyboardManager sharedManager].enable = YES; // 控制全局键盘遮盖问题,如不想使用 可在具体控制器内 设置为 no
-
-    
-   
-    
     
     
     return YES;

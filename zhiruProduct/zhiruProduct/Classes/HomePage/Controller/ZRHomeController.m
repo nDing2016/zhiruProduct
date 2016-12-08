@@ -335,7 +335,6 @@
             {
                 ZROrderingDetailsController * detailsVC = [[ZROrderingDetailsController alloc] init];
                 detailsVC.isLunch = YES;
-                detailsVC.title = @"学生午餐";
                  [CustomHudView dismiss];
                 [self.navigationController  pushViewController:detailsVC animated:YES];
 
@@ -388,12 +387,12 @@
     }
     
     //上线注释
-    ZRUserAddress * address = [ZRUserAddress sharedInstance];
-    address.Longitude = @"103";
-    address.Latitude = @"26";
-
-    _longitude = address.Longitude;
-    _latitude = address.Latitude;
+//    ZRUserAddress * address = [ZRUserAddress sharedInstance];
+//    address.Longitude = @"103";
+//    address.Latitude = @"26";
+//
+//    _longitude = address.Longitude;
+//    _latitude = address.Latitude;
 
     
     //等model
@@ -449,7 +448,7 @@
     //    _latitude = noti.userInfo[@"latitude"];
     //
     //    [self.homeTableView reloadData];
-    if (![noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
+    if ([noti.userInfo[@"longitude"] isEqualToString:@"0"]) {
         //取不到坐标
         ZRErrorController * errorVC = [[ZRErrorController alloc] init];
         

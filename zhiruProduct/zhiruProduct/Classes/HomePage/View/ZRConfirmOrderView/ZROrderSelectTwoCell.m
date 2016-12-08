@@ -22,7 +22,7 @@
     if (_isSpecialWeather) {
 
         _titleText.text = [NSString stringWithFormat:@"重量费(总重约:%.2lf kg)",_allWeight];
-         _SubtitleText.text = [NSString stringWithFormat:@"$%@(因特殊天气包含额外费用)",weightMoney];
+         _SubtitleText.text = [NSString stringWithFormat:@"$%@",weightMoney];
     }else{
 
         _titleText.text = [NSString stringWithFormat:@"重量费(总重约:%.2lf kg)",_allWeight];
