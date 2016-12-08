@@ -224,7 +224,7 @@
             if ([message isEqualToString:@"success"]) {
                 [AlertText showAndText:@"删除成功"];
                 [ws.array removeObjectAtIndex:indexPath.row];
-                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+//                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
                 [tableView reloadData];
             } else {
                 [AlertText showAndText:@"删除失败"];
