@@ -1490,6 +1490,7 @@ WS(ws)
 
 
 - (CGFloat)getWeight :(CGFloat)weight{
+    
     CGFloat moneyCount = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount];
     if (moneyCount < 30) {
         return [self heixinShangjia:weight];
