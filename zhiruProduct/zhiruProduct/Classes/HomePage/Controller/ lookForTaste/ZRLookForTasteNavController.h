@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Zhiru. All rights reserved.
 //
 typedef enum : NSUInteger {
+    xunwen,
     liren ,
     yule ,
     

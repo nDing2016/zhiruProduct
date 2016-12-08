@@ -1258,19 +1258,21 @@ WS(ws)
             
             
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
-            
+            _querenBtn.userInteractionEnabled = YES;
             return  ;
         }else if(self.userIphone == nil){
-            
+            _querenBtn.userInteractionEnabled = YES;
             [SVProgressHUD showErrorWithStatus:@"请输入用户电话"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             return ;
         }else if(_lunchSelectBtn.selected == NO){
+            _querenBtn.userInteractionEnabled = YES;
             [SVProgressHUD showErrorWithStatus:@"请选择取餐地址"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             
             return;
         }else if([_songdaDict[@"取餐时间"] isEqualToString:@"请选择取餐时间"]){
+            _querenBtn.userInteractionEnabled = YES;
             [SVProgressHUD showErrorWithStatus:@"请选择取餐时间"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:0.5];
             return;
@@ -1281,6 +1283,7 @@ WS(ws)
     
     if (_orderType == Supermarket) {
         if (_addressModel == nil) {
+            _querenBtn.userInteractionEnabled = YES;
             [SVProgressHUD showErrorWithStatus:@"请添加地址"];
             [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1];
             return; 

@@ -781,11 +781,12 @@
             //NSLog(@"loadNewData"); 
             [ws setUpButtons];
             [ws.homeTableView reloadData];
+            ws.homeTableView.contentOffset = CGPointMake(0, 0);
         }];
 
         [CustomHudView dismiss];
         [self.homeTableView reloadData];
-
+        
        
     } andFailure:^(id error) {
         //NSLog(@"%@",error);

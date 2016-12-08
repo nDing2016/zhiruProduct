@@ -98,8 +98,9 @@
     
     ZRUserAddress * address = [ZRUserAddress sharedInstance];
     
+    NSLog(@"______________%ld",_type);
     WS(ws)
-    if (_type == 0) {
+    if (_type == 1) {
         //丽人  requestGetLiRenListWithLongitude
         
         [ZRHomePageRequst requestGetLiRenListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
@@ -114,7 +115,7 @@
             
         }];
 
-    } else if(_type == 1){
+    } else if(_type == 2){
         //yule  requestGetYuLeListWithLongitude
         [ZRHomePageRequst requestGetYuLeListWithLongitude:address.Longitude andLatitude:address.Latitude andRegionId:region.region_id andCity:@""  andLabel:label.nav_id andSort:sort andScreen:screen andRows:[NSString stringWithFormat:@"%d",ZRRows]  andPage:@"1" andSuccess:^(id success) {
             [ws.array removeAllObjects];
