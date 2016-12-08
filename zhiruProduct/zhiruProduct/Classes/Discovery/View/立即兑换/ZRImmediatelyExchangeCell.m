@@ -90,7 +90,7 @@
         CGFloat x = 15*SCREEN_WIDTH/375;
         //[self drawWithStr:_addressArr[self.idxPath.row][0] Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, (self.height-size.height)/2)];
         
-        [self setUpLabelWiteString:_addressArr[self.idxPath.row][0] AndRect:CGRectMake(x, (self.height-size.height)/2, SCREEN_WIDTH*2/3, size.height)];
+        [self setUpLabelWiteString:_addressArr[self.idxPath.row][0] AndRect:CGRectMake(x, (self.height-size.height)/2, SCREEN_WIDTH-2*x, size.height)];
         
         
         if (self.idxPath.row == 1) {
