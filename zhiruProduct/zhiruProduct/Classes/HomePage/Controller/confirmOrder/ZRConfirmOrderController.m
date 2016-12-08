@@ -100,6 +100,12 @@
     
 }
 
+
+//-(void)setWeather:(CGFloat)weather{
+//    _weather = 1.5;
+//    
+//}
+
 - (void)setBusinessMsg:(ZROrderingBusinessMsgModel *)businessMsg{
     _businessMsg = businessMsg;
     
@@ -209,9 +215,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     if (_orderType == Supermarket ) {
-         _sectionCount = 6;
-        return 6;
         
+        if (_weather != 1) {
+            _sectionCount = 7;
+            return 7;
+        }else{
+            _sectionCount = 6;
+            return 6;
+        }
+
     }
     else if(_orderType == lunchOrdering){
         _sectionCount = 6;
@@ -252,6 +264,21 @@
             return 1;
         }
     }
+    if (_orderType == Supermarket && _sectionCount ==7) {
+        if (section == 0) {
+            return 1;
+        }else if(section == 1){
+            return 1;
+        }else if(section == 2){
+            return 1;
+        }else if(section == 3){
+            return 1;
+        }else if (section == 4){
+            return 1;
+        }else{
+            return 1;
+        }
+    }
     
     if (_orderType == lunchOrdering && _sectionCount == 6) {
         if (section == 0) {
@@ -263,6 +290,8 @@
         }else if (section == 3){
             return 2;
         }else if(section == 4){
+            return 1;
+        }else if(section == 5){
             return 1;
         }else{
             return 1;
@@ -412,7 +441,7 @@
                 ws.peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] andWeight:_allWeight andSpecialWeather:_weather];
                 
                 //总计
-                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice  + ws.peiMoney + ws.shuiMoney + ws.weightMoney) * _weather];
+                ws.moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice  + ws.peiMoney + ws.shuiMoney + ws.weightMoney) ];
                 
                 NSLog(@"%lf",[ZRSupermarketHomeObj shareInstance].allPrice);
                 
@@ -483,7 +512,7 @@
             return cell;
         }
         
-        else{
+        else if(indexPath.section == 5){
             
             if (!_isWeight) {
                 UINib * nib = [UINib nibWithNibName:NSStringFromClass([ZROrderSelectTwoCell class]) bundle:nil];
@@ -493,8 +522,8 @@
             
             ZROrderSelectTwoCell * cell = [tableView dequeueReusableCellWithIdentifier:wightCell];
             if (_weather != 1.0) {
-//                cell.isSpecialWeather = YES;
-                [self createWeateLabei:cell];
+                cell.isSpecialWeather = YES;
+//                [self createWeateLabei:cell];
             }else{
                 cell.isSpecialWeather = NO;
             }
@@ -505,6 +534,19 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             
+        }
+        else{
+            NSString * tianqicell = @"tianqishuoming";
+            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:shuiCell];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:tianqicell];
+            }
+            cell.textLabel.text = [NSString stringWithFormat:@"因特殊天气包含额外费用(x%.1f)",_weather];
+            cell.textLabel.font = [UIFont systemFontOfSize:12];
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            return cell;
         }
     }
     
@@ -1005,8 +1047,17 @@
             
             [self.navigationController pushViewController:explainVC animated:YES];
         }
+   
     }
-    
+    if (_orderType == Supermarket && _sectionCount ==7){
+         if(indexPath.section == 6){
+            ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+            explainVC.type = 2;
+            explainVC.title = @"天气系数说明";
+            
+            [self.navigationController pushViewController:explainVC animated:YES];
+        }
+    }
     if (_orderType == lunchOrdering && _sectionCount == 6) {
         //午餐
         if (indexPath.section == 1&& indexPath.row == 1) {
@@ -1131,7 +1182,7 @@ WS(ws)
     _moneyCountLB = moneyCountLB;
     
     if (_orderType == Supermarket) {
-            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney ) * _weather];
+            moneyCountLB.text = [NSString stringWithFormat:@"总计: $%.2f",([ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney ) ];
      
         
     }else{
@@ -1199,6 +1250,7 @@ WS(ws)
 #pragma mark -- 点击确认订单
 - (void)confirmBtnClick{
     //NSLog(@"%@",self.userName);
+    _querenBtn.userInteractionEnabled = NO;
     
     if (_orderType == lunchOrdering) {
         if (self.userName == nil) {
@@ -1269,7 +1321,7 @@ WS(ws)
         [SVProgressHUD show];
         
         [ZRHomePageRequst requestForAddLunchOrderWithSendTime:sendTime Price:price Taxation:taxation CanadianDollar:total ReceiptAddress:receiptAddress PersonName:personName PersonPhone:personPhone TakeMealName:takeMealName TakeMealPhone:takeMealPhone PayMethod:payMethod Remarks:remarks LunchOrderGoods:LunchOrderGoods CallBack:^(id details, NSError *error) {
-            
+            ws.querenBtn.userInteractionEnabled = YES;
             [SVProgressHUD dismiss];
             
             if (details) {
@@ -1363,6 +1415,7 @@ WS(ws)
             
             [ZRUserShoppingCarRequest shoppingCartAddKaOrderKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weightMoney] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney] CanadianDollar:[NSString stringWithFormat:@"%.2f", total] TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone  andWeight : [NSString stringWithFormat:@"%.3f",allWeight]  Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr CallBack:^(id success) {
                 [SVProgressHUD dismiss];
+                ws.querenBtn.userInteractionEnabled = YES;
                 NSDictionary * dict = success;
                 if ([dict[@"code"] isEqualToString:@"S000"]) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];
@@ -1379,6 +1432,7 @@ WS(ws)
                     
                     
                 } else {
+
                     [AlertText showAndText:@"确认订单失败"];
                 }
 
@@ -1392,11 +1446,13 @@ WS(ws)
 
                 
             } Filure:^(id error) {
+                ws.querenBtn.userInteractionEnabled = YES;
                 [SVProgressHUD dismiss];
                 [AlertText showAndText:@"确认订单失败"];
             }];
         } else {
             [ZRSupermarketRequest requestAddKaOrderWithKaId:self.supermarketHomeModel.kaId KaName:self.supermarketHomeModel.kaName RoomTips:[NSString stringWithFormat:@"%.2f" ,_weightMoney] SendPrice:[NSString stringWithFormat:@"%.2f",_peiMoney] Taxation:[NSString stringWithFormat:@"%.2f",_shuiMoney]  CanadianDollar:[NSString stringWithFormat:@"%.2f",[ZRSupermarketHomeObj shareInstance].allPrice + _peiMoney + _shuiMoney + _weightMoney] Remarks:_beizhuDict[@"订单备注"] ReceiptAddress:_addressModel.address KaOrderGoods:kaOrderGoodsArr TakeMealName:_addressModel.name TakeMealPhone:_addressModel.phone Weight:[NSString stringWithFormat:@"%.3f",[self getAllGoodsWeight]] Callback:^(id details, NSError *error) {
+                ws.querenBtn.userInteractionEnabled = YES;
                 [SVProgressHUD dismiss];
                 if (details) {
                     [ws.navigationController pushViewController:paymentOrderVC animated:YES];
@@ -1409,7 +1465,7 @@ WS(ws)
                     [ZRSupermarketHomeObj shareInstance].allProductsArray = nil;
                     [ZRSupermarketHomeObj shareInstance].allPrice = 0;
                     [ZRSupermarketHomeObj shareInstance].allNumber = 0;
-                    
+
                 }
             }];
         }
@@ -1490,44 +1546,45 @@ WS(ws)
 
 
 - (CGFloat)getWeight :(CGFloat)weight{
-    CGFloat moneyCount = [[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount];
+    
+    CGFloat moneyCount = [ZRSupermarketHomeObj shareInstance].allPrice;
     if (moneyCount < 30) {
         return [self heixinShangjia:weight];
     }else if (moneyCount >= 30 && moneyCount < 60){
         if ([self heixinShangjia:weight] - 3 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 3;
+            return ([self heixinShangjia:weight] - 3) * _weather ;
         }
     }else if (moneyCount >= 60 && moneyCount < 90){
         if ([self heixinShangjia:weight] - 6 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 6;
+            return ([self heixinShangjia:weight] - 6) * _weather;
         }
     }else if(moneyCount >= 90 && moneyCount < 120){
         if ([self heixinShangjia:weight] - 9 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 9;
+            return ([self heixinShangjia:weight] - 9) * _weather;
         }
     }else if (moneyCount>= 120 && moneyCount < 150){
         if ([self heixinShangjia:weight] - 12 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 12;
+            return ([self heixinShangjia:weight] - 12) * _weather;
         }
     }else if (moneyCount>= 150 && moneyCount < 180){
         if ([self heixinShangjia:weight] - 15 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 15;
+            return ([self heixinShangjia:weight] - 15) * _weather;
         }
     }else{
         if ([self heixinShangjia:weight] - 18 <= 0) {
             return 0;
         }else{
-            return [self heixinShangjia:weight] - 18;
+            return ([self heixinShangjia:weight] - 18) * _weather;
         }
     }
 }
@@ -1539,6 +1596,7 @@ WS(ws)
     lab.text = [NSString stringWithFormat:@"因特殊天气包含额外费用(x%.1f)",_weather];
     lab.textColor = [UIColor grayColor];
     lab.font = [UIFont systemFontOfSize:12];
+    lab.numberOfLines = 0;
     [self.view addSubview:lab];
     
     WS(ws)
@@ -1547,6 +1605,26 @@ WS(ws)
         make.left.equalTo(ws.view.mas_left).offset(15);
         make.right.equalTo(ws.view.mas_right);
     }];
+    
+    UIButton * btn = [UIButton new];
+    [btn setImage:[UIImage imageNamed:@"wenhao_hong"] forState:UIControlStateNormal];
+    [btn sizeToFit];
+    [btn addTarget:self action:@selector(wenhaoBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+         make.left.equalTo(ws.view.mas_left).offset(15);
+        make.bottom.equalTo(lab.mas_top).offset(10);
+    }];
+    
+}
+
+- (void)wenhaoBtnClick{
+    ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+    explainVC.type = 2;
+    explainVC.title = @"天气系数说明";
+    
+    [self.navigationController pushViewController:explainVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

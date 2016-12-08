@@ -88,8 +88,15 @@
             ws.productsArr = [NSMutableArray arrayWithArray:productsArr];
             
             //显示减号
-            ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame) + 15, 22, 22);
+            //ws.minusBtn.frame = CGRectMake(CellWidth-15-22-30-22, CGRectGetMinY(self.addBtn.frame) + 15, 22, 22);
+            //update by dingnan
+
             [ws.contentView addSubview:ws.minusBtn];
+            [ws.minusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerY.equalTo(ws.addBtn.mas_centerY);
+                    make.right.equalTo(ws.addBtn.mas_left).offset(-30);
+                }];
+
 //            self.count = productsArr.count;
             ws.countStr = [NSString stringWithFormat:@"%lu", (unsigned long)productsArr.count];
             isShow = YES;
@@ -226,7 +233,7 @@
     WS(ws)
     [UIView animateWithDuration:1 animations:^{
 //        self.minusBtn.frame = CGRectMake(CGRectGetMinX(self.addBtn.frame), CGRectGetMinY(self.addBtn.frame), self.addBtn.width, self.addBtn.height);
-        ws.minusBtn.frame = CGRectMake(CellWidth-15-22, CellHeight-10-22, 22, 22);
+        ws.minusBtn.frame = CGRectMake(CellWidth-15-22, CGRectGetMinY(self.addBtn.frame), 22, 22);
         ws.productsArr = nil;
         [self setNeedsDisplay];
         
