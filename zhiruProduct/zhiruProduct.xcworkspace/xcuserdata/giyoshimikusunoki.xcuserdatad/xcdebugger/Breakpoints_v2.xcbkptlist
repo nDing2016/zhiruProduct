@@ -35,22 +35,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/View/orderingView/ZRCarteTableViewCell.m"
-            timestampString = "502790870.450984"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "-addBtnClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/View/Supermarket(&#x8d85;&#x5e02;)/ZRShoppingCarCell.m"
             timestampString = "502789771.209717"
             startingColumnNumber = "9223372036854775807"
@@ -83,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/HomePage/View/orderingView/ZRCarteTableViewCell.m"
-            timestampString = "502790870.450984"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+            timestampString = "502871202.270192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-addBtnClick:"
+            startingLineNumber = "1610"
+            endingLineNumber = "1610"
+            landmarkName = "-createWeateLabei:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

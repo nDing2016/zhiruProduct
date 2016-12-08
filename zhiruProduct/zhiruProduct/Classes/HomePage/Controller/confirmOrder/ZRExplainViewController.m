@@ -28,7 +28,9 @@
         case 1://重量费说明
             mainView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weight illustrate"]];
             break;
-            
+        case 2://天气系数说明
+            mainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"weather illustrate"]];
+            break;
         default:
             mainView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"deliver illustrate"]];
             break;
