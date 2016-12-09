@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
-            timestampString = "502881057.658803"
+            timestampString = "502945302.305475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1613"
-            endingLineNumber = "1613"
+            startingLineNumber = "1650"
+            endingLineNumber = "1650"
             landmarkName = "-createWeateLabei:"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,7 +116,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.07901"
+                  timestampString = "502951824.971986"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -131,7 +131,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.079254"
+                  timestampString = "502951824.972209"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -196,7 +196,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.08253"
+                  timestampString = "502951824.975348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -211,7 +211,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.082716"
+                  timestampString = "502951824.975542"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -244,7 +244,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.08365"
+                  timestampString = "502951824.976563"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -259,7 +259,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.083826"
+                  timestampString = "502951824.97673"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -292,7 +292,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.084938"
+                  timestampString = "502951824.977717"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -307,7 +307,7 @@
                   moduleName = "zhiruProduct"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/giyoshimikusunoki/works/zr/zhiruProduct/zhiruProduct/zhiruProduct/Classes/HomePage/Controller/%20lookForTaste/ZRLookForTasteNavController.m"
-                  timestampString = "502881827.085153"
+                  timestampString = "502951824.97798"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -315,6 +315,38 @@
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+            timestampString = "502884124.299486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zhiruProduct/Classes/HomePage/Controller/confirmOrder/ZRConfirmOrderController.m"
+            timestampString = "502945496.352256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
