@@ -435,7 +435,7 @@
                     ZRSupermarketGoodsListModel *superGoodsListModel = arr[0];
                     ws.allWeight += ([superGoodsListModel.weight floatValue] ) * arr.count;
                 }
-                ws.weightMoney = [ws getWeight:ws.allWeight];
+                ws.weightMoney = [ws getWeight:ws.allWeight] * _weather;
                 
                 //配送
                 ws.peiMoney  = [self getSupermarketDataWithDistance:[self.distanceStr floatValue] andWeight:_allWeight andSpecialWeather:_weather];
@@ -527,7 +527,7 @@
             }else{
                 cell.isSpecialWeather = NO;
             }
-            _weightMoney = [self getWeight:[self getAllGoodsWeight]];
+            _weightMoney = [self getWeight:[self getAllGoodsWeight]] * _weather;
             cell.allWeight = _allWeight;
             cell.weightMoney = [NSString stringWithFormat:@"%.2f",_weightMoney] ;
             
@@ -1050,6 +1050,43 @@
    
     }
     if (_orderType == Supermarket && _sectionCount ==7){
+        
+        if (indexPath.section == 0 && indexPath.row == 0  ) {
+            ZRSelectAddressController * VC = [[ZRSelectAddressController alloc] init];
+            VC.delegate = self;
+            [self.navigationController pushViewController:VC animated:YES];
+        }
+        else if(indexPath.section == 1 && indexPath.row == 0){
+            ZROrderRemarksView * remarksView = [[ZROrderRemarksView alloc] init];
+            //                NSString * selectRemarksCell = @"selectRemarksCell";
+            
+            [remarksView show];
+            WS(ws)
+            remarksView.userClickQueding = ^(NSString * userText){
+                
+                
+                if (userText.length==0) {
+                    _beizhuDict = @{@"订单备注":@"对本次交易的说明"};
+                }else{
+                    _beizhuDict = @{@"订单备注":userText};
+                }
+                
+                
+                
+                [ws.myTableView reloadData];
+            };
+        }
+        else if(indexPath.section == 5){
+            //重量说明
+            ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
+            explainVC.type = 1;
+            explainVC.title = @"重量费说明";
+            
+            [self.navigationController pushViewController:explainVC animated:YES];
+        }
+        
+        //,,,,,,,,,,,,,,,,,,,shangmian  na xia lai
+        
          if(indexPath.section == 6){
             ZRExplainViewController * explainVC = [[ZRExplainViewController alloc] init];
             explainVC.type = 2;
@@ -1557,37 +1594,37 @@ WS(ws)
         if ([self heixinShangjia:weight] - 3 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 3) * _weather ;
+            return ([self heixinShangjia:weight] - 3) ;
         }
     }else if (moneyCount >= 60 && moneyCount < 90){
         if ([self heixinShangjia:weight] - 6 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 6) * _weather;
+            return ([self heixinShangjia:weight] - 6);
         }
     }else if(moneyCount >= 90 && moneyCount < 120){
         if ([self heixinShangjia:weight] - 9 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 9) * _weather;
+            return ([self heixinShangjia:weight] - 9);
         }
     }else if (moneyCount>= 120 && moneyCount < 150){
         if ([self heixinShangjia:weight] - 12 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 12) * _weather;
+            return ([self heixinShangjia:weight] - 12);
         }
     }else if (moneyCount>= 150 && moneyCount < 180){
         if ([self heixinShangjia:weight] - 15 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 15) * _weather;
+            return ([self heixinShangjia:weight] - 15);
         }
     }else{
         if ([self heixinShangjia:weight] - 18 <= 0) {
             return 0;
         }else{
-            return ([self heixinShangjia:weight] - 18) * _weather;
+            return ([self heixinShangjia:weight] - 18);
         }
     }
 }
