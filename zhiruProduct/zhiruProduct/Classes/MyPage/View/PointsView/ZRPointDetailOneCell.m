@@ -61,7 +61,7 @@
     } else if ([_model.status isEqualToString:@"1"]) {
         [self.orderState.contentLabel setText:@"已完成"];
     }
-    [self.orderTime.contentLabel setText:_model.create_date];
+    [self.orderTime.contentLabel setText:_model.create_time];
     [self.orderPoint.contentLabel setText:_model.points];
     [self.orderNum.contentLabel setText:_model.num];
 }

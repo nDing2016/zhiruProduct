@@ -1190,11 +1190,14 @@
     addModel.address = model.address;
     _addressModel = addModel;
 WS(ws)
+    [CustomHudView show];
      [ZRSupermarketRequest requestGetDustabceWithLongitudeOne:_longitude andLatitudeOne:_latitude andLongitudeTwo:model.longitude andLatitudeTwo:model.latitude andSuccess:^(id success) {
+         [CustomHudView dismiss];
          ws.distanceStr = success;
         
          [ws.myTableView reloadData];
      } andFailure:^(id error) {
+         [CustomHudView dismiss];
          [SVProgressHUD showErrorWithStatus:@"定位失败,距离计算可能存在误差"];
          [ws.myTableView reloadData];
      }];
@@ -1547,19 +1550,19 @@ WS(ws)
 // ---- 超市配送费  重量单位为千克kg
 
 - (CGFloat)getSupermarketDataWithDistance:(CGFloat)distance andWeight:(CGFloat)weight andSpecialWeather : (CGFloat)weather{
-    CGFloat weightMoney = [self getWeight:weight ];
+//    CGFloat weightMoney = [self getWeight:weight ];
     CGFloat shouxuMoney = [ZRSupermarketHomeObj shareInstance].allPrice * 0.05;
     //配送费
     if (distance < 5000) {
 
 
-        return (3 + shouxuMoney + weightMoney) * weather ;
+        return (3 + shouxuMoney ) * weather ;
         
     }else if (distance >= 5000 && distance < 10000){
         CGFloat numb = (distance - 5000)/1000;
 
 
-       return ([self heixinShangjia:numb] + 3 +shouxuMoney + weightMoney)*weather ;
+       return ([self heixinShangjia:numb] + 3 +shouxuMoney )*weather ;
     }else{
 
         return 0;

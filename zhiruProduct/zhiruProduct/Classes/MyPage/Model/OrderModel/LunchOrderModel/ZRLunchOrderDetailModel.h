@@ -29,7 +29,7 @@
 // 取餐人电话
 @property (nonatomic, copy)NSString * take_meal_phone;
 // 订单创建时间
-@property (nonatomic, copy)NSString * create_date;
+@property (nonatomic, copy)NSString * create_time;
 // 订单号
 @property (nonatomic, copy)NSString * order_id;
 // 税

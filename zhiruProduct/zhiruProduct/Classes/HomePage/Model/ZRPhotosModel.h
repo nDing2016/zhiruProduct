@@ -12,6 +12,6 @@
 
 @property (nonatomic, copy)NSString * img_url;
 @property (nonatomic, copy)NSString * describe;
-@property (nonatomic, copy)NSString * create_date;
+@property (nonatomic, copy)NSString * create_time;
 
 @end

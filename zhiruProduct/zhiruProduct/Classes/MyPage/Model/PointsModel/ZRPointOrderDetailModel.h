@@ -26,7 +26,7 @@
 // 状态    1是被删除
 @property (nonatomic, copy)NSString * state;
 // 创建时间
-@property (nonatomic ,copy)NSString * create_date;
+@property (nonatomic ,copy)NSString * create_time;
 // 订单号
 @property (nonatomic, copy)NSString * order_id;
 // 收货人电话
