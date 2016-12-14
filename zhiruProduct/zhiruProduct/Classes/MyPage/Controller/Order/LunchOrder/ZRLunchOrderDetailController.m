@@ -183,7 +183,7 @@
         [cell.phone.contentLabel setText:_dataModel.take_meal_phone];
         [cell.address.contentLabel setText:_dataModel.receipt_address];
         [cell.pay.contentLabel setText:_dataModel.pay_method];
-        [cell.timer1.contentLabel setText:_dataModel.create_date];
+        [cell.timer1.contentLabel setText:_dataModel.create_time];
         [cell.timer2.contentLabel setText:[_dataModel.send_time stringByReplacingOccurrencesOfString:@"," withString:@" "]];
         return cell;
     }

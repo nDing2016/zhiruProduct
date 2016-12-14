@@ -73,7 +73,9 @@
 }
 - (void)getAddress
 {
+    [CustomHudView show];
     [ZRUserInterfaceModel getUserAddressCallBack:^(NSArray *result, NSString *isLoginStr, NSString *code) {
+        [CustomHudView dismiss];
         [self.dataArray removeAllObjects];
         for (NSDictionary * dic in result) {
             ZRUserAddressModel * model = [ZRUserAddressModel userWithDict:dic];

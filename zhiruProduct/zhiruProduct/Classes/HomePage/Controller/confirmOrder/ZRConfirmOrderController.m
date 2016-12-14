@@ -1190,11 +1190,14 @@
     addModel.address = model.address;
     _addressModel = addModel;
 WS(ws)
+    [CustomHudView show];
      [ZRSupermarketRequest requestGetDustabceWithLongitudeOne:_longitude andLatitudeOne:_latitude andLongitudeTwo:model.longitude andLatitudeTwo:model.latitude andSuccess:^(id success) {
+         [CustomHudView dismiss];
          ws.distanceStr = success;
         
          [ws.myTableView reloadData];
      } andFailure:^(id error) {
+         [CustomHudView dismiss];
          [SVProgressHUD showErrorWithStatus:@"定位失败,距离计算可能存在误差"];
          [ws.myTableView reloadData];
      }];

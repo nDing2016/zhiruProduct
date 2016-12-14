@@ -109,7 +109,7 @@
         make.left.equalTo(ws).with.offset(20);
         make.bottom.equalTo(ws).with.offset(-10);
     }];
-    [self.timeLabel setText:_model.create_date];
+    [self.timeLabel setText:_model.create_time];
     
     [self.imgName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(ws.timeLabel.mas_top).with.offset(-5);
