@@ -463,8 +463,7 @@
         _longitude = address.Longitude;
         _latitude = address.Latitude;
 //        [self loadNewData];
-        
-        
+                
         [self.homeTableView startRefreshWithCallback:^{
             [self loadNewData];
         }];
