@@ -367,9 +367,9 @@
             [SVProgressHUD show];
             
             ZRCommentListModel *model = self.commentListArray[indexPath.row];
-            
-            [ZRCommentRequest requestForBusinessCommentDeleteWithCommentId:model.commentId CallBack:^(id details, NSError *error) {
-                
+            WS(ws)
+            [ZRCommentRequest requestForBusinessCommentDeleteWithCommentId:model.commentId AndCommentType:@"1" CallBack:^(id details, NSError *error) {
+                NSLog(@"data====%@",details[@"data"]);
                 if ([details[@"code"] isEqualToString:@"S000"]) {
                     [SVProgressHUD showSuccessWithStatus:@"删除成功"];
                     [SVProgressHUD performSelector:@selector(dismiss)withObject:nil afterDelay:2];
@@ -380,7 +380,7 @@
                     
                     
                     
-                    [self.commentListArray removeObjectAtIndex:indexPath.row];
+                    [ws.commentListArray removeObjectAtIndex:indexPath.row];
                     
                     //        2.UI上删除
                     
@@ -395,10 +395,18 @@
                      */
                     
                     //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                   
+                    
+                    //修改四个分类个数
+                    ws.badReviewsCount = details[@"data"][@"bad"];
+                    ws.goodReviewsCount = details[@"data"][@"praise"];
+                    ws.allReviewsCount = details[@"data"][@"comment_count"];
+                    ws.imgReviewsCount = details[@"data"][@"img_comment"];
+                    
                     
                     //将整个表格视图刷新也可以实现在UI上删除的效果，只不过它要重新执行一遍所有的方法，效率很低
-                    
-                    [tableView reloadData];
+                    [ws.tableView reloadData];
+
                     
                 }else{
                     [SVProgressHUD showErrorWithStatus:@"删除失败"];

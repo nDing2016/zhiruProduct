@@ -1342,6 +1342,7 @@ WS(ws)
             [goodsDic setObject:model.menu_id forKey:@"goodsId"];
             [goodsDic setObject:model.name forKey:@"goodsName"];
             NSString *priceStr = [NSString stringWithFormat:@"%f",[model.unit_price floatValue]*arr.count];
+            
             [goodsDic setObject:priceStr forKey:@"price"];
             [goodsDic setObject:[NSString stringWithFormat:@"%lu",(unsigned long)arr.count] forKey:@"num"];
             [LunchOrderGoods addObject:goodsDic];
@@ -1349,7 +1350,9 @@ WS(ws)
         NSString * sendTime =_songdaDict[@"取餐时间"];
         NSString * price = @"0";
         NSString * taxation =  [NSString stringWithFormat:@"%.2lf",_shuiMoney];
+#warning test
         NSString * total =[NSString stringWithFormat:@"%.2lf",[[ZRSupermarketHomeObj shareInstance] getPrductsMoneyCount] +  _shuiMoney];
+        //NSString *total = @"0.002";
         
         ZROrderingAddress * address = _businessMsg.readdress[_lunchSelectBtn.tag];
         NSString * receiptAddress = address.address;

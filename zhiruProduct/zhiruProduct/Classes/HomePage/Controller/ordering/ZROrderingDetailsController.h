@@ -14,4 +14,6 @@
 //如果是 午餐界面 传isLunch = yes;
 @property (nonatomic , assign) BOOL isLunch;
 
+@property (nonatomic  , strong) UITableView * myTableView;
+
 @end

@@ -36,6 +36,8 @@
     // Do any additional setup after loading the view.
     self.dataArray = [NSMutableArray array];
     [self addHeaderRequest];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeaderRequest) name:@"ChaoShiZhifuWanChengNoti" object:nil];
 }
 - (void)addHeaderRequest
 {

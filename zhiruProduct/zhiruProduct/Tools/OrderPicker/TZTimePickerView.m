@@ -80,7 +80,7 @@
     if (_allDaysArr == nil) {
         NSMutableArray *allDaysArr = [NSMutableArray array];
         // 允许用户选择未来7天内的时间
-        for (NSInteger i = 0; i < 7; i++) {
+        for (NSInteger i = 0; i < 3; i++) {
             NSArray *array =  @[@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1"];
             [allDaysArr addObject:array];
         }

@@ -31,10 +31,12 @@ typedef void (^ZRCommentCallBack)(id details, NSError *error);
 /**
  *  店铺评论－删除评论
  *
- *  @param commentId 评论id
- *  @param callback  回调
+ *  @param commentId       评论id
+ *  @param commentType     评论类型 1店铺评论  2团购评论
+ *  @param callback         回调
  */
 + (void)requestForBusinessCommentDeleteWithCommentId:(NSString *)commentId
+                                      AndCommentType:(NSString *)commentType
                                             CallBack:(ZRCommentCallBack)callback;
 
 

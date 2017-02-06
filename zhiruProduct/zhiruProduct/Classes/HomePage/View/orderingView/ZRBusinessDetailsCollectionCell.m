@@ -54,7 +54,7 @@
             ZROrderingAddress * addressModel ;
             for (NSInteger i=0; i<addressArr.count; i++) {
                 addressModel = addressArr[i];
-                NSString * address =[NSString stringWithFormat:@"取餐地址%ld: %@",i+1,addressModel.address ];
+                NSString * address =[NSString stringWithFormat:@"取餐地址: %@",addressModel.address ];
                 [_businessInfoArr addObject:address];
             }
 

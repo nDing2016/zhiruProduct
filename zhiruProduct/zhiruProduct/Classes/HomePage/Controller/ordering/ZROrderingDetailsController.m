@@ -27,7 +27,7 @@
 @interface ZROrderingDetailsController ()< UITableViewDelegate , UITableViewDataSource , ZRBaseOrderingViewCellDelegate >
 @property (nonatomic  , strong) UIView * headView;
 
-@property (nonatomic  , strong) UITableView * myTableView;
+
 
 @property (nonatomic  , strong) ZRBaseOrderingViewCell * cell;
 

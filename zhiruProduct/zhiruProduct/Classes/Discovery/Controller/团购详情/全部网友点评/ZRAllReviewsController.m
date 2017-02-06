@@ -34,7 +34,6 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.tableView];
 
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -55,6 +54,8 @@
     self.tableView.mj_footer.hidden = YES;
        
 }
+
+
 
 #pragma mark - set方法
 

@@ -389,20 +389,17 @@ static BOOL isProduction = FALSE;
     [application setApplicationIconBadgeNumber:0];
     [JPUSHService setBadge:0];
     [ZRUserInterfaceModel checkTokenCallBack:^(id result) {
-        NSString * tokenMessage = [result objectForKey:@"tokenMassage"];
-        if ([tokenMessage isEqualToString:@"无效token"]) {
-            [self exitUserToken];
+        if (![result isKindOfClass:[NSError class]]) {
+            NSDictionary *dic = result;
+            for (NSString *tempKey in dic.allKeys) {
+                if ([tempKey isEqualToString:@"tokenMassage"]) {
+                    NSString * tokenMessage = [result objectForKey:@"tokenMassage"];
+                    if ([tokenMessage isEqualToString:@"无效token"]) {
+                        [self exitUserToken];
+                    }
+                }
+            }
         }
-//        if ([tokenMessage isEqualToString:@"无token"]) {
-//            NSLog(@"无token");
-//        } else if ([tokenMessage isEqualToString:@"token为空"]) {
-//            NSLog(@"token为空");
-//        } else if ([tokenMessage isEqualToString:@"无效token"]) {
-//            NSLog(@"无效token");
-//            [self exitUserToken];
-//        } else if ([tokenMessage isEqualToString:@"有效token"]) {
-//            NSLog(@"有效token");
-//        }
     } Failure:^(id error) {
         
     }];
@@ -424,31 +421,31 @@ static BOOL isProduction = FALSE;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    if ([url.host isEqualToString:@"safepay"]) {
-        // 支付跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            //NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
-        }];
-        
-        // 授权跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
-            //NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
-            // 解析 auth code
-            NSString *result = resultDic[@"result"];
-            NSString *authCode = nil;
-            if (result.length>0) {
-                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
-                for (NSString *subResult in resultArr) {
-                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
-                        authCode = [subResult substringFromIndex:10];
-                        break;
-                    }
-                }
-            }
-            //NSLog(@"授权结果 authCode = %@", authCode?:@"");
-        }];
-    
-    }
+//    if ([url.host isEqualToString:@"safepay"]) {
+//        // 支付跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            //NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
+//        }];
+//        
+//        // 授权跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+//            //NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
+//            // 解析 auth code
+//            NSString *result = resultDic[@"result"];
+//            NSString *authCode = nil;
+//            if (result.length>0) {
+//                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+//                for (NSString *subResult in resultArr) {
+//                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+//                        authCode = [subResult substringFromIndex:10];
+//                        break;
+//                    }
+//                }
+//            }
+//            //NSLog(@"授权结果 authCode = %@", authCode?:@"");
+//        }];
+//    
+//    }
     
     
     
@@ -471,33 +468,36 @@ static BOOL isProduction = FALSE;
     return YES;
 }
 
+
+
+
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    if ([url.host isEqualToString:@"safepay"]) {
-        // 支付跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            //NSLog(@"result = %@",resultDic);
-        }];
-        
-        // 授权跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
-            //NSLog(@"result = %@",resultDic);
-            // 解析 auth code
-            NSString *result = resultDic[@"result"];
-            NSString *authCode = nil;
-            if (result.length>0) {
-                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
-                for (NSString *subResult in resultArr) {
-                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
-                        authCode = [subResult substringFromIndex:10];
-                        break;
-                    }
-                }
-            }
-            //NSLog(@"授权结果 authCode = %@", authCode?:@"");
-        }];
-    }
+//    if ([url.host isEqualToString:@"safepay"]) {
+//        // 支付跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            //NSLog(@"result = %@",resultDic);
+//        }];
+//        
+//        // 授权跳转支付宝钱包进行支付，处理支付结果
+//        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+//            //NSLog(@"result = %@",resultDic);
+//            // 解析 auth code
+//            NSString *result = resultDic[@"result"];
+//            NSString *authCode = nil;
+//            if (result.length>0) {
+//                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+//                for (NSString *subResult in resultArr) {
+//                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+//                        authCode = [subResult substringFromIndex:10];
+//                        break;
+//                    }
+//                }
+//            }
+//            //NSLog(@"授权结果 authCode = %@", authCode?:@"");
+//        }];
+//    }
     
     
     /*! @brief 处理微信通过URL启动App时传递的数据
@@ -595,9 +595,9 @@ static BOOL isProduction = FALSE;
             break;
         default:
             strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
-            //NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+            NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
             [SVProgressHUD showErrorWithStatus:@"支付失败"];
-            [SVProgressHUD dismissWithDelay:5];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
             break;
     }
 }

@@ -121,6 +121,8 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearWaimaiShoppingCar:) name:kWaimaiClearshoppingCar_Noti object:nil];
         
+        //午餐支付完成跳转回午餐订餐页面
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadRightTable) name:@"WuCanZhifuWanChengClearTableNoti" object:nil];
         
     }
     return self;
@@ -251,6 +253,13 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kOrderingClear_Noti object:nil];
     
+}
+
+
+
+- (void)reloadRightTable
+{
+    [self.rightTableView reloadData];
 }
 
 

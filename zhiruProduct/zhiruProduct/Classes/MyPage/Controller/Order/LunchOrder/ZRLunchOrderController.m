@@ -30,6 +30,9 @@
     // Do any additional setup after loading the view.
     self.dataArray = [NSMutableArray array];
     [self addHeaderRequest];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeaderRequest) name:@"WuCanZhifuWanChengNoti" object:nil];
+    
 }
 - (void)addHeaderRequest
 {
@@ -166,6 +169,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*

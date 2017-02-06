@@ -32,6 +32,9 @@
 #import "ZRSupermarketHomeController.h"
 #import "ZROrderingDetailsController.h"
 
+#import "ZRMyOrderViewController.h"
+
+#import "ZRSupermarketHomeObj.h"
 
 @interface ZRPaymentOrderController ()<UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate, WXApiDelegate,UIAlertViewDelegate>
 
@@ -293,7 +296,9 @@
     
     
     if (self.selectNum == 1 || self.selectNum == 2) {
+        //测试
         CGFloat all = [_rateStr floatValue]*[[self.payPrice substringFromIndex:1] floatValue];
+
         NSString *alertStr = [NSString stringWithFormat:@"当前货币兑换率为:\n1加元＝%@人民币\n您需支付%.2f人民币",self.rateStr,all];
        [ZRAlertControl alertForRateWithController:self andActionTitle:alertStr andButtonOneCallBack:^{
            
@@ -470,7 +475,7 @@
     // NOTE: 调用支付结果开始支付
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         //NSLog(@"reslut = %@======memo===%@",resultDic,resultDic[@"memo"]);
-        
+          
         
         
     }];
@@ -515,6 +520,10 @@
                 for (UIViewController *vc  in ws.navigationController.viewControllers) {
                     if ([vc isMemberOfClass:[ZRSupermarketHomeController class]]) {
                         [ws.navigationController popToViewController:vc animated:YES];
+                    }else if ([vc isMemberOfClass:[ZRMyOrderViewController class]]){
+                        [ws.navigationController popToViewController:vc animated:YES];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"ChaoShiZhifuWanChengNoti" object:nil];
+                        
                     }
                 }
                
@@ -532,7 +541,17 @@
             if (details) {
                 for (UIViewController *vc  in ws.navigationController.viewControllers) {
                     if ([vc isMemberOfClass:[ZROrderingDetailsController class]]) {
+                        ZROrderingDetailsController *orderVC = (ZROrderingDetailsController *)vc;
+                        [ws.navigationController popToViewController:orderVC animated:YES];
+                        [[ZRSupermarketHomeObj shareInstance].selectedFoodsArray removeAllObjects];
+                        [ZRSupermarketHomeObj shareInstance].totalPrice = 0;
+                        [ZRSupermarketHomeObj shareInstance].totalNumber = 0;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"WuCanZhifuWanChengClearTableNoti" object:nil];
+                        
+                    }else if ([vc isMemberOfClass:[ZRMyOrderViewController class]]){
                         [ws.navigationController popToViewController:vc animated:YES];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"WuCanZhifuWanChengNoti" object:nil];
+                        
                     }
                 }
                 
@@ -562,7 +581,7 @@
         if (details) {
            ws.rateStr = details[@"rate"];
         }else{
-            [SVProgressHUD showErrorWithStatus:error.description];
+            [SVProgressHUD showErrorWithStatus:@"网络异常"];
         }
         
     }];
