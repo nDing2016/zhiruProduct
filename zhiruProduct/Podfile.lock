@@ -42,6 +42,7 @@ PODS:
   - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.4.2)
   - ShareSDK3/ShareSDKPlatforms/WeChat (3.4.2)
   - ShareSDK3/ShareSDKUI (3.4.2)
+  - Stripe (9.3.0)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKPlatforms/SinaWeibo
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - ShareSDK3/ShareSDKUI
+  - Stripe
   - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -75,6 +77,9 @@ SPEC CHECKSUMS:
   PayPal-iOS-SDK: 7c35d7a6ebade1ac9138a815d421233ee6624221
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   ShareSDK3: 2fa975dd22937fc7de3f6b5d0c41a18ba0dd1661
+  Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 96ac78717071e7dfce865b89a50bb8ad50d5c73d
+
+COCOAPODS: 1.2.0.beta.1

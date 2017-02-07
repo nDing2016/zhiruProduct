@@ -1,5 +1,7 @@
 platform :ios, ‘8.0’
+use_frameworks!
 
+target 'zhiruProduct' do
 pod 'Masonry'
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage', '~>3.8'
@@ -19,6 +21,7 @@ pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
 
 pod 'GoogleMaps', '~> 2.0.0'
 
+
 pod 'PayPal-iOS-SDK'
 
 
@@ -31,4 +34,5 @@ pod 'MJRefresh'
 pod 'SVProgressHUD'   
 
 pod 'IQKeyboardManager'
- 
+pod 'Stripe'
+end 
