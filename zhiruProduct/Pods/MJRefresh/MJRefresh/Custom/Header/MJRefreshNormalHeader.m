@@ -14,6 +14,7 @@
     __unsafe_unretained UIImageView *_arrowView;
 }
 @property (weak, nonatomic) UIActivityIndicatorView *loadingView;
+
 @end
 
 @implementation MJRefreshNormalHeader
@@ -90,7 +91,7 @@
 {
     MJRefreshCheckState
     
-    // 根据状态做事情
+    // 根据状态做事情4
     if (state == MJRefreshStateIdle) {
         if (oldState == MJRefreshStateRefreshing) {
             self.arrowView.transform = CGAffineTransformIdentity;

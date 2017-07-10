@@ -36,7 +36,9 @@
 
 #import "ZRSupermarketHomeObj.h"
 
-@interface ZRPaymentOrderController ()<UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate, WXApiDelegate,UIAlertViewDelegate>
+#import "STPAddCardViewController.h"
+
+@interface ZRPaymentOrderController ()<UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate, WXApiDelegate,UIAlertViewDelegate, STPAddCardViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -130,7 +132,7 @@
 -(NSMutableArray *)selectedArray
 {
     if (!_selectedArray) {
-        _selectedArray =  [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"), nil];
+        _selectedArray =  [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"), nil];
 
     }
     return _selectedArray;
@@ -160,7 +162,7 @@
         }else if (section == 1){
             num = 2;
         }else{
-            num = 3;
+            num = 4;
         }
     }
     return num;
@@ -270,13 +272,16 @@
         cell.payStyle = indexPath.row;
         if (cell.payStyle == PaypalSelected) {
             //PayPal支付
-            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"), nil];
+            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"), nil];
         }else if (cell.payStyle == WechatSelected){
             //微信支付
-            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"), nil];
-        }else{
+            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"), nil];
+        }else if (cell.payStyle == ZhifubaoSelected){
             //支付宝支付
-            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihao"), nil];
+            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihao"),ZRImage(@"submitOrderDuihaoGray"), nil];
+        }else{
+            //Stripe支付
+            self.selectedArray = [NSMutableArray arrayWithObjects:ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihaoGray"),ZRImage(@"submitOrderDuihao"), nil];
         }
         
         [tableView reloadData];
@@ -327,16 +332,37 @@
            
        }];
         
-    }else{
+    }else if (self.selectNum == 0){
         //PayPal
         [self payPalMethod];
+    }else if (self.selectNum == 3){
+        
+        //Stripe
+        STPAddCardViewController *addCardViewController = [[STPAddCardViewController alloc]init];
+        addCardViewController.delegate = self;
+
+        [self.navigationController pushViewController:addCardViewController animated:YES];
+        
     }
     
 }
 
 
+#pragma mark - STPAddCardViewControllerDelegate methods
 
+//    添加信用卡的取消回调
 
+- (void)addCardViewControllerDidCancel:(STPAddCardViewController*)addCardViewController
+{
+    NSLog(@"添加信用卡的取消回调");
+}
+
+//  添加信用卡后我们可以拿到stripe返回的一个STPToken，而这个token里面有后端需要的参数，token_id 和 created 这是后台实际支付时需要的，将他们传给后台，回调成功后就代表付款成功了
+
+-(void)addCardViewController:(STPAddCardViewController *)addCardViewController didCreateToken:(STPToken *)token completion:(STPErrorBlock)completion
+{
+    
+}
 
 
 #pragma mark - Private methods

@@ -565,13 +565,13 @@
 
 /* Begin PBXFileReference section */
 		00006FBDAD4B22A29E4840643B7B48C2 /* NSArray+Stripe_BoundSafe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Stripe_BoundSafe.h"; path = "Stripe/NSArray+Stripe_BoundSafe.h"; sourceTree = "<group>"; };
-		006429EE6ED1E71FB444B47B2C9AA60B /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WechatAuthSDK.h; sourceTree = "<group>"; };
 		01207CE98BB47FB3D225123EBA16443F /* PayPalPayment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = PayPalMobile/PayPalPayment.h; sourceTree = "<group>"; };
 		01DC7E1D6C3D8DEA57AC5338ED0B4AB8 /* STPFormEncoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPFormEncoder.m; path = Stripe/STPFormEncoder.m; sourceTree = "<group>"; };
 		026C6E305C6327A2DF4204C95BC15FC4 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		02EBC217311C0F08E6ECDA04600BC98E /* NSString+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+MJExtension.h"; path = "MJExtension/NSString+MJExtension.h"; sourceTree = "<group>"; };
 		02FAE94D26CDC581065008C47139C87C /* IQKeyboardManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManager-umbrella.h"; sourceTree = "<group>"; };
 		0319D51392ECFDF90D63C29AFFEAC4EA /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		03832651C2AD0ECC284003ED2A1DBE94 /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboUser.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
 		04254BC01470366E9C3DC593FC3FA312 /* PKPayment+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PKPayment+Stripe.m"; path = "Stripe/PKPayment+Stripe.m"; sourceTree = "<group>"; };
 		04FA02DADF7D537CC86A24A5A5A47F8C /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Subspecs/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		05742E6D36EA822729AFBC8D757D1723 /* STPSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSource.h; path = Stripe/PublicHeaders/STPSource.h; sourceTree = "<group>"; };
@@ -589,7 +589,6 @@
 		0A09D090435753BC53F56F0D6BAC1095 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		0A6C931CA5D4161257EC835E2B94578F /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		0AA22C85FCDD72BE566C5CB6E85F86CC /* STPImageLibrary+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPImageLibrary+Private.h"; path = "Stripe/STPImageLibrary+Private.h"; sourceTree = "<group>"; };
-		0AA57A364A4160C8FBFCF8605B3DA793 /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKRelationshipButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKRelationshipButton.h; sourceTree = "<group>"; };
 		0AD6C1355231BA92DADDB999AB04D315 /* stp_card_mastercard.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_mastercard.png; path = Stripe/Resources/Images/stp_card_mastercard.png; sourceTree = "<group>"; };
 		0B056EBD93D82167682FBF19B5EE5F89 /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
 		0B1F10AF7F75B5C2456BB17BC53C49CF /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstants.h; path = IQKeyboardManager/Constants/IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
@@ -609,7 +608,6 @@
 		103E9EBFD94C54C2667AAE4686CC4965 /* NSBundle+Stripe_AppName.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+Stripe_AppName.h"; path = "Stripe/NSBundle+Stripe_AppName.h"; sourceTree = "<group>"; };
 		112ED5A694AC69FBB0EFC0B5046BFA99 /* STPAddressFieldTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAddressFieldTableViewCell.h; path = Stripe/STPAddressFieldTableViewCell.h; sourceTree = "<group>"; };
 		1199E6A7A66B430962325B0E1CB9E88B /* stp_card_cvc_amex@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_cvc_amex@2x.png"; path = "Stripe/Resources/Images/stp_card_cvc_amex@2x.png"; sourceTree = "<group>"; };
-		119F5549C8AF6EF6ECD8FC071C799FEF /* WBSDKBasicButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKBasicButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKBasicButton.h; sourceTree = "<group>"; };
 		11A5BCD2D83201A43F6B9F715C5DBA71 /* stp_card_amex_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_amex_template@2x.png"; path = "Stripe/Resources/Images/stp_card_amex_template@2x.png"; sourceTree = "<group>"; };
 		11D1FB509EA29AEC24C1249AA0DDD12D /* IQNSArray+Sort.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQNSArray+Sort.m"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		11E1E936A45DA66ED3C041E04A11465C /* MJExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJExtension-prefix.pch"; sourceTree = "<group>"; };
@@ -626,11 +624,9 @@
 		169E404069B9C5A2028ACDD3588B5B96 /* STPAspects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAspects.m; path = Stripe/STPAspects.m; sourceTree = "<group>"; };
 		1713A35316958FD087F065622CCDC54B /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		1728A594D0CAB8EE706BE2ECA1975BBF /* stp_icon_chevron_left@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_icon_chevron_left@2x.png"; path = "Stripe/Resources/Images/stp_icon_chevron_left@2x.png"; sourceTree = "<group>"; };
-		178D71B2E6F7270BC42AB7A03A653333 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKExtension.framework; path = ShareSDK/Support/Optional/ShareSDKExtension.framework; sourceTree = "<group>"; };
-		17930C0BBABC946F6F4C552ED25E361D /* WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboUser.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboUser.h; sourceTree = "<group>"; };
+		1748E63F9D125982665C15A7CAA1968C /* WBSDKBasicButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKBasicButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKBasicButton.h; sourceTree = "<group>"; };
 		17ACAFA0FF4B9CCD3ECC8465ABC789E7 /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
 		18008ECD27FFFD321E44A67DAC88AA1F /* libjpush-ios-2.1.9.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libjpush-ios-2.1.9.a"; path = "lib/libjpush-ios-2.1.9.a"; sourceTree = "<group>"; };
-		19BAA1441443A0029D85027FF2039183 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		19EEEE441F5A79D89C8DA2DA89F3002A /* STPPaymentResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentResult.h; path = Stripe/PublicHeaders/STPPaymentResult.h; sourceTree = "<group>"; };
 		1AE4A4FF6954651FE5EA7371B26162E2 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/PassKit.framework; sourceTree = DEVELOPER_DIR; };
 		1B395652CDE5BCDAC75A96DBC998D7E5 /* stp_card_amex.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_amex.png; path = Stripe/Resources/Images/stp_card_amex.png; sourceTree = "<group>"; };
@@ -652,7 +648,6 @@
 		2121FC84B95D5238E6D0D02277A2D001 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		2138DA3C95B9EBAF4B234F874FF367B9 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshGifHeader.h; path = MJRefresh/Custom/Header/MJRefreshGifHeader.h; sourceTree = "<group>"; };
 		2140863A4AC11144DCDF94A65ACF28D6 /* stp_card_visa_template.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_visa_template.png; path = Stripe/Resources/Images/stp_card_visa_template.png; sourceTree = "<group>"; };
-		21418DC457493712572FCB6A8B1E8914 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		218CA9BAB4F23755DB4F7E3A9D45A199 /* UIViewController+Stripe_NavigationItemProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Stripe_NavigationItemProxy.h"; path = "Stripe/UIViewController+Stripe_NavigationItemProxy.h"; sourceTree = "<group>"; };
 		2191E258C3514D6A0EEDE0EF805127D7 /* NSArray+Stripe_BoundSafe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Stripe_BoundSafe.m"; path = "Stripe/NSArray+Stripe_BoundSafe.m"; sourceTree = "<group>"; };
 		21AB19015BBF2461935EAE2C882EBBE3 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
@@ -676,6 +671,7 @@
 		27A18C1DEE390E44B5757D4F192489EA /* stp_card_jcb_template.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_jcb_template.png; path = Stripe/Resources/Images/stp_card_jcb_template.png; sourceTree = "<group>"; };
 		27BEE0EDDA80C7D8442A3FDF9231C4B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		27E246D76F5392A3DC5E4044E8609E3D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		293044E5D9C2E99191750F36C6FD4CE5 /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WeiboSDK+Statistics.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
 		293A0E0DCC1BB73F2E590876A3E08548 /* STPPaymentContextAmountModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentContextAmountModel.m; path = Stripe/STPPaymentContextAmountModel.m; sourceTree = "<group>"; };
 		29CEA52378E52EB7C03A0CCC06ADE8F0 /* stp_card_discover@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_discover@3x.png"; path = "Stripe/Resources/Images/stp_card_discover@3x.png"; sourceTree = "<group>"; };
 		2A784F6E65C6495FBB81F7D4CE0ED3EC /* MJFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJFoundation.h; path = MJExtension/MJFoundation.h; sourceTree = "<group>"; };
@@ -695,14 +691,15 @@
 		325CA22DBBA4738F6AF210858F90B78F /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		32AAE4634328FEAB88D07676A6E670A0 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		331BB47A955F9CA34604D492AD59BFA0 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		342AD78953818BBA7856E311364147DD /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
 		34FF39E040AF85860E758D221C127D7D /* SDWebImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-umbrella.h"; sourceTree = "<group>"; };
 		3504842CC05B2600FA3E74FB3C860D97 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
 		355DB7AB28089B165FA6FEC3099E2DCE /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Masonry.modulemap; sourceTree = "<group>"; };
 		35BF17A7A6302D880DD461483DFC37F4 /* Stripe.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Stripe.modulemap; sourceTree = "<group>"; };
 		35C84808A6446F0A006E6F30FEEA81C5 /* STPPaymentActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentActivityIndicatorView.h; path = Stripe/PublicHeaders/STPPaymentActivityIndicatorView.h; sourceTree = "<group>"; };
 		35D097A729728A61552B2CD4E458BF7E /* stp_card_cvc_amex.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_cvc_amex.png; path = Stripe/Resources/Images/stp_card_cvc_amex.png; sourceTree = "<group>"; };
-		3663057C5696637E4397A73E339E82FD /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WeiboSDK+Statistics.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
 		37D46CABA641A719BDD4B28492450888 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		38EC5DA6E91234E09B79F9C50FE3D44E /* WBHttpRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBHttpRequest.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest.h; sourceTree = "<group>"; };
 		38EDAAC59F6B132881959FE92C9267D5 /* STPWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPWebViewController.h; path = Stripe/STPWebViewController.h; sourceTree = "<group>"; };
 		3972B3A98935DE86B8E7A2C9F7E4707B /* ResourceBundle-Stripe-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Stripe-Info.plist"; sourceTree = "<group>"; };
 		3976BC208B491F8EB58F8C0B5EC52B25 /* MJRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-umbrella.h"; sourceTree = "<group>"; };
@@ -711,6 +708,7 @@
 		3AE692417C2B6DA7E89A0D88F68356D9 /* STPFormTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPFormTextField.m; path = Stripe/STPFormTextField.m; sourceTree = "<group>"; };
 		3B7CB66DFDAB24835FCDE509743CBB57 /* PKPayment+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PKPayment+Stripe.h"; path = "Stripe/PKPayment+Stripe.h"; sourceTree = "<group>"; };
 		3BB727B05F895FF60A2A68104CFBE9E8 /* STPImageLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPImageLibrary.h; path = Stripe/PublicHeaders/STPImageLibrary.h; sourceTree = "<group>"; };
+		3BC7D0A13D8D34E4E6EAE0BAF845792B /* WechatConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WechatConnector.framework; path = ShareSDK/Support/PlatformConnector/WechatConnector.framework; sourceTree = "<group>"; };
 		3BEC0CC3BDA78AB584F5790654A26A6B /* STPBankAccount.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPBankAccount.h; path = Stripe/PublicHeaders/STPBankAccount.h; sourceTree = "<group>"; };
 		3BF8419544AEAEEFEA320635B331836D /* PKPaymentAuthorizationViewController+Stripe_Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PKPaymentAuthorizationViewController+Stripe_Blocks.m"; path = "Stripe/PKPaymentAuthorizationViewController+Stripe_Blocks.m"; sourceTree = "<group>"; };
 		3D8676AEC99532E6BCEFE3221B037F64 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalHeader.h; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.h; sourceTree = "<group>"; };
@@ -723,13 +721,12 @@
 		42DACA4121C1A9E31903BE63DD3DFF8E /* STPPaymentConfiguration+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPPaymentConfiguration+Private.h"; path = "Stripe/STPPaymentConfiguration+Private.h"; sourceTree = "<group>"; };
 		4431F4DE6D032A5480F079B8F0237922 /* stp_shipping_form@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_shipping_form@2x.png"; path = "Stripe/Resources/Images/stp_shipping_form@2x.png"; sourceTree = "<group>"; };
 		44E462B196AE57B9D9E578E5395E7EF4 /* STPPaymentMethodsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentMethodsViewController.m; path = Stripe/STPPaymentMethodsViewController.m; sourceTree = "<group>"; };
+		44FF815B740272C3CD10B29990385ECB /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKConnector.framework; path = ShareSDK/Support/Required/ShareSDKConnector.framework; sourceTree = "<group>"; };
 		45AAF585D774FDF0E14AFB78098310CC /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIView+IQKeyboardToolbar.h"; path = "IQKeyboardManager/IQToolbar/IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
 		462731248F0A671CA379F97A960EFB30 /* stp_card_placeholder_template.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_placeholder_template.png; path = Stripe/Resources/Images/stp_card_placeholder_template.png; sourceTree = "<group>"; };
 		46837E50E71A1A11A1BB64BF3DEDAC51 /* STPCheckoutAPIVerification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPCheckoutAPIVerification.m; path = Stripe/STPCheckoutAPIVerification.m; sourceTree = "<group>"; };
 		46C70DB6FC7F472FAF9FD12FDE4E16AF /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		471947CAE7DCB6BDDD57652CC0C4CED8 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
-		4766F81E863EEEEA40F5D04CC2E97368 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboShare.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
-		47A99702D34ABCA14DA7A4D881EE8D49 /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WXApiObject.h; sourceTree = "<group>"; };
 		47DA01D4994C232719843190BDE0B38E /* STPAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAddress.h; path = Stripe/PublicHeaders/STPAddress.h; sourceTree = "<group>"; };
 		493CF77A9BCC43092126C607E977153D /* STPAnalyticsClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAnalyticsClient.m; path = Stripe/STPAnalyticsClient.m; sourceTree = "<group>"; };
 		4B401085CA620A153AD61C98875D5DD1 /* stp_card_jcb@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_jcb@2x.png"; path = "Stripe/Resources/Images/stp_card_jcb@2x.png"; sourceTree = "<group>"; };
@@ -764,7 +761,6 @@
 		53C7C35B6E80FBB216F08D619E7235D3 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
 		54BBA4242E38A01EF7AF5EA710590345 /* stp_card_form_applepay@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_form_applepay@3x.png"; path = "Stripe/Resources/Images/stp_card_form_applepay@3x.png"; sourceTree = "<group>"; };
 		54F4F3379228AA26535C772D5239F877 /* STPCardBrand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCardBrand.h; path = Stripe/PublicHeaders/STPCardBrand.h; sourceTree = "<group>"; };
-		554DCACD3C10C6014F567E233B534AC5 /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = ShareSDK/Support/PlatformSDK/WeChatSDK/libWeChatSDK.a; sourceTree = "<group>"; };
 		55783A232DF1EFD9E19102DDD8958FD1 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
 		558C1F53F72767836A9CC26C0493F356 /* STPBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPBlocks.h; path = Stripe/PublicHeaders/STPBlocks.h; sourceTree = "<group>"; };
 		5646FE0CFB33929E2D4559876189EFED /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
@@ -773,15 +769,16 @@
 		567F742CA3E3C73ABADC3D612BAC7B02 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIView+Hierarchy.h"; path = "IQKeyboardManager/Categories/IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
 		57D7CA01147EC75DAA74B52E8F3BBE67 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
 		5853B6FF727556DB163A93C20DEA0B9C /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
+		593F7D152B84A49436E84B90C78B87AA /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		59D9E22439071AF0CE60BEE69FC68D8D /* Stripe-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Stripe-prefix.pch"; sourceTree = "<group>"; };
 		59F30692C8963EAB4C8A3CB154884992 /* stp_card_applepay_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_applepay_template@3x.png"; path = "Stripe/Resources/Images/stp_card_applepay_template@3x.png"; sourceTree = "<group>"; };
 		5AE3AA521BDB943BD6A59EDCF942E5C6 /* PayPalMobile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalMobile.h; path = PayPalMobile/PayPalMobile.h; sourceTree = "<group>"; };
 		5C797AFCA6D1D67FC7CBCD264CB24AA3 /* STPAddressViewModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAddressViewModel.m; path = Stripe/STPAddressViewModel.m; sourceTree = "<group>"; };
+		5CF9205BA0B67DA6ADC260C90611E475 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		5D29BCA40D260927A6E7DFB93679B821 /* UINavigationController+Stripe_Completion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Stripe_Completion.h"; path = "Stripe/UINavigationController+Stripe_Completion.h"; sourceTree = "<group>"; };
 		5D8521906CCA36202D9ECB54C356B9C5 /* IQPreviousNextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQPreviousNextView.m; path = IQKeyboardManager/IQToolbar/IQPreviousNextView.m; sourceTree = "<group>"; };
 		5DB2461FC269ED249617EF4708812CFA /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60697C13C216AA87C9E17CD67360B158 /* STPSMSCodeTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSMSCodeTextField.h; path = Stripe/STPSMSCodeTextField.h; sourceTree = "<group>"; };
-		6079AFF661213410797C3583D9DB4187 /* WBSDKCommentButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKCommentButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKCommentButton.h; sourceTree = "<group>"; };
 		60DEF56F2E203A8354EEA021108F3EF0 /* PKPaymentAuthorizationViewController+Stripe_Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PKPaymentAuthorizationViewController+Stripe_Blocks.h"; path = "Stripe/PKPaymentAuthorizationViewController+Stripe_Blocks.h"; sourceTree = "<group>"; };
 		60FDF640B82B2A71E285C3A1BBFAF666 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		6461C3AC6985C581F5B15AD115B45CA0 /* STPBankAccount.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPBankAccount.m; path = Stripe/STPBankAccount.m; sourceTree = "<group>"; };
@@ -801,7 +798,6 @@
 		67C2346F302EACF0880F93568EE6CE89 /* STPAspects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAspects.h; path = Stripe/STPAspects.h; sourceTree = "<group>"; };
 		67E50308F46515E2C3C0CFB62A947C3D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = IQKeyboardManager/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		68C49D73ED3861110A2610A999B2B3A9 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
-		690E6972EE61DD6CBE0E1159FA4486B7 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKConnector.framework; path = ShareSDK/Support/Required/ShareSDKConnector.framework; sourceTree = "<group>"; };
 		6945B8393DFA5A6245D92C9E8C6B139F /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImagePrefetcher.m; path = SDWebImage/SDWebImagePrefetcher.m; sourceTree = "<group>"; };
 		69532B5F7F512CD398A7FFED148667D4 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoNormalFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
 		69AD2F8E45425F63E733F3EA2DCB1CB6 /* stp_card_form_front@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_form_front@2x.png"; path = "Stripe/Resources/Images/stp_card_form_front@2x.png"; sourceTree = "<group>"; };
@@ -811,6 +807,7 @@
 		6AE5BB265DCB8720B0D9A08000FC0EBC /* stp_icon_add@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_icon_add@3x.png"; path = "Stripe/Resources/Images/stp_icon_add@3x.png"; sourceTree = "<group>"; };
 		6B1BDBC27872709361DB0B26F7CE6165 /* STPPaymentMethodsInternalViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentMethodsInternalViewController.m; path = Stripe/STPPaymentMethodsInternalViewController.m; sourceTree = "<group>"; };
 		6BC9CCC2F9BA23E99F4AF068C794BB0F /* stp_card_form_front@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_form_front@3x.png"; path = "Stripe/Resources/Images/stp_card_form_front@3x.png"; sourceTree = "<group>"; };
+		6C70CBDF1C360D24D2600CCFEB28E7E2 /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WechatAuthSDK.h; sourceTree = "<group>"; };
 		6D52924728F293257230F5EBCAA1E656 /* CardIOUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOUtilities.h; path = CardIO/CardIOUtilities.h; sourceTree = "<group>"; };
 		6DB33AEE66B0A2B09421A737440C7748 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Subspecs/Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		6DB723D28ADBAC9C2221BD2D0ACD9726 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -829,6 +826,7 @@
 		756E5BB6CCFD6872FE1CFBDBFA6B0A93 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIViewController+Additions.h"; path = "IQKeyboardManager/Categories/IQUIViewController+Additions.h"; sourceTree = "<group>"; };
 		75D188345519A06040E6EF9320B01BFD /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		75D93A0104DE983FC61F65FF045CB067 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		75FD794ADAC92890CF668F1914C49DEA /* MOBFoundationEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundationEx.framework; sourceTree = "<group>"; };
 		7676FC6F798DD16F6DCFBFB964C98115 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIView+Hierarchy.m"; path = "IQKeyboardManager/Categories/IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
 		76A699ACE2628548D9FD82CCA3E98611 /* NSObject+MJClass.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJClass.m"; path = "MJExtension/NSObject+MJClass.m"; sourceTree = "<group>"; };
 		76F3BC1FCB67F95F51FB094D59993AA2 /* STPAPIResponseDecodable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAPIResponseDecodable.h; path = Stripe/PublicHeaders/STPAPIResponseDecodable.h; sourceTree = "<group>"; };
@@ -841,11 +839,10 @@
 		78AECC8C7DAEF1CCC3380CB18870B4C3 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		78C76B0D3C496BF97DBAA1DB1A1DFF16 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		7979FAA57819238F539CB693A7498C92 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDK.framework; path = ShareSDK/ShareSDK.framework; sourceTree = "<group>"; };
-		7A50AECD29D4C4FD6C1E480A3C413BBC /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboGame.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
+		79BE58B46C304B9AE378083A6EDC55C5 /* WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboUser.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboUser.h; sourceTree = "<group>"; };
 		7A680E7900B78051E0CF0CB1C03380A3 /* stp_card_diners@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_diners@2x.png"; path = "Stripe/Resources/Images/stp_card_diners@2x.png"; sourceTree = "<group>"; };
 		7AE7D9102A62E3F76EC446772B16138C /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/SDWebImageOperation.h; sourceTree = "<group>"; };
 		7B2ACB4413809726149C95C4BC297EEC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
-		7B301C090E46BAFD48673C6D7E99B0ED /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		7B996DE0DCA199850F85AF8F5E1A9A95 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		7BEBBD2AF733DC208F97C6916EF1B031 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2CE6F19C7A0D61D4DB12FD26E6A292 /* stp_card_cvc@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_cvc@3x.png"; path = "Stripe/Resources/Images/stp_card_cvc@3x.png"; sourceTree = "<group>"; };
@@ -871,6 +868,7 @@
 		8424FD94D22506F15F3F79DF995C726E /* STPRememberMeEmailCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPRememberMeEmailCell.m; path = Stripe/STPRememberMeEmailCell.m; sourceTree = "<group>"; };
 		852F851F4FC325C2297B8EA02B60DED2 /* ShareSDKUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKUI.framework; path = ShareSDK/Support/Optional/ShareSDKUI.framework; sourceTree = "<group>"; };
 		854B60FB9435746A6B3C914725ADD1D5 /* STPCardTuple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCardTuple.h; path = Stripe/STPCardTuple.h; sourceTree = "<group>"; };
+		856A2B02BF61EE6F70D7E4D6CA3887ED /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		858333D3FBDCEF01DF579F8F82EA02B3 /* UIToolbar+Stripe_InputAccessory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIToolbar+Stripe_InputAccessory.m"; path = "Stripe/UIToolbar+Stripe_InputAccessory.m"; sourceTree = "<group>"; };
 		86E30487ED4188F151A231232DAA0E92 /* MJRefreshFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshFooter.m; path = MJRefresh/Base/MJRefreshFooter.m; sourceTree = "<group>"; };
 		86EE5A77CE6735A50E7D93736E07075F /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
@@ -886,7 +884,6 @@
 		8A57448FB1BCC361F82DB4CFF752AA66 /* MJExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJExtension.framework; path = MJExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC2AB64D227B61C6DEFC029BD126072 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+MJRefresh.h"; path = "MJRefresh/NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
 		8B32BA54888528506F5555B366215367 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoStateFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
-		8B5D7F7AD5591EF4C47C1B058506B061 /* libWeiboSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
 		8CB1B05788F8C665055757AAC52BAFD7 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardReturnKeyHandler.m; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
 		8CB5C3685B8EABD6B013AD14CE2ACB5E /* NSObject+MJClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJClass.h"; path = "MJExtension/NSObject+MJClass.h"; sourceTree = "<group>"; };
 		8D370BEB880ADCE7BF8F2981C536DB99 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
@@ -894,6 +891,8 @@
 		8DD5DC50E9E2DC593020BABC41E34172 /* stp_card_discover_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_discover_template@2x.png"; path = "Stripe/Resources/Images/stp_card_discover_template@2x.png"; sourceTree = "<group>"; };
 		8E08BA2FBA938B67020D852F04C439D6 /* STPPaymentMethodTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentMethodTableViewCell.h; path = Stripe/STPPaymentMethodTableViewCell.h; sourceTree = "<group>"; };
 		8E2B372771CFC86E685FECF806CC970D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		8E5C489A43DA4E89938BD4EF9F64F4D2 /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WXApiObject.h; sourceTree = "<group>"; };
+		8E6ACC4E1BD6A63BCA04109DECCA16AB /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = ShareSDK/Support/PlatformSDK/WeChatSDK/libWeChatSDK.a; sourceTree = "<group>"; };
 		8E6C3355AA895FF106E761A7D24F28AE /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		8EF6B5160778ED5619E0C870A011D814 /* STPRememberMePaymentCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPRememberMePaymentCell.m; path = Stripe/STPRememberMePaymentCell.m; sourceTree = "<group>"; };
 		8F3F6BE90FF7815851E80DFD29ED51AE /* stp_icon_chevron_right_small@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_icon_chevron_right_small@3x.png"; path = "Stripe/Resources/Images/stp_icon_chevron_right_small@3x.png"; sourceTree = "<group>"; };
@@ -901,11 +900,14 @@
 		8FEA7DA21D7855C313AAAEB680E58F5B /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
 		9034DA0AEB3E5F99404E9309E51D3D65 /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoGifFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.h; sourceTree = "<group>"; };
 		90610722F3FC29E867DC1D5C021B08E7 /* STPCustomer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCustomer.h; path = Stripe/PublicHeaders/STPCustomer.h; sourceTree = "<group>"; };
+		9080FED12F05D99E1E9945DB599B7888 /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboToken.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
 		917C4FEE01DA9257E8D08C5E0B315025 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		927EB58A6B70F35867F3A2984E05318B /* Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Stripe.h; path = Stripe/PublicHeaders/Stripe.h; sourceTree = "<group>"; };
 		9293EC81CFCB49B94F2830A85416ED69 /* STPAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAddress.m; path = Stripe/STPAddress.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94F405F257D24D529EA78C85E4D94342 /* QQConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QQConnector.framework; path = ShareSDK/Support/PlatformConnector/QQConnector.framework; sourceTree = "<group>"; };
 		956F7BDF246685ABDD3F631FE73A734B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95900C1B9E4C20F6D53BE48BFC156F8C /* libWeiboSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
 		95D0C4938815DDB41278DE16E055774F /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		96312064172A2761A98DE9AF60B7C5C4 /* STPPaymentContextAmountModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentContextAmountModel.h; path = Stripe/STPPaymentContextAmountModel.h; sourceTree = "<group>"; };
 		96A38006BD89E929A440A2CB39A1658A /* STPRememberMePaymentCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPRememberMePaymentCell.h; path = Stripe/STPRememberMePaymentCell.h; sourceTree = "<group>"; };
@@ -949,6 +951,7 @@
 		A80501AE82BCDC442DAD2C319514B360 /* Pods-zhiruProduct.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-zhiruProduct.modulemap"; sourceTree = "<group>"; };
 		A8100FD343A68155A199EE3214E95EE1 /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
 		A8602B6FB3DB6A33BDAE9B35D4647EAE /* STPSMSCodeTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSMSCodeTextField.m; path = Stripe/STPSMSCodeTextField.m; sourceTree = "<group>"; };
+		A90284688793F60DDB9E82037D8BB461 /* SinaWeiboConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SinaWeiboConnector.framework; path = ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework; sourceTree = "<group>"; };
 		A94EA0EABA7EA921E7330309E4D8F817 /* stp_card_visa@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_visa@3x.png"; path = "Stripe/Resources/Images/stp_card_visa@3x.png"; sourceTree = "<group>"; };
 		A9ADE3F32DBC2795AAE8B73E3BC4A898 /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
 		AA121FACC94898143C9B4E6D163600F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -958,7 +961,6 @@
 		AA9F6446B41E09A905444FD5AB229569 /* stp_card_amex_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_amex_template@3x.png"; path = "Stripe/Resources/Images/stp_card_amex_template@3x.png"; sourceTree = "<group>"; };
 		AAD5ECE1888E3F72A2E73DA988CE3148 /* STPPaymentMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentMethod.h; path = Stripe/PublicHeaders/STPPaymentMethod.h; sourceTree = "<group>"; };
 		ABD558574259A08522BCF289622C9F01 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
-		AEE5DB3747DC36E73C7163B4EDBA446B /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboUser.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
 		AF93CB29F75A087A75AB8FA7770F7351 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		B00D4B5063B7CF900E3455B26F4E6C42 /* STPPaymentContext+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPPaymentContext+Private.h"; path = "Stripe/STPPaymentContext+Private.h"; sourceTree = "<group>"; };
 		B09D83516B5CDCBB07ACB78C2C789CF6 /* stp_card_form_applepay.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_form_applepay.png; path = Stripe/Resources/Images/stp_card_form_applepay.png; sourceTree = "<group>"; };
@@ -989,6 +991,7 @@
 		BAD60F12E4A08BE91C9DB012135F4C91 /* stp_card_jcb_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_jcb_template@2x.png"; path = "Stripe/Resources/Images/stp_card_jcb_template@2x.png"; sourceTree = "<group>"; };
 		BB0B421E3342B2F98D30B5BBBCD5C0A7 /* STPPaymentCardTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentCardTextField.m; path = Stripe/STPPaymentCardTextField.m; sourceTree = "<group>"; };
 		BB2EB0C629931125A2260982E6C0EA2A /* STPToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPToken.h; path = Stripe/PublicHeaders/STPToken.h; sourceTree = "<group>"; };
+		BB58C62446D86379096285AC03FDBC50 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboShare.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
 		BB73F3AB38CA66CA3598714EE38218A2 /* stp_shipping_form.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_shipping_form.png; path = Stripe/Resources/Images/stp_shipping_form.png; sourceTree = "<group>"; };
 		BB859D00C526DF270367424107519639 /* STPLocalizationUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPLocalizationUtils.m; path = Stripe/STPLocalizationUtils.m; sourceTree = "<group>"; };
 		BBAFD71CEF4664212BB9A4DA811A8FC8 /* Stripe.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Stripe.bundle; path = Stripe.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1011,6 +1014,7 @@
 		C25390EB6698172BDEA866ABB231FC19 /* NSString+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MJExtension.m"; path = "MJExtension/NSString+MJExtension.m"; sourceTree = "<group>"; };
 		C2A8FE8A5634FCA707861AA581108572 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
 		C2E1DF7DABDADFB296B6C8DEF8C61627 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
+		C4105033CE342EFFF3E2E87D9278E67B /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboGame.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
 		C4507ED1808739F5240C0DFE9C56596B /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		C4BB37A3ABFC1CDC1FA83B671A0F42BB /* stp_card_applepay.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_applepay.png; path = Stripe/Resources/Images/stp_card_applepay.png; sourceTree = "<group>"; };
 		C50F66D25352E6297A95C8352CB9700B /* STPWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPWebViewController.m; path = Stripe/STPWebViewController.m; sourceTree = "<group>"; };
@@ -1020,9 +1024,10 @@
 		C767B8A26F283068AFBFC91E2DB7A43A /* stp_card_diners_template.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_diners_template.png; path = Stripe/Resources/Images/stp_card_diners_template.png; sourceTree = "<group>"; };
 		C77F71F3CCD48602D652AEABA8B0AFF5 /* NSString+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+Stripe.m"; path = "Stripe/NSString+Stripe.m"; sourceTree = "<group>"; };
 		C7F61ECDDF03DA3C31E999987DE5D221 /* UIViewController+Stripe_Promises.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Stripe_Promises.m"; path = "Stripe/UIViewController+Stripe_Promises.m"; sourceTree = "<group>"; };
+		C808B7A7DAB8156FB297C4B95816D91E /* WeiboSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
 		C943D5DAF2E27583C62538098FF1B864 /* STPPhoneNumberValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPhoneNumberValidator.h; path = Stripe/STPPhoneNumberValidator.h; sourceTree = "<group>"; };
+		C9D8B2096DA770A2CB74E9D357EAB405 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WXApi.h; sourceTree = "<group>"; };
 		C9DB05F72FBA45963D16C0EB632C0DAE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		CB41F2EB45FAF8A3DD77F5F3B3D0AF4C /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboToken.h"; path = "ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
 		CBA3D89498E4B7C0C2E4F1D15B88386E /* STPSMSCodeViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSMSCodeViewController.h; path = Stripe/STPSMSCodeViewController.h; sourceTree = "<group>"; };
 		CCB6A67410E9B3C463C3B2E973CDE92D /* MJExtensionConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtensionConst.h; path = MJExtension/MJExtensionConst.h; sourceTree = "<group>"; };
 		CCB6B72780CA5D3E263700CE752A6B63 /* STPCustomer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPCustomer.m; path = Stripe/STPCustomer.m; sourceTree = "<group>"; };
@@ -1046,11 +1051,11 @@
 		D4721D17564533E048E9046BAE92ECD0 /* STPPaymentConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentConfiguration.h; path = Stripe/PublicHeaders/STPPaymentConfiguration.h; sourceTree = "<group>"; };
 		D68785819E25FDCC4C0AD7926C6331A5 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		D6EED0D98AFACFA959486DE2C6A1546A /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		D6FE7567170F951875D23A93363B4634 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKExtension.framework; path = ShareSDK/Support/Optional/ShareSDKExtension.framework; sourceTree = "<group>"; };
 		D7584A2116499D7C1B067277581062B8 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		D7D995BD1A068E2EA526BD386DC7C424 /* STPAddCardViewController+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPAddCardViewController+Private.h"; path = "Stripe/STPAddCardViewController+Private.h"; sourceTree = "<group>"; };
 		D83FC487C0A66A42106E20660A4C96CB /* stp_card_cvc_amex@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_cvc_amex@3x.png"; path = "Stripe/Resources/Images/stp_card_cvc_amex@3x.png"; sourceTree = "<group>"; };
 		D858DCF2FB7CE395ECF1E8DBBBDF6B09 /* stp_card_form_back@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_form_back@2x.png"; path = "Stripe/Resources/Images/stp_card_form_back@2x.png"; sourceTree = "<group>"; };
-		D87B0F92773029B92A07114ACECE73CB /* WBHttpRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBHttpRequest.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest.h; sourceTree = "<group>"; };
 		D8B50903DC99EAA0F1BCEA9E99106A32 /* STPShippingAddressViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPShippingAddressViewController.m; path = Stripe/STPShippingAddressViewController.m; sourceTree = "<group>"; };
 		D8FD00E0FCACB603BBFDEAAB47DC0854 /* STPLocalizationUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPLocalizationUtils.h; path = Stripe/STPLocalizationUtils.h; sourceTree = "<group>"; };
 		D992101BB514C74EF1720C531FDDE580 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
@@ -1080,11 +1085,11 @@
 		E39581AE137DAC0B361C74C895F84F60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		E3ABEA0CFF13EE2007AC1590BDF4B84D /* NSDecimalNumber+Stripe_Currency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDecimalNumber+Stripe_Currency.h"; path = "Stripe/NSDecimalNumber+Stripe_Currency.h"; sourceTree = "<group>"; };
 		E3C2EF447EE3CC85D5BBA61BCEDB7B06 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
+		E406F837DF0C94E910DC54713621B6BC /* ShareSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = ShareSDK.bundle; path = ShareSDK/Support/Required/ShareSDK.bundle; sourceTree = "<group>"; };
 		E4A2CA2C2885355C098651D90087F358 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BCE4DE009D38F4E4416307A5827EC0 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJRefresh.m"; path = "MJRefresh/UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		E4E302D1C8A0DE76DBF1FEB2DD6D60EA /* stp_card_cvc.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_cvc.png; path = Stripe/Resources/Images/stp_card_cvc.png; sourceTree = "<group>"; };
 		E4E8E8AC01F59E75C0882213BC0F94E1 /* STPAPIPostRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAPIPostRequest.h; path = Stripe/STPAPIPostRequest.h; sourceTree = "<group>"; };
-		E5CF86910574B93FD607AEF83C8B2130 /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
 		E5DC9182D9B2F05983E869907DD152F7 /* MJPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyKey.h; path = MJExtension/MJPropertyKey.h; sourceTree = "<group>"; };
 		E72C4EFC0F7B3487678B6AD1E49144FA /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
 		E87EA954E667E358B0FE13C0B6CD6AA8 /* STPShippingMethodTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPShippingMethodTableViewCell.m; path = Stripe/STPShippingMethodTableViewCell.m; sourceTree = "<group>"; };
@@ -1095,7 +1100,6 @@
 		EA1D03C9D2E17DBB5AE0342AC50AA269 /* Pods-zhiruProduct-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-zhiruProduct-umbrella.h"; sourceTree = "<group>"; };
 		EA307E74DA3634FE4F2A80339EC80335 /* stp_icon_checkmark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_icon_checkmark@3x.png"; path = "Stripe/Resources/Images/stp_icon_checkmark@3x.png"; sourceTree = "<group>"; };
 		EB1C5A80894F985F7A745182F40FEA80 /* STPAPIClient+ApplePay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPAPIClient+ApplePay.h"; path = "Stripe/PublicHeaders/STPAPIClient+ApplePay.h"; sourceTree = "<group>"; };
-		EB6AD5615E7FE7ACB7B10A0A8B1BB0F8 /* WeiboSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
 		EBFA2293EB41A37F312CC9B2BE2DB810 /* STPTheme.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPTheme.m; path = Stripe/STPTheme.m; sourceTree = "<group>"; };
 		EC376431A5E0C7CDB1E94CFB95EBD3D0 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		ECAD0BBBB64BD14B967F22783645302B /* STPEmailAddressValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPEmailAddressValidator.h; path = Stripe/STPEmailAddressValidator.h; sourceTree = "<group>"; };
@@ -1106,6 +1110,7 @@
 		EDBD32554DCDC44886520C7C0960BD15 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoFooter.h; path = MJRefresh/Base/MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		EEC365098724BBB2E72BA55C6F87E61D /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF67FEF2B485C6843B4940F03F11FCE /* IQNSArray+Sort.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQNSArray+Sort.h"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		EF156B694D6EC18DC91DC0ADB2602436 /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKRelationshipButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKRelationshipButton.h; sourceTree = "<group>"; };
 		EF70C071DA9DE553C6581CCC0FF4D18E /* stp_card_visa.png */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_card_visa.png; path = Stripe/Resources/Images/stp_card_visa.png; sourceTree = "<group>"; };
 		EFC49F9F882FD1AB9D400B6EBC5996F9 /* STPToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPToken.m; path = Stripe/STPToken.m; sourceTree = "<group>"; };
 		EFE3F5CFB84BB315E25BEE37B7B80B0E /* STPCheckoutBootstrapResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCheckoutBootstrapResponse.h; path = Stripe/STPCheckoutBootstrapResponse.h; sourceTree = "<group>"; };
@@ -1113,7 +1118,6 @@
 		F05575C92AA1B24FA93F57D062ED609A /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		F0B6CAA1880C95C3933F84E8B3DC0E45 /* STPObscuredCardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPObscuredCardView.h; path = Stripe/STPObscuredCardView.h; sourceTree = "<group>"; };
 		F0F0B382D0E0CD5C3A52CC2BF94BA1A5 /* STPAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAPIClient.m; path = Stripe/STPAPIClient.m; sourceTree = "<group>"; };
-		F14BBDE5FAB696D2D1B5E567A0CAD654 /* ShareSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = ShareSDK.bundle; path = ShareSDK/Support/Required/ShareSDK.bundle; sourceTree = "<group>"; };
 		F1C6DF4A544866CEE30A5AABF32E0D9A /* ShareSDKUI.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = ShareSDKUI.bundle; path = ShareSDK/Support/Optional/ShareSDKUI.bundle; sourceTree = "<group>"; };
 		F20BE1C20A04F364E86301A21A20E46B /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		F2751A9A4F6402BFA0151AE3C8F51201 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
@@ -1132,6 +1136,7 @@
 		FA16A0C793D60B3A9F900768C70E960A /* stp_card_amex@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "stp_card_amex@3x.png"; path = "Stripe/Resources/Images/stp_card_amex@3x.png"; sourceTree = "<group>"; };
 		FA1B016A98502F2A380C2052B90D1DD0 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		FA471D731AF45F1BD4D3ADE1439F75CE /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
+		FA5C67478DCCDC55DB53E1FD74C88292 /* WBSDKCommentButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKCommentButton.h; path = ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKCommentButton.h; sourceTree = "<group>"; };
 		FA88599366D3BA6C4E1241981F926F91 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		FADF7BE35EAEDFD3B754C7E7E0A8CFEB /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		FAF90602361CBCABD292AD59779C6C83 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
@@ -1142,7 +1147,6 @@
 		FC0495F29B50C3804BF56CC5EED3E664 /* NSMutableURLRequest+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Stripe.h"; path = "Stripe/NSMutableURLRequest+Stripe.h"; sourceTree = "<group>"; };
 		FC3CC61BB38B4ACA2BB5E836F803C8E9 /* IQKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardManager.m; path = IQKeyboardManager/IQKeyboardManager.m; sourceTree = "<group>"; };
 		FC4C0D6DBA24CD5B1A5030BB48EB7D3A /* Localizations */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizations; path = Stripe/Resources/Localizations; sourceTree = "<group>"; };
-		FC5208C636777F0840B11529AF9F8727 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ShareSDK/Support/PlatformSDK/WeChatSDK/WXApi.h; sourceTree = "<group>"; };
 		FCD0FF072AB7E8C648B88881C92801D7 /* NSObject+MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJProperty.h"; path = "MJExtension/NSObject+MJProperty.h"; sourceTree = "<group>"; };
 		FCECC529FDFAD0302F31D28601D8D78B /* CardIOViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CardIOViewDelegate.h; path = CardIO/CardIOViewDelegate.h; sourceTree = "<group>"; };
 		FE17175A1F577F436DFA4B178985D894 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
@@ -1266,6 +1270,18 @@
 			path = "Target Support Files/Pods-zhiruProduct";
 			sourceTree = "<group>";
 		};
+		02B7ED39023218DA18AE56E0A5E0B298 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				6C70CBDF1C360D24D2600CCFEB28E7E2 /* WechatAuthSDK.h */,
+				C9D8B2096DA770A2CB74E9D357EAB405 /* WXApi.h */,
+				8E5C489A43DA4E89938BD4EF9F64F4D2 /* WXApiObject.h */,
+				962CF9224A7F1E11499341935E483CEF /* Frameworks */,
+				A65196063A5117F789E6CD7D7A681613 /* Resources */,
+			);
+			name = WeChat;
+			sourceTree = "<group>";
+		};
 		0376BDBFDA8FA726168433F49F518A02 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,6 +1294,15 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MJRefresh";
+			sourceTree = "<group>";
+		};
+		0A816F390BF29AD2EE4AA42D25960ECA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95900C1B9E4C20F6D53BE48BFC156F8C /* libWeiboSDK.a */,
+				A90284688793F60DDB9E82037D8BB461 /* SinaWeiboConnector.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		108326702F564FC84803423E5A881B03 /* Resources */ = {
@@ -1392,13 +1417,24 @@
 			name = UIKit;
 			sourceTree = "<group>";
 		};
-		17ADEEBFE787D73885B2D96C477AE629 /* MOBFoundation */ = {
+		1BC6B7E4E4AEDA6E9EB4503D64B41E58 /* SinaWeibo */ = {
 			isa = PBXGroup;
 			children = (
-				2EB410D7DC716E935902264052180BD7 /* Frameworks */,
+				38EC5DA6E91234E09B79F9C50FE3D44E /* WBHttpRequest.h */,
+				C4105033CE342EFFF3E2E87D9278E67B /* WBHttpRequest+WeiboGame.h */,
+				BB58C62446D86379096285AC03FDBC50 /* WBHttpRequest+WeiboShare.h */,
+				9080FED12F05D99E1E9945DB599B7888 /* WBHttpRequest+WeiboToken.h */,
+				03832651C2AD0ECC284003ED2A1DBE94 /* WBHttpRequest+WeiboUser.h */,
+				1748E63F9D125982665C15A7CAA1968C /* WBSDKBasicButton.h */,
+				FA5C67478DCCDC55DB53E1FD74C88292 /* WBSDKCommentButton.h */,
+				EF156B694D6EC18DC91DC0ADB2602436 /* WBSDKRelationshipButton.h */,
+				C808B7A7DAB8156FB297C4B95816D91E /* WeiboSDK.h */,
+				293044E5D9C2E99191750F36C6FD4CE5 /* WeiboSDK+Statistics.h */,
+				79BE58B46C304B9AE378083A6EDC55C5 /* WeiboUser.h */,
+				0A816F390BF29AD2EE4AA42D25960ECA /* Frameworks */,
+				99E0D7988B1BE03F7CA1079D7CA519D7 /* Resources */,
 			);
-			name = MOBFoundation;
-			path = MOBFoundation;
+			name = SinaWeibo;
 			sourceTree = "<group>";
 		};
 		20B012D691B98F2CB1282008C7C4117D /* Masonry */ = {
@@ -1449,14 +1485,6 @@
 			path = "../Target Support Files/Masonry";
 			sourceTree = "<group>";
 		};
-		24F5F07525F9988B858DC3BEEEE8C9E2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				554DCACD3C10C6014F567E233B534AC5 /* libWeChatSDK.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		26A38E457A4199B0AD1FEE61BC8D73E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1474,14 +1502,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		2EB410D7DC716E935902264052180BD7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				21418DC457493712572FCB6A8B1E8914 /* MOBFoundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		31DC460CC8ED63C943BBEA5C167CC35F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,12 +1516,14 @@
 			path = "../Target Support Files/IQKeyboardManager";
 			sourceTree = "<group>";
 		};
-		3ADF8EACC1420FC58E89C87F50D2CAEA /* Frameworks */ = {
+		37C7A0451174F94103E1FEF78E645457 /* ShareSDKPlatforms */ = {
 			isa = PBXGroup;
 			children = (
-				8B5D7F7AD5591EF4C47C1B058506B061 /* libWeiboSDK.a */,
+				DA5796AD5B458C760F2D654317A9D083 /* QQ */,
+				1BC6B7E4E4AEDA6E9EB4503D64B41E58 /* SinaWeibo */,
+				02B7ED39023218DA18AE56E0A5E0B298 /* WeChat */,
 			);
-			name = Frameworks;
+			name = ShareSDKPlatforms;
 			sourceTree = "<group>";
 		};
 		40F3633C2CE1E133AE7C64C4D3C3595A /* Frameworks */ = {
@@ -1545,24 +1567,14 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		4F4E8C3383CDD05D4B73BC19D725DBF1 /* SinaWeibo */ = {
+		568370EE8ED1662279F534DC2C5E901E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D87B0F92773029B92A07114ACECE73CB /* WBHttpRequest.h */,
-				7A50AECD29D4C4FD6C1E480A3C413BBC /* WBHttpRequest+WeiboGame.h */,
-				4766F81E863EEEEA40F5D04CC2E97368 /* WBHttpRequest+WeiboShare.h */,
-				CB41F2EB45FAF8A3DD77F5F3B3D0AF4C /* WBHttpRequest+WeiboToken.h */,
-				AEE5DB3747DC36E73C7163B4EDBA446B /* WBHttpRequest+WeiboUser.h */,
-				119F5549C8AF6EF6ECD8FC071C799FEF /* WBSDKBasicButton.h */,
-				6079AFF661213410797C3583D9DB4187 /* WBSDKCommentButton.h */,
-				0AA57A364A4160C8FBFCF8605B3DA793 /* WBSDKRelationshipButton.h */,
-				EB6AD5615E7FE7ACB7B10A0A8B1BB0F8 /* WeiboSDK.h */,
-				3663057C5696637E4397A73E339E82FD /* WeiboSDK+Statistics.h */,
-				17930C0BBABC946F6F4C552ED25E361D /* WeiboUser.h */,
-				3ADF8EACC1420FC58E89C87F50D2CAEA /* Frameworks */,
-				74B78B1EBDCE207DD758002862DF3367 /* Resources */,
+				94F405F257D24D529EA78C85E4D94342 /* QQConnector.framework */,
+				D6FE7567170F951875D23A93363B4634 /* ShareSDKExtension.framework */,
+				593F7D152B84A49436E84B90C78B87AA /* TencentOpenAPI.framework */,
 			);
-			name = SinaWeibo;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		58B898463FB6EC731E1543AF2848D89A /* NSURLSession */ = {
@@ -1603,21 +1615,20 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		60B7551DB544457A24751439D96C974F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E406F837DF0C94E910DC54713621B6BC /* ShareSDK.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		6CB757F74C921B0C5C990092D146B7DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F1C6DF4A544866CEE30A5AABF32E0D9A /* ShareSDKUI.bundle */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		6D8089468F8AC18D4ED812B010A5789B /* QQ */ = {
-			isa = PBXGroup;
-			children = (
-				8F47899801910F2D4286659F66EDC6D4 /* Frameworks */,
-				C21635C62F2D7C2DF7810A0CA88BF42B /* Resources */,
-			);
-			name = QQ;
 			sourceTree = "<group>";
 		};
 		6F49A1D13F71E1A511FC6FC3A50C68A3 /* Frameworks */ = {
@@ -1628,25 +1639,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		73FF53568EDF414269609734FDD9054B /* WeChat */ = {
-			isa = PBXGroup;
-			children = (
-				006429EE6ED1E71FB444B47B2C9AA60B /* WechatAuthSDK.h */,
-				FC5208C636777F0840B11529AF9F8727 /* WXApi.h */,
-				47A99702D34ABCA14DA7A4D881EE8D49 /* WXApiObject.h */,
-				24F5F07525F9988B858DC3BEEEE8C9E2 /* Frameworks */,
-			);
-			name = WeChat;
-			sourceTree = "<group>";
-		};
-		74B78B1EBDCE207DD758002862DF3367 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E5CF86910574B93FD607AEF83C8B2130 /* WeiboSDK.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		74F0C86CB2E22FDF7E3B1F244F420822 /* PayPal-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1654,15 +1646,6 @@
 			);
 			name = "PayPal-iOS-SDK";
 			path = "PayPal-iOS-SDK";
-			sourceTree = "<group>";
-		};
-		7A2317AD4C99451242C00F25E898AE70 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				690E6972EE61DD6CBE0E1159FA4486B7 /* ShareSDKConnector.framework */,
-				178D71B2E6F7270BC42AB7A03A653333 /* ShareSDKExtension.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7AEDF0DD30EF6189C953650A5FEEC598 /* ShareSDKUI */ = {
@@ -1743,12 +1726,20 @@
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
+		850DC23BAEB56D0D678549C6CC1EB5B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44FF815B740272C3CD10B29990385ECB /* ShareSDKConnector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		87E7B7D52D08C9127B8B523868EED7F5 /* ShareSDK3 */ = {
 			isa = PBXGroup;
 			children = (
 				6F49A1D13F71E1A511FC6FC3A50C68A3 /* Frameworks */,
-				8D4B478306B586DD0007BCF0AF52FEF1 /* ShareSDK */,
-				D35AD9ED155C8B39E6651284790A9785 /* ShareSDKPlatforms */,
+				B443A8F3A836509ED64B1228CAEB7D9D /* ShareSDK */,
+				37C7A0451174F94103E1FEF78E645457 /* ShareSDKPlatforms */,
 				7AEDF0DD30EF6189C953650A5FEEC598 /* ShareSDKUI */,
 			);
 			name = ShareSDK3;
@@ -1769,15 +1760,6 @@
 			path = "../Target Support Files/SVProgressHUD";
 			sourceTree = "<group>";
 		};
-		8D4B478306B586DD0007BCF0AF52FEF1 /* ShareSDK */ = {
-			isa = PBXGroup;
-			children = (
-				7A2317AD4C99451242C00F25E898AE70 /* Frameworks */,
-				C0B5ACCFFB418EA9F44B764765C9EFCE /* Resources */,
-			);
-			name = ShareSDK;
-			sourceTree = "<group>";
-		};
 		8DDB23D067BD726F3EE538B6E9C6406B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1791,14 +1773,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Stripe";
-			sourceTree = "<group>";
-		};
-		8F47899801910F2D4286659F66EDC6D4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				19BAA1441443A0029D85027FF2039183 /* TencentOpenAPI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		91D5F49F890A6CFB2713D52665F2AE35 /* Support Files */ = {
@@ -1849,6 +1823,31 @@
 				331BB47A955F9CA34604D492AD59BFA0 /* UIView+WebCacheOperation.m */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		962CF9224A7F1E11499341935E483CEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E6ACC4E1BD6A63BCA04109DECCA16AB /* libWeChatSDK.a */,
+				3BC7D0A13D8D34E4E6EAE0BAF845792B /* WechatConnector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9854AD1C0D5CC0D642823C472E51CF1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CF9205BA0B67DA6ADC260C90611E475 /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		99E0D7988B1BE03F7CA1079D7CA519D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				342AD78953818BBA7856E311364147DD /* WeiboSDK.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		9B193BFC1EA10F651C21912F50ECA65A /* Stripe */ = {
@@ -2061,6 +2060,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A65196063A5117F789E6CD7D7A681613 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		A6CF9B908C09B8D81B26B50FDE4D7CA9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2107,6 +2113,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		B443A8F3A836509ED64B1228CAEB7D9D /* ShareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				850DC23BAEB56D0D678549C6CC1EB5B0 /* Frameworks */,
+				60B7551DB544457A24751439D96C974F /* Resources */,
+			);
+			name = ShareSDK;
+			sourceTree = "<group>";
+		};
 		B5EA51BB382EF2991357C2417264D8B2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,22 +2154,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C0B5ACCFFB418EA9F44B764765C9EFCE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F14BBDE5FAB696D2D1B5E567A0CAD654 /* ShareSDK.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		C21635C62F2D7C2DF7810A0CA88BF42B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				7B301C090E46BAFD48673C6D7E99B0ED /* TencentOpenApi_IOS_Bundle.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		C34A35F21F9FA2500EE52D642B870B86 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2166,7 +2165,7 @@
 				20B012D691B98F2CB1282008C7C4117D /* Masonry */,
 				FE081776F41E4D20640F825F71D5C3F2 /* MJExtension */,
 				E52C5D6189500C3A7EE28CA7B1E67FB4 /* MJRefresh */,
-				17ADEEBFE787D73885B2D96C477AE629 /* MOBFoundation */,
+				EEB9EAF932EE0A9BDC01EB9792F78156 /* MOBFoundation */,
 				74F0C86CB2E22FDF7E3B1F244F420822 /* PayPal-iOS-SDK */,
 				F35FEA8D9BF4C99CB122098570720BBB /* SDWebImage */,
 				87E7B7D52D08C9127B8B523868EED7F5 /* ShareSDK3 */,
@@ -2184,14 +2183,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D35AD9ED155C8B39E6651284790A9785 /* ShareSDKPlatforms */ = {
+		C9EAC83966C29F4FC9B244D8168187EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D8089468F8AC18D4ED812B010A5789B /* QQ */,
-				4F4E8C3383CDD05D4B73BC19D725DBF1 /* SinaWeibo */,
-				73FF53568EDF414269609734FDD9054B /* WeChat */,
+				856A2B02BF61EE6F70D7E4D6CA3887ED /* MOBFoundation.framework */,
+				75FD794ADAC92890CF668F1914C49DEA /* MOBFoundationEx.framework */,
 			);
-			name = ShareSDKPlatforms;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA5796AD5B458C760F2D654317A9D083 /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				568370EE8ED1662279F534DC2C5E901E /* Frameworks */,
+				9854AD1C0D5CC0D642823C472E51CF1E /* Resources */,
+			);
+			name = QQ;
 			sourceTree = "<group>";
 		};
 		DE2B96B52FC6726A7B8968692F4C4186 /* Resources */ = {
@@ -2274,6 +2281,15 @@
 				FAB37E0683BD9245EED66B1188411594 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEB9EAF932EE0A9BDC01EB9792F78156 /* MOBFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				C9EAC83966C29F4FC9B244D8168187EB /* Frameworks */,
+			);
+			name = MOBFoundation;
+			path = MOBFoundation;
 			sourceTree = "<group>";
 		};
 		F1D093B429FBFBD9774035106DC7B2CD /* Security */ = {

@@ -36,6 +36,10 @@ static BOOL isProduction = FALSE;
 #import "KeychainItemWrapper.h"
 #import <AdSupport/ASIdentifierManager.h>
 
+
+#import <Stripe/Stripe.h>
+
+
 @interface AppDelegate ()<WXApiDelegate>
 
 
@@ -144,6 +148,13 @@ static BOOL isProduction = FALSE;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
    
     [IQKeyboardManager sharedManager].enable = YES; // 控制全局键盘遮盖问题,如不想使用 可在具体控制器内 设置为 no
+    
+    
+    //Stripe支付
+    //test
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:@"pk_test_5ldO5xhSAiFuozCRnkuqCXJ2"];
+    
+    
     
     
     return YES;

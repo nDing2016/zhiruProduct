@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/AppDelegate.m"
-            timestampString = "506870645.071073"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/Discovery/Controller/&#x652f;&#x4ed8;&#x8ba2;&#x5355;/ZRPaymentOrderController.m"
-            timestampString = "506939416.822739"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "-loadPayFinished"
             landmarkType = "7">
             <Locations>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/Discovery/Controller/&#x652f;&#x4ed8;&#x8ba2;&#x5355;/ZRPaymentOrderController.m"
-            timestampString = "506939416.822739"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-doAlipayPay"
             landmarkType = "7">
          </BreakpointContent>
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/AppDelegate.m"
-            timestampString = "506870645.071073"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/Discovery/Controller/&#x652f;&#x4ed8;&#x8ba2;&#x5355;/ZRPaymentOrderController.m"
-            timestampString = "506939416.822739"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
             landmarkName = "-loadPayFinished"
             landmarkType = "7">
          </BreakpointContent>
@@ -388,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/Classes/Discovery/Controller/&#x652f;&#x4ed8;&#x8ba2;&#x5355;/ZRPaymentOrderController.m"
-            timestampString = "506939416.822739"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "-loadPayFinished"
             landmarkType = "7">
             <Locations>
@@ -500,61 +500,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zhiruProduct/AppDelegate.m"
-            timestampString = "506870645.071073"
+            timestampString = "508647249.292532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "544"
-            endingLineNumber = "544"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "-AliPayWithOpenURL:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zhiruProduct/Classes/Discovery/Controller/&#x652f;&#x4ed8;&#x8ba2;&#x5355;/ZRPaymentOrderController.m"
-            timestampString = "506939416.822739"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "-ensurePayBtnClick:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ZRPaymentOrderController ensurePayBtnClick:]"
-                  moduleName = "zhiruProduct"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Controller/%E6%94%AF%E4%BB%98%E8%AE%A2%E5%8D%95/ZRPaymentOrderController.m"
-                  timestampString = "506870915.704686"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "460">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[ZRPaymentOrderController ensurePayBtnClick:]_block_invoke"
-                  moduleName = "zhiruProduct"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nding/Desktop/zhiruProduct/zhiruProduct/zhiruProduct/Classes/Discovery/Controller/%E6%94%AF%E4%BB%98%E8%AE%A2%E5%8D%95/ZRPaymentOrderController.m"
-                  timestampString = "506870915.707687"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

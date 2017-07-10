@@ -20,30 +20,36 @@ PODS:
   - GoogleMaps/Base (2.0.1)
   - GoogleMaps/Maps (2.0.1):
     - GoogleMaps/Base (= 2.0.1)
-  - IQKeyboardManager (4.0.6)
+  - IQKeyboardManager (4.0.8)
   - JPush-iOS-SDK (2.1.9)
   - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - MOBFoundation (2.0.11)
-  - PayPal-iOS-SDK (2.16.0):
-    - PayPal-iOS-SDK/CardIO (= 2.16.0)
-    - PayPal-iOS-SDK/Core (= 2.16.0)
-  - PayPal-iOS-SDK/CardIO (2.16.0):
+  - MOBFoundation (2.2.13)
+  - PayPal-iOS-SDK (2.16.1):
+    - PayPal-iOS-SDK/CardIO (= 2.16.1)
+    - PayPal-iOS-SDK/Core (= 2.16.1)
+  - PayPal-iOS-SDK/CardIO (2.16.1):
     - CardIO (~> 5.4.1)
-  - PayPal-iOS-SDK/Core (2.16.0)
+  - PayPal-iOS-SDK/Core (2.16.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - ShareSDK3 (3.4.2):
-    - ShareSDK3/ShareSDK (= 3.4.2)
-  - ShareSDK3/ShareSDK (3.4.2)
-  - ShareSDK3/ShareSDKPlatforms/QQ (3.4.2)
-  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.4.2)
-  - ShareSDK3/ShareSDKPlatforms/WeChat (3.4.2)
-  - ShareSDK3/ShareSDKUI (3.4.2)
+  - ShareSDK3 (3.6.0):
+    - MOBFoundation
+    - ShareSDK3/ShareSDK (= 3.6.0)
+  - ShareSDK3/ShareSDK (3.6.0):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKPlatforms/QQ (3.6.0):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.6.0):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.6.0):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKUI (3.6.0):
+    - MOBFoundation
   - Stripe (9.3.0)
-  - SVProgressHUD (2.0.3)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -68,17 +74,17 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   GoogleMaps: f09da64fc987c1aa29394567c3cab5a3df83c402
-  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   JPush-iOS-SDK: c74e4f8d066dacf27c3d37257ee20157e44c316c
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  MOBFoundation: e213065e65eebd8146ab29d10a8445dc8f385091
-  PayPal-iOS-SDK: 7c35d7a6ebade1ac9138a815d421233ee6624221
+  MOBFoundation: 1db1fdc4f1cf9130277cd01f66d6ee7d42a32510
+  PayPal-iOS-SDK: 774ac7de2d7c3b0ee7e8a35f8b347fd07787321b
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  ShareSDK3: 2fa975dd22937fc7de3f6b5d0c41a18ba0dd1661
+  ShareSDK3: f3cf584b1e753cce25535ac8161d0e3557e9b406
   Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
 PODFILE CHECKSUM: 96ac78717071e7dfce865b89a50bb8ad50d5c73d
 

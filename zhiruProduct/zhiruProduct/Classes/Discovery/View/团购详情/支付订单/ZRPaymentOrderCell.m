@@ -132,9 +132,11 @@
             [self drawImage:ZRImage(@"wechatPay") Rect:CGRectMake(15*SCREEN_WIDTH/375, (self.height-wid)/2, wid, wid)];
             [self drawWithStr:@"微信" Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, y)];
             
-        }else{
+        }else if (_indexPath.row == 2){
             [self drawImage:ZRImage(@"zhifubaoPay") Rect:CGRectMake(15*SCREEN_WIDTH/375, (self.height-wid)/2, wid, wid)];
             [self drawWithStr:@"支付宝" Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, y)];
+        }else{
+            [self drawWithStr:@"Stripe" Font:CustomFont(15) Color:RGBCOLOR(85, 85, 85) Point:CGPointMake(x, y)];
         }
     }
 
